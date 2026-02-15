@@ -376,8 +376,8 @@ const TodoSettings = () => {
                 </div>
                 {calendarSyncEnabled && (
                   <div className="px-4 py-3 text-xs text-muted-foreground bg-muted/30">
-                    <p>🔄 Tasks with due dates appear in your system calendar</p>
-                    <p className="mt-1">📲 Device calendar events sync into this app</p>
+                    <p>🔄 {t('settings.calendarSyncHint1', 'Tasks with due dates appear in your system calendar')}</p>
+                    <p className="mt-1">📲 {t('settings.calendarSyncHint2', 'Device calendar events sync into this app')}</p>
                   </div>
                 )}
               </div>
@@ -516,8 +516,8 @@ const TodoSettings = () => {
             </div>
             {persistentNotificationEnabled && (
               <div className="px-4 py-3 text-xs text-muted-foreground bg-muted/30 rounded-lg">
-                <p>📝 Tap "Add Note" to quickly create any note type</p>
-                <p className="mt-1">✅ Tap "Add Task" to add a task without opening the app</p>
+                <p>📝 {t('settings.quickAddNoteHint')}</p>
+                <p className="mt-1">✅ {t('settings.quickAddTaskHint')}</p>
               </div>
             )}
           </div>

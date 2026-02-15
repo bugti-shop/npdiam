@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Folder as FolderType } from '@/types/note';
 import { FolderIcon, Check } from 'lucide-react';
 import { useHardwareBackButton } from '@/hooks/useHardwareBackButton';
+import { useTranslation } from 'react-i18next';
 
 interface MoveToFolderSheetProps {
   isOpen: boolean;
@@ -19,6 +20,7 @@ export const MoveToFolderSheet = ({
   onSelect,
   currentFolderId
 }: MoveToFolderSheetProps) => {
+  const { t } = useTranslation();
   // Hardware back button support - use 'sheet' priority to close sheet before navigation
   useHardwareBackButton({
     onBack: onClose,
@@ -37,7 +39,7 @@ export const MoveToFolderSheet = ({
         <SheetHeader className="mb-4">
           <SheetTitle className="flex items-center gap-2">
             <FolderIcon className="h-5 w-5" />
-            Move to Folder
+            {t('notes.moveToFolder', 'Move to Folder')}
           </SheetTitle>
         </SheetHeader>
 

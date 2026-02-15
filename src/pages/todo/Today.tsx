@@ -1703,23 +1703,23 @@ const Today = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48 bg-popover border shadow-lg z-50">
             <DropdownMenuItem onClick={() => handleEditSection(section)} className="cursor-pointer">
-              <Edit className="h-4 w-4 mr-2" />Edit Section
+              <Edit className="h-4 w-4 mr-2" />{t('sections.editSection')}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => handleAddTaskToSection(section.id)} className="cursor-pointer">
-              <PlusIcon className="h-4 w-4 mr-2" />Add Task
+              <PlusIcon className="h-4 w-4 mr-2" />{t('sections.addTask')}
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => handleAddSection('above', section.id)} className="cursor-pointer">
-              <ArrowUpCircle className="h-4 w-4 mr-2" />Add Section Above
+              <ArrowUpCircle className="h-4 w-4 mr-2" />{t('sections.addSectionAbove')}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => handleAddSection('below', section.id)} className="cursor-pointer">
-              <ArrowDownCircle className="h-4 w-4 mr-2" />Add Section Below
+              <ArrowDownCircle className="h-4 w-4 mr-2" />{t('sections.addSectionBelow')}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => handleDuplicateSection(section.id)} className="cursor-pointer">
-              <Copy className="h-4 w-4 mr-2" />Duplicate Section
+              <Copy className="h-4 w-4 mr-2" />{t('sections.duplicateSection')}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => { setEditingSection(section); setIsSectionMoveOpen(true); }} className="cursor-pointer">
-              <Move className="h-4 w-4 mr-2" />Move to
+              <Move className="h-4 w-4 mr-2" />{t('sections.moveTo')}
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem 
@@ -1727,7 +1727,7 @@ const Today = () => {
               className="cursor-pointer text-destructive focus:text-destructive"
               disabled={sections.length <= 1}
             >
-              <Trash2 className="h-4 w-4 mr-2" />Delete
+              <Trash2 className="h-4 w-4 mr-2" />{t('common.delete')}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
