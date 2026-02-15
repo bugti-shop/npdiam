@@ -153,7 +153,21 @@
     "syncNotes": "ノートと音声録音",
     "syncTasks": "タスクとサブタスク",
     "syncFolders": "フォルダとセクション",
-    "signInToSync": "すべてのデバイスでノートとタスクを同期するにはGoogleでサインインしてください"
+    "signInToSync": "すべてのデバイスでノートとタスクを同期するにはGoogleでサインインしてください",
+    "syncEnabled": "Google Driveに接続して同期中。",
+    "localOnly": "データはこのデバイスにローカルに保存されています。",
+    "backupSize": "データサイズ",
+    "backupSizeDesc": "ローカルデータ合計",
+    "signInGoogle": "Googleでサインイン",
+    "googleDriveSync": "Google Drive同期",
+    "lastSyncLabel": "最終同期: {{time}}",
+    "signInSuccessGDrive": "GoogleアカウントがDrive同期に接続されました。",
+    "signedOutDesc2": "Googleアカウントの接続が解除されました。",
+    "syncAllData": "すべてのデータがGoogle Driveに同期されました。",
+    "syncStatsDesc": "ノート: {{notes}} 同期済み。タスク: {{tasks}} 同期済み。",
+    "syncStatsConflicts": "{{conflicts}} 件の競合。",
+    "minutesShort": "{{count}}分前",
+    "hoursShort": "{{count}}時間前"
   },
   "settings": {
     "title": "設定",

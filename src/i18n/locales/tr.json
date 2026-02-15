@@ -153,7 +153,21 @@
     "syncNotes": "Notlar ve ses kayıtları",
     "syncTasks": "Görevler ve alt görevler",
     "syncFolders": "Klasörler ve bölümler",
-    "signInToSync": "Notlarınızı ve görevlerinizi tüm cihazlarınızda senkronize etmek için Google ile giriş yapın"
+    "signInToSync": "Notlarınızı ve görevlerinizi tüm cihazlarınızda senkronize etmek için Google ile giriş yapın",
+    "syncEnabled": "Senkronizasyon için Google Drive'a bağlı.",
+    "localOnly": "Verileriniz bu cihazda yerel olarak saklanıyor.",
+    "backupSize": "Veri Boyutu",
+    "backupSizeDesc": "Toplam yerel veri",
+    "signInGoogle": "Google ile giriş yap",
+    "googleDriveSync": "Google Drive Senkronizasyonu",
+    "lastSyncLabel": "Son senkronizasyon: {{time}}",
+    "signInSuccessGDrive": "Google hesabınız Drive senkronizasyonu için bağlandı.",
+    "signedOutDesc2": "Google hesabı bağlantısı kesildi.",
+    "syncAllData": "Tüm veriler Google Drive'a senkronize edildi.",
+    "syncStatsDesc": "Notlar: {{notes}} senkronize. Görevler: {{tasks}} senkronize.",
+    "syncStatsConflicts": "{{conflicts}} çakışma.",
+    "minutesShort": "{{count}}dk önce",
+    "hoursShort": "{{count}}sa önce"
   },
   "settings": {
     "title": "Ayarlar",

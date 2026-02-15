@@ -1,6 +1,7 @@
 import { format, isSameDay, startOfMonth, endOfMonth, eachDayOfInterval, getDay, addMonths, subMonths, isSameMonth } from "date-fns";
 import { ChevronLeft, ChevronRight, ChevronDown, MoreVertical, Image, Settings2 } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -51,12 +52,15 @@ export const NotesCalendarView = ({
   taskDates = [],
   eventDates = [],
   systemCalendarDates = [],
-  emptyStateMessage = "No items for the day.",
-  emptyStateSubMessage = 'Click "+" to create.',
+  emptyStateMessage,
+  emptyStateSubMessage,
   showEmptyState = false,
   calendarBackground = 'none',
   onBackgroundSettingsClick,
 }: NotesCalendarViewProps) => {
+  const { t } = useTranslation();
+  const resolvedEmptyMessage = emptyStateMessage || t('calendar.noNotes', 'No notes for the day.');
+  const resolvedEmptySubMessage = emptyStateSubMessage || t('calendar.clickToCreate', 'Click "+" to create your notes.');
   const today = new Date();
   const [displayMonth, setDisplayMonth] = useState(startOfMonth(selectedDate || today));
   const [noteDates, setNoteDates] = useState<Date[]>([]);
@@ -132,7 +136,7 @@ export const NotesCalendarView = ({
     onDateSelect?.(today);
   };
 
-  const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const weekDays = [t('calendar.sun', 'Sun'), t('calendar.mon', 'Mon'), t('calendar.tue', 'Tue'), t('calendar.wed', 'Wed'), t('calendar.thu', 'Thu'), t('calendar.fri', 'Fri'), t('calendar.sat', 'Sat')];
 
   return (
     <div 
@@ -204,12 +208,12 @@ export const NotesCalendarView = ({
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="bg-card">
               <DropdownMenuItem onClick={handleGoToToday}>
-                Go to Today
+                {t('calendar.goToToday', 'Go to Today')}
               </DropdownMenuItem>
               {onBackgroundSettingsClick && (
                 <DropdownMenuItem onClick={onBackgroundSettingsClick} className="gap-2">
                   <Image className="h-4 w-4" />
-                  Change Background
+                  {t('calendar.changeBackground', 'Change Background')}
                 </DropdownMenuItem>
               )}
             </DropdownMenuContent>
@@ -327,13 +331,13 @@ export const NotesCalendarView = ({
             "text-lg text-center mb-1",
             useLightText ? "text-white/80" : "text-muted-foreground"
           )}>
-            {emptyStateMessage}
+            {resolvedEmptyMessage}
           </p>
           <p className={cn(
             "text-sm text-center",
             useLightText ? "text-white/60" : "text-muted-foreground/70"
           )}>
-            {emptyStateSubMessage}
+            {resolvedEmptySubMessage}
           </p>
         </div>
       )}

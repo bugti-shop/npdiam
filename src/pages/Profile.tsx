@@ -82,17 +82,17 @@ export default function Profile() {
         console.warn('RevenueCat login with Google ID failed:', rcErr);
       }
       
-      toast({ title: 'Signed in successfully', description: 'Your Google account is connected for Drive sync.' });
+      toast({ title: t('profile.signInSuccess', 'Signed in successfully'), description: t('profile.signInSuccessGDrive', 'Your Google account is connected for Drive sync.') });
     } catch (err: any) {
       console.error('Sign-in error:', err);
-      toast({ title: 'Sign-in failed', description: err?.message || 'Please try again.', variant: 'destructive' });
+      toast({ title: t('profile.signInFailed', 'Sign-in failed'), description: err?.message || t('common.retry', 'Please try again.'), variant: 'destructive' });
     }
   };
 
   const handleSignOut = async () => {
     await signOut();
     setLastSync(null);
-    toast({ title: 'Signed out', description: 'Google account disconnected.' });
+    toast({ title: t('profile.signedOut', 'Signed out'), description: t('profile.signedOutDesc2', 'Google account disconnected.') });
   };
 
   const handleSync = useCallback(async () => {
@@ -104,27 +104,27 @@ export default function Profile() {
       const info = await getLastSyncInfo();
       setLastSync(info);
       toast({
-        title: 'Sync complete',
+        title: t('profile.syncSuccess', 'Sync complete'),
         description: result.stats
-          ? `Notes: ${result.stats.notesUploaded} synced. Tasks: ${result.stats.tasksUploaded} synced.${result.stats.conflicts ? ` ${result.stats.conflicts} conflict(s).` : ''}`
-          : 'All data synced to Google Drive.',
+          ? `${t('profile.syncStatsDesc', 'Notes: {{notes}} synced. Tasks: {{tasks}} synced.', { notes: result.stats.notesUploaded, tasks: result.stats.tasksUploaded })}${result.stats.conflicts ? ` ${t('profile.syncStatsConflicts', '{{conflicts}} conflict(s).', { conflicts: result.stats.conflicts })}` : ''}`
+          : t('profile.syncAllData', 'All data synced to Google Drive.'),
       });
     } else {
-      toast({ title: 'Sync failed', description: result.error || 'Please try again.', variant: 'destructive' });
+      toast({ title: t('profile.syncFailed', 'Sync failed'), description: result.error || t('common.retry', 'Please try again.'), variant: 'destructive' });
     }
   }, [syncState, toast]);
 
   const formatLastSync = (meta: SyncMeta | null): string => {
-    if (!meta?.lastSyncAt) return 'Never';
+    if (!meta?.lastSyncAt) return t('profile.neverSynced', 'Never');
     const date = new Date(meta.lastSyncAt);
     const now = new Date();
     const diffMs = now.getTime() - date.getTime();
     const diffMins = Math.floor(diffMs / 60000);
     
-    if (diffMins < 1) return 'Just now';
-    if (diffMins < 60) return `${diffMins}m ago`;
+    if (diffMins < 1) return t('profile.justNow', 'Just now');
+    if (diffMins < 60) return t('profile.minutesShort', '{{count}}m ago', { count: diffMins });
     const diffHours = Math.floor(diffMins / 60);
-    if (diffHours < 24) return `${diffHours}h ago`;
+    if (diffHours < 24) return t('profile.hoursShort', '{{count}}h ago', { count: diffHours });
     return date.toLocaleDateString();
   };
 
@@ -199,10 +199,10 @@ export default function Profile() {
                     </div>
                     <div>
                       <p className="text-sm font-medium text-foreground">
-                        {syncState === 'syncing' ? 'Syncing...' : 'Google Drive Sync'}
+                        {syncState === 'syncing' ? t('profile.syncing', 'Syncing...') : t('profile.googleDriveSync', 'Google Drive Sync')}
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        Last sync: {formatLastSync(lastSync)}
+                        {t('profile.lastSyncLabel', 'Last sync: {{time}}', { time: formatLastSync(lastSync) })}
                       </p>
                     </div>
                   </div>
@@ -220,7 +220,7 @@ export default function Profile() {
                   ) : (
                     <RefreshCw className="h-4 w-4 mr-2" />
                   )}
-                  {syncState === 'syncing' ? 'Syncing...' : 'Sync Now'}
+                  {syncState === 'syncing' ? t('profile.syncing', 'Syncing...') : t('profile.syncNow', 'Sync Now')}
                 </Button>
               </div>
 
