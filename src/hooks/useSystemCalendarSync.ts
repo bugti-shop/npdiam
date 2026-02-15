@@ -26,14 +26,14 @@ export const useSystemCalendarSync = () => {
     });
 
     const doSync = async () => {
-      const enabled = await isCalendarSyncEnabled();
-      if (!enabled) return;
-
-      const now = Date.now();
-      if (now - lastSyncRef.current < 60_000) return; // 1 min cooldown
-      lastSyncRef.current = now;
-
       try {
+        const enabled = await isCalendarSyncEnabled();
+        if (!enabled) return;
+
+        const now = Date.now();
+        if (now - lastSyncRef.current < 60_000) return; // 1 min cooldown
+        lastSyncRef.current = now;
+
         const tasks = await loadTasksFromDB();
         const events = await getSetting<CalendarEvent[]>('calendarEvents', []);
         const result = await performFullCalendarSync(tasks, events);
@@ -44,7 +44,11 @@ export const useSystemCalendarSync = () => {
           console.warn('Calendar sync errors:', result.errors);
         }
       } catch (e) {
-        console.warn('Calendar sync failed:', e);
+        // Never let sync crash the app
+        const msg = String(e);
+        if (!msg.includes('not implemented') && !msg.includes('UNIMPLEMENTED')) {
+          console.warn('Calendar sync failed:', e);
+        }
       }
     };
 

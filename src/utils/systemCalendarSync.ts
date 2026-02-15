@@ -220,27 +220,58 @@ export const pullFromNativeCalendar = async (
     const from = now - daysBehind * 24 * 60 * 60 * 1000;
     const to = now + daysAhead * 24 * 60 * 60 * 1000;
 
-    const { result } = await Promise.resolve(cal.listEventsInRange({ from, to }));
+    let nativeEvents: any[] = [];
+    try {
+      const response = await Promise.resolve(cal.listEventsInRange({ from, to }));
+      nativeEvents = response?.result ?? [];
+    } catch (listErr) {
+      // listEventsInRange may not be implemented on some Android versions
+      const msg = String(listErr);
+      if (msg.includes('not implemented') || msg.includes('UNIMPLEMENTED')) {
+        console.warn('listEventsInRange not supported on this device');
+        return [];
+      }
+      throw listErr;
+    }
+
+    if (!Array.isArray(nativeEvents) || nativeEvents.length === 0) return [];
+
     const syncMap = await loadSyncMap();
     const nativeIdSet = new Set(Object.values(syncMap));
 
     // Filter out events that we pushed ourselves
-    const externalEvents = result.filter(e => !nativeIdSet.has(e.id));
+    const externalEvents = nativeEvents.filter(e => e?.id && !nativeIdSet.has(e.id));
 
-    return externalEvents.map(e => ({
-      id: `native_${e.id}`,
-      title: e.title || 'Untitled',
-      description: e.description || undefined,
-      location: e.location || undefined,
-      allDay: e.isAllDay ?? false,
-      startDate: new Date(e.startDate),
-      endDate: new Date(e.endDate),
-      timezone: e.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
-      repeat: 'never' as const,
-      reminder: 'at_time' as const,
-      createdAt: e.creationDate ? new Date(e.creationDate) : new Date(),
-      updatedAt: e.lastModifiedDate ? new Date(e.lastModifiedDate) : new Date(),
-    }));
+    return externalEvents
+      .map(e => {
+        try {
+          const startTs = typeof e.startDate === 'number' ? e.startDate : Date.now();
+          const endTs = typeof e.endDate === 'number' ? e.endDate : startTs + 3600000;
+          const startDate = new Date(startTs);
+          const endDate = new Date(endTs);
+
+          // Skip events with invalid dates
+          if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) return null;
+
+          return {
+            id: `native_${e.id}`,
+            title: e.title || 'Untitled',
+            description: e.description || undefined,
+            location: e.location || undefined,
+            allDay: e.isAllDay ?? false,
+            startDate,
+            endDate,
+            timezone: e.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
+            repeat: 'never' as const,
+            reminder: 'at_time' as const,
+            createdAt: e.creationDate ? new Date(e.creationDate) : new Date(),
+            updatedAt: e.lastModifiedDate ? new Date(e.lastModifiedDate) : new Date(),
+          };
+        } catch {
+          return null;
+        }
+      })
+      .filter((e): e is NonNullable<typeof e> => e !== null) as AppCalendarEvent[];
   } catch (e) {
     console.error('Failed to pull from native calendar:', e);
     return [];
