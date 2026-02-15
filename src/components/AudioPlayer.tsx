@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Play, Pause, Volume2, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -12,6 +13,7 @@ interface AudioPlayerProps {
 const PLAYBACK_SPEEDS = [0.5, 1, 1.5, 2];
 
 export const AudioPlayer = ({ src, className }: AudioPlayerProps) => {
+  const { t } = useTranslation();
   const audioRef = useRef<HTMLAudioElement>(null);
   const playableUrlRef = useRef<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -117,7 +119,7 @@ export const AudioPlayer = ({ src, className }: AudioPlayerProps) => {
         className
       )}>
         <AlertCircle className="h-5 w-5 text-destructive" />
-        <span className="text-sm text-destructive">Audio unavailable</span>
+        <span className="text-sm text-destructive">{t('audioPlayer.audioUnavailable')}</span>
       </div>
     );
   }

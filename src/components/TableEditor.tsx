@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -21,6 +22,7 @@ interface TableEditorProps {
 }
 
 export const TableEditor = ({ onInsertTable }: TableEditorProps) => {
+  const { t } = useTranslation();
   const [rows, setRows] = useState(3);
   const [cols, setCols] = useState(3);
   const [isOpen, setIsOpen] = useState(false);
@@ -41,18 +43,18 @@ export const TableEditor = ({ onInsertTable }: TableEditorProps) => {
           variant="ghost"
           size="sm"
           className="h-8 w-8 p-0"
-          title="Insert Table"
+          title={t('tableEditor.insertTable')}
         >
           <Table className="h-4 w-4" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-64 p-4" align="start">
         <div className="space-y-4">
-          <div className="font-medium text-sm">Insert Table</div>
+          <div className="font-medium text-sm">{t('tableEditor.insertTable')}</div>
           
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <Label className="text-sm">Rows</Label>
+              <Label className="text-sm">{t('tableEditor.rows')}</Label>
               <div className="flex items-center gap-2">
                 <Button
                   size="icon"
@@ -75,7 +77,7 @@ export const TableEditor = ({ onInsertTable }: TableEditorProps) => {
             </div>
             
             <div className="flex items-center justify-between">
-              <Label className="text-sm">Columns</Label>
+              <Label className="text-sm">{t('tableEditor.columns')}</Label>
               <div className="flex items-center gap-2">
                 <Button
                   size="icon"
@@ -100,7 +102,7 @@ export const TableEditor = ({ onInsertTable }: TableEditorProps) => {
 
           {/* Style Selection */}
           <div className="space-y-2">
-            <Label className="text-sm">Style</Label>
+            <Label className="text-sm">{t('tableEditor.style')}</Label>
             <div className="grid grid-cols-2 gap-1">
               {TABLE_STYLES.map((style) => (
                 <Button
@@ -142,7 +144,7 @@ export const TableEditor = ({ onInsertTable }: TableEditorProps) => {
           </div>
 
           <Button onClick={handleInsert} className="w-full" size="sm">
-            Insert Table
+            {t('tableEditor.insertTable')}
           </Button>
         </div>
       </PopoverContent>

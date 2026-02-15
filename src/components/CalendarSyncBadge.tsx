@@ -46,11 +46,11 @@ export const CalendarSyncBadge = () => {
       ]);
       const result = await performFullCalendarSync(tasks, events);
       toast.success(
-        `Synced: ${result.pushed} pushed, ${result.pulled} pulled`
+        t('calendarSync.syncedResult', { pushed: result.pushed, pulled: result.pulled })
       );
       await loadStatus();
     } catch (e) {
-      toast.error('Sync failed');
+      toast.error(t('calendarSync.syncFailed'));
     } finally {
       setIsSyncing(false);
     }
@@ -96,12 +96,12 @@ export const CalendarSyncBadge = () => {
               className="h-7 px-2 text-xs"
             >
               <RefreshCw className={`h-3.5 w-3.5 mr-1 ${isSyncing ? 'animate-spin' : ''}`} />
-              {isSyncing ? 'Syncing...' : 'Sync Now'}
+              {isSyncing ? t('calendarSync.syncing') : t('calendarSync.syncNow')}
             </Button>
           </div>
           {lastSynced && (
             <p className="text-xs text-muted-foreground mt-1">
-              Last synced {lastSynced}
+              {t('calendarSync.lastSynced', { time: lastSynced })}
             </p>
           )}
         </div>
@@ -111,15 +111,15 @@ export const CalendarSyncBadge = () => {
           <div className="grid grid-cols-3 gap-2 text-center">
             <div className="bg-muted/50 rounded-lg p-2">
               <p className="text-lg font-bold text-foreground">{status?.totalSynced ?? 0}</p>
-              <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Total</p>
+              <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{t('calendarSync.total')}</p>
             </div>
             <div className="bg-muted/50 rounded-lg p-2">
               <p className="text-lg font-bold text-primary">{status?.pushed ?? 0}</p>
-              <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Pushed</p>
+              <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{t('calendarSync.pushed')}</p>
             </div>
             <div className="bg-muted/50 rounded-lg p-2">
               <p className="text-lg font-bold text-primary">{status?.pulled ?? 0}</p>
-              <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Pulled</p>
+              <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{t('calendarSync.pulled')}</p>
             </div>
           </div>
 
@@ -132,12 +132,12 @@ export const CalendarSyncBadge = () => {
           ) : status?.lastSyncedAt ? (
             <div className="flex items-center gap-2 text-xs text-primary bg-primary/10 rounded-lg p-2">
               <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
-              <span>All events are in sync</span>
+              <span>{t('calendarSync.allInSync')}</span>
             </div>
           ) : (
             <div className="flex items-center gap-2 text-xs text-muted-foreground bg-muted/50 rounded-lg p-2">
               <RefreshCw className="h-3.5 w-3.5 shrink-0" />
-              <span>Not synced yet — tap Sync Now</span>
+              <span>{t('calendarSync.notSyncedYet')}</span>
             </div>
           )}
         </div>

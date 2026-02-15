@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TodoItem } from '@/types/note';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -27,6 +28,7 @@ interface TaskWidgetsProps {
 }
 
 export const TaskWidgets = ({ tasks, compact = false }: TaskWidgetsProps) => {
+  const { t } = useTranslation();
   const today = startOfDay(new Date());
   
   const stats = useMemo(() => {
@@ -116,25 +118,25 @@ export const TaskWidgets = ({ tasks, compact = false }: TaskWidgetsProps) => {
         <MiniWidget 
           icon={<ListTodo className="h-4 w-4" />} 
           value={stats.pending} 
-          label="Pending" 
+          label={t('taskWidgets.pending')}
           color="text-info"
         />
         <MiniWidget 
           icon={<CheckCircle2 className="h-4 w-4" />} 
           value={stats.completed} 
-          label="Done" 
+          label={t('taskWidgets.done')}
           color="text-success"
         />
         <MiniWidget 
           icon={<AlertTriangle className="h-4 w-4" />} 
           value={stats.overdue} 
-          label="Overdue" 
+          label={t('taskWidgets.overdue')}
           color="text-destructive"
         />
         <MiniWidget 
           icon={<Flame className="h-4 w-4" />} 
           value={stats.streak} 
-          label="Streak" 
+          label={t('taskWidgets.streak')}
           color="text-streak"
         />
       </div>
@@ -150,10 +152,10 @@ export const TaskWidgets = ({ tasks, compact = false }: TaskWidgetsProps) => {
           <CardContent className="p-4">
             <div className="flex items-center justify-between mb-2">
               <Calendar className="h-5 w-5 text-primary" />
-              <Badge variant="secondary" className="text-xs">Today</Badge>
+              <Badge variant="secondary" className="text-xs">{t('taskWidgets.today')}</Badge>
             </div>
             <div className="text-2xl font-bold">{stats.todayCompleted}/{stats.todayTasks}</div>
-            <p className="text-xs text-muted-foreground">Tasks completed today</p>
+            <p className="text-xs text-muted-foreground">{t('taskWidgets.tasksCompletedToday')}</p>
             {stats.todayTasks > 0 && (
               <Progress 
                 value={(stats.todayCompleted / stats.todayTasks) * 100} 
@@ -168,11 +170,11 @@ export const TaskWidgets = ({ tasks, compact = false }: TaskWidgetsProps) => {
           <CardContent className="p-4">
             <div className="flex items-center justify-between mb-2">
               <Flame className="h-5 w-5 text-streak" />
-              <Badge variant="secondary" className="text-xs">Streak</Badge>
+              <Badge variant="secondary" className="text-xs">{t('taskWidgets.streak')}</Badge>
             </div>
             <div className="text-2xl font-bold">{stats.streak}</div>
             <p className="text-xs text-muted-foreground">
-              {stats.streak === 1 ? 'Day' : 'Days'} in a row
+              {stats.streak === 1 ? t('taskWidgets.dayInARow') : t('taskWidgets.daysInARow')}
             </p>
           </CardContent>
         </Card>
@@ -183,25 +185,25 @@ export const TaskWidgets = ({ tasks, compact = false }: TaskWidgetsProps) => {
         <StatCard 
           icon={<ListTodo className="h-4 w-4" />}
           value={stats.pending}
-          label="Pending"
+          label={t('taskWidgets.pending')}
           color="bg-info/10 text-info"
         />
         <StatCard 
           icon={<CheckCircle2 className="h-4 w-4" />}
           value={stats.completed}
-          label="Done"
+          label={t('taskWidgets.done')}
           color="bg-success/10 text-success"
         />
         <StatCard 
           icon={<AlertTriangle className="h-4 w-4" />}
           value={stats.overdue}
-          label="Overdue"
+          label={t('taskWidgets.overdue')}
           color="bg-destructive/10 text-destructive"
         />
         <StatCard 
           icon={<Flag className="h-4 w-4" />}
           value={stats.highPriority}
-          label="High"
+          label={t('taskWidgets.high')}
           color="bg-streak/10 text-streak"
         />
       </div>
@@ -212,21 +214,21 @@ export const TaskWidgets = ({ tasks, compact = false }: TaskWidgetsProps) => {
           <CardContent className="p-3 text-center">
             <TrendingUp className="h-4 w-4 mx-auto text-primary mb-1" />
             <div className="text-lg font-bold">{stats.completionRate}%</div>
-            <p className="text-[10px] text-muted-foreground">7-day rate</p>
+            <p className="text-[10px] text-muted-foreground">{t('taskWidgets.sevenDayRate')}</p>
           </CardContent>
         </Card>
         <Card className="bg-card/50">
           <CardContent className="p-3 text-center">
             <Repeat className="h-4 w-4 mx-auto text-accent-purple mb-1" />
             <div className="text-lg font-bold">{stats.recurring}</div>
-            <p className="text-[10px] text-muted-foreground">Recurring</p>
+            <p className="text-[10px] text-muted-foreground">{t('taskWidgets.recurring')}</p>
           </CardContent>
         </Card>
         <Card className="bg-card/50">
           <CardContent className="p-3 text-center">
             <Clock className="h-4 w-4 mx-auto text-accent-teal mb-1" />
             <div className="text-lg font-bold">{stats.withReminders}</div>
-            <p className="text-[10px] text-muted-foreground">Reminders</p>
+            <p className="text-[10px] text-muted-foreground">{t('taskWidgets.reminders')}</p>
           </CardContent>
         </Card>
       </div>
@@ -237,7 +239,7 @@ export const TaskWidgets = ({ tasks, compact = false }: TaskWidgetsProps) => {
           <CardContent className="p-3">
             <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
               <Target className="h-3 w-3" />
-              <span>Next Up</span>
+              <span>{t('taskWidgets.nextUp')}</span>
             </div>
             <p className="font-medium text-sm truncate">{nextDueTask.text}</p>
             {nextDueTask.dueDate && (
@@ -254,21 +256,21 @@ export const TaskWidgets = ({ tasks, compact = false }: TaskWidgetsProps) => {
         <CardHeader className="py-3 px-4">
           <CardTitle className="text-sm flex items-center gap-2">
             <Calendar className="h-4 w-4" />
-            Upcoming Overview
+            {t('taskWidgets.upcomingOverview')}
           </CardTitle>
         </CardHeader>
         <CardContent className="px-4 pb-4 pt-0">
           <div className="space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-sm text-muted-foreground">Tomorrow</span>
+              <span className="text-sm text-muted-foreground">{t('taskWidgets.tomorrow')}</span>
               <Badge variant={stats.tomorrowTasks > 0 ? "default" : "secondary"}>
-                {stats.tomorrowTasks} tasks
+                {stats.tomorrowTasks} {t('taskWidgets.tasks')}
               </Badge>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-sm text-muted-foreground">This Week</span>
+              <span className="text-sm text-muted-foreground">{t('taskWidgets.thisWeek')}</span>
               <Badge variant={stats.thisWeekTasks > 0 ? "default" : "secondary"}>
-                {stats.thisWeekTasks} tasks
+                {stats.thisWeekTasks} {t('taskWidgets.tasks')}
               </Badge>
             </div>
           </div>

@@ -1893,6 +1893,111 @@
     "tipTitle": "Tip: Use [[note title]] syntax",
     "tipDesc": "Type [[Note Title]] directly in your note to create links"
   },
+  "audioPlayer": {
+    "audioUnavailable": "Audio unavailable"
+  },
+  "voicePlayer": {
+    "recordingUnavailable": "Recording unavailable"
+  },
+  "tableOfContents": {
+    "contents": "Contents",
+    "title": "Table of Contents"
+  },
+  "tableEditor": {
+    "insertTable": "Insert Table",
+    "rows": "Rows",
+    "columns": "Columns",
+    "style": "Style",
+    "tableActions": "Table Actions",
+    "insertRowAbove": "Insert Row Above",
+    "insertRowBelow": "Insert Row Below",
+    "insertColumnLeft": "Insert Column Left",
+    "insertColumnRight": "Insert Column Right",
+    "deleteRow": "Delete Row",
+    "deleteColumn": "Delete Column",
+    "default": "Default",
+    "standardWithHeader": "Standard with header row",
+    "striped": "Striped",
+    "alternatingRows": "Alternating row colors",
+    "bordered": "Bordered",
+    "allCellsBordered": "All cells bordered",
+    "minimal": "Minimal",
+    "cleanNoBorders": "Clean, no borders",
+    "modern": "Modern",
+    "roundedWithShadow": "Rounded with shadow"
+  },
+  "calendarSync": {
+    "syncing": "Syncing...",
+    "syncNow": "Sync Now",
+    "lastSynced": "Last synced {{time}}",
+    "total": "Total",
+    "pushed": "Pushed",
+    "pulled": "Pulled",
+    "allInSync": "All events are in sync",
+    "notSyncedYet": "Not synced yet — tap Sync Now",
+    "syncedResult": "Synced: {{pushed}} pushed, {{pulled}} pulled",
+    "syncFailed": "Sync failed"
+  },
+  "codeEditor": {
+    "untitledCode": "Untitled Code",
+    "highlighting": "Highlighting...",
+    "codeCopied": "Code copied to clipboard",
+    "copyFailed": "Failed to copy code",
+    "autoDetect": "Auto Detect",
+    "pasteOrType": "// Paste or type your code here...",
+    "lines": "Lines",
+    "chars": "Chars"
+  },
+  "toolbarManager": {
+    "customizeToolbar": "Customize Toolbar",
+    "reset": "Reset",
+    "dragToReorder": "Drag to reorder, toggle to show/hide. ({{visible}}/{{total}} visible)",
+    "orderUpdated": "Toolbar order updated",
+    "itemShown": "{{item}} shown",
+    "itemHidden": "{{item}} hidden",
+    "resetToDefaults": "Toolbar reset to defaults"
+  },
+  "syncButton": {
+    "synced": "Synced",
+    "syncedDesc": "Notes: {{notes}}, Tasks: {{tasks}}",
+    "syncFailed": "Sync failed",
+    "tryAgain": "Try again.",
+    "syncing": "Syncing...",
+    "syncToDrive": "Sync to Google Drive"
+  },
+  "taskWidgets": {
+    "pending": "Pending",
+    "done": "Done",
+    "overdue": "Overdue",
+    "streak": "Streak",
+    "today": "Today",
+    "tasksCompletedToday": "Tasks completed today",
+    "dayInARow": "Day in a row",
+    "daysInARow": "Days in a row",
+    "high": "High",
+    "sevenDayRate": "7-day rate",
+    "recurring": "Recurring",
+    "reminders": "Reminders",
+    "nextUp": "Next Up",
+    "upcomingOverview": "Upcoming Overview",
+    "tomorrow": "Tomorrow",
+    "thisWeek": "This Week",
+    "tasks": "tasks"
+  },
+  "richEditor": {
+    "selectTextFirst": "Please select text first",
+    "linkInserted": "Link inserted",
+    "imageAligned": "Image aligned {{align}}",
+    "imageDeleted": "Image deleted",
+    "imageAdded": "Image added - click to resize or move",
+    "fileAttached": "File \"{{name}}\" attached",
+    "textUppercase": "Text converted to uppercase",
+    "textLowercase": "Text converted to lowercase",
+    "textCapitalized": "Text capitalized",
+    "tableInserted": "Table inserted - click to resize",
+    "tableInsertedWithSize": "{{rows}}×{{cols}} {{style}} table inserted",
+    "fileNotFound": "File data not found"
+  },
   "settings": {
     "title": "Settings",
     "appearance": "Appearance",

@@ -872,13 +872,13 @@ export const RichTextEditor = ({
       }
       const selectedText = selection?.toString();
       if (!selectedText) {
-        toast.error('Please select text first');
+        toast.error(t('richEditor.selectTextFirst'));
         return;
       }
       execCommand('createLink', linkUrl);
       setLinkUrl('');
       setShowLinkInput(false);
-      toast.success('Link inserted');
+      toast.success(t('richEditor.linkInserted'));
     }
   };
 
@@ -989,7 +989,7 @@ export const RichTextEditor = ({
                 wrapper.style.marginRight = '0';
               }
               handleInput();
-              toast.success(`Image aligned ${align}`);
+              toast.success(t('richEditor.imageAligned', { align }));
             };
             return btn;
           };
@@ -1012,7 +1012,7 @@ export const RichTextEditor = ({
             e.stopPropagation();
             wrapper.remove();
             handleInput();
-            toast.success('Image deleted');
+            toast.success(t('richEditor.imageDeleted'));
           });
 
           // Show handles on click
@@ -1109,7 +1109,7 @@ export const RichTextEditor = ({
 
           // Trigger onChange to save content
           handleInput();
-          toast.success('Image added - click to resize or move');
+          toast.success(t('richEditor.imageAdded'));
         }
       };
       reader.readAsDataURL(file);
@@ -1232,7 +1232,7 @@ export const RichTextEditor = ({
           }
 
           handleInput();
-          toast.success(`File "${file.name}" attached`);
+          toast.success(t('richEditor.fileAttached', { name: file.name }));
         }
       };
       reader.readAsDataURL(file);
@@ -1824,13 +1824,13 @@ export const RichTextEditor = ({
   const handleTextCase = (caseType: 'upper' | 'lower' | 'capitalize') => {
     const selection = window.getSelection();
     if (!selection || selection.rangeCount === 0) {
-      toast.error('Please select text first');
+      toast.error(t('richEditor.selectTextFirst'));
       return;
     }
 
     const selectedText = selection.toString();
     if (!selectedText) {
-      toast.error('Please select text first');
+      toast.error(t('richEditor.selectTextFirst'));
       return;
     }
 
@@ -1878,7 +1878,7 @@ export const RichTextEditor = ({
       }, 50);
       
       handleInput();
-      toast.success('Table inserted - click to resize');
+      toast.success(t('richEditor.tableInserted'));
     }
   };
 
@@ -2158,7 +2158,7 @@ export const RichTextEditor = ({
               newWrapper.style.marginRight = '0';
             }
             handleInput();
-            toast.success(`Image aligned ${align}`);
+            toast.success(t('richEditor.imageAligned', { align }));
           });
         });
       }
@@ -2169,7 +2169,7 @@ export const RichTextEditor = ({
           e.stopPropagation();
           newWrapper.remove();
           handleInput();
-          toast.success('Image deleted');
+          toast.success(t('richEditor.imageDeleted'));
         });
       }
       
@@ -2326,7 +2326,7 @@ export const RichTextEditor = ({
         if (fileUrl) {
           downloadFile(fileUrl, fileName);
         } else {
-          toast.error('File data not found');
+          toast.error(t('richEditor.fileNotFound'));
         }
       };
       
@@ -2503,7 +2503,7 @@ export const RichTextEditor = ({
         const tableHTML = generateTableHTML(rows, cols, (style as TableStyle) || 'default');
         document.execCommand('insertHTML', false, tableHTML);
         handleInput();
-        toast.success(`${rows}×${cols} ${style || 'default'} table inserted`);
+        toast.success(t('richEditor.tableInsertedWithSize', { rows, cols, style: style || 'default' }));
       }}
       onAlignLeft={() => handleAlignment('left')}
       onAlignCenter={() => handleAlignment('center')}
