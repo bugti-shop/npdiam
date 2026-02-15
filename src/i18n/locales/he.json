@@ -153,7 +153,21 @@
     "syncNotes": "פתקים והקלטות קוליות",
     "syncTasks": "משימות ותתי-משימות",
     "syncFolders": "תיקיות וסעיפים",
-    "signInToSync": "התחבר עם גוגל כדי לסנכרן את הפתקים והמשימות שלך בכל המכשירים"
+    "signInToSync": "התחבר עם גוגל כדי לסנכרן את הפתקים והמשימות שלך בכל המכשירים",
+    "syncEnabled": "מחובר ל-Google Drive לסנכרון.",
+    "localOnly": "הנתונים שלך מאוחסנים מקומית במכשיר זה.",
+    "backupSize": "גודל נתונים",
+    "backupSizeDesc": "סך הנתונים המקומיים",
+    "signInGoogle": "התחבר עם Google",
+    "googleDriveSync": "סנכרון Google Drive",
+    "lastSyncLabel": "סנכרון אחרון: {{time}}",
+    "signInSuccessGDrive": "חשבון Google שלך מחובר לסנכרון Drive.",
+    "signedOutDesc2": "חשבון Google מנותק.",
+    "syncAllData": "כל הנתונים סונכרנו ל-Google Drive.",
+    "syncStatsDesc": "פתקים: {{notes}} סונכרנו. משימות: {{tasks}} סונכרנו.",
+    "syncStatsConflicts": "{{conflicts}} התנגשות(ויות).",
+    "minutesShort": "לפני {{count}}ד",
+    "hoursShort": "לפני {{count}}ש"
   },
   "settings": {
     "title": "הגדרות",

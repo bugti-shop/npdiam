@@ -268,7 +268,7 @@ export const AppLockSetup = ({ onComplete, onCancel }: AppLockSetupProps) => {
                           value={q}
                           disabled={securityQuestions.some((sq, i) => i !== index && sq.question === q)}
                         >
-                          {q}
+                          {t(q, q)}
                         </SelectItem>
                       ))}
                     </SelectContent>

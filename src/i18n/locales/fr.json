@@ -153,7 +153,21 @@
     "syncNotes": "Notes et enregistrements vocaux",
     "syncTasks": "Tâches et sous-tâches",
     "syncFolders": "Dossiers et sections",
-    "signInToSync": "Connectez-vous avec Google pour synchroniser vos notes et tâches sur tous vos appareils"
+    "signInToSync": "Connectez-vous avec Google pour synchroniser vos notes et tâches sur tous vos appareils",
+    "syncEnabled": "Connecté à Google Drive pour la synchronisation.",
+    "localOnly": "Vos données sont stockées localement sur cet appareil.",
+    "backupSize": "Taille des données",
+    "backupSizeDesc": "Données locales totales",
+    "signInGoogle": "Se connecter avec Google",
+    "googleDriveSync": "Synchronisation Google Drive",
+    "lastSyncLabel": "Dernière synchronisation : {{time}}",
+    "signInSuccessGDrive": "Votre compte Google est connecté pour la synchronisation Drive.",
+    "signedOutDesc2": "Compte Google déconnecté.",
+    "syncAllData": "Toutes les données synchronisées avec Google Drive.",
+    "syncStatsDesc": "Notes : {{notes}} synchronisées. Tâches : {{tasks}} synchronisées.",
+    "syncStatsConflicts": "{{conflicts}} conflit(s).",
+    "minutesShort": "il y a {{count}}min",
+    "hoursShort": "il y a {{count}}h"
   },
   "settings": {
     "title": "Paramètres",
