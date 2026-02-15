@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -22,9 +23,9 @@ export const NoteLinkingSheet = ({
   currentNoteId,
   onSelectNote,
 }: NoteLinkingSheetProps) => {
+  const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Hardware back button support - use 'sheet' priority to close sheet before navigation
   useHardwareBackButton({
     onBack: onClose,
     enabled: isOpen,
@@ -53,14 +54,14 @@ export const NoteLinkingSheet = ({
         <SheetHeader className="pb-4">
           <SheetTitle className="flex items-center gap-2">
             <Link2 className="h-5 w-5" />
-            Link to Note
+            {t('noteLinking.linkToNote')}
           </SheetTitle>
         </SheetHeader>
 
         <div className="relative mb-4">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search notes to link..."
+            placeholder={t('noteLinking.searchNotes')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-9"
@@ -72,8 +73,8 @@ export const NoteLinkingSheet = ({
           {filteredNotes.length === 0 ? (
             <div className="text-center py-12 text-muted-foreground">
               <FileText className="h-12 w-12 mx-auto mb-4 opacity-50" />
-              <p>No notes found</p>
-              <p className="text-sm mt-1">Try a different search term</p>
+              <p>{t('noteLinking.noNotesFound')}</p>
+              <p className="text-sm mt-1">{t('noteLinking.tryDifferentSearch')}</p>
             </div>
           ) : (
             <div className="space-y-2 pr-4">
@@ -90,7 +91,7 @@ export const NoteLinkingSheet = ({
                     <FileText className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
                     <div className="flex-1 min-w-0">
                       <p className="font-medium truncate">
-                        {note.title || 'Untitled'}
+                        {note.title || t('widgetSettings.untitled')}
                       </p>
                       <p className="text-xs text-muted-foreground line-clamp-2 mt-1">
                         {note.content
@@ -110,8 +111,8 @@ export const NoteLinkingSheet = ({
         </ScrollArea>
 
         <div className="mt-4 p-3 bg-muted/50 rounded-lg text-sm text-muted-foreground">
-          <p className="font-medium">Tip: Use [[note title]] syntax</p>
-          <p className="text-xs mt-1">Type [[Note Title]] directly in your note to create links</p>
+          <p className="font-medium">{t('noteLinking.tipTitle')}</p>
+          <p className="text-xs mt-1">{t('noteLinking.tipDesc')}</p>
         </div>
       </SheetContent>
     </Sheet>

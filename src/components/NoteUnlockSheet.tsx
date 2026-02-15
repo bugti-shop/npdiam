@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -27,6 +28,7 @@ export const NoteUnlockSheet = ({
   noteId,
   onUnlocked,
 }: NoteUnlockSheetProps) => {
+  const { t } = useTranslation();
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [biometricStatus, setBiometricStatus] = useState<BiometricStatus>({ isAvailable: false, biometryType: 'none' });
@@ -52,16 +54,16 @@ export const NoteUnlockSheet = ({
     await triggerHaptic('heavy');
     setIsAuthenticating(true);
     
-    const success = await authenticateWithBiometric('Unlock protected note');
+    const success = await authenticateWithBiometric(t('noteUnlock.protectedNote'));
     
     if (success) {
       await triggerHaptic('heavy');
-      toast.success('Unlocked successfully');
+      toast.success(t('noteUnlock.unlockedSuccess'));
       onUnlocked();
       onClose();
     } else {
       await triggerHaptic('heavy');
-      toast.error('Authentication failed');
+      toast.error(t('noteUnlock.authFailed'));
     }
     
     setIsAuthenticating(false);
@@ -71,7 +73,7 @@ export const NoteUnlockSheet = ({
     await triggerHaptic('heavy');
     
     if (!password) {
-      toast.error('Please enter password');
+      toast.error(t('noteUnlock.pleaseEnterPassword'));
       return;
     }
 
@@ -79,25 +81,25 @@ export const NoteUnlockSheet = ({
     
     if (success) {
       await triggerHaptic('heavy');
-      toast.success('Unlocked successfully');
+      toast.success(t('noteUnlock.unlockedSuccess'));
       onUnlocked();
       onClose();
     } else {
       await triggerHaptic('heavy');
-      toast.error('Incorrect password');
+      toast.error(t('noteUnlock.incorrectPassword'));
     }
   };
 
   const getBiometricLabel = () => {
     switch (biometricStatus.biometryType) {
       case 'face':
-        return 'Unlock with Face ID';
+        return t('noteUnlock.unlockFaceId');
       case 'fingerprint':
-        return 'Unlock with Fingerprint';
+        return t('noteUnlock.unlockFingerprint');
       case 'iris':
-        return 'Unlock with Iris';
+        return t('noteUnlock.unlockIris');
       default:
-        return 'Unlock with Biometric';
+        return t('noteUnlock.unlockBiometric');
     }
   };
 
@@ -107,15 +109,14 @@ export const NoteUnlockSheet = ({
         <SheetHeader className="mb-6">
           <SheetTitle className="flex items-center gap-2">
             <Lock className="h-5 w-5 text-primary" />
-            Protected Note
+            {t('noteUnlock.protectedNote')}
           </SheetTitle>
           <p className="text-sm text-muted-foreground mt-2">
-            This note is protected. Please authenticate to access.
+            {t('noteUnlock.authenticateMsg')}
           </p>
         </SheetHeader>
 
         <div className="space-y-4">
-          {/* Biometric Option */}
           {protection.useBiometric && biometricStatus.isAvailable && (
             <Button
               onClick={handleBiometricAuth}
@@ -127,13 +128,12 @@ export const NoteUnlockSheet = ({
             </Button>
           )}
 
-          {/* Password Option */}
           {protection.hasPassword && (
             <div className="space-y-3">
               {protection.useBiometric && biometricStatus.isAvailable && (
                 <div className="flex items-center gap-4 py-2">
                   <div className="flex-1 h-px bg-border" />
-                  <span className="text-xs text-muted-foreground">OR</span>
+                  <span className="text-xs text-muted-foreground">{t('noteUnlock.or')}</span>
                   <div className="flex-1 h-px bg-border" />
                 </div>
               )}
@@ -141,7 +141,7 @@ export const NoteUnlockSheet = ({
               <div className="relative">
                 <Input
                   type={showPassword ? 'text' : 'password'}
-                  placeholder="Enter password"
+                  placeholder={t('noteUnlock.enterPassword')}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handlePasswordAuth()}
@@ -158,13 +158,13 @@ export const NoteUnlockSheet = ({
 
               <Button onClick={handlePasswordAuth} variant="outline" className="w-full">
                 <KeyRound className="h-4 w-4 mr-2" />
-                Unlock with Password
+                {t('noteUnlock.unlockWithPassword')}
               </Button>
             </div>
           )}
 
           <Button variant="ghost" onClick={onClose} className="w-full text-muted-foreground">
-            Cancel
+            {t('common.cancel')}
           </Button>
         </div>
       </SheetContent>

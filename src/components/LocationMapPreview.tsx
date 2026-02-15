@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { MapPin, X, ExternalLink } from 'lucide-react';
@@ -24,6 +25,7 @@ export const LocationMapPreview = ({
   showFullMap = false,
   onClose 
 }: LocationMapPreviewProps) => {
+  const { t } = useTranslation();
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
   const marker = useRef<mapboxgl.Marker | null>(null);
@@ -69,10 +71,10 @@ export const LocationMapPreview = ({
           };
           setCoordinates(result.center);
         } else {
-          setError('Location not found');
+          setError(t('locationMap.locationNotFound'));
         }
       } catch (err) {
-        setError('Could not find location');
+        setError(t('locationMap.couldNotFind'));
         console.error('Geocoding error:', err);
       } finally {
         setIsLoading(false);
@@ -80,7 +82,7 @@ export const LocationMapPreview = ({
     };
 
     geocodeLocation();
-  }, [location, mapboxToken]);
+  }, [location, mapboxToken, t]);
 
   // Initialize map when coordinates are available
   useEffect(() => {
@@ -137,7 +139,7 @@ export const LocationMapPreview = ({
         </div>
         <div className="space-y-2">
           <p className="text-xs text-muted-foreground">
-            Enter your Mapbox public token to view maps. Get one at{' '}
+            {t('locationMap.enterMapboxToken')}{' '}
             <a 
               href="https://mapbox.com" 
               target="_blank" 
@@ -156,7 +158,7 @@ export const LocationMapPreview = ({
               className="text-xs h-8"
             />
             <Button size="sm" onClick={handleSaveToken} disabled={!mapboxToken.trim()}>
-              Save
+              {t('common.save')}
             </Button>
           </div>
         </div>
@@ -167,7 +169,7 @@ export const LocationMapPreview = ({
           className="w-full gap-2"
         >
           <ExternalLink className="h-3 w-3" />
-          Open in Google Maps
+          {t('locationMap.openInGoogleMaps')}
         </Button>
       </div>
     );
@@ -207,7 +209,7 @@ export const LocationMapPreview = ({
           className="w-full mt-3 gap-2"
         >
           <ExternalLink className="h-3 w-3" />
-          Open in Google Maps
+          {t('locationMap.openInGoogleMaps')}
         </Button>
       </div>
     );
@@ -224,7 +226,7 @@ export const LocationMapPreview = ({
           <button 
             onClick={openInMaps}
             className="p-1.5 hover:bg-muted rounded transition-colors"
-            title="Open in Google Maps"
+            title={t('locationMap.openInGoogleMaps')}
           >
             <ExternalLink className="h-4 w-4 text-muted-foreground" />
           </button>
