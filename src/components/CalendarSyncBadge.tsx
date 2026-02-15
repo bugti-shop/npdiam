@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { RefreshCw, CheckCircle2, AlertCircle, Calendar, ChevronDown, ChevronUp, Clock, MapPin } from 'lucide-react';
+import { RefreshCw, CheckCircle2, AlertCircle, Calendar, ChevronDown, ChevronUp, Clock, MapPin, ChevronRight } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -15,6 +15,8 @@ import { CalendarEvent } from '@/types/note';
 import { formatDistanceToNow, format, isToday, isTomorrow } from 'date-fns';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
+import { setSetting } from '@/utils/settingsStorage';
+import { EventEditor } from '@/components/EventEditor';
 
 export const CalendarSyncBadge = () => {
   const { t } = useTranslation();
@@ -23,6 +25,7 @@ export const CalendarSyncBadge = () => {
   const [isSyncing, setIsSyncing] = useState(false);
   const [pulledEvents, setPulledEvents] = useState<CalendarEvent[]>([]);
   const [showPulledList, setShowPulledList] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
 
   const loadStatus = useCallback(async () => {
     const [syncEnabled, syncStatus, allEvents] = await Promise.all([
@@ -169,28 +172,35 @@ export const CalendarSyncBadge = () => {
                 <ScrollArea className="max-h-48">
                   <div className="divide-y divide-border">
                     {pulledEvents.map((event) => (
-                      <div key={event.id} className="px-3 py-2 hover:bg-muted/20 transition-colors">
-                        <p className="text-xs font-medium text-foreground truncate">
-                          {event.title}
-                        </p>
-                        <div className="flex items-center gap-2 mt-0.5 flex-wrap">
-                          <span className="text-[10px] text-muted-foreground flex items-center gap-0.5">
-                            <Clock className="h-2.5 w-2.5" />
-                            {formatEventDate(event.startDate)}
-                          </span>
-                          {event.location && (
-                            <span className="text-[10px] text-muted-foreground flex items-center gap-0.5 truncate max-w-[120px]">
-                              <MapPin className="h-2.5 w-2.5 shrink-0" />
-                              {event.location}
+                      <button
+                        key={event.id}
+                        onClick={() => setSelectedEvent(event)}
+                        className="w-full text-left px-3 py-2 hover:bg-muted/40 transition-colors cursor-pointer flex items-center gap-2"
+                      >
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-medium text-foreground truncate">
+                            {event.title}
+                          </p>
+                          <div className="flex items-center gap-2 mt-0.5 flex-wrap">
+                            <span className="text-[10px] text-muted-foreground flex items-center gap-0.5">
+                              <Clock className="h-2.5 w-2.5" />
+                              {formatEventDate(event.startDate)}
                             </span>
-                          )}
-                          {event.allDay && (
-                            <span className="text-[10px] bg-primary/10 text-primary px-1 rounded">
-                              {t('calendarSync.allDay', 'All Day')}
-                            </span>
-                          )}
+                            {event.location && (
+                              <span className="text-[10px] text-muted-foreground flex items-center gap-0.5 truncate max-w-[120px]">
+                                <MapPin className="h-2.5 w-2.5 shrink-0" />
+                                {event.location}
+                              </span>
+                            )}
+                            {event.allDay && (
+                              <span className="text-[10px] bg-primary/10 text-primary px-1 rounded">
+                                {t('calendarSync.allDay', 'All Day')}
+                              </span>
+                            )}
+                          </div>
                         </div>
-                      </div>
+                        <ChevronRight className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+                      </button>
                     ))}
                   </div>
                 </ScrollArea>
@@ -225,6 +235,27 @@ export const CalendarSyncBadge = () => {
           )}
         </div>
       </PopoverContent>
+
+      {/* Event Detail Editor */}
+      <EventEditor
+        event={selectedEvent}
+        isOpen={!!selectedEvent}
+        onClose={() => setSelectedEvent(null)}
+        onSave={async (updatedEvent) => {
+          if (!selectedEvent) return;
+          const allEvents = await getSetting<CalendarEvent[]>('calendarEvents', []);
+          const updated = allEvents.map(e =>
+            e.id === selectedEvent.id
+              ? { ...e, ...updatedEvent, updatedAt: new Date() }
+              : e
+          );
+          await setSetting('calendarEvents', updated);
+          window.dispatchEvent(new CustomEvent('calendarEventsUpdated'));
+          setSelectedEvent(null);
+          toast.success(t('common.saved', 'Event updated'));
+          loadStatus();
+        }}
+      />
     </Popover>
   );
 };
