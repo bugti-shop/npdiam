@@ -4,6 +4,9 @@
  */
 
 import { Habit } from '@/types/habit';
+import { Capacitor } from '@capacitor/core';
+
+const isNative = () => Capacitor.isNativePlatform();
 
 export const scheduleHabitReminder = async (habit: Habit): Promise<number[]> => {
   if (!habit.reminder?.enabled || !habit.reminder?.time) {
@@ -18,26 +21,31 @@ export const scheduleHabitReminder = async (habit: Habit): Promise<number[]> => 
     scheduledDate.setDate(scheduledDate.getDate() + 1);
   }
 
-  try {
-    const { LocalNotifications } = await import('@capacitor/local-notifications');
-    const notifId = Math.floor(Math.random() * 100000);
-    
-    await LocalNotifications.schedule({
-      notifications: [{
-        title: '🔄 Habit Reminder',
-        body: habit.name,
-        id: notifId,
-        schedule: { at: scheduledDate },
-        extra: { habitId: habit.id, type: 'habit' },
-      }],
-    });
-    
-    console.log('Habit reminder scheduled:', habit.name, notifId);
-    return [notifId];
-  } catch {
-    console.log('Habit reminder scheduled (web mode):', habit.name);
-    return [];
+  if (isNative()) {
+    try {
+      const { LocalNotifications } = await import('@capacitor/local-notifications');
+      const notifId = Math.floor(Math.random() * 100000);
+      
+      await LocalNotifications.schedule({
+        notifications: [{
+          title: '🔄 Habit Reminder',
+          body: habit.name,
+          id: notifId,
+          schedule: { at: scheduledDate },
+          extra: { habitId: habit.id, type: 'habit' },
+        }],
+      });
+      
+      console.log('Habit reminder scheduled:', habit.name, notifId);
+      return [notifId];
+    } catch {
+      console.log('Habit reminder schedule failed:', habit.name);
+      return [];
+    }
   }
+  
+  console.log('Habit reminder scheduled (web mode):', habit.name);
+  return [];
 };
 
 export const cancelHabitReminder = async (habit: Habit): Promise<void> => {

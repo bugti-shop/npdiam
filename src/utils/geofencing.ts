@@ -1,5 +1,6 @@
 import { TodoItem, LocationReminder } from '@/types/note';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { Capacitor } from '@capacitor/core';
 
 interface GeofenceState {
   taskId: string;
@@ -53,6 +54,7 @@ const sendLocalNotification = async (
   const body = `${action} ${locationName} — "${task.text}"`;
 
   try {
+    if (!Capacitor.isNativePlatform()) return;
     const { LocalNotifications } = await import('@capacitor/local-notifications');
     
     // Request permission if needed
