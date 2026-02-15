@@ -35,14 +35,12 @@ export const LocationSearchInput = ({
   const [mapboxToken, setMapboxToken] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Get mapbox token from IndexedDB
+  // Get mapbox token with default fallback
   useEffect(() => {
     const loadToken = async () => {
-      const { getSetting } = await import('@/utils/settingsStorage');
-      const storedToken = await getSetting<string | null>('mapbox_token', null);
-      if (storedToken) {
-        setMapboxToken(storedToken);
-      }
+      const { getMapboxToken } = await import('@/utils/mapboxConfig');
+      const token = await getMapboxToken();
+      setMapboxToken(token);
     };
     loadToken();
   }, []);
