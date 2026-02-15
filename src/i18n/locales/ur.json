@@ -177,6 +177,8 @@
     "theme": "تھیم",
     "notificationBar": "اطلاعات بار",
     "notificationBarDesc": "اطلاع سے نوٹس اور کام شامل کریں",
+    "quickAddNoteHint": "\"نوٹ شامل کریں\" پر ٹیپ کریں کسی بھی قسم کا نوٹ جلدی بنانے کے لیے (ٹیکسٹ، لائنڈ، اسٹکی، یا کوڈ)",
+    "quickAddTaskHint": "\"کام شامل کریں\" پر ٹیپ کریں ایپ کھولے بغیر کام شامل کرنے کے لیے",
     "calendarSync": "سسٹم کیلنڈر سنک",
     "calendarSyncDesc": "کام اور ایونٹس کو ڈیوائس کیلنڈر سے سنک کریں",
     "calendarPermissionDenied": "کیلنڈر اجازت مسترد۔ براہ کرم ڈیوائس سیٹنگز میں رسائی دیں۔",
@@ -417,6 +419,7 @@
   "toasts": {
     "dataBackedUp": "ڈیٹا کامیابی سے بیک اپ ہوگیا",
     "dataRestored": "ڈیٹا کامیابی سے بحال ہوگیا",
+    "restoredStats": "{{notes}} نوٹس، {{tasks}} کام، {{folders}} فولڈرز بحال ہوئے",
     "restoreFailed": "ڈیٹا بحال کرنے میں ناکام",
     "dataDownloaded": "ڈیٹا ڈاؤن لوڈ ہوگیا",
     "downloadFailed": "ڈاؤن لوڈ ناکام",

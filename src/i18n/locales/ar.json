@@ -258,6 +258,8 @@
     "theme": "المظهر",
     "notificationBar": "شريط الإشعارات",
     "notificationBarDesc": "إضافة ملاحظات ومهام من الإشعار",
+    "quickAddNoteHint": "انقر \"إضافة ملاحظة\" لإنشاء أي نوع ملاحظة بسرعة (نص، مسطر، لاصق، أو كود)",
+    "quickAddTaskHint": "انقر \"إضافة مهمة\" لإضافة مهمة بدون فتح التطبيق",
     "calendarSync": "مزامنة تقويم النظام",
     "calendarSyncDesc": "مزامنة المهام والأحداث مع تقويم الجهاز",
     "calendarPermissionDenied": "تم رفض إذن التقويم. يرجى منح الوصول في إعدادات الجهاز.",
@@ -439,6 +441,7 @@
   "toasts": {
     "dataBackedUp": "تم النسخ الاحتياطي للبيانات بنجاح",
     "dataRestored": "تم استعادة البيانات بنجاح",
+    "restoredStats": "تم استعادة {{notes}} ملاحظات، {{tasks}} مهام، {{folders}} مجلدات",
     "restoreFailed": "فشل في استعادة البيانات",
     "dataDownloaded": "تم تحميل البيانات",
     "downloadFailed": "فشل التحميل",
