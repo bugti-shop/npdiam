@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -26,24 +27,22 @@ export const FindReplacePage = ({
   onContentChange,
   editorRef,
 }: FindReplacePageProps) => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [replaceTerm, setReplaceTerm] = useState('');
   const [matchCount, setMatchCount] = useState(0);
   const [currentMatchIndex, setCurrentMatchIndex] = useState(0);
 
-  // Hardware back button support
   useHardwareBackButton({
     onBack: onClose,
     enabled: isOpen,
     priority: 'sheet',
   });
 
-  // Close without clearing highlights - they persist until user exits notes
   const handleClose = useCallback(() => {
     onClose();
   }, [onClose]);
 
-  // Clear all highlights from the editor
   const clearHighlights = useCallback(() => {
     if (editorRef.current) {
       const highlights = editorRef.current.querySelectorAll('mark[data-find-highlight]');
@@ -58,28 +57,23 @@ export const FindReplacePage = ({
     }
   }, [editorRef]);
 
-  // Clear button handler - clears highlights and resets state
   const handleClear = useCallback(() => {
     clearHighlights();
     setSearchTerm('');
     setReplaceTerm('');
     setMatchCount(0);
     setCurrentMatchIndex(0);
-    toast.success('Cleared');
-  }, [clearHighlights]);
+    toast.success(t('findReplace.cleared'));
+  }, [clearHighlights, t]);
 
-  // Escape special regex characters
   const escapeRegex = (str: string) => {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   };
 
-  // Build regex pattern
   const buildSearchRegex = useCallback((term: string, forGlobal: boolean = false) => {
     if (!term.trim()) return null;
-    
     const pattern = escapeRegex(term);
     const flags = forGlobal ? 'gi' : 'gi';
-    
     try {
       return new RegExp(pattern, flags);
     } catch {
@@ -87,16 +81,14 @@ export const FindReplacePage = ({
     }
   }, []);
 
-  // Find and highlight all matches
   const handleFind = useCallback(() => {
     if (!editorRef.current || !searchTerm.trim()) {
       clearHighlights();
       setMatchCount(0);
-      toast.error('Please enter a search term');
+      toast.error(t('findReplace.enterSearchTerm'));
       return;
     }
 
-    // First clear existing highlights
     clearHighlights();
 
     const searchRegex = buildSearchRegex(searchTerm, true);
@@ -166,35 +158,31 @@ export const FindReplacePage = ({
     setCurrentMatchIndex(count > 0 ? 1 : 0);
 
     if (count > 0) {
-      // Scroll to first match
       const firstMatch = editorRef.current?.querySelector('mark[data-find-highlight]') as HTMLElement;
       if (firstMatch) {
         firstMatch.style.backgroundColor = HIGHLIGHT_COLOR;
         firstMatch.style.color = 'white';
         firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
-      toast.success(`Found ${count} match${count !== 1 ? 'es' : ''}`);
+      toast.success(t('findReplace.foundMatches', { count }));
     } else {
-      toast.error('No matches found');
+      toast.error(t('findReplace.noMatchesFound'));
     }
-  }, [searchTerm, editorRef, clearHighlights, buildSearchRegex]);
+  }, [searchTerm, editorRef, clearHighlights, buildSearchRegex, t]);
 
-  // Replace all matches
   const handleReplace = useCallback(() => {
     if (!editorRef.current || !searchTerm.trim()) {
-      toast.error('Please enter a search term first');
+      toast.error(t('findReplace.enterSearchFirst'));
       return;
     }
 
     if (matchCount === 0) {
-      toast.error('No matches to replace. Click Find first.');
+      toast.error(t('findReplace.noMatchesToReplace'));
       return;
     }
 
-    // Clear highlights first
     clearHighlights();
 
-    // Get the content and replace all occurrences
     const currentContent = editorRef.current.innerHTML;
     const searchRegex = buildSearchRegex(searchTerm, true);
     if (!searchRegex) return;
@@ -208,26 +196,23 @@ export const FindReplacePage = ({
     setMatchCount(0);
     setCurrentMatchIndex(0);
 
-    toast.success(`Replaced ${replacedCount} occurrence${replacedCount !== 1 ? 's' : ''}`);
-  }, [editorRef, matchCount, searchTerm, replaceTerm, onContentChange, clearHighlights, buildSearchRegex]);
+    toast.success(t('findReplace.replacedOccurrences', { count: replacedCount }));
+  }, [editorRef, matchCount, searchTerm, replaceTerm, onContentChange, clearHighlights, buildSearchRegex, t]);
 
-  // Replace next (current) match only
   const handleReplaceNext = useCallback(() => {
     if (!editorRef.current || !searchTerm.trim()) {
-      toast.error('Please enter a search term first');
+      toast.error(t('findReplace.enterSearchFirst'));
       return;
     }
 
     if (matchCount === 0) {
-      toast.error('No matches to replace. Click Find first.');
+      toast.error(t('findReplace.noMatchesToReplace'));
       return;
     }
 
-    // Get all highlight marks
     const highlights = editorRef.current.querySelectorAll('mark[data-find-highlight]');
     if (highlights.length === 0) return;
 
-    // Find the current highlighted match (the one with white background)
     let currentMark: HTMLElement | null = null;
     let currentIndex = 0;
     
@@ -239,38 +224,31 @@ export const FindReplacePage = ({
       }
     });
 
-    // If no current mark found, use the first one
     if (!currentMark && highlights.length > 0) {
       currentMark = highlights[0] as HTMLElement;
       currentIndex = 0;
     }
 
     if (currentMark) {
-      // Replace the current mark with the replacement text
       const textNode = document.createTextNode(replaceTerm);
       currentMark.parentNode?.replaceChild(textNode, currentMark);
       
-      // Update content
       if (editorRef.current) {
         onContentChange(editorRef.current.innerHTML);
       }
 
-      // Update count
       const newCount = matchCount - 1;
       setMatchCount(newCount);
 
       if (newCount > 0) {
-        // Highlight the next match
         const remainingHighlights = editorRef.current?.querySelectorAll('mark[data-find-highlight]');
         if (remainingHighlights && remainingHighlights.length > 0) {
-          // Reset all to default style
           remainingHighlights.forEach((mark) => {
             const el = mark as HTMLElement;
             el.style.backgroundColor = HIGHLIGHT_BG_COLOR;
             el.style.color = HIGHLIGHT_COLOR;
           });
           
-          // Highlight the next one (or first if we were at the end)
           const nextIndex = currentIndex >= remainingHighlights.length ? 0 : currentIndex;
           const nextMark = remainingHighlights[nextIndex] as HTMLElement;
           if (nextMark) {
@@ -281,30 +259,27 @@ export const FindReplacePage = ({
           
           setCurrentMatchIndex(nextIndex + 1);
         }
-        toast.success(`Replaced 1 match (${newCount} remaining)`);
+        toast.success(t('findReplace.replacedOneRemaining', { count: newCount }));
       } else {
         setCurrentMatchIndex(0);
-        toast.success('Replaced last match');
+        toast.success(t('findReplace.replacedLastMatch'));
       }
     }
-  }, [editorRef, matchCount, searchTerm, replaceTerm, onContentChange]);
+  }, [editorRef, matchCount, searchTerm, replaceTerm, onContentChange, t]);
 
-  // Remove all matches (replace with empty string)
   const handleRemove = useCallback(() => {
     if (!editorRef.current || !searchTerm.trim()) {
-      toast.error('Please enter a search term first');
+      toast.error(t('findReplace.enterSearchFirst'));
       return;
     }
 
     if (matchCount === 0) {
-      toast.error('No matches to remove. Click Find first.');
+      toast.error(t('findReplace.noMatchesToRemove'));
       return;
     }
 
-    // Clear highlights first
     clearHighlights();
 
-    // Get the content and remove all occurrences
     const currentContent = editorRef.current.innerHTML;
     const searchRegex = buildSearchRegex(searchTerm, true);
     if (!searchRegex) return;
@@ -319,8 +294,8 @@ export const FindReplacePage = ({
     setCurrentMatchIndex(0);
     setSearchTerm('');
 
-    toast.success(`Removed ${removedCount} occurrence${removedCount !== 1 ? 's' : ''}`);
-  }, [editorRef, matchCount, searchTerm, onContentChange, clearHighlights, buildSearchRegex]);
+    toast.success(t('findReplace.removedOccurrences', { count: removedCount }));
+  }, [editorRef, matchCount, searchTerm, onContentChange, clearHighlights, buildSearchRegex, t]);
 
   if (!isOpen) return null;
 
@@ -332,55 +307,50 @@ export const FindReplacePage = ({
       )}
       style={{ paddingTop: 'env(safe-area-inset-top, 0px)', paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
     >
-      {/* Header */}
       <header className="flex items-center justify-between px-4 py-3 border-b border-border">
         <Button variant="ghost" size="sm" onClick={handleClose}>
           <ArrowLeft className="h-5 w-5 mr-1" />
-          Back
+          {t('findReplace.back')}
         </Button>
         <h2 className="text-lg font-semibold flex items-center gap-2">
           <Search className="h-5 w-5" style={{ color: HIGHLIGHT_COLOR }} />
-          Find & Replace
+          {t('findReplace.title')}
         </h2>
-        <div className="w-16" /> {/* Spacer for centering */}
+        <div className="w-16" />
       </header>
 
-      {/* Content */}
       <div className="flex-1 overflow-y-auto px-6 py-6">
         <div className="max-w-lg mx-auto space-y-6">
-          {/* Find Input */}
           <div className="space-y-2">
             <Label className="text-base font-medium" style={{ color: HIGHLIGHT_COLOR }}>
-              Find
+              {t('findReplace.find')}
             </Label>
             <Input
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Enter text to find..."
+              placeholder={t('findReplace.findPlaceholder')}
               className="h-12 text-base"
               autoFocus
             />
             {matchCount > 0 && (
               <p className="text-sm text-muted-foreground">
-                Match <strong style={{ color: HIGHLIGHT_COLOR }}>{currentMatchIndex}</strong> of <strong style={{ color: HIGHLIGHT_COLOR }}>{matchCount}</strong>
+                {t('findReplace.matchOf', { current: currentMatchIndex, total: matchCount })}
               </p>
             )}
           </div>
 
-          {/* Replace Input */}
           <div className="space-y-2">
             <Label className="text-base font-medium" style={{ color: HIGHLIGHT_COLOR }}>
-              Replace with
+              {t('findReplace.replaceWith')}
             </Label>
             <Input
               value={replaceTerm}
               onChange={(e) => setReplaceTerm(e.target.value)}
-              placeholder="Enter replacement text..."
+              placeholder={t('findReplace.replacePlaceholder')}
               className="h-12 text-base"
             />
           </div>
 
-          {/* Action Buttons */}
           <div className="flex gap-3 pt-4">
             <Button
               onClick={handleFind}
@@ -388,7 +358,7 @@ export const FindReplacePage = ({
               style={{ backgroundColor: HIGHLIGHT_COLOR }}
             >
               <Search className="h-5 w-5 mr-2" />
-              Find
+              {t('findReplace.find')}
             </Button>
             <Button
               onClick={handleReplaceNext}
@@ -401,11 +371,10 @@ export const FindReplacePage = ({
               }}
             >
               <ChevronRight className="h-5 w-5 mr-1" />
-              Replace Next
+              {t('findReplace.replaceNext')}
             </Button>
           </div>
 
-          {/* Replace All Button */}
           <Button
             onClick={handleReplace}
             disabled={matchCount === 0}
@@ -417,10 +386,9 @@ export const FindReplacePage = ({
             }}
           >
             <Replace className="h-5 w-5 mr-2" />
-            Replace All
+            {t('findReplace.replaceAll')}
           </Button>
 
-          {/* Remove Button */}
           <Button
             onClick={handleRemove}
             disabled={matchCount === 0}
@@ -428,17 +396,16 @@ export const FindReplacePage = ({
             className="w-full h-12 text-base border-destructive text-destructive hover:bg-destructive/10"
           >
             <Trash2 className="h-5 w-5 mr-2" />
-            Remove All Matches
+            {t('findReplace.removeAllMatches')}
           </Button>
 
-          {/* Clear Button */}
           <Button
             onClick={handleClear}
             variant="ghost"
             className="w-full h-12 text-base text-muted-foreground"
           >
             <Eraser className="h-5 w-5 mr-2" />
-            Clear
+            {t('findReplace.clear')}
           </Button>
         </div>
       </div>

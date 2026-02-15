@@ -2440,5 +2440,17 @@
   },
   "locationMap": {
     "title": "תזכורות מיקום", "enterToken": "הזן את אסימון הגישה של Mapbox כדי לראות תזכורות מיקום על המפה.", "saveToken": "שמור אסימון", "noReminders": "אין תזכורות מיקום", "noRemindersDesc": "הוסף תזכורות מיקום למשימות שלך כדי לראות אותן כאן", "radius": "רדיוס: {{radius}}מ'", "enter": "כניסה", "exit": "יציאה"
+  },
+  "taskAnalytics": {
+    "title": "ניתוח משימות", "subtitle": "עקוב אחר הפרודוקטיביות שלך", "completed": "הושלמו", "allTime": "כל הזמנים", "currentStreak": "רצף נוכחי", "days": "ימים", "thisWeek": "השבוע", "vsLastWeek": "{{change}}% מול שבוע שעבר", "bestStreak": "רצף הכי טוב", "last7Days": "7 ימים אחרונים", "insights": "תובנות", "mostProductiveDay": "היום הכי פרודוקטיבי", "avgTasksPerDay": "ממוצע משימות/יום", "pendingTasks": "משימות ממתינות", "completionRate": "שיעור השלמה", "onFireTitle": "🔥 אתה בוער!", "onFireDesc": "רצף של {{count}} ימים! שמור על המומנטום!", "greatProgressTitle": "💪 התקדמות מצוינת!", "greatProgressDesc": "{{count}} ימים וממשיך. אתה בונה הרגל!", "getStartedTitle": "🚀 בוא נתחיל!", "getStartedDesc": "השלם משימות יומיות כדי לבנות את הרצף שלך!"
+  },
+  "weeklyReview": {
+    "title": "סקירה שבועית", "subtitle": "התבונן בהתקדמות שלך", "thisWeek": "השבוע", "completed": "הושלמו", "pending": "ממתינות", "complete": "הושלם", "rateYourWeek": "דרג את השבוע שלך", "winsTitle": "הישגים וניצחונות", "winsPlaceholder": "מה הלך טוב השבוע? במה אתה גאה?", "challengesTitle": "אתגרים", "challengesPlaceholder": "אילו מכשולים נתקלת? מה לא הלך לפי התוכנית?", "learningsTitle": "תובנות מפתח", "learningsPlaceholder": "מה למדת? תובנות?", "nextWeekTitle": "מיקוד לשבוע הבא", "nextWeekPlaceholder": "על מה תתמקד בשבוע הבא? עדיפויות?", "saveReview": "שמור סקירה", "reviewSaved": "סקירה שבועית נשמרה!", "completedThisWeek": "הושלמו השבוע ({{count}})"
+  },
+  "subtaskDetail": {
+    "allTasks": "כל המשימות", "markIncomplete": "סמן כלא הושלם", "markDone": "סמן כהושלם", "highPriority": "עדיפות גבוהה", "mediumPriority": "עדיפות בינונית", "lowPriority": "עדיפות נמוכה", "noPriority": "ללא עדיפות", "duplicateSubtask": "שכפל תת-משימה", "pinSubtask": "הצמד תת-משימה", "convertToTask": "המר למשימה", "deleteSubtask": "מחק תת-משימה", "subtaskTitle": "כותרת תת-משימה...", "priority": "עדיפות {{priority}}", "addSubtask": "הוסף תת-משימה", "timeTracking": "מעקב זמן", "dependencies": "תלויות", "linked": "{{count}} מקושרות", "dateTimeReminder": "תאריך, שעה ותזכורת", "notSet": "לא הוגדר", "convertToNotes": "המר לפתקים", "attachment": "קובץ מצורף", "tag": "תגית", "tagCount": "{{count}} תגיות", "tagName": "שם תגית...", "addTag": "הוסף תגית", "description": "תיאור", "descriptionPlaceholder": "הוסף הערות או פרטים...", "subtaskHistory": "היסטוריה", "created": "נוצר", "lastModified": "שונה לאחרונה", "completedLabel": "הושלם", "noTimestamp": "אין נתוני חותמת זמן", "attachmentAdded": "קובץ מצורף נוסף", "prioritySet": "עדיפות הוגדרה ל-{{priority}}", "subtaskDeleted": "תת-משימה נמחקה", "convertedToTask": "הומר למשימה ראשית", "subtaskDuplicated": "תת-משימה שוכפלה", "subtaskPinned": "תת-משימה הוצמדה", "tagAdded": "תגית נוספה", "locationReminderSet": "תזכורת מיקום הוגדרה ל-{{address}}", "locationReminderRemoved": "תזכורת מיקום הוסרה"
+  },
+  "findReplace": {
+    "back": "חזרה", "title": "חיפוש והחלפה", "find": "חפש", "findPlaceholder": "הזן טקסט לחיפוש...", "matchOf": "תוצאה {{current}} מתוך {{total}}", "replaceWith": "החלף ב", "replacePlaceholder": "הזן טקסט חלופי...", "replaceNext": "החלף הבא", "replaceAll": "החלף הכל", "removeAllMatches": "הסר את כל התוצאות", "clear": "נקה", "cleared": "נוקה", "enterSearchTerm": "נא להזין מונח חיפוש", "foundMatches": "נמצאו {{count}} תוצאות", "noMatchesFound": "לא נמצאו תוצאות", "enterSearchFirst": "נא להזין קודם מונח חיפוש", "noMatchesToReplace": "אין תוצאות להחלפה. לחץ קודם על חפש.", "replacedOccurrences": "הוחלפו {{count}} מופעים", "noMatchesToRemove": "אין תוצאות להסרה. לחץ קודם על חפש.", "removedOccurrences": "הוסרו {{count}} מופעים", "replacedOneRemaining": "הוחלף 1 ({{count}} נותרו)", "replacedLastMatch": "הוחלפה התוצאה האחרונה"
   }
 }

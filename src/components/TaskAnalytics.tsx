@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { 
@@ -26,6 +27,7 @@ interface WeeklyStats {
 }
 
 export const TaskAnalytics = ({ isOpen, onClose }: TaskAnalyticsProps) => {
+  const { t } = useTranslation();
   const [tasks, setTasks] = useState<TodoItem[]>([]);
   const [completedTasks, setCompletedTasks] = useState<TodoItem[]>([]);
   const [dailyStats, setDailyStats] = useState<DailyStats[]>([]);
@@ -146,8 +148,8 @@ export const TaskAnalytics = ({ isOpen, onClose }: TaskAnalyticsProps) => {
             <X className="h-5 w-5" />
           </button>
           <div>
-            <h2 className="text-lg font-semibold">Task Analytics</h2>
-            <p className="text-xs text-muted-foreground">Track your productivity</p>
+            <h2 className="text-lg font-semibold">{t('taskAnalytics.title')}</h2>
+            <p className="text-xs text-muted-foreground">{t('taskAnalytics.subtitle')}</p>
           </div>
         </div>
       </header>
@@ -159,39 +161,39 @@ export const TaskAnalytics = ({ isOpen, onClose }: TaskAnalyticsProps) => {
             <div className="bg-gradient-to-br from-success/20 to-success/10 border border-success/30 rounded-xl p-4">
               <div className="flex items-center gap-2 mb-2">
                 <CheckCircle2 className="h-4 w-4 text-success" />
-                <span className="text-xs text-muted-foreground">Completed</span>
+                <span className="text-xs text-muted-foreground">{t('taskAnalytics.completed')}</span>
               </div>
               <p className="text-3xl font-bold text-success">{completedTasks.length}</p>
-              <p className="text-xs text-muted-foreground mt-1">All time</p>
+              <p className="text-xs text-muted-foreground mt-1">{t('taskAnalytics.allTime')}</p>
             </div>
 
             <div className="bg-gradient-to-br from-streak/20 to-streak/10 border border-streak/30 rounded-xl p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Flame className="h-4 w-4 text-streak" />
-                <span className="text-xs text-muted-foreground">Current Streak</span>
+                <span className="text-xs text-muted-foreground">{t('taskAnalytics.currentStreak')}</span>
               </div>
               <p className="text-3xl font-bold text-streak">{currentStreak}</p>
-              <p className="text-xs text-muted-foreground mt-1">days</p>
+              <p className="text-xs text-muted-foreground mt-1">{t('taskAnalytics.days')}</p>
             </div>
 
             <div className="bg-gradient-to-br from-info/20 to-info/10 border border-info/30 rounded-xl p-4">
               <div className="flex items-center gap-2 mb-2">
                 <TrendingUp className="h-4 w-4 text-info" />
-                <span className="text-xs text-muted-foreground">This Week</span>
+                <span className="text-xs text-muted-foreground">{t('taskAnalytics.thisWeek')}</span>
               </div>
               <p className="text-3xl font-bold text-info">{thisWeekCompleted}</p>
               <p className={cn("text-xs mt-1", weeklyChange >= 0 ? "text-success" : "text-destructive")}>
-                {weeklyChange >= 0 ? '+' : ''}{weeklyChange}% vs last week
+                {t('taskAnalytics.vsLastWeek', { change: `${weeklyChange >= 0 ? '+' : ''}${weeklyChange}` })}
               </p>
             </div>
 
             <div className="bg-gradient-to-br from-accent-purple/20 to-accent-purple/10 border border-accent-purple/30 rounded-xl p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Award className="h-4 w-4 text-accent-purple" />
-                <span className="text-xs text-muted-foreground">Best Streak</span>
+                <span className="text-xs text-muted-foreground">{t('taskAnalytics.bestStreak')}</span>
               </div>
               <p className="text-3xl font-bold text-accent-purple">{longestStreak}</p>
-              <p className="text-xs text-muted-foreground mt-1">days</p>
+              <p className="text-xs text-muted-foreground mt-1">{t('taskAnalytics.days')}</p>
             </div>
           </div>
 
@@ -199,7 +201,7 @@ export const TaskAnalytics = ({ isOpen, onClose }: TaskAnalyticsProps) => {
           <div className="bg-card border rounded-xl p-4">
             <div className="flex items-center gap-2 mb-4">
               <BarChart3 className="h-4 w-4 text-primary" />
-              <h3 className="font-medium text-sm">Last 7 Days</h3>
+              <h3 className="font-medium text-sm">{t('taskAnalytics.last7Days')}</h3>
             </div>
             <div className="flex items-end justify-between gap-2 h-32">
               {dailyStats.map((day, idx) => (
@@ -231,24 +233,24 @@ export const TaskAnalytics = ({ isOpen, onClose }: TaskAnalyticsProps) => {
           <div className="bg-card border rounded-xl p-4 space-y-4">
             <div className="flex items-center gap-2">
               <Target className="h-4 w-4 text-primary" />
-              <h3 className="font-medium text-sm">Insights</h3>
+              <h3 className="font-medium text-sm">{t('taskAnalytics.insights')}</h3>
             </div>
             
             <div className="space-y-3">
               <div className="flex items-center justify-between py-2 border-b border-border/50">
-                <span className="text-sm text-muted-foreground">Most productive day</span>
+                <span className="text-sm text-muted-foreground">{t('taskAnalytics.mostProductiveDay')}</span>
                 <span className="text-sm font-medium">{mostProductiveDay}</span>
               </div>
               <div className="flex items-center justify-between py-2 border-b border-border/50">
-                <span className="text-sm text-muted-foreground">Avg tasks/day</span>
+                <span className="text-sm text-muted-foreground">{t('taskAnalytics.avgTasksPerDay')}</span>
                 <span className="text-sm font-medium">{avgTasksPerDay}</span>
               </div>
               <div className="flex items-center justify-between py-2 border-b border-border/50">
-                <span className="text-sm text-muted-foreground">Pending tasks</span>
+                <span className="text-sm text-muted-foreground">{t('taskAnalytics.pendingTasks')}</span>
                 <span className="text-sm font-medium">{tasks.length - completedTasks.length}</span>
               </div>
               <div className="flex items-center justify-between py-2">
-                <span className="text-sm text-muted-foreground">Completion rate</span>
+                <span className="text-sm text-muted-foreground">{t('taskAnalytics.completionRate')}</span>
                 <span className="text-sm font-medium">
                   {tasks.length > 0 ? Math.round((completedTasks.length / tasks.length) * 100) : 0}%
                 </span>
@@ -260,23 +262,23 @@ export const TaskAnalytics = ({ isOpen, onClose }: TaskAnalyticsProps) => {
           <div className="bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-xl p-4 text-center">
             {currentStreak >= 7 ? (
               <>
-                <p className="text-lg font-semibold">🔥 You're on fire!</p>
+                <p className="text-lg font-semibold">{t('taskAnalytics.onFireTitle')}</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  {currentStreak} day streak! Keep the momentum going!
+                  {t('taskAnalytics.onFireDesc', { count: currentStreak })}
                 </p>
               </>
             ) : currentStreak >= 3 ? (
               <>
-                <p className="text-lg font-semibold">💪 Great progress!</p>
+                <p className="text-lg font-semibold">{t('taskAnalytics.greatProgressTitle')}</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  {currentStreak} days and counting. You're building a habit!
+                  {t('taskAnalytics.greatProgressDesc', { count: currentStreak })}
                 </p>
               </>
             ) : (
               <>
-                <p className="text-lg font-semibold">🚀 Let's get started!</p>
+                <p className="text-lg font-semibold">{t('taskAnalytics.getStartedTitle')}</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Complete tasks daily to build your streak!
+                  {t('taskAnalytics.getStartedDesc')}
                 </p>
               </>
             )}
