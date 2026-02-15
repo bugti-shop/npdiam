@@ -708,7 +708,8 @@
       "byPriority": "Önceliğe Göre",
       "byStatus": "Duruma Göre",
       "byDate": "Tarihe Göre",
-      "clearFilters": "Filtreleri Temizle"
+      "clearFilters": "Filtreleri Temizle",
+      "saveAsSmartView": "Akıllı Görünüm Olarak Kaydet"
     },
     "sort": {
       "title": "Sırala",

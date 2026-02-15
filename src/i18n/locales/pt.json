@@ -655,7 +655,8 @@
       "byPriority": "Por Prioridade",
       "byStatus": "Por Status",
       "byDate": "Por Data",
-      "clearFilters": "Limpar Filtros"
+      "clearFilters": "Limpar Filtros",
+      "saveAsSmartView": "Salvar como Visualização Inteligente"
     },
     "sort": {
       "title": "Ordenar Por",
