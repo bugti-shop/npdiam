@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -29,6 +30,7 @@ export const NoteProtectionSheet = ({
   noteId,
   onProtectionChanged,
 }: NoteProtectionSheetProps) => {
+  const { t } = useTranslation();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -61,15 +63,15 @@ export const NoteProtectionSheet = ({
 
     if (usePassword) {
       if (!password) {
-        toast.error('Please enter a password');
+        toast.error(t('noteProtection.pleaseEnterPassword'));
         return;
       }
       if (password !== confirmPassword) {
-        toast.error('Passwords do not match');
+        toast.error(t('noteProtection.passwordsDoNotMatch'));
         return;
       }
       if (password.length < 4) {
-        toast.error('Password must be at least 4 characters');
+        toast.error(t('noteProtection.passwordTooShort'));
         return;
       }
     }
@@ -80,7 +82,7 @@ export const NoteProtectionSheet = ({
       usePassword ? password : undefined
     );
 
-    toast.success('Note protection updated');
+    toast.success(t('noteProtection.protectionUpdated'));
     onProtectionChanged?.();
     onClose();
   };
@@ -88,7 +90,7 @@ export const NoteProtectionSheet = ({
   const handleRemoveProtection = async () => {
     await triggerHaptic('heavy');
     removeNoteProtection(noteId);
-    toast.success('Note protection removed');
+    toast.success(t('noteProtection.protectionRemoved'));
     onProtectionChanged?.();
     onClose();
   };
@@ -96,13 +98,13 @@ export const NoteProtectionSheet = ({
   const getBiometricLabel = () => {
     switch (biometricStatus.biometryType) {
       case 'face':
-        return 'Use Face ID';
+        return t('noteProtection.useFaceId');
       case 'fingerprint':
-        return 'Use Fingerprint';
+        return t('noteProtection.useFingerprint');
       case 'iris':
-        return 'Use Iris Scan';
+        return t('noteProtection.useIrisScan');
       default:
-        return 'Use Biometric';
+        return t('noteProtection.useBiometric');
     }
   };
 
@@ -112,7 +114,7 @@ export const NoteProtectionSheet = ({
         <SheetHeader className="mb-4">
           <SheetTitle className="flex items-center gap-2">
             <Shield className="h-5 w-5 text-primary" />
-            Protect Note
+            {t('noteProtection.protectNote')}
           </SheetTitle>
         </SheetHeader>
 
@@ -122,7 +124,7 @@ export const NoteProtectionSheet = ({
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Lock className="h-4 w-4 text-muted-foreground" />
-                <Label htmlFor="use-password">Password Protection</Label>
+                <Label htmlFor="use-password">{t('noteProtection.passwordProtection')}</Label>
               </div>
               <Switch
                 id="use-password"
@@ -136,7 +138,7 @@ export const NoteProtectionSheet = ({
                 <div className="relative">
                   <Input
                     type={showPassword ? 'text' : 'password'}
-                    placeholder="Enter password"
+                    placeholder={t('noteProtection.enterPassword')}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="pr-10"
@@ -151,7 +153,7 @@ export const NoteProtectionSheet = ({
                 </div>
                 <Input
                   type={showPassword ? 'text' : 'password'}
-                  placeholder="Confirm password"
+                  placeholder={t('noteProtection.confirmPassword')}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
@@ -176,7 +178,7 @@ export const NoteProtectionSheet = ({
 
           {!biometricStatus.isAvailable && (
             <p className="text-xs text-muted-foreground">
-              Biometric authentication is not available on this device.
+              {t('noteProtection.biometricNotAvailable')}
             </p>
           )}
 
@@ -184,7 +186,7 @@ export const NoteProtectionSheet = ({
           <div className="flex flex-col gap-2 pt-4">
             <Button onClick={handleSave} className="w-full">
               <Shield className="h-4 w-4 mr-2" />
-              {isProtected ? 'Update Protection' : 'Enable Protection'}
+              {isProtected ? t('noteProtection.updateProtection') : t('noteProtection.enableProtection')}
             </Button>
 
             {isProtected && (
@@ -194,7 +196,7 @@ export const NoteProtectionSheet = ({
                 className="w-full text-destructive"
               >
                 <Trash2 className="h-4 w-4 mr-2" />
-                Remove Protection
+                {t('noteProtection.removeProtection')}
               </Button>
             )}
           </div>

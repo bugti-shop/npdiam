@@ -2507,5 +2507,15 @@
     "fileRemoved": "Archivo eliminado",
     "locationReminderSet": "Recordatorio de ubicación establecido",
     "locationReminderRemoved": "Recordatorio de ubicación eliminado"
+  },
+  "linkedinFormatter": {
+    "selectTextFirst": "Selecciona texto primero", "formattingCleared": "Formato eliminado", "copiedPaste": "¡Copiado! Pega en LinkedIn, WhatsApp, etc.", "failedToCopy": "Error al copiar", "enterUrl": "Ingresa URL:", "characters": "{{count}} caracteres", "copied": "¡Copiado!", "copyText": "Copiar texto", "styleVariants": "Variantes de Estilo", "styleVariantsDesc": "Copia cualquier variante para pegar en LinkedIn, WhatsApp, Twitter, etc.", "variantCopied": "¡{{name}} copiado!",
+    "styles": { "normal": "Normal", "bold": "Negrita", "sansSerif": "Sans-Serif", "boldSans": "Negrita Sans", "italic": "Cursiva", "italicSans": "Cursiva Sans", "boldItalic": "Negrita Cursiva", "boldItalicSans": "Negrita Cursiva Sans", "script": "Script", "bulletPoints": "Viñetas", "numberedList": "Lista Numerada" }
+  },
+  "noteProtection": {
+    "protectNote": "Proteger Nota", "passwordProtection": "Protección con Contraseña", "enterPassword": "Ingresa contraseña", "confirmPassword": "Confirmar contraseña", "pleaseEnterPassword": "Por favor ingresa una contraseña", "passwordsDoNotMatch": "Las contraseñas no coinciden", "passwordTooShort": "La contraseña debe tener al menos 4 caracteres", "protectionUpdated": "Protección de nota actualizada", "protectionRemoved": "Protección de nota eliminada", "useFaceId": "Usar Face ID", "useFingerprint": "Usar Huella Dactilar", "useIrisScan": "Usar Escaneo de Iris", "useBiometric": "Usar Biométrico", "biometricNotAvailable": "La autenticación biométrica no está disponible en este dispositivo.", "updateProtection": "Actualizar Protección", "enableProtection": "Habilitar Protección", "removeProtection": "Eliminar Protección"
+  },
+  "locationMap": {
+    "title": "Recordatorios de Ubicación", "enterToken": "Ingresa tu token de acceso de Mapbox para ver los recordatorios de ubicación en el mapa.", "saveToken": "Guardar Token", "noReminders": "Sin recordatorios de ubicación", "noRemindersDesc": "Agrega recordatorios de ubicación a tus tareas para verlos aquí", "radius": "Radio: {{radius}}m", "enter": "Entrada", "exit": "Salida"
   }
 }

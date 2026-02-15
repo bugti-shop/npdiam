@@ -2478,5 +2478,15 @@
     "fileRemoved": "ファイルを削除しました",
     "locationReminderSet": "位置リマインダーを設定しました",
     "locationReminderRemoved": "位置リマインダーを削除しました"
+  },
+  "linkedinFormatter": {
+    "selectTextFirst": "先にテキストを選択してください", "formattingCleared": "フォーマットをクリアしました", "copiedPaste": "コピーしました！LinkedIn、WhatsAppなどに貼り付けてください", "failedToCopy": "コピーに失敗しました", "enterUrl": "URLを入力:", "characters": "{{count}}文字", "copied": "コピー済み！", "copyText": "テキストをコピー", "styleVariants": "スタイルバリエーション", "styleVariantsDesc": "LinkedIn、WhatsApp、Twitterなどに貼り付けるバリエーションをコピー", "variantCopied": "{{name}}をコピーしました！",
+    "styles": { "normal": "標準", "bold": "太字", "sansSerif": "サンセリフ", "boldSans": "太字サンセリフ", "italic": "斜体", "italicSans": "斜体サンセリフ", "boldItalic": "太字斜体", "boldItalicSans": "太字斜体サンセリフ", "script": "スクリプト", "bulletPoints": "箇条書き", "numberedList": "番号付きリスト" }
+  },
+  "noteProtection": {
+    "protectNote": "ノートを保護", "passwordProtection": "パスワード保護", "enterPassword": "パスワードを入力", "confirmPassword": "パスワードを確認", "pleaseEnterPassword": "パスワードを入力してください", "passwordsDoNotMatch": "パスワードが一致しません", "passwordTooShort": "パスワードは4文字以上必要です", "protectionUpdated": "ノートの保護を更新しました", "protectionRemoved": "ノートの保護を解除しました", "useFaceId": "Face IDを使用", "useFingerprint": "指紋を使用", "useIrisScan": "虹彩スキャンを使用", "useBiometric": "生体認証を使用", "biometricNotAvailable": "このデバイスでは生体認証を利用できません。", "updateProtection": "保護を更新", "enableProtection": "保護を有効化", "removeProtection": "保護を解除"
+  },
+  "locationMap": {
+    "title": "位置リマインダー", "enterToken": "マップで位置リマインダーを表示するにはMapboxアクセストークンを入力してください。", "saveToken": "トークンを保存", "noReminders": "位置リマインダーなし", "noRemindersDesc": "ここに表示するにはタスクに位置リマインダーを追加してください", "radius": "半径: {{radius}}m", "enter": "入場", "exit": "退場"
   }
 }

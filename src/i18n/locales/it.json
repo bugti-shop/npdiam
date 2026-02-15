@@ -2453,5 +2453,15 @@
     "fileRemoved": "File rimosso",
     "locationReminderSet": "Promemoria posizione impostato",
     "locationReminderRemoved": "Promemoria posizione rimosso"
+  },
+  "linkedinFormatter": {
+    "selectTextFirst": "Seleziona prima il testo", "formattingCleared": "Formattazione cancellata", "copiedPaste": "Copiato! Incolla su LinkedIn, WhatsApp, ecc.", "failedToCopy": "Copia fallita", "enterUrl": "Inserisci URL:", "characters": "{{count}} caratteri", "copied": "Copiato!", "copyText": "Copia testo", "styleVariants": "Varianti di Stile", "styleVariantsDesc": "Copia qualsiasi variante per incollare su LinkedIn, WhatsApp, Twitter, ecc.", "variantCopied": "{{name}} copiato!",
+    "styles": { "normal": "Normale", "bold": "Grassetto", "sansSerif": "Sans-Serif", "boldSans": "Grassetto Sans", "italic": "Corsivo", "italicSans": "Corsivo Sans", "boldItalic": "Grassetto Corsivo", "boldItalicSans": "Grassetto Corsivo Sans", "script": "Script", "bulletPoints": "Elenco Puntato", "numberedList": "Elenco Numerato" }
+  },
+  "noteProtection": {
+    "protectNote": "Proteggi Nota", "passwordProtection": "Protezione con Password", "enterPassword": "Inserisci password", "confirmPassword": "Conferma password", "pleaseEnterPassword": "Inserisci una password", "passwordsDoNotMatch": "Le password non corrispondono", "passwordTooShort": "La password deve avere almeno 4 caratteri", "protectionUpdated": "Protezione nota aggiornata", "protectionRemoved": "Protezione nota rimossa", "useFaceId": "Usa Face ID", "useFingerprint": "Usa Impronta Digitale", "useIrisScan": "Usa Scansione Iride", "useBiometric": "Usa Biometria", "biometricNotAvailable": "L'autenticazione biometrica non è disponibile su questo dispositivo.", "updateProtection": "Aggiorna Protezione", "enableProtection": "Abilita Protezione", "removeProtection": "Rimuovi Protezione"
+  },
+  "locationMap": {
+    "title": "Promemoria Posizione", "enterToken": "Inserisci il tuo token di accesso Mapbox per vedere i promemoria posizione sulla mappa.", "saveToken": "Salva Token", "noReminders": "Nessun promemoria posizione", "noRemindersDesc": "Aggiungi promemoria posizione alle tue attività per vederli qui", "radius": "Raggio: {{radius}}m", "enter": "Ingresso", "exit": "Uscita"
   }
 }

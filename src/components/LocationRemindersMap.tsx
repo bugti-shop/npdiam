@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { TodoItem } from '@/types/note';
@@ -21,6 +22,7 @@ export const LocationRemindersMap = ({
   tasks,
   onTaskClick,
 }: LocationRemindersMapProps) => {
+  const { t } = useTranslation();
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const markersRef = useRef<mapboxgl.Marker[]>([]);
@@ -94,8 +96,8 @@ export const LocationRemindersMap = ({
             </p>
             <p style="font-size: 11px; color: #888; margin-top: 4px;">
               Radius: ${task.locationReminder.radius}m
-              ${task.locationReminder.triggerOnEnter ? '• Enter' : ''}
-              ${task.locationReminder.triggerOnExit ? '• Exit' : ''}
+              ${task.locationReminder.triggerOnEnter ? '• ' + t('locationMap.enter') : ''}
+              ${task.locationReminder.triggerOnExit ? '• ' + t('locationMap.exit') : ''}
             </p>
           </div>
         `);
@@ -202,7 +204,7 @@ export const LocationRemindersMap = ({
           <div className="flex items-center justify-between">
             <SheetTitle className="flex items-center gap-2">
               <MapPin className="h-5 w-5 text-primary" />
-              Location Reminders ({tasksWithLocation.length})
+              {t('locationMap.title')} ({tasksWithLocation.length})
             </SheetTitle>
             <Button variant="ghost" size="icon" onClick={() => onOpenChange(false)}>
               <X className="h-5 w-5" />
@@ -213,7 +215,7 @@ export const LocationRemindersMap = ({
         {showTokenInput ? (
           <div className="p-6 space-y-4">
             <p className="text-muted-foreground">
-              Enter your Mapbox access token to view location reminders on the map.
+              {t('locationMap.enterToken')}
             </p>
             <Input
               placeholder="pk.eyJ..."
@@ -221,14 +223,14 @@ export const LocationRemindersMap = ({
               onChange={(e) => setTokenInput(e.target.value)}
             />
             <Button onClick={handleSaveToken} className="w-full">
-              Save Token
+              {t('locationMap.saveToken')}
             </Button>
           </div>
         ) : tasksWithLocation.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-64 text-muted-foreground">
             <MapPin className="h-12 w-12 mb-4 opacity-50" />
-            <p>No location reminders set</p>
-            <p className="text-sm">Add location reminders to your tasks to see them here</p>
+            <p>{t('locationMap.noReminders')}</p>
+            <p className="text-sm">{t('locationMap.noRemindersDesc')}</p>
           </div>
         ) : (
           <div className="flex flex-col h-full">

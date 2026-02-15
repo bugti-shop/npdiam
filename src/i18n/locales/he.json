@@ -2430,5 +2430,15 @@
   },
   "taskDetailToasts": {
     "dateTimeReminderSaved": "תאריך, שעה ותזכורת נשמרו!", "dateSaved": "התאריך נשמר!", "dateSavedNoNotif": "התאריך נשמר (תזמון התראות לא זמין)", "filesAttached": "{{count}} קבצים צורפו", "fileRemoved": "הקובץ הוסר", "locationReminderSet": "תזכורת מיקום הוגדרה", "locationReminderRemoved": "תזכורת מיקום הוסרה"
+  },
+  "linkedinFormatter": {
+    "selectTextFirst": "בחר טקסט קודם", "formattingCleared": "העיצוב נוקה", "copiedPaste": "הועתק! הדבק ב-LinkedIn, WhatsApp וכו'", "failedToCopy": "ההעתקה נכשלה", "enterUrl": "הזן כתובת URL:", "characters": "{{count}} תווים", "copied": "הועתק!", "copyText": "העתק טקסט", "styleVariants": "וריאנטים של סגנון", "styleVariantsDesc": "העתק כל וריאנט להדבקה ב-LinkedIn, WhatsApp, Twitter וכו'", "variantCopied": "{{name}} הועתק!",
+    "styles": { "normal": "רגיל", "bold": "מודגש", "sansSerif": "ללא תגים", "boldSans": "מודגש ללא תגים", "italic": "נטוי", "italicSans": "נטוי ללא תגים", "boldItalic": "מודגש נטוי", "boldItalicSans": "מודגש נטוי ללא תגים", "script": "כתב יד", "bulletPoints": "תבליטים", "numberedList": "רשימה ממוספרת" }
+  },
+  "noteProtection": {
+    "protectNote": "הגן על פתק", "passwordProtection": "הגנת סיסמה", "enterPassword": "הזן סיסמה", "confirmPassword": "אשר סיסמה", "pleaseEnterPassword": "נא להזין סיסמה", "passwordsDoNotMatch": "הסיסמאות אינן תואמות", "passwordTooShort": "הסיסמה חייבת להכיל לפחות 4 תווים", "protectionUpdated": "הגנת הפתק עודכנה", "protectionRemoved": "הגנת הפתק הוסרה", "useFaceId": "השתמש ב-Face ID", "useFingerprint": "השתמש בטביעת אצבע", "useIrisScan": "השתמש בסריקת קשתית", "useBiometric": "השתמש בביומטרי", "biometricNotAvailable": "אימות ביומטרי אינו זמין במכשיר זה.", "updateProtection": "עדכן הגנה", "enableProtection": "הפעל הגנה", "removeProtection": "הסר הגנה"
+  },
+  "locationMap": {
+    "title": "תזכורות מיקום", "enterToken": "הזן את אסימון הגישה של Mapbox כדי לראות תזכורות מיקום על המפה.", "saveToken": "שמור אסימון", "noReminders": "אין תזכורות מיקום", "noRemindersDesc": "הוסף תזכורות מיקום למשימות שלך כדי לראות אותן כאן", "radius": "רדיוס: {{radius}}מ'", "enter": "כניסה", "exit": "יציאה"
   }
 }

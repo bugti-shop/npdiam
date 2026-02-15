@@ -48,29 +48,33 @@ interface LinkedInTextFormatterProps {
 }
 
 // Style variants to show automatically
-const autoVariants: { id: UnicodeStyle | 'normal' | 'bullet' | 'numbered'; name: string }[] = [
-  { id: 'normal', name: 'Normal' },
-  { id: 'bold', name: 'Bold' },
-  { id: 'sansNormal', name: 'Sans-Serif' },
-  { id: 'boldSans', name: 'Bold Sans' },
-  { id: 'italic', name: 'Italic' },
-  { id: 'italicSans', name: 'Italic Sans' },
-  { id: 'boldItalic', name: 'Bold Italic' },
-  { id: 'boldItalicSans', name: 'Bold Italic Sans' },
-  { id: 'script', name: 'Script' },
-  { id: 'bullet', name: 'Bullet Points' },
-  { id: 'numbered', name: 'Numbered List' },
+const autoVariantKeys: { id: UnicodeStyle | 'normal' | 'bullet' | 'numbered'; nameKey: string }[] = [
+  { id: 'normal', nameKey: 'linkedinFormatter.styles.normal' },
+  { id: 'bold', nameKey: 'linkedinFormatter.styles.bold' },
+  { id: 'sansNormal', nameKey: 'linkedinFormatter.styles.sansSerif' },
+  { id: 'boldSans', nameKey: 'linkedinFormatter.styles.boldSans' },
+  { id: 'italic', nameKey: 'linkedinFormatter.styles.italic' },
+  { id: 'italicSans', nameKey: 'linkedinFormatter.styles.italicSans' },
+  { id: 'boldItalic', nameKey: 'linkedinFormatter.styles.boldItalic' },
+  { id: 'boldItalicSans', nameKey: 'linkedinFormatter.styles.boldItalicSans' },
+  { id: 'script', nameKey: 'linkedinFormatter.styles.script' },
+  { id: 'bullet', nameKey: 'linkedinFormatter.styles.bulletPoints' },
+  { id: 'numbered', nameKey: 'linkedinFormatter.styles.numberedList' },
 ];
 
 // Variant card component
 const VariantCard = ({ 
   name, 
   text, 
-  onCopy 
+  onCopy,
+  copiedLabel,
+  copyLabel,
 }: { 
   name: string; 
   text: string; 
   onCopy: () => void;
+  copiedLabel: string;
+  copyLabel: string;
 }) => {
   const [copied, setCopied] = useState(false);
 
@@ -87,6 +91,7 @@ const VariantCard = ({
     <div className="border rounded-lg bg-card">
       <div className="px-3 py-2 border-b bg-muted/30">
         <span className="text-sm font-medium text-foreground">{name}</span>
+
       </div>
       <div className="p-3 min-h-[80px] max-h-[150px] overflow-y-auto">
         <p className="text-sm text-foreground whitespace-pre-wrap break-words leading-relaxed">
@@ -103,12 +108,12 @@ const VariantCard = ({
           {copied ? (
             <>
               <Check className="h-4 w-4" />
-              Copied!
+              {copiedLabel}
             </>
           ) : (
             <>
               <Copy className="h-4 w-4" />
-              Copy text
+              {copyLabel}
             </>
           )}
         </Button>
@@ -141,7 +146,7 @@ export const LinkedInTextFormatter = ({
     // This way, when user applies bold/italic etc., all variants show that styling
     const textToUse = content;
     
-    return autoVariants.map(variant => {
+    return autoVariantKeys.map(variant => {
       let styledText: string;
       
       switch (variant.id) {
@@ -161,7 +166,7 @@ export const LinkedInTextFormatter = ({
       }
       
       return {
-        name: variant.name,
+        name: t(variant.nameKey),
         text: styledText,
       };
     });
@@ -198,7 +203,7 @@ export const LinkedInTextFormatter = ({
     const { text, start, end } = getSelection();
     
     if (!text) {
-      toast.error('Select text first');
+      toast.error(t('linkedinFormatter.selectTextFirst'));
       return;
     }
     
@@ -251,7 +256,7 @@ export const LinkedInTextFormatter = ({
       updateContent(removeUnicodeFormatting(content));
     }
     
-    toast.success('Formatting cleared');
+    toast.success(t('linkedinFormatter.formattingCleared'));
   }, [content, getSelection, updateContent]);
 
   // Undo
@@ -279,10 +284,10 @@ export const LinkedInTextFormatter = ({
     const success = await copyStyledText(content);
     if (success) {
       setCopied(true);
-      toast.success('Copied! Paste on LinkedIn, WhatsApp, etc.');
+      toast.success(t('linkedinFormatter.copiedPaste'));
       setTimeout(() => setCopied(false), 2000);
     } else {
-      toast.error('Failed to copy');
+      toast.error(t('linkedinFormatter.failedToCopy'));
     }
   }, [content]);
 
@@ -532,7 +537,7 @@ export const LinkedInTextFormatter = ({
       {/* Footer with copy button */}
       <div className="flex items-center justify-between p-3 border-t">
         <span className="text-xs text-muted-foreground">
-          {content.length} characters
+          {t('linkedinFormatter.characters', { count: content.length })}
         </span>
         <Button
           variant="default"
@@ -543,12 +548,12 @@ export const LinkedInTextFormatter = ({
           {copied ? (
             <>
               <Check className="h-4 w-4" />
-              Copied!
+              {t('linkedinFormatter.copied')}
             </>
           ) : (
             <>
               <Copy className="h-4 w-4" />
-              Copy text
+              {t('linkedinFormatter.copyText')}
             </>
           )}
         </Button>
@@ -562,9 +567,9 @@ export const LinkedInTextFormatter = ({
             className="w-full p-3 bg-muted/30 border-b flex items-center justify-between hover:bg-muted/50 transition-colors"
           >
             <div className="text-left">
-              <h3 className="text-sm font-medium text-foreground">Style Variants</h3>
+              <h3 className="text-sm font-medium text-foreground">{t('linkedinFormatter.styleVariants')}</h3>
               <p className="text-xs text-muted-foreground mt-0.5">
-                Copy any variant to paste on LinkedIn, WhatsApp, Twitter, etc.
+                {t('linkedinFormatter.styleVariantsDesc')}
               </p>
             </div>
             <ChevronDown className={`h-4 w-4 text-muted-foreground transition-transform ${showVariants ? 'rotate-180' : ''}`} />
@@ -576,7 +581,9 @@ export const LinkedInTextFormatter = ({
                   key={index}
                   name={variant.name}
                   text={variant.text}
-                  onCopy={() => toast.success(`${variant.name} copied!`)}
+                  copiedLabel={t('linkedinFormatter.copied')}
+                  copyLabel={t('linkedinFormatter.copyText')}
+                  onCopy={() => toast.success(t('linkedinFormatter.variantCopied', { name: variant.name }))}
                 />
               ))}
             </div>

@@ -2478,5 +2478,15 @@
     "fileRemoved": "파일이 제거되었습니다",
     "locationReminderSet": "위치 알림이 설정되었습니다",
     "locationReminderRemoved": "위치 알림이 제거되었습니다"
+  },
+  "linkedinFormatter": {
+    "selectTextFirst": "먼저 텍스트를 선택하세요", "formattingCleared": "서식이 지워졌습니다", "copiedPaste": "복사됨! LinkedIn, WhatsApp 등에 붙여넣으세요.", "failedToCopy": "복사 실패", "enterUrl": "URL 입력:", "characters": "{{count}}자", "copied": "복사됨!", "copyText": "텍스트 복사", "styleVariants": "스타일 변형", "styleVariantsDesc": "LinkedIn, WhatsApp, Twitter 등에 붙여넣을 변형을 복사하세요.", "variantCopied": "{{name}} 복사됨!",
+    "styles": { "normal": "일반", "bold": "굵게", "sansSerif": "산세리프", "boldSans": "굵은 산세리프", "italic": "기울임", "italicSans": "기울임 산세리프", "boldItalic": "굵은 기울임", "boldItalicSans": "굵은 기울임 산세리프", "script": "스크립트", "bulletPoints": "글머리 기호", "numberedList": "번호 매기기" }
+  },
+  "noteProtection": {
+    "protectNote": "노트 보호", "passwordProtection": "비밀번호 보호", "enterPassword": "비밀번호 입력", "confirmPassword": "비밀번호 확인", "pleaseEnterPassword": "비밀번호를 입력하세요", "passwordsDoNotMatch": "비밀번호가 일치하지 않습니다", "passwordTooShort": "비밀번호는 최소 4자 이상이어야 합니다", "protectionUpdated": "노트 보호가 업데이트되었습니다", "protectionRemoved": "노트 보호가 제거되었습니다", "useFaceId": "Face ID 사용", "useFingerprint": "지문 사용", "useIrisScan": "홍채 스캔 사용", "useBiometric": "생체 인증 사용", "biometricNotAvailable": "이 기기에서는 생체 인증을 사용할 수 없습니다.", "updateProtection": "보호 업데이트", "enableProtection": "보호 활성화", "removeProtection": "보호 제거"
+  },
+  "locationMap": {
+    "title": "위치 알림", "enterToken": "지도에서 위치 알림을 보려면 Mapbox 액세스 토큰을 입력하세요.", "saveToken": "토큰 저장", "noReminders": "위치 알림 없음", "noRemindersDesc": "여기에서 보려면 작업에 위치 알림을 추가하세요", "radius": "반경: {{radius}}m", "enter": "진입", "exit": "이탈"
   }
 }

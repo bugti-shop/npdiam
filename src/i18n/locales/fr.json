@@ -2507,5 +2507,15 @@
     "fileRemoved": "Fichier supprimé",
     "locationReminderSet": "Rappel de lieu défini",
     "locationReminderRemoved": "Rappel de lieu supprimé"
+  },
+  "linkedinFormatter": {
+    "selectTextFirst": "Sélectionnez du texte d'abord", "formattingCleared": "Formatage effacé", "copiedPaste": "Copié ! Collez sur LinkedIn, WhatsApp, etc.", "failedToCopy": "Échec de la copie", "enterUrl": "Entrez l'URL :", "characters": "{{count}} caractères", "copied": "Copié !", "copyText": "Copier le texte", "styleVariants": "Variantes de Style", "styleVariantsDesc": "Copiez n'importe quelle variante pour coller sur LinkedIn, WhatsApp, Twitter, etc.", "variantCopied": "{{name}} copié !",
+    "styles": { "normal": "Normal", "bold": "Gras", "sansSerif": "Sans-Serif", "boldSans": "Gras Sans", "italic": "Italique", "italicSans": "Italique Sans", "boldItalic": "Gras Italique", "boldItalicSans": "Gras Italique Sans", "script": "Script", "bulletPoints": "Puces", "numberedList": "Liste Numérotée" }
+  },
+  "noteProtection": {
+    "protectNote": "Protéger la Note", "passwordProtection": "Protection par Mot de Passe", "enterPassword": "Entrez le mot de passe", "confirmPassword": "Confirmez le mot de passe", "pleaseEnterPassword": "Veuillez entrer un mot de passe", "passwordsDoNotMatch": "Les mots de passe ne correspondent pas", "passwordTooShort": "Le mot de passe doit contenir au moins 4 caractères", "protectionUpdated": "Protection de la note mise à jour", "protectionRemoved": "Protection de la note supprimée", "useFaceId": "Utiliser Face ID", "useFingerprint": "Utiliser l'Empreinte", "useIrisScan": "Utiliser le Scan d'Iris", "useBiometric": "Utiliser la Biométrie", "biometricNotAvailable": "L'authentification biométrique n'est pas disponible sur cet appareil.", "updateProtection": "Mettre à jour la Protection", "enableProtection": "Activer la Protection", "removeProtection": "Supprimer la Protection"
+  },
+  "locationMap": {
+    "title": "Rappels de Lieu", "enterToken": "Entrez votre jeton d'accès Mapbox pour voir les rappels de lieu sur la carte.", "saveToken": "Enregistrer le Jeton", "noReminders": "Aucun rappel de lieu", "noRemindersDesc": "Ajoutez des rappels de lieu à vos tâches pour les voir ici", "radius": "Rayon : {{radius}}m", "enter": "Entrée", "exit": "Sortie"
   }
 }
