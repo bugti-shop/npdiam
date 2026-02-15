@@ -41,7 +41,6 @@ export const WidgetSettingsSheet = ({ isOpen, onClose }: WidgetSettingsSheetProp
     priority: 'sheet',
   });
 
-  // Load data on open
   useEffect(() => {
     if (isOpen) {
       loadData();
@@ -58,7 +57,6 @@ export const WidgetSettingsSheet = ({ isOpen, onClose }: WidgetSettingsSheetProp
     const loadedSections = await getSetting<TaskSection[]>('task_sections', []);
     setSections(loadedSections);
 
-    // Set initial selections if configs exist
     const specificNoteConfig = configs.find(c => c.type === 'specific_note');
     if (specificNoteConfig?.noteId) {
       setSelectedNoteId(specificNoteConfig.noteId);
@@ -113,7 +111,7 @@ export const WidgetSettingsSheet = ({ isOpen, onClose }: WidgetSettingsSheetProp
     setWidgetConfigs(newConfigs);
     await widgetDataSync.saveWidgetConfig(newConfigs);
     await widgetDataSync.syncSpecificNote(noteId);
-    toast.success('Note widget configured');
+    toast.success(t('widgetSettings.noteWidgetConfigured'));
   };
 
   const handleSelectSection = async (sectionId: string) => {
@@ -139,16 +137,16 @@ export const WidgetSettingsSheet = ({ isOpen, onClose }: WidgetSettingsSheetProp
     setWidgetConfigs(newConfigs);
     await widgetDataSync.saveWidgetConfig(newConfigs);
     await widgetDataSync.syncSections();
-    toast.success('Section widget configured');
+    toast.success(t('widgetSettings.sectionWidgetConfigured'));
   };
 
   const handleSyncNow = async () => {
     setIsSyncing(true);
     try {
       await widgetDataSync.syncAllData();
-      toast.success('Widget data synced');
+      toast.success(t('widgetSettings.widgetDataSynced'));
     } catch (error) {
-      toast.error('Sync failed');
+      toast.error(t('widgetSettings.syncFailed'));
     } finally {
       setIsSyncing(false);
     }
@@ -170,11 +168,9 @@ export const WidgetSettingsSheet = ({ isOpen, onClose }: WidgetSettingsSheetProp
 
         <ScrollArea className="flex-1 -mx-6 px-6">
           <div className="space-y-6 pb-6">
-            {/* Info Banner */}
             <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
               <p className="text-sm text-foreground">
-                Configure which widgets are available for your home screen. After enabling widgets here, 
-                add them to your home screen via Android's widget picker.
+                {t('widgetSettings.infoBanner')}
               </p>
               <Button 
                 variant="link" 
@@ -182,11 +178,10 @@ export const WidgetSettingsSheet = ({ isOpen, onClose }: WidgetSettingsSheetProp
                 onClick={() => window.open('https://support.google.com/android/answer/9450271', '_blank')}
               >
                 <ExternalLink className="h-3 w-3 mr-1" />
-                How to add widgets
+                {t('widgetSettings.howToAddWidgets')}
               </Button>
             </div>
 
-            {/* Sync Button */}
             <Button 
               onClick={handleSyncNow} 
               disabled={isSyncing}
@@ -194,21 +189,20 @@ export const WidgetSettingsSheet = ({ isOpen, onClose }: WidgetSettingsSheetProp
               className="w-full"
             >
               <RefreshCw className={cn("h-4 w-4 mr-2", isSyncing && "animate-spin")} />
-              {isSyncing ? 'Syncing...' : 'Sync Widget Data Now'}
+              {isSyncing ? t('widgetSettings.syncing') : t('widgetSettings.syncNow')}
             </Button>
 
             <Separator />
 
-            {/* Notes Widget */}
             <div className="space-y-3">
-              <h3 className="text-sm font-semibold text-muted-foreground">Notes Widget</h3>
+              <h3 className="text-sm font-semibold text-muted-foreground">{t('widgetSettings.notesWidget')}</h3>
               
               <div className="flex items-center justify-between p-3 rounded-lg border border-border">
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">📝</span>
                   <div>
-                    <p className="text-sm font-medium">Notes Widget</p>
-                    <p className="text-xs text-muted-foreground">Display any note you created on home screen</p>
+                    <p className="text-sm font-medium">{t('widgetSettings.notesWidget')}</p>
+                    <p className="text-xs text-muted-foreground">{t('widgetSettings.notesWidgetDesc')}</p>
                   </div>
                 </div>
                 <Switch
@@ -217,13 +211,12 @@ export const WidgetSettingsSheet = ({ isOpen, onClose }: WidgetSettingsSheetProp
                 />
               </div>
 
-              {/* Note Selection */}
               {isWidgetEnabled('specific_note') && notes.length > 0 && (
                 <div className="ml-4 p-3 rounded-lg bg-muted/50">
-                  <p className="text-xs font-medium mb-2">Select Note to Display:</p>
+                  <p className="text-xs font-medium mb-2">{t('widgetSettings.selectNoteToDisplay')}</p>
                   <Select value={selectedNoteId} onValueChange={handleSelectNote}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Choose a note" />
+                      <SelectValue placeholder={t('widgetSettings.chooseNote')} />
                     </SelectTrigger>
                     <SelectContent className="max-h-60">
                       {notes.slice(0, 30).map((note) => (
@@ -238,7 +231,7 @@ export const WidgetSettingsSheet = ({ isOpen, onClose }: WidgetSettingsSheetProp
                               {note.type === 'voice' && '🎤'}
                             </span>
                             <span className="truncate max-w-[200px]">
-                              {note.title || 'Untitled'}
+                              {note.title || t('widgetSettings.untitled')}
                             </span>
                           </div>
                         </SelectItem>
@@ -251,16 +244,15 @@ export const WidgetSettingsSheet = ({ isOpen, onClose }: WidgetSettingsSheetProp
 
             <Separator />
 
-            {/* Section Tasks Widget */}
             <div className="space-y-3">
-              <h3 className="text-sm font-semibold text-muted-foreground">Section Tasks Widget</h3>
+              <h3 className="text-sm font-semibold text-muted-foreground">{t('widgetSettings.sectionTasksWidget')}</h3>
               
               <div className="flex items-center justify-between p-3 rounded-lg border border-border">
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">📋</span>
                   <div>
-                    <p className="text-sm font-medium">Section Tasks</p>
-                    <p className="text-xs text-muted-foreground">Show all tasks from a section with checkboxes</p>
+                    <p className="text-sm font-medium">{t('widgetSettings.sectionTasks')}</p>
+                    <p className="text-xs text-muted-foreground">{t('widgetSettings.sectionTasksDesc')}</p>
                   </div>
                 </div>
                 <Switch
@@ -269,13 +261,12 @@ export const WidgetSettingsSheet = ({ isOpen, onClose }: WidgetSettingsSheetProp
                 />
               </div>
 
-              {/* Section Selection */}
               {isWidgetEnabled('section_tasks') && sections.length > 0 && (
                 <div className="ml-4 p-3 rounded-lg bg-muted/50">
-                  <p className="text-xs font-medium mb-2">Select Section:</p>
+                  <p className="text-xs font-medium mb-2">{t('widgetSettings.selectSection')}</p>
                   <Select value={selectedSectionId} onValueChange={handleSelectSection}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Choose a section" />
+                      <SelectValue placeholder={t('widgetSettings.chooseSection')} />
                     </SelectTrigger>
                     <SelectContent>
                       {sections.map((section) => (
@@ -295,15 +286,14 @@ export const WidgetSettingsSheet = ({ isOpen, onClose }: WidgetSettingsSheetProp
               )}
             </div>
 
-            {/* Setup Instructions */}
             <div className="bg-muted/50 rounded-lg p-4 mt-4">
-              <h4 className="text-sm font-semibold mb-2">📱 How to Add Widgets</h4>
+              <h4 className="text-sm font-semibold mb-2">{t('widgetSettings.howToTitle')}</h4>
               <ol className="text-xs text-muted-foreground space-y-1 list-decimal list-inside">
-                <li>Enable the widgets you want above</li>
-                <li>Long press on your home screen</li>
-                <li>Tap "Widgets"</li>
-                <li>Find "Npd" and drag the widget to your home screen</li>
-                <li>Check WIDGET.md file for native code setup</li>
+                <li>{t('widgetSettings.step1')}</li>
+                <li>{t('widgetSettings.step2')}</li>
+                <li>{t('widgetSettings.step3')}</li>
+                <li>{t('widgetSettings.step4')}</li>
+                <li>{t('widgetSettings.step5')}</li>
               </ol>
             </div>
           </div>
