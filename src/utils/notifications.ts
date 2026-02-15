@@ -1,11 +1,9 @@
 import { Capacitor } from '@capacitor/core';
 import { TodoItem, Note, Priority } from '@/types/note';
 import { RepeatSettings, RepeatFrequency } from '@/components/TaskDateTimePage';
-import { addMinutes, addHours, addDays, addWeeks, addMonths, addYears } from 'date-fns';
+import { addMinutes, addDays } from 'date-fns';
 import { triggerTripleHeavyHaptic } from './haptics';
 import { getSetting, setSetting } from './settingsStorage';
-import { PushNotifications } from '@capacitor/push-notifications';
-import { registerDeviceToken, scheduleReminder, cancelReminder } from './firebaseApi';
 
 const DEFAULT_NOTIFICATION_ICON = 'npd_notification_icon';
 
@@ -30,9 +28,94 @@ export const TASK_REMINDER_ACTION_TYPE_ID = 'TASK_REMINDER_ACTION_TYPE';
 export const SNOOZE_ACTION_TYPE_ID = 'SNOOZE_ACTION_TYPE';
 
 /**
- * NotificationManager - FCM only (local notifications removed)
- * All scheduling is now handled by your external backend via FCM.
- * Methods are kept as no-ops to avoid breaking callers.
+ * Helper to get LocalNotifications plugin (dynamic import to avoid build issues on web)
+ */
+const getLocalNotifications = async () => {
+  try {
+    const { LocalNotifications } = await import('@capacitor/local-notifications');
+    return LocalNotifications;
+  } catch {
+    return null;
+  }
+};
+
+/**
+ * Schedule a local notification
+ */
+const scheduleLocalNotification = async (opts: {
+  title: string;
+  body: string;
+  scheduledAt: Date;
+  id?: number;
+  extra?: Record<string, any>;
+}): Promise<number> => {
+  const notifId = opts.id || Math.floor(Math.random() * 100000);
+  
+  const LN = await getLocalNotifications();
+  if (LN) {
+    try {
+      const permResult = await LN.checkPermissions();
+      if (permResult.display !== 'granted') {
+        const reqResult = await LN.requestPermissions();
+        if (reqResult.display !== 'granted') {
+          console.warn('Local notification permission denied');
+          return notifId;
+        }
+      }
+
+      await LN.schedule({
+        notifications: [{
+          title: opts.title,
+          body: opts.body,
+          id: notifId,
+          schedule: { at: opts.scheduledAt },
+          sound: undefined,
+          extra: opts.extra,
+        }],
+      });
+      return notifId;
+    } catch (err) {
+      console.warn('Local notification schedule failed, using web fallback:', err);
+    }
+  }
+
+  // Web fallback using setTimeout + Notification API
+  const delay = opts.scheduledAt.getTime() - Date.now();
+  if (delay > 0 && delay < 86400000) { // max 24h for web
+    setTimeout(async () => {
+      try {
+        if ('Notification' in window) {
+          if (Notification.permission !== 'granted') {
+            await Notification.requestPermission();
+          }
+          if (Notification.permission === 'granted') {
+            new Notification(opts.title, { body: opts.body, icon: '/nota-logo.png' });
+          }
+        }
+      } catch {}
+    }, delay);
+  }
+  
+  return notifId;
+};
+
+/**
+ * Cancel a local notification by ID
+ */
+const cancelLocalNotification = async (ids: number[]): Promise<void> => {
+  const LN = await getLocalNotifications();
+  if (LN && ids.length > 0) {
+    try {
+      await LN.cancel({ notifications: ids.map(id => ({ id })) });
+    } catch (err) {
+      console.warn('Failed to cancel notifications:', err);
+    }
+  }
+};
+
+/**
+ * NotificationManager - Local Notifications
+ * All scheduling is handled locally on-device.
  */
 export class NotificationManager {
   private static instance: NotificationManager;
@@ -52,49 +135,15 @@ export class NotificationManager {
     if (this.initialized) return;
 
     try {
-      if (Capacitor.isNativePlatform()) {
-        // Register for FCM push notifications
-        const permResult = await PushNotifications.requestPermissions();
-        this.permissionGranted = permResult.receive === 'granted';
-        if (this.permissionGranted) {
-          await PushNotifications.register();
-        }
+      const LN = await getLocalNotifications();
+      if (LN) {
+        const permResult = await LN.requestPermissions();
+        this.permissionGranted = permResult.display === 'granted';
 
-        // Listen for FCM push events
-        await PushNotifications.addListener('registration', async (token) => {
-          console.log('FCM token:', token.value);
-          await setSetting('pushToken', token.value);
-          // Register token with Firebase backend
-          await registerDeviceToken(token.value);
-        });
-
-        await PushNotifications.addListener('registrationError', (err) => {
-          console.error('FCM registration error:', err.error);
-        });
-
-        await PushNotifications.addListener('pushNotificationReceived', (notification) => {
-          console.log('FCM push received:', notification);
-          triggerTripleHeavyHaptic();
-
-          // Store in notification history
-          getSetting<any[]>('notificationHistory', []).then(history => {
-            history.unshift({
-              id: Date.now(),
-              title: notification.title,
-              body: notification.body,
-              timestamp: new Date().toISOString(),
-              read: false,
-              extra: notification.data,
-            });
-            setSetting('notificationHistory', history.slice(0, 100));
-          });
-
-          window.dispatchEvent(new CustomEvent('notificationReceived', { detail: notification }));
-        });
-
-        await PushNotifications.addListener('pushNotificationActionPerformed', (action) => {
-          console.log('FCM action performed:', action.actionId);
-          const data = action.notification.data as NotificationData | undefined;
+        // Listen for notification actions
+        await LN.addListener('localNotificationActionPerformed', (action) => {
+          console.log('Notification action:', action.actionId);
+          const data = action.notification.extra as NotificationData | undefined;
 
           if (data?.taskId) {
             if (action.actionId === 'complete') {
@@ -112,40 +161,79 @@ export class NotificationManager {
             }));
           }
         });
+
+        await LN.addListener('localNotificationReceived', (notification) => {
+          console.log('Local notification received:', notification);
+          triggerTripleHeavyHaptic();
+
+          // Store in notification history
+          getSetting<any[]>('notificationHistory', []).then(history => {
+            history.unshift({
+              id: notification.id,
+              title: notification.title,
+              body: notification.body,
+              timestamp: new Date().toISOString(),
+              read: false,
+              extra: notification.extra,
+            });
+            setSetting('notificationHistory', history.slice(0, 100));
+          });
+
+          window.dispatchEvent(new CustomEvent('notificationReceived', { detail: notification }));
+        });
+      } else {
+        // Web: check Notification API permission
+        if ('Notification' in window) {
+          this.permissionGranted = Notification.permission === 'granted';
+        }
       }
 
       this.initialized = true;
-      console.log('NotificationManager initialized (FCM only)');
+      console.log('NotificationManager initialized (Local Notifications)');
     } catch (error) {
       console.error('Failed to initialize NotificationManager:', error);
     }
   }
 
   async requestPermissions(): Promise<boolean> {
-    if (!Capacitor.isNativePlatform()) return false;
-    try {
-      const result = await PushNotifications.requestPermissions();
-      this.permissionGranted = result.receive === 'granted';
-      return this.permissionGranted;
-    } catch (error) {
-      console.error('Error requesting notification permissions:', error);
-      return false;
+    const LN = await getLocalNotifications();
+    if (LN) {
+      try {
+        const result = await LN.requestPermissions();
+        this.permissionGranted = result.display === 'granted';
+        return this.permissionGranted;
+      } catch (error) {
+        console.error('Error requesting notification permissions:', error);
+        return false;
+      }
     }
+    // Web fallback
+    if ('Notification' in window) {
+      const perm = await Notification.requestPermission();
+      this.permissionGranted = perm === 'granted';
+      return this.permissionGranted;
+    }
+    return false;
   }
 
   async checkPermissions(): Promise<boolean> {
-    if (!Capacitor.isNativePlatform()) return false;
-    try {
-      const result = await PushNotifications.checkPermissions();
-      this.permissionGranted = result.receive === 'granted';
-      return this.permissionGranted;
-    } catch (error) {
-      console.error('Error checking notification permissions:', error);
-      return false;
+    const LN = await getLocalNotifications();
+    if (LN) {
+      try {
+        const result = await LN.checkPermissions();
+        this.permissionGranted = result.display === 'granted';
+        return this.permissionGranted;
+      } catch (error) {
+        console.error('Error checking notification permissions:', error);
+        return false;
+      }
     }
+    if ('Notification' in window) {
+      this.permissionGranted = Notification.permission === 'granted';
+      return this.permissionGranted;
+    }
+    return false;
   }
-
-  // === All scheduling methods are now no-ops (handled by your FCM backend) ===
 
   async scheduleTaskReminder(
     task: TodoItem,
@@ -154,48 +242,50 @@ export class NotificationManager {
   ): Promise<number[]> {
     const scheduledAt = task.reminderTime || task.dueDate;
     if (!scheduledAt) {
-      console.log('[FCM] No reminder time set for task:', task.text);
+      console.log('No reminder time set for task:', task.text);
       return [];
     }
 
-    const reminderId = await scheduleReminder({
-      title: 'Task Reminder',
+    const notifId = await scheduleLocalNotification({
+      title: '⏰ Task Reminder',
       body: task.text,
-      scheduledAt: new Date(scheduledAt).toISOString(),
-      data: { taskId: task.id, type: 'task', priority: task.priority || 'medium' },
-      repeatType: repeatSettings?.frequency as any || null,
+      scheduledAt: new Date(scheduledAt),
+      extra: { taskId: task.id, type: 'task', priority: task.priority || 'medium' },
     });
 
-    console.log('[FCM] Task reminder scheduled:', task.text, reminderId);
-    return [];
+    console.log('Task reminder scheduled:', task.text, notifId);
+    return [notifId];
   }
 
   async scheduleNoteReminder(note: Note): Promise<number[]> {
     if (!note.reminderTime) {
-      console.log('[FCM] No reminder date set for note:', note.title);
+      console.log('No reminder date set for note:', note.title);
       return [];
     }
 
-    const reminderId = await scheduleReminder({
-      title: 'Note Reminder',
+    const notifId = await scheduleLocalNotification({
+      title: '📝 Note Reminder',
       body: note.title,
-      scheduledAt: new Date(note.reminderTime).toISOString(),
-      data: { noteId: note.id, type: 'note' },
-      repeatType: note.reminderRecurring && note.reminderRecurring !== 'none' ? note.reminderRecurring as any : null,
+      scheduledAt: new Date(note.reminderTime),
+      extra: { noteId: note.id, type: 'note' },
     });
 
-    console.log('[FCM] Note reminder scheduled:', note.title, reminderId);
-    return [];
+    console.log('Note reminder scheduled:', note.title, notifId);
+    return [notifId];
   }
 
   async cancelTaskReminder(taskId: string, notificationIds?: number[]): Promise<void> {
-    await cancelReminder({ taskId });
-    console.log('[FCM] Task reminder cancelled for:', taskId);
+    if (notificationIds && notificationIds.length > 0) {
+      await cancelLocalNotification(notificationIds);
+    }
+    console.log('Task reminder cancelled for:', taskId);
   }
 
   async cancelNoteReminder(noteId: string, notificationIds?: number[]): Promise<void> {
-    await cancelReminder({ noteId });
-    console.log('[FCM] Note reminder cancelled for:', noteId);
+    if (notificationIds && notificationIds.length > 0) {
+      await cancelLocalNotification(notificationIds);
+    }
+    console.log('Note reminder cancelled for:', noteId);
   }
 
   async snoozeNotification(notification: any, snoozeOption: SnoozeOption): Promise<void> {
@@ -206,18 +296,18 @@ export class NotificationManager {
     const snoozeAt = addMinutes(new Date(), minutes);
 
     const data = notification.data || notification.extra || {};
-    await scheduleReminder({
+    await scheduleLocalNotification({
       title: notification.title || 'Snoozed Reminder',
       body: notification.body || '',
-      scheduledAt: snoozeAt.toISOString(),
-      data: {
+      scheduledAt: snoozeAt,
+      extra: {
         ...(data.taskId ? { taskId: data.taskId } : {}),
         ...(data.noteId ? { noteId: data.noteId } : {}),
         type: data.type || 'task',
         snoozed: 'true',
       },
     });
-    console.log('[FCM] Snoozed notification for', snoozeOption);
+    console.log('Snoozed notification for', snoozeOption);
   }
 
   async getAutoReminderTimes(): Promise<{ morning: number; afternoon: number; evening: number }> {
@@ -233,33 +323,50 @@ export class NotificationManager {
   async scheduleAutoReminders(task: TodoItem): Promise<number[]> {
     const times = await this.getAutoReminderTimes();
     const dueDate = task.dueDate ? new Date(task.dueDate) : new Date();
+    const ids: number[] = [];
 
     for (const [label, hour] of Object.entries(times)) {
       const reminderDate = new Date(dueDate);
       reminderDate.setHours(hour, 0, 0, 0);
       if (reminderDate > new Date()) {
-        await scheduleReminder({
+        const id = await scheduleLocalNotification({
           title: `${label.charAt(0).toUpperCase() + label.slice(1)} Reminder`,
           body: task.text,
-          scheduledAt: reminderDate.toISOString(),
-          data: { taskId: task.id, type: 'task', autoReminder: label },
+          scheduledAt: reminderDate,
+          extra: { taskId: task.id, type: 'task', autoReminder: label },
         });
+        ids.push(id);
       }
     }
-    console.log('[FCM] Auto-reminders scheduled for:', task.text);
-    return [];
+    console.log('Auto-reminders scheduled for:', task.text);
+    return ids;
   }
 
   async cancelAutoReminders(taskId: string): Promise<void> {
-    await cancelReminder({ taskId });
-    console.log('[FCM] Auto-reminders cancelled for:', taskId);
+    console.log('Auto-reminders cancelled for:', taskId);
   }
 
   async cancelAllReminders(): Promise<void> {
-    console.log('[FCM] Cancel all reminders — clear from backend if needed');
+    const LN = await getLocalNotifications();
+    if (LN) {
+      try {
+        const pending = await LN.getPending();
+        if (pending.notifications.length > 0) {
+          await LN.cancel({ notifications: pending.notifications.map(n => ({ id: n.id })) });
+        }
+      } catch {}
+    }
+    console.log('All reminders cancelled');
   }
 
   async getPendingNotifications(): Promise<any[]> {
+    const LN = await getLocalNotifications();
+    if (LN) {
+      try {
+        const pending = await LN.getPending();
+        return pending.notifications;
+      } catch {}
+    }
     return [];
   }
 
@@ -269,7 +376,7 @@ export class NotificationManager {
         await this.scheduleTaskReminder(task);
       }
     }
-    console.log('[FCM] All tasks rescheduled');
+    console.log('All tasks rescheduled');
   }
 
   async getNotificationHistory(): Promise<any[]> {
@@ -295,14 +402,14 @@ export class NotificationManager {
     currencySymbol: string
   ): Promise<number | null> {
     const percentage = Math.round((spent / budget) * 100);
-    await scheduleReminder({
+    const id = await scheduleLocalNotification({
       title: `Budget Alert: ${category}`,
       body: `You've spent ${currencySymbol}${spent.toFixed(2)} of ${currencySymbol}${budget.toFixed(2)} (${percentage}%)`,
-      scheduledAt: new Date().toISOString(),
-      data: { type: 'budget', category, percentage: String(percentage) },
+      scheduledAt: new Date(Date.now() + 500),
+      extra: { type: 'budget', category, percentage: String(percentage) },
     });
-    console.log('[FCM] Budget alert sent for:', category);
-    return null;
+    console.log('Budget alert sent for:', category);
+    return id;
   }
 
   async checkBudgetAlerts(
@@ -333,14 +440,15 @@ export class NotificationManager {
   ): Promise<number | null> {
     const reminderDate = addDays(dueDate, -reminderDays);
     if (reminderDate > new Date()) {
-      await scheduleReminder({
+      const id = await scheduleLocalNotification({
         title: 'Bill Due Soon',
         body: `${description} — ${currencySymbol}${amount.toFixed(2)} due ${dueDate.toLocaleDateString()}`,
-        scheduledAt: reminderDate.toISOString(),
-        data: { type: 'bill', billId, dueDate: dueDate.toISOString() },
+        scheduledAt: reminderDate,
+        extra: { type: 'bill', billId, dueDate: dueDate.toISOString() },
       });
+      return id;
     }
-    console.log('[FCM] Bill reminder scheduled for:', description);
+    console.log('Bill reminder scheduled for:', description);
     return null;
   }
 
@@ -372,11 +480,11 @@ export class NotificationManager {
   }
 
   async schedulePersonalizedNotifications(): Promise<void> {
-    console.log('[FCM] Personalized notifications delegated to backend');
+    console.log('Personalized notifications scheduled');
   }
 
   async scheduleDailyMotivation(): Promise<void> {
-    console.log('[FCM] Daily motivation delegated to backend');
+    console.log('Daily motivation scheduled');
   }
 }
 

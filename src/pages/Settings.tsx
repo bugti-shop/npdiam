@@ -16,7 +16,7 @@ import { downloadBackup, downloadData, restoreFromBackup } from '@/utils/dataBac
 import { createNativeBackup, isNativePlatform } from '@/utils/nativeBackup';
 import { BackupSuccessDialog } from '@/components/BackupSuccessDialog';
 import { getSetting, setSetting, getAllSettings, clearAllSettings } from '@/utils/settingsStorage';
-import { clearFirebaseUrlCache } from '@/utils/firebaseApi';
+// Firebase API removed - using Local Notifications
 import { persistentNotificationManager } from '@/utils/persistentNotification';
 import { Switch } from '@/components/ui/switch';
 import { NoteTypeVisibilitySheet } from '@/components/NoteTypeVisibilitySheet';
@@ -86,9 +86,8 @@ const Settings = () => {
   const [dailyDigestEnabled, setDailyDigestEnabled] = useState(false);
   const [overdueAlertsEnabled, setOverdueAlertsEnabled] = useState(true);
 
-  // Firebase Functions URL
-  const [firebaseUrl, setFirebaseUrl] = useState('');
-  const [firebaseUrlSaved, setFirebaseUrlSaved] = useState(false);
+
+
 
   // Load settings from IndexedDB
   useEffect(() => {
@@ -101,8 +100,8 @@ const Settings = () => {
     getSetting<boolean>('dailyDigestEnabled', false).then(setDailyDigestEnabled);
     getSetting<boolean>('overdueAlertsEnabled', true).then(setOverdueAlertsEnabled);
 
-    // Load Firebase URL
-    getSetting<string>('firebaseFunctionsUrl', '').then(setFirebaseUrl);
+
+
   }, []);
 
   const handlePersistentNotificationToggle = async (enabled: boolean) => {
@@ -459,36 +458,8 @@ const Settings = () => {
                     onCheckedChange={handleOverdueAlertsToggle}
                   />
                 </div>
-                {/* Firebase Functions URL */}
-                <div className="px-4 py-3">
-                  <span className="text-foreground text-sm block mb-1">Firebase Functions URL</span>
-                  <span className="text-xs text-muted-foreground block mb-2">
-                    Cloud Functions base URL for push notifications
-                  </span>
-                  <div className="flex gap-2">
-                    <input
-                      type="url"
-                      value={firebaseUrl}
-                      onChange={(e) => {
-                        setFirebaseUrl(e.target.value);
-                        setFirebaseUrlSaved(false);
-                      }}
-                      placeholder="https://us-central1-project.cloudfunctions.net"
-                      className="flex-1 px-3 py-2 text-sm rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
-                    <button
-                      onClick={async () => {
-                        await setSetting('firebaseFunctionsUrl', firebaseUrl.replace(/\/$/, ''));
-                        clearFirebaseUrlCache();
-                        setFirebaseUrlSaved(true);
-                        toast({ title: 'Firebase URL saved' });
-                      }}
-                      className="px-3 py-2 text-sm rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-                    >
-                      {firebaseUrlSaved ? <Check className="h-4 w-4" /> : 'Save'}
-                    </button>
-                  </div>
-                </div>
+
+
               </div>
             )}
           </div>
