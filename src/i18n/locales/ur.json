@@ -1336,7 +1336,9 @@
     "hourly": "ہر گھنٹے",
     "task": "ٹاسک",
     "note": "نوٹ",
-    "notification": "اطلاع"
+    "notification": "اطلاع",
+    "weekdayAt": "{{day}} بوقت {{time}}",
+    "dateAt": "{{date}} بوقت {{time}}"
   },
   "todayPage": {
     "autoUpdatedRecurring": "{{count}} دہرائے جانے والے ٹاسک اگلی تاریخ پر اپ ڈیٹ ہو گئے",

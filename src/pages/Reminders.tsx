@@ -160,9 +160,9 @@ const Reminders = () => {
     } else if (isTomorrow(date)) {
       return t('remindersPage.tomorrowAt', { time: format(date, 'h:mm a') });
     } else if (isThisWeek(date)) {
-      return format(date, 'EEEE \'at\' h:mm a');
+      return t('remindersPage.weekdayAt', { day: format(date, 'EEEE'), time: format(date, 'h:mm a') });
     } else {
-      return format(date, 'MMM dd \'at\' h:mm a');
+      return t('remindersPage.dateAt', { date: format(date, 'MMM dd'), time: format(date, 'h:mm a') });
     }
   };
 
@@ -355,7 +355,7 @@ const Reminders = () => {
                               {item.extra?.recurringType && (
                                 <Badge variant="secondary" className="gap-1">
                                   <Repeat className="h-3 w-3" />
-                                  {item.extra.recurringType}
+                                  {String(t(`remindersPage.${item.extra.recurringType}`, item.extra.recurringType))}
                                 </Badge>
                               )}
                             </div>
