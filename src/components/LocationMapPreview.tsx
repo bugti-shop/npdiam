@@ -33,17 +33,12 @@ export const LocationMapPreview = ({
   const [mapboxToken, setMapboxToken] = useState<string>('');
   const [showTokenInput, setShowTokenInput] = useState(false);
 
-  // Check for stored token
+  // Load mapbox token with default fallback
   useEffect(() => {
     const loadToken = async () => {
-      const { getSetting } = await import('@/utils/settingsStorage');
-      const storedToken = await getSetting<string>('mapbox_token', '');
-      if (storedToken) {
-        setMapboxToken(storedToken);
-      } else {
-        setShowTokenInput(true);
-        setIsLoading(false);
-      }
+      const { getMapboxToken } = await import('@/utils/mapboxConfig');
+      const token = await getMapboxToken();
+      setMapboxToken(token);
     };
     loadToken();
   }, []);

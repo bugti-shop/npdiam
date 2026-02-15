@@ -43,7 +43,59 @@ export const isInsideGeofence = (
   return distance <= locationReminder.radius;
 };
 
-// Geofence notification now delegated to FCM backend
+// Send local notification when geofence is triggered
+const sendLocalNotification = async (
+  task: TodoItem,
+  isEntering: boolean
+): Promise<void> => {
+  const locationName = task.locationReminder?.address.split(',')[0] || 'Location';
+  const action = isEntering ? 'Arrived at' : 'Left';
+  const body = `${action} ${locationName} — "${task.text}"`;
+
+  try {
+    const { LocalNotifications } = await import('@capacitor/local-notifications');
+    
+    // Request permission if needed
+    const permResult = await LocalNotifications.checkPermissions();
+    if (permResult.display !== 'granted') {
+      const reqResult = await LocalNotifications.requestPermissions();
+      if (reqResult.display !== 'granted') {
+        console.warn('Local notification permission denied');
+        return;
+      }
+    }
+
+    await LocalNotifications.schedule({
+      notifications: [{
+        title: isEntering ? '📍 Location Reminder' : '📍 Leaving Area',
+        body,
+        id: Math.floor(Math.random() * 100000),
+        schedule: { at: new Date(Date.now() + 100) }, // Near-immediate
+        sound: undefined,
+        extra: { taskId: task.id, type: 'geofence' },
+      }],
+    });
+  } catch (err) {
+    // Fallback: browser Notification API
+    try {
+      if ('Notification' in window && Notification.permission === 'granted') {
+        new Notification(isEntering ? '📍 Location Reminder' : '📍 Leaving Area', {
+          body,
+          icon: '/nota-logo.png',
+        });
+      } else if ('Notification' in window && Notification.permission !== 'denied') {
+        const perm = await Notification.requestPermission();
+        if (perm === 'granted') {
+          new Notification(isEntering ? '📍 Location Reminder' : '📍 Leaving Area', {
+            body,
+            icon: '/nota-logo.png',
+          });
+        }
+      }
+    } catch {}
+  }
+};
+
 export const triggerGeofenceNotification = async (
   task: TodoItem,
   isEntering: boolean
@@ -54,15 +106,18 @@ export const triggerGeofenceNotification = async (
     await Haptics.impact({ style: ImpactStyle.Heavy });
   } catch {}
 
+  // Send actual notification
+  await sendLocalNotification(task, isEntering);
+
+  // Also dispatch in-app event
   const locationName = task.locationReminder.address.split(',')[0] || 'Location';
   const action = isEntering ? 'Arrived at' : 'Left';
   
-  // Dispatch event for in-app handling; actual notification via FCM backend
   window.dispatchEvent(new CustomEvent('geofenceTriggered', {
     detail: { taskId: task.id, text: task.text, locationName, action },
   }));
   
-  console.log(`[FCM] Geofence notification delegated to backend for task: ${task.text}`);
+  console.log(`[Geofence] Notification sent for task: ${task.text} (${action} ${locationName})`);
 };
 
 export const checkGeofences = async (

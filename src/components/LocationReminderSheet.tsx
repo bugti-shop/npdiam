@@ -56,6 +56,7 @@ export const LocationReminderSheet = ({
   const [isSearching, setIsSearching] = useState(false);
   const [mapboxToken, setMapboxToken] = useState('');
   const [showTokenInput, setShowTokenInput] = useState(false);
+  const [tokenLoaded, setTokenLoaded] = useState(false);
   
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
@@ -68,16 +69,13 @@ export const LocationReminderSheet = ({
     priority: 'sheet',
   });
 
-  // Check for stored token from IndexedDB
+  // Load mapbox token with default fallback
   useEffect(() => {
     const loadToken = async () => {
-      const { getSetting } = await import('@/utils/settingsStorage');
-      const storedToken = await getSetting<string | null>('mapbox_token', null);
-      if (storedToken) {
-        setMapboxToken(storedToken);
-      } else {
-        setShowTokenInput(true);
-      }
+      const { getMapboxToken } = await import('@/utils/mapboxConfig');
+      const token = await getMapboxToken();
+      setMapboxToken(token);
+      setTokenLoaded(true);
     };
     loadToken();
   }, []);
