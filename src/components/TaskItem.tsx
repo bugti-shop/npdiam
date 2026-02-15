@@ -682,7 +682,7 @@ export const TaskItem = memo(({
                   isBlocked ? "bg-warning/20 text-warning" : "bg-success/20 text-success"
                 )}>
                   <Link className="h-2.5 w-2.5" />
-                  {isBlocked ? `${blockedBy.length} blocking` : 'Ready'}
+                  {isBlocked ? `${blockedBy.length} ${t('tasks.blocking', 'blocking')}` : t('tasks.ready', 'Ready')}
                 </span>
               )}
               {hasSubtasks && !isOpen && (
@@ -733,7 +733,7 @@ export const TaskItem = memo(({
                 );
               })}
               <p className="text-xs text-muted-foreground px-2 py-1">
-                {item.subtasks!.filter(st => st.completed).length}/{item.subtasks!.length} completed
+                {item.subtasks!.filter(st => st.completed).length}/{item.subtasks!.length} {t('tasks.completed', 'completed')}
               </p>
             </div>
           )}
