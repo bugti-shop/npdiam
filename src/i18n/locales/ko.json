@@ -153,7 +153,21 @@
     "syncNotes": "노트 및 음성 녹음",
     "syncTasks": "작업 및 하위 작업",
     "syncFolders": "폴더 및 섹션",
-    "signInToSync": "Google로 로그인하여 모든 기기에서 노트와 작업을 동기화하세요"
+    "signInToSync": "Google로 로그인하여 모든 기기에서 노트와 작업을 동기화하세요",
+    "syncEnabled": "Google Drive에 연결되어 동기화 중.",
+    "localOnly": "데이터가 이 기기에 로컬로 저장됩니다.",
+    "backupSize": "데이터 크기",
+    "backupSizeDesc": "총 로컬 데이터",
+    "signInGoogle": "Google로 로그인",
+    "googleDriveSync": "Google Drive 동기화",
+    "lastSyncLabel": "마지막 동기화: {{time}}",
+    "signInSuccessGDrive": "Google 계정이 Drive 동기화에 연결되었습니다.",
+    "signedOutDesc2": "Google 계정 연결 해제됨.",
+    "syncAllData": "모든 데이터가 Google Drive에 동기화되었습니다.",
+    "syncStatsDesc": "노트: {{notes}} 동기화됨. 작업: {{tasks}} 동기화됨.",
+    "syncStatsConflicts": "{{conflicts}}개 충돌.",
+    "minutesShort": "{{count}}분 전",
+    "hoursShort": "{{count}}시간 전"
   },
   "settings": {
     "title": "설정",

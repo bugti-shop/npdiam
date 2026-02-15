@@ -184,7 +184,7 @@ export const AppLockSettingsSheet = ({ open, onOpenChange, onSetupLock }: AppLoc
                     <SelectContent>
                       {LOCK_TIMING_OPTIONS.map((option) => (
                         <SelectItem key={option.value} value={option.value}>
-                          {option.label}
+                          {t(option.label, option.label)}
                         </SelectItem>
                       ))}
                     </SelectContent>
