@@ -455,6 +455,7 @@
     "voiceRecordingSaved": "Gravação de voz salva",
     "recordingTrimmed": "Gravação cortada",
     "dateTimeSaved": "Configurações de data e hora salvas",
+    "deadlineSaved": "Prazo salvo",
     "sectionCreated": "Seção criada",
     "sectionDeleted": "Seção excluída",
     "tagAdded": "Tag adicionada",
@@ -1785,7 +1786,17 @@
     "recentTags": "Tags recentes",
     "tagColor": "Cor da tag",
     "manageSavedTags": "Gerenciar Tags Salvas",
-    "noSavedTagsYet": "Nenhuma tag salva ainda"
+    "noSavedTagsYet": "Nenhuma tag salva ainda",
+    "trimRecording": "Cortar gravação",
+    "tagName": "Nome da tag",
+    "deadlineLabel": "Prazo: {{date}}",
+    "reminderAt": "Lembrete {{time}}",
+    "repeatsFrequency": "Repete {{frequency}}",
+    "atTime": "Na hora exata",
+    "attachment": "Arquivos",
+    "filesAdded": "Arquivos",
+    "attachments": "Anexos de arquivo",
+    "addFiles": "Adicionar arquivos"
   },
   "settings": {
     "title": "Configurações",

@@ -508,6 +508,7 @@
     "voiceRecordingSaved": "Enregistrement vocal sauvegardé",
     "recordingTrimmed": "Enregistrement découpé",
     "dateTimeSaved": "Paramètres de date et heure sauvegardés",
+    "deadlineSaved": "Échéance sauvegardée",
     "sectionCreated": "Section créée",
     "sectionDeleted": "Section supprimée",
     "tagAdded": "Tag ajouté",
@@ -1879,7 +1880,17 @@
     "recentTags": "Tags récents",
     "tagColor": "Couleur du tag",
     "manageSavedTags": "Gérer les Tags Sauvegardés",
-    "noSavedTagsYet": "Aucun tag sauvegardé"
+    "noSavedTagsYet": "Aucun tag sauvegardé",
+    "trimRecording": "Découper l'enregistrement",
+    "tagName": "Nom du tag",
+    "deadlineLabel": "Échéance: {{date}}",
+    "reminderAt": "Rappel {{time}}",
+    "repeatsFrequency": "Se répète {{frequency}}",
+    "atTime": "À l'heure",
+    "attachment": "Fichiers",
+    "filesAdded": "Fichiers",
+    "attachments": "Pièces jointes",
+    "addFiles": "Ajouter des fichiers"
   },
   "welcome": {
     "startJourney": "Commencez Votre Parcours de Productivité",

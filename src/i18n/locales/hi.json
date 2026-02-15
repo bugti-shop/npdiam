@@ -455,6 +455,7 @@
     "voiceRecordingSaved": "वॉइस रिकॉर्डिंग सहेजी गई",
     "recordingTrimmed": "रिकॉर्डिंग ट्रिम की गई",
     "dateTimeSaved": "दिनांक और समय सेटिंग्स सहेजी गईं",
+    "deadlineSaved": "समय सीमा सहेजी गई",
     "sectionCreated": "अनुभाग बनाया गया",
     "sectionDeleted": "अनुभाग हटाया गया",
     "tagAdded": "टैग जोड़ा गया",
@@ -1719,7 +1720,17 @@
     "recentTags": "हाल के टैग",
     "tagColor": "टैग का रंग",
     "manageSavedTags": "सहेजे गए टैग प्रबंधित करें",
-    "noSavedTagsYet": "अभी तक कोई टैग सहेजा नहीं गया"
+    "noSavedTagsYet": "अभी तक कोई टैग सहेजा नहीं गया",
+    "trimRecording": "रिकॉर्डिंग ट्रिम करें",
+    "tagName": "टैग का नाम",
+    "deadlineLabel": "समय सीमा: {{date}}",
+    "reminderAt": "अनुस्मारक {{time}}",
+    "repeatsFrequency": "दोहराव {{frequency}}",
+    "atTime": "सही समय पर",
+    "attachment": "फ़ाइलें",
+    "filesAdded": "फ़ाइलें",
+    "attachments": "फ़ाइल अटैचमेंट",
+    "addFiles": "फ़ाइलें जोड़ें"
   },
   "sync": {
     "integrationsImport": "एकीकरण और आयात",

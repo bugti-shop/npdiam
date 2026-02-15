@@ -900,14 +900,14 @@ export const TaskInputSheet = ({ isOpen, onClose, onAddTask, folders, selectedFo
               )}
               {parsedTask.reminderOffset && (
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs rounded-full bg-warning/10 text-warning">
-                  🔔 {parsedTask.reminderOffset === 'exact' ? 'At time' : parsedTask.reminderOffset}
+                  🔔 {parsedTask.reminderOffset === 'exact' ? t('taskInput.atTime') : parsedTask.reminderOffset}
                 </span>
               )}
               {parsedTask.repeatType && (
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs rounded-full bg-accent-purple/10 text-accent-purple">
                   <Timer className="h-3 w-3" />
                   {parsedTask.repeatType === 'custom' && parsedTask.repeatDays 
-                    ? `Every ${['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].filter((_, i) => parsedTask.repeatDays?.includes(i)).join(', ')}`
+                    ? `${t('dateTime.repeatEvery')} ${[t('dateTime.weekDays.sun'), t('dateTime.weekDays.mon'), t('dateTime.weekDays.tue'), t('dateTime.weekDays.wed'), t('dateTime.weekDays.thu'), t('dateTime.weekDays.fri'), t('dateTime.weekDays.sat')].filter((_, i) => parsedTask.repeatDays?.includes(i)).join(', ')}`
                     : parsedTask.repeatType}
                 </span>
               )}
@@ -1012,7 +1012,7 @@ export const TaskInputSheet = ({ isOpen, onClose, onAddTask, folders, selectedFo
                   setShowTrimmer(true);
                 }}
                 className="p-2 hover:bg-muted rounded-full transition-colors"
-                title="Trim recording"
+                title={t('taskInput.trimRecording')}
               >
                 <Settings2 className="h-4 w-4 text-muted-foreground" />
               </button>
@@ -1052,7 +1052,7 @@ export const TaskInputSheet = ({ isOpen, onClose, onAddTask, folders, selectedFo
               <span className="text-sm text-blue-700 dark:text-blue-300 font-medium">
                 {dueDate ? format(dueDate, 'MMM d') : ''}
                 {dueDate && (dueDate.getHours() !== 0 || dueDate.getMinutes() !== 0) ? ` • ${format(dueDate, 'h:mm a')}` : ''}
-                {repeatSettings ? ` • Repeats ${repeatSettings.frequency}` : ''}
+                {repeatSettings ? ` • ${t('taskInput.repeatsFrequency', { frequency: t(`dateTime.frequency.${repeatSettings.frequency}`) })}` : ''}
               </span>
               <button
                 onClick={() => {
@@ -1074,8 +1074,8 @@ export const TaskInputSheet = ({ isOpen, onClose, onAddTask, folders, selectedFo
             <div className="px-4 py-2 bg-rose-50 dark:bg-rose-950/20 rounded-lg flex items-center gap-2 mb-4">
               <CalendarClock className="h-4 w-4 text-rose-500" />
               <span className="text-sm text-rose-700 dark:text-rose-300 font-medium">
-                Deadline: {format(deadline, 'MMM d')}
-                {deadlineReminderTime ? ` • Reminder ${format(deadlineReminderTime, 'h:mm a')}` : ''}
+                {t('taskInput.deadlineLabel', { date: format(deadline, 'MMM d') })}
+                {deadlineReminderTime ? ` • ${t('taskInput.reminderAt', { time: format(deadlineReminderTime, 'h:mm a') })}` : ''}
               </span>
               <button
                 onClick={() => {
@@ -1719,7 +1719,7 @@ export const TaskInputSheet = ({ isOpen, onClose, onAddTask, folders, selectedFo
             setDeadlineReminderTime(undefined);
           }
           setShowDeadlinePage(false);
-          toast.success('Deadline saved');
+          toast.success(t('toasts.deadlineSaved'));
         }}
         initialDate={deadline}
         hideRepeat={true}
@@ -1756,7 +1756,7 @@ export const TaskInputSheet = ({ isOpen, onClose, onAddTask, folders, selectedFo
                       <Input
                         value={editTagName}
                         onChange={(e) => setEditTagName(e.target.value)}
-                        placeholder="Tag name"
+                        placeholder={t('taskInput.tagName')}
                         className="h-9"
                         autoFocus
                       />
@@ -1775,10 +1775,10 @@ export const TaskInputSheet = ({ isOpen, onClose, onAddTask, folders, selectedFo
                       </div>
                       <div className="flex gap-2 mt-1">
                         <Button size="sm" onClick={handleSaveEditTag} className="flex-1 h-8">
-                          Save
+                          {t('common.save')}
                         </Button>
                         <Button size="sm" variant="outline" onClick={handleCancelEditTag} className="flex-1 h-8">
-                          Cancel
+                          {t('common.cancel')}
                         </Button>
                       </div>
                     </>

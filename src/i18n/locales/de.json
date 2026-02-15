@@ -508,6 +508,7 @@
     "voiceRecordingSaved": "Sprachaufnahme gespeichert",
     "recordingTrimmed": "Aufnahme zugeschnitten",
     "dateTimeSaved": "Datum- und Uhrzeiteinstellungen gespeichert",
+    "deadlineSaved": "Frist gespeichert",
     "sectionCreated": "Abschnitt erstellt",
     "sectionDeleted": "Abschnitt gelöscht",
     "tagAdded": "Tag hinzugefügt",
@@ -1880,7 +1881,17 @@
     "recentTags": "Letzte Tags",
     "tagColor": "Tag-Farbe",
     "manageSavedTags": "Gespeicherte Tags Verwalten",
-    "noSavedTagsYet": "Noch keine gespeicherten Tags"
+    "noSavedTagsYet": "Noch keine gespeicherten Tags",
+    "trimRecording": "Aufnahme zuschneiden",
+    "tagName": "Tag-Name",
+    "deadlineLabel": "Frist: {{date}}",
+    "reminderAt": "Erinnerung {{time}}",
+    "repeatsFrequency": "Wiederholt sich {{frequency}}",
+    "atTime": "Zur genauen Zeit",
+    "attachment": "Dateien",
+    "filesAdded": "Dateien",
+    "attachments": "Dateianhänge",
+    "addFiles": "Dateien hinzufügen"
   },
   "welcome": {
     "startJourney": "Starten Sie Ihre Produktivitätsreise",

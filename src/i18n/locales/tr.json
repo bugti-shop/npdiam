@@ -508,6 +508,7 @@
     "voiceRecordingSaved": "Ses kaydı kaydedildi",
     "recordingTrimmed": "Kayıt kırpıldı",
     "dateTimeSaved": "Tarih ve saat ayarları kaydedildi",
+    "deadlineSaved": "Son tarih kaydedildi",
     "sectionCreated": "Bölüm oluşturuldu",
     "sectionDeleted": "Bölüm silindi",
     "tagAdded": "Etiket eklendi",
@@ -1683,7 +1684,17 @@
     "recentTags": "Son etiketler",
     "tagColor": "Etiket rengi",
     "manageSavedTags": "Kayıtlı Etiketleri Yönet",
-    "noSavedTagsYet": "Henüz kayıtlı etiket yok"
+    "noSavedTagsYet": "Henüz kayıtlı etiket yok",
+    "trimRecording": "Kaydı kırp",
+    "tagName": "Etiket adı",
+    "deadlineLabel": "Son tarih: {{date}}",
+    "reminderAt": "Hatırlatıcı {{time}}",
+    "repeatsFrequency": "Tekrarlanır {{frequency}}",
+    "atTime": "Tam saatinde",
+    "attachment": "Dosyalar",
+    "filesAdded": "Dosya",
+    "attachments": "Dosya ekleri",
+    "addFiles": "Dosya ekle"
   },
   "webClipper": {
     "title": "Web Kesici",

@@ -455,6 +455,7 @@
     "voiceRecordingSaved": "تم حفظ التسجيل الصوتي",
     "recordingTrimmed": "تم قص التسجيل",
     "dateTimeSaved": "تم حفظ إعدادات التاريخ والوقت",
+    "deadlineSaved": "تم حفظ الموعد النهائي",
     "sectionCreated": "تم إنشاء القسم",
     "sectionDeleted": "تم حذف القسم",
     "tagAdded": "تمت إضافة الوسم",
@@ -1785,7 +1786,17 @@
     "recentTags": "الوسوم الأخيرة",
     "tagColor": "لون الوسم",
     "manageSavedTags": "إدارة الوسوم المحفوظة",
-    "noSavedTagsYet": "لا توجد وسوم محفوظة بعد"
+    "noSavedTagsYet": "لا توجد وسوم محفوظة بعد",
+    "trimRecording": "قص التسجيل",
+    "tagName": "اسم الوسم",
+    "deadlineLabel": "الموعد النهائي: {{date}}",
+    "reminderAt": "تذكير {{time}}",
+    "repeatsFrequency": "يتكرر {{frequency}}",
+    "atTime": "في الوقت المحدد",
+    "attachment": "ملفات",
+    "filesAdded": "ملفات",
+    "attachments": "مرفقات الملفات",
+    "addFiles": "إضافة ملفات"
   },
   "settings": {
     "title": "الإعدادات",
