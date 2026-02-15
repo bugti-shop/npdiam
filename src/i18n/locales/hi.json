@@ -1683,6 +1683,13 @@
     "all": "सभी",
     "actions": "कार्रवाइयाँ"
   },
+  "dateTime": {
+    "title": "तारीख और समय", "cancel": "रद्द करें", "save": "सहेजें", "today": "आज", "tomorrow": "कल", "thisWeekend": "इस सप्ताहांत", "nextWeek": "अगले सप्ताह", "time": "समय", "selectHour": "घंटा चुनें", "selectMinutes": "मिनट चुनें", "confirmTime": "समय पुष्टि करें", "reminder": "अनुस्मारक", "setRepeatTask": "दोहराने वाला कार्य सेट करें", "repeatEvery": "हर बार दोहराएं", "repeatOn": "दोहराने का दिन", "repeatEndsAt": "दोहराव समाप्ति", "never": "कभी नहीं", "onSpecificDate": "एक निश्चित तारीख पर", "afterXOccurrences": "X बार के बाद", "afterNTimes": "{{count}} बार के बाद", "dayN": "दिन {{count}}",
+    "frequency": { "hour": "घंटा", "daily": "दैनिक", "weekly": "साप्ताहिक", "monthly": "मासिक", "yearly": "वार्षिक" },
+    "units": { "hour": "{{count}} घंटा", "hours": "{{count}} घंटे", "day": "{{count}} दिन", "days": "{{count}} दिन", "week": "{{count}} सप्ताह", "weeks": "{{count}} सप्ताह", "month": "{{count}} महीना", "months": "{{count}} महीने", "year": "{{count}} साल", "years": "{{count}} साल" },
+    "reminderOptions": { "instant": "तुरंत (सही समय पर)", "noReminder": "कोई अनुस्मारक नहीं", "5min": "5 मिनट पहले", "10min": "10 मिनट पहले", "15min": "15 मिनट पहले", "30min": "30 मिनट पहले", "1hour": "1 घंटे पहले", "2hours": "2 घंटे पहले", "morning": "सुबह (9:00)", "eveningBefore": "पिछली शाम (18:00)", "1day9am": "पिछले दिन सुबह 9:00 बजे", "1day": "1 दिन पहले", "2days": "2 दिन पहले", "1week": "1 सप्ताह पहले" },
+    "weekDays": { "sun": "रवि", "mon": "सोम", "tue": "मंगल", "wed": "बुध", "thu": "गुरु", "fri": "शुक्र", "sat": "शनि" }
+  },
   "taskInput": {
     "placeholder": "उदा. कल शाम 5 बजे किराना खरीदें",
     "templates": "टेम्प्लेट",

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { format, isSameDay, startOfMonth, endOfMonth, eachDayOfInterval, getDay, addMonths, addDays, startOfWeek, addWeeks } from 'date-fns';
 import { ChevronLeft, ChevronRight, X, Check } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useHardwareBackButton } from '@/hooks/useHardwareBackButton';
@@ -52,6 +53,7 @@ export const TaskDateTimePage = ({
   initialRepeatSettings,
   hideRepeat = false,
 }: TaskDateTimePageProps) => {
+  const { t } = useTranslation();
   const today = new Date();
   const [currentMonthOffset, setCurrentMonthOffset] = useState(0);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(initialDate);
@@ -128,7 +130,7 @@ export const TaskDateTimePage = ({
   const monthEnd = endOfMonth(displayMonth);
   const daysInMonth = eachDayOfInterval({ start: monthStart, end: monthEnd });
   const startPadding = getDay(monthStart);
-  const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const weekDays = [t('dateTime.weekDays.sun'), t('dateTime.weekDays.mon'), t('dateTime.weekDays.tue'), t('dateTime.weekDays.wed'), t('dateTime.weekDays.thu'), t('dateTime.weekDays.fri'), t('dateTime.weekDays.sat')];
 
   const handlePrevMonth = () => setCurrentMonthOffset(prev => prev - 1);
   const handleNextMonth = () => setCurrentMonthOffset(prev => prev + 1);
@@ -164,20 +166,20 @@ export const TaskDateTimePage = ({
   };
 
   const reminderOptions = [
-    { value: 'instant', label: 'Instant (at exact time)' },
-    { value: 'no_reminder', label: 'No reminder' },
-    { value: '5min', label: '5 minutes before' },
-    { value: '10min', label: '10 minutes before' },
-    { value: '15min', label: '15 minutes before' },
-    { value: '30min', label: '30 minutes before' },
-    { value: '1hour', label: '1 hour before' },
-    { value: '2hours', label: '2 hours before' },
-    { value: 'morning', label: 'Morning of (9:00 AM)' },
-    { value: 'evening_before', label: 'Evening before (6:00 PM)' },
-    { value: '1day_9am', label: 'Day before at 9:00 AM' },
-    { value: '1day', label: '1 day before' },
-    { value: '2days', label: '2 days before' },
-    { value: '1week', label: '1 week before' },
+    { value: 'instant', label: t('dateTime.reminderOptions.instant') },
+    { value: 'no_reminder', label: t('dateTime.reminderOptions.noReminder') },
+    { value: '5min', label: t('dateTime.reminderOptions.5min') },
+    { value: '10min', label: t('dateTime.reminderOptions.10min') },
+    { value: '15min', label: t('dateTime.reminderOptions.15min') },
+    { value: '30min', label: t('dateTime.reminderOptions.30min') },
+    { value: '1hour', label: t('dateTime.reminderOptions.1hour') },
+    { value: '2hours', label: t('dateTime.reminderOptions.2hours') },
+    { value: 'morning', label: t('dateTime.reminderOptions.morning') },
+    { value: 'evening_before', label: t('dateTime.reminderOptions.eveningBefore') },
+    { value: '1day_9am', label: t('dateTime.reminderOptions.1day9am') },
+    { value: '1day', label: t('dateTime.reminderOptions.1day') },
+    { value: '2days', label: t('dateTime.reminderOptions.2days') },
+    { value: '1week', label: t('dateTime.reminderOptions.1week') },
   ];
 
   const hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString());
@@ -197,12 +199,12 @@ export const TaskDateTimePage = ({
       <header className="flex items-center justify-between px-4 py-3 border-b border-border">
         <Button variant="ghost" size="sm" onClick={onClose}>
           <X className="h-5 w-5 mr-1" />
-          Cancel
+          {t('dateTime.cancel')}
         </Button>
-        <h2 className="text-lg font-semibold">Date & Time</h2>
+        <h2 className="text-lg font-semibold">{t('dateTime.title')}</h2>
         <Button variant="ghost" size="sm" onClick={handleSave}>
           <Check className="h-5 w-5 mr-1" />
-          Save
+          {t('dateTime.save')}
         </Button>
       </header>
 
@@ -220,7 +222,7 @@ export const TaskDateTimePage = ({
                   : "bg-muted text-muted-foreground hover:bg-muted/80"
               )}
             >
-              Today
+              {t('dateTime.today')}
             </button>
             <button
               onClick={() => setSelectedDate(addDays(today, 1))}
@@ -231,7 +233,7 @@ export const TaskDateTimePage = ({
                   : "bg-muted text-muted-foreground hover:bg-muted/80"
               )}
             >
-              Tomorrow
+              {t('dateTime.tomorrow')}
             </button>
             <button
               onClick={() => setSelectedDate(startOfWeek(addWeeks(today, 1), { weekStartsOn: 6 }))}
@@ -242,7 +244,7 @@ export const TaskDateTimePage = ({
                   : "bg-muted text-muted-foreground hover:bg-muted/80"
               )}
             >
-              This Weekend
+              {t('dateTime.thisWeekend')}
             </button>
             <button
               onClick={() => setSelectedDate(addWeeks(today, 1))}
@@ -253,7 +255,7 @@ export const TaskDateTimePage = ({
                   : "bg-muted text-muted-foreground hover:bg-muted/80"
               )}
             >
-              Next Week
+              {t('dateTime.nextWeek')}
             </button>
           </div>
         </div>
@@ -318,7 +320,7 @@ export const TaskDateTimePage = ({
 
         {/* Time Section */}
         <div className="px-6 py-6 border-t border-border">
-          <h4 className="text-sm font-medium mb-4">Time</h4>
+          <h4 className="text-sm font-medium mb-4">{t('dateTime.time')}</h4>
           <ClockTimePicker
             hour={selectedHour}
             minute={selectedMinute}
@@ -331,11 +333,11 @@ export const TaskDateTimePage = ({
 
         {/* Reminder Section */}
         <div className="px-6 py-4 border-t border-border">
-          <h4 className="text-sm font-medium mb-3">Reminder</h4>
+          <h4 className="text-sm font-medium mb-3">{t('dateTime.reminder')}</h4>
           <Select value={reminder} onValueChange={setReminder}>
             <SelectTrigger className="w-full">
               <SelectValue>
-                {reminderOptions.find(o => o.value === reminder)?.label || 'Instant (at exact time)'}
+                {reminderOptions.find(o => o.value === reminder)?.label || t('dateTime.reminderOptions.instant')}
               </SelectValue>
             </SelectTrigger>
             <SelectContent className="bg-popover">
@@ -349,7 +351,7 @@ export const TaskDateTimePage = ({
         {/* Repeat Section - only show if hideRepeat is false */}
         {!hideRepeat && (
           <div className="px-6 py-4 border-t border-border">
-            <h4 className="text-sm font-medium mb-4">Set as Repeat Task</h4>
+            <h4 className="text-sm font-medium mb-4">{t('dateTime.setRepeatTask')}</h4>
             
             {/* Frequency Tabs */}
             <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
@@ -364,7 +366,7 @@ export const TaskDateTimePage = ({
                       : "bg-muted text-muted-foreground hover:bg-muted/80"
                   )}
                 >
-                  {freq.charAt(0).toUpperCase() + freq.slice(1)}
+                  {t(`dateTime.frequency.${freq}`)}
                 </button>
               ))}
             </div>
@@ -374,7 +376,7 @@ export const TaskDateTimePage = ({
               <div className="space-y-4 animate-in slide-in-from-top-2">
                 {/* Repeat Every */}
                 <div className="flex items-center justify-between">
-                  <span className="text-sm">Repeat Every</span>
+                  <span className="text-sm">{t('dateTime.repeatEvery')}</span>
                   <Select value={repeatInterval} onValueChange={setRepeatInterval}>
                     <SelectTrigger className="w-32">
                       <SelectValue />
@@ -383,35 +385,35 @@ export const TaskDateTimePage = ({
                       {repeatFrequency === 'hour' && (
                         Array.from({ length: 12 }, (_, i) => i + 1).map((n) => (
                           <SelectItem key={n} value={n.toString()}>
-                            {n} hour{n > 1 ? 's' : ''}
+                            {n > 1 ? t('dateTime.units.hours', { count: n }) : t('dateTime.units.hour', { count: n })}
                           </SelectItem>
                         ))
                       )}
                       {repeatFrequency === 'daily' && (
                         Array.from({ length: 30 }, (_, i) => i + 1).map((n) => (
                           <SelectItem key={n} value={n.toString()}>
-                            {n} day{n > 1 ? 's' : ''}
+                            {n > 1 ? t('dateTime.units.days', { count: n }) : t('dateTime.units.day', { count: n })}
                           </SelectItem>
                         ))
                       )}
                       {repeatFrequency === 'weekly' && (
                         Array.from({ length: 12 }, (_, i) => i + 1).map((n) => (
                           <SelectItem key={n} value={n.toString()}>
-                            {n} week{n > 1 ? 's' : ''}
+                            {n > 1 ? t('dateTime.units.weeks', { count: n }) : t('dateTime.units.week', { count: n })}
                           </SelectItem>
                         ))
                       )}
                       {repeatFrequency === 'monthly' && (
                         Array.from({ length: 12 }, (_, i) => i + 1).map((n) => (
                           <SelectItem key={n} value={n.toString()}>
-                            {n} month{n > 1 ? 's' : ''}
+                            {n > 1 ? t('dateTime.units.months', { count: n }) : t('dateTime.units.month', { count: n })}
                           </SelectItem>
                         ))
                       )}
                       {repeatFrequency === 'yearly' && (
                         Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
                           <SelectItem key={n} value={n.toString()}>
-                            {n} year{n > 1 ? 's' : ''}
+                            {n > 1 ? t('dateTime.units.years', { count: n }) : t('dateTime.units.year', { count: n })}
                           </SelectItem>
                         ))
                       )}
@@ -422,9 +424,9 @@ export const TaskDateTimePage = ({
                 {/* Weekly: Repeat On Days */}
                 {repeatFrequency === 'weekly' && (
                   <div className="space-y-2">
-                    <span className="text-sm">Repeat on</span>
+                    <span className="text-sm">{t('dateTime.repeatOn')}</span>
                     <div className="flex gap-2 flex-wrap">
-                      {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day, index) => (
+                      {[t('dateTime.weekDays.sun'), t('dateTime.weekDays.mon'), t('dateTime.weekDays.tue'), t('dateTime.weekDays.wed'), t('dateTime.weekDays.thu'), t('dateTime.weekDays.fri'), t('dateTime.weekDays.sat')].map((day, index) => (
                         <button
                           key={day}
                           onClick={() => toggleWeeklyDay(index)}
@@ -445,7 +447,7 @@ export const TaskDateTimePage = ({
                 {/* Monthly: Repeat On Day */}
                 {repeatFrequency === 'monthly' && (
                   <div className="flex items-center justify-between">
-                    <span className="text-sm">Repeat on</span>
+                    <span className="text-sm">{t('dateTime.repeatOn')}</span>
                     <Select value={monthlyDay} onValueChange={setMonthlyDay}>
                       <SelectTrigger className="w-32">
                         <SelectValue />
@@ -453,7 +455,7 @@ export const TaskDateTimePage = ({
                       <SelectContent className="bg-popover max-h-60">
                         {Array.from({ length: 30 }, (_, i) => i + 1).map((n) => (
                           <SelectItem key={n} value={n.toString()}>
-                            Day {n}
+                            {t('dateTime.dayN', { count: n })}
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -463,15 +465,15 @@ export const TaskDateTimePage = ({
 
                 {/* Repeat Ends At */}
                 <div className="space-y-3">
-                  <span className="text-sm">Repeat Ends at</span>
+                  <span className="text-sm">{t('dateTime.repeatEndsAt')}</span>
                   <Select value={repeatEndsType} onValueChange={(v) => setRepeatEndsType(v as RepeatEndsType)}>
                     <SelectTrigger className="w-full">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-popover">
-                      <SelectItem value="never">Never</SelectItem>
-                      <SelectItem value="on_date">On a specific date</SelectItem>
-                      <SelectItem value="after_occurrences">After X occurrences</SelectItem>
+                      <SelectItem value="never">{t('dateTime.never')}</SelectItem>
+                      <SelectItem value="on_date">{t('dateTime.onSpecificDate')}</SelectItem>
+                      <SelectItem value="after_occurrences">{t('dateTime.afterXOccurrences')}</SelectItem>
                     </SelectContent>
                   </Select>
 
@@ -483,7 +485,7 @@ export const TaskDateTimePage = ({
                       <SelectContent className="bg-popover max-h-60">
                         {[5, 10, 15, 20, 25, 30, 50, 100].map((n) => (
                           <SelectItem key={n} value={n.toString()}>
-                            After {n} times
+                            {t('dateTime.afterNTimes', { count: n })}
                           </SelectItem>
                         ))}
                       </SelectContent>

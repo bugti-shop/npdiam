@@ -1092,6 +1092,13 @@
     "all": "سب",
     "actions": "اعمال"
   },
+  "dateTime": {
+    "title": "تاریخ اور وقت", "cancel": "منسوخ", "save": "محفوظ کریں", "today": "آج", "tomorrow": "کل", "thisWeekend": "اس ہفتے کا آخر", "nextWeek": "اگلا ہفتہ", "time": "وقت", "selectHour": "گھنٹہ منتخب کریں", "selectMinutes": "منٹ منتخب کریں", "confirmTime": "وقت کی تصدیق کریں", "reminder": "یاد دہانی", "setRepeatTask": "دہرانے والے کام کے طور پر سیٹ کریں", "repeatEvery": "ہر بار دہرائیں", "repeatOn": "دہرانے کا دن", "repeatEndsAt": "دہرانا ختم ہوتا ہے", "never": "کبھی نہیں", "onSpecificDate": "ایک مخصوص تاریخ پر", "afterXOccurrences": "X مرتبہ کے بعد", "afterNTimes": "{{count}} مرتبہ کے بعد", "dayN": "دن {{count}}",
+    "frequency": { "hour": "گھنٹہ", "daily": "روزانہ", "weekly": "ہفتہ وار", "monthly": "ماہانہ", "yearly": "سالانہ" },
+    "units": { "hour": "{{count}} گھنٹہ", "hours": "{{count}} گھنٹے", "day": "{{count}} دن", "days": "{{count}} دن", "week": "{{count}} ہفتہ", "weeks": "{{count}} ہفتے", "month": "{{count}} مہینہ", "months": "{{count}} مہینے", "year": "{{count}} سال", "years": "{{count}} سال" },
+    "reminderOptions": { "instant": "فوری (صحیح وقت پر)", "noReminder": "کوئی یاد دہانی نہیں", "5min": "5 منٹ پہلے", "10min": "10 منٹ پہلے", "15min": "15 منٹ پہلے", "30min": "30 منٹ پہلے", "1hour": "1 گھنٹہ پہلے", "2hours": "2 گھنٹے پہلے", "morning": "صبح (9:00)", "eveningBefore": "پچھلی شام (18:00)", "1day9am": "پچھلے دن صبح 9:00 بجے", "1day": "1 دن پہلے", "2days": "2 دن پہلے", "1week": "1 ہفتہ پہلے" },
+    "weekDays": { "sun": "اتوار", "mon": "پیر", "tue": "منگل", "wed": "بدھ", "thu": "جمعرات", "fri": "جمعہ", "sat": "ہفتہ" }
+  },
   "taskInput": {
     "placeholder": "مثال کے طور پر، کل شام 5 بجے سامان خریدیں",
     "templates": "ٹیمپلیٹس",

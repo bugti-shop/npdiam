@@ -1672,6 +1672,13 @@
     "all": "すべて",
     "actions": "アクション"
   },
+  "dateTime": {
+    "title": "日付と時刻", "cancel": "キャンセル", "save": "保存", "today": "今日", "tomorrow": "明日", "thisWeekend": "今週末", "nextWeek": "来週", "time": "時刻", "selectHour": "時間を選択", "selectMinutes": "分を選択", "confirmTime": "時刻を確認", "reminder": "リマインダー", "setRepeatTask": "繰り返しタスクに設定", "repeatEvery": "繰り返し間隔", "repeatOn": "繰り返し曜日", "repeatEndsAt": "繰り返し終了", "never": "なし", "onSpecificDate": "特定の日付に", "afterXOccurrences": "X回後", "afterNTimes": "{{count}}回後", "dayN": "{{count}}日",
+    "frequency": { "hour": "時間", "daily": "毎日", "weekly": "毎週", "monthly": "毎月", "yearly": "毎年" },
+    "units": { "hour": "{{count}}時間", "hours": "{{count}}時間", "day": "{{count}}日", "days": "{{count}}日", "week": "{{count}}週間", "weeks": "{{count}}週間", "month": "{{count}}ヶ月", "months": "{{count}}ヶ月", "year": "{{count}}年", "years": "{{count}}年" },
+    "reminderOptions": { "instant": "即時（正確な時刻）", "noReminder": "リマインダーなし", "5min": "5分前", "10min": "10分前", "15min": "15分前", "30min": "30分前", "1hour": "1時間前", "2hours": "2時間前", "morning": "当日朝（9:00）", "eveningBefore": "前日夕方（18:00）", "1day9am": "前日午前9:00", "1day": "1日前", "2days": "2日前", "1week": "1週間前" },
+    "weekDays": { "sun": "日", "mon": "月", "tue": "火", "wed": "水", "thu": "木", "fri": "金", "sat": "土" }
+  },
   "taskInput": {
     "placeholder": "例：明日17時に買い物",
     "templates": "テンプレート",

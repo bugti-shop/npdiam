@@ -1797,6 +1797,13 @@
     "all": "הכל",
     "actions": "פעולות"
   },
+  "dateTime": {
+    "title": "תאריך ושעה", "cancel": "ביטול", "save": "שמור", "today": "היום", "tomorrow": "מחר", "thisWeekend": "סוף השבוע", "nextWeek": "שבוע הבא", "time": "שעה", "selectHour": "בחר שעה", "selectMinutes": "בחר דקות", "confirmTime": "אשר שעה", "reminder": "תזכורת", "setRepeatTask": "הגדר כמשימה חוזרת", "repeatEvery": "חזור כל", "repeatOn": "חזור ב", "repeatEndsAt": "החזרה מסתיימת ב", "never": "לעולם לא", "onSpecificDate": "בתאריך מסוים", "afterXOccurrences": "אחרי X פעמים", "afterNTimes": "אחרי {{count}} פעמים", "dayN": "יום {{count}}",
+    "frequency": { "hour": "שעה", "daily": "יומי", "weekly": "שבועי", "monthly": "חודשי", "yearly": "שנתי" },
+    "units": { "hour": "שעה {{count}}", "hours": "{{count}} שעות", "day": "יום {{count}}", "days": "{{count}} ימים", "week": "שבוע {{count}}", "weeks": "{{count}} שבועות", "month": "חודש {{count}}", "months": "{{count}} חודשים", "year": "שנה {{count}}", "years": "{{count}} שנים" },
+    "reminderOptions": { "instant": "מיידי (בשעה המדויקת)", "noReminder": "ללא תזכורת", "5min": "5 דקות לפני", "10min": "10 דקות לפני", "15min": "15 דקות לפני", "30min": "30 דקות לפני", "1hour": "שעה לפני", "2hours": "שעתיים לפני", "morning": "בבוקר (9:00)", "eveningBefore": "ערב לפני (18:00)", "1day9am": "יום לפני ב-9:00", "1day": "יום לפני", "2days": "יומיים לפני", "1week": "שבוע לפני" },
+    "weekDays": { "sun": "א'", "mon": "ב'", "tue": "ג'", "wed": "ד'", "thu": "ה'", "fri": "ו'", "sat": "ש'" }
+  },
   "taskInput": {
     "placeholder": "לדוגמה, קנה מצרכים מחר ב-17:00",
     "templates": "תבניות",

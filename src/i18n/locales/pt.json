@@ -1749,6 +1749,13 @@
     "all": "Todas",
     "actions": "Ações"
   },
+  "dateTime": {
+    "title": "Data e Hora", "cancel": "Cancelar", "save": "Salvar", "today": "Hoje", "tomorrow": "Amanhã", "thisWeekend": "Este fim de semana", "nextWeek": "Próxima semana", "time": "Hora", "selectHour": "Selecionar hora", "selectMinutes": "Selecionar minutos", "confirmTime": "Confirmar hora", "reminder": "Lembrete", "setRepeatTask": "Definir como tarefa repetida", "repeatEvery": "Repetir a cada", "repeatOn": "Repetir em", "repeatEndsAt": "A repetição termina em", "never": "Nunca", "onSpecificDate": "Em uma data específica", "afterXOccurrences": "Após X vezes", "afterNTimes": "Após {{count}} vezes", "dayN": "Dia {{count}}",
+    "frequency": { "hour": "Hora", "daily": "Diário", "weekly": "Semanal", "monthly": "Mensal", "yearly": "Anual" },
+    "units": { "hour": "{{count}} hora", "hours": "{{count}} horas", "day": "{{count}} dia", "days": "{{count}} dias", "week": "{{count}} semana", "weeks": "{{count}} semanas", "month": "{{count}} mês", "months": "{{count}} meses", "year": "{{count}} ano", "years": "{{count}} anos" },
+    "reminderOptions": { "instant": "Instantâneo (na hora exata)", "noReminder": "Sem lembrete", "5min": "5 minutos antes", "10min": "10 minutos antes", "15min": "15 minutos antes", "30min": "30 minutos antes", "1hour": "1 hora antes", "2hours": "2 horas antes", "morning": "De manhã (9:00)", "eveningBefore": "Na noite anterior (18:00)", "1day9am": "Dia anterior às 9:00", "1day": "1 dia antes", "2days": "2 dias antes", "1week": "1 semana antes" },
+    "weekDays": { "sun": "Dom", "mon": "Seg", "tue": "Ter", "wed": "Qua", "thu": "Qui", "fri": "Sex", "sat": "Sáb" }
+  },
   "taskInput": {
     "placeholder": "ex. Comprar mantimentos amanhã às 17h",
     "templates": "Modelos",
