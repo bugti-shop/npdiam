@@ -258,6 +258,8 @@
     "theme": "Tema",
     "notificationBar": "Barra de notificação",
     "notificationBarDesc": "Adicionar notas e tarefas pela notificação",
+    "quickAddNoteHint": "Toque em \"Adicionar nota\" para criar rapidamente qualquer tipo de nota (Texto, Pautado, Adesivo ou Código)",
+    "quickAddTaskHint": "Toque em \"Adicionar tarefa\" para adicionar uma tarefa sem abrir o app",
     "calendarSync": "Sincronização com calendário do sistema",
     "calendarSyncDesc": "Sincronizar tarefas e eventos com o calendário do dispositivo",
     "calendarPermissionDenied": "Permissão do calendário negada. Por favor, conceda acesso nas configurações do dispositivo.",
@@ -439,6 +441,7 @@
   "toasts": {
     "dataBackedUp": "Backup dos dados realizado com sucesso",
     "dataRestored": "Dados restaurados com sucesso",
+    "restoredStats": "Restaurados {{notes}} notas, {{tasks}} tarefas, {{folders}} pastas",
     "restoreFailed": "Falha ao restaurar dados",
     "dataDownloaded": "Dados baixados",
     "downloadFailed": "Falha no download",

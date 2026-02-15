@@ -311,6 +311,8 @@
     "theme": "Thema",
     "notificationBar": "Benachrichtigungsleiste",
     "notificationBarDesc": "Notizen und Aufgaben über Benachrichtigung hinzufügen",
+    "quickAddNoteHint": "Tippe auf \"Notiz hinzufügen\" um schnell einen Notiztyp zu erstellen (Text, Liniert, Haftnotiz oder Code)",
+    "quickAddTaskHint": "Tippe auf \"Aufgabe hinzufügen\" um eine Aufgabe ohne App-Öffnung hinzuzufügen",
     "calendarSync": "Systemkalender-Synchronisation",
     "calendarSyncDesc": "Aufgaben und Ereignisse mit dem Gerätekalender synchronisieren",
     "calendarPermissionDenied": "Kalenderberechtigung verweigert. Bitte gewähren Sie Zugriff in den Geräteeinstellungen.",
@@ -492,6 +494,7 @@
   "toasts": {
     "dataBackedUp": "Daten erfolgreich gesichert",
     "dataRestored": "Daten erfolgreich wiederhergestellt",
+    "restoredStats": "{{notes}} Notizen, {{tasks}} Aufgaben, {{folders}} Ordner wiederhergestellt",
     "restoreFailed": "Wiederherstellung der Daten fehlgeschlagen",
     "dataDownloaded": "Daten heruntergeladen",
     "downloadFailed": "Download fehlgeschlagen",
