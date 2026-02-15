@@ -2508,5 +2508,15 @@
     "fileRemoved": "Datei entfernt",
     "locationReminderSet": "Standorterinnerung gesetzt",
     "locationReminderRemoved": "Standorterinnerung entfernt"
+  },
+  "linkedinFormatter": {
+    "selectTextFirst": "Bitte Text auswählen", "formattingCleared": "Formatierung gelöscht", "copiedPaste": "Kopiert! Auf LinkedIn, WhatsApp usw. einfügen.", "failedToCopy": "Kopieren fehlgeschlagen", "enterUrl": "URL eingeben:", "characters": "{{count}} Zeichen", "copied": "Kopiert!", "copyText": "Text kopieren", "styleVariants": "Stil-Varianten", "styleVariantsDesc": "Kopieren Sie eine Variante zum Einfügen auf LinkedIn, WhatsApp, Twitter usw.", "variantCopied": "{{name}} kopiert!",
+    "styles": { "normal": "Normal", "bold": "Fett", "sansSerif": "Sans-Serif", "boldSans": "Fett Sans", "italic": "Kursiv", "italicSans": "Kursiv Sans", "boldItalic": "Fett Kursiv", "boldItalicSans": "Fett Kursiv Sans", "script": "Schrift", "bulletPoints": "Aufzählung", "numberedList": "Nummerierte Liste" }
+  },
+  "noteProtection": {
+    "protectNote": "Notiz schützen", "passwordProtection": "Passwortschutz", "enterPassword": "Passwort eingeben", "confirmPassword": "Passwort bestätigen", "pleaseEnterPassword": "Bitte Passwort eingeben", "passwordsDoNotMatch": "Passwörter stimmen nicht überein", "passwordTooShort": "Passwort muss mindestens 4 Zeichen lang sein", "protectionUpdated": "Notizschutz aktualisiert", "protectionRemoved": "Notizschutz entfernt", "useFaceId": "Face ID verwenden", "useFingerprint": "Fingerabdruck verwenden", "useIrisScan": "Iris-Scan verwenden", "useBiometric": "Biometrie verwenden", "biometricNotAvailable": "Biometrische Authentifizierung ist auf diesem Gerät nicht verfügbar.", "updateProtection": "Schutz aktualisieren", "enableProtection": "Schutz aktivieren", "removeProtection": "Schutz entfernen"
+  },
+  "locationMap": {
+    "title": "Standorterinnerungen", "enterToken": "Geben Sie Ihr Mapbox-Token ein, um Standorterinnerungen auf der Karte anzuzeigen.", "saveToken": "Token speichern", "noReminders": "Keine Standorterinnerungen", "noRemindersDesc": "Fügen Sie Ihren Aufgaben Standorterinnerungen hinzu, um sie hier zu sehen", "radius": "Radius: {{radius}}m", "enter": "Eintreten", "exit": "Verlassen"
   }
 }

@@ -2608,5 +2608,15 @@
     "fileRemoved": "Arquivo removido",
     "locationReminderSet": "Lembrete de localização definido",
     "locationReminderRemoved": "Lembrete de localização removido"
+  },
+  "linkedinFormatter": {
+    "selectTextFirst": "Selecione o texto primeiro", "formattingCleared": "Formatação limpa", "copiedPaste": "Copiado! Cole no LinkedIn, WhatsApp, etc.", "failedToCopy": "Falha ao copiar", "enterUrl": "Digite a URL:", "characters": "{{count}} caracteres", "copied": "Copiado!", "copyText": "Copiar texto", "styleVariants": "Variantes de Estilo", "styleVariantsDesc": "Copie qualquer variante para colar no LinkedIn, WhatsApp, Twitter, etc.", "variantCopied": "{{name}} copiado!",
+    "styles": { "normal": "Normal", "bold": "Negrito", "sansSerif": "Sans-Serif", "boldSans": "Negrito Sans", "italic": "Itálico", "italicSans": "Itálico Sans", "boldItalic": "Negrito Itálico", "boldItalicSans": "Negrito Itálico Sans", "script": "Script", "bulletPoints": "Marcadores", "numberedList": "Lista Numerada" }
+  },
+  "noteProtection": {
+    "protectNote": "Proteger Nota", "passwordProtection": "Proteção por Senha", "enterPassword": "Digite a senha", "confirmPassword": "Confirmar senha", "pleaseEnterPassword": "Por favor digite uma senha", "passwordsDoNotMatch": "As senhas não coincidem", "passwordTooShort": "A senha deve ter pelo menos 4 caracteres", "protectionUpdated": "Proteção da nota atualizada", "protectionRemoved": "Proteção da nota removida", "useFaceId": "Usar Face ID", "useFingerprint": "Usar Impressão Digital", "useIrisScan": "Usar Escaneamento de Íris", "useBiometric": "Usar Biometria", "biometricNotAvailable": "Autenticação biométrica não está disponível neste dispositivo.", "updateProtection": "Atualizar Proteção", "enableProtection": "Ativar Proteção", "removeProtection": "Remover Proteção"
+  },
+  "locationMap": {
+    "title": "Lembretes de Localização", "enterToken": "Digite seu token de acesso Mapbox para ver os lembretes de localização no mapa.", "saveToken": "Salvar Token", "noReminders": "Sem lembretes de localização", "noRemindersDesc": "Adicione lembretes de localização às suas tarefas para vê-los aqui", "radius": "Raio: {{radius}}m", "enter": "Entrada", "exit": "Saída"
   }
 }

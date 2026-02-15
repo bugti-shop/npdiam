@@ -2442,5 +2442,15 @@
   },
   "taskDetailToasts": {
     "dateTimeReminderSaved": "日期、时间和提醒已保存！", "dateSaved": "日期已保存！", "dateSavedNoNotif": "日期已保存（通知调度不可用）", "filesAttached": "已附加{{count}}个文件", "fileRemoved": "文件已移除", "locationReminderSet": "位置提醒已设置", "locationReminderRemoved": "位置提醒已移除"
+  },
+  "linkedinFormatter": {
+    "selectTextFirst": "请先选择文本", "formattingCleared": "格式已清除", "copiedPaste": "已复制！粘贴到LinkedIn、WhatsApp等", "failedToCopy": "复制失败", "enterUrl": "输入URL：", "characters": "{{count}}个字符", "copied": "已复制！", "copyText": "复制文本", "styleVariants": "样式变体", "styleVariantsDesc": "复制任何变体粘贴到LinkedIn、WhatsApp、Twitter等", "variantCopied": "{{name}}已复制！",
+    "styles": { "normal": "普通", "bold": "粗体", "sansSerif": "无衬线", "boldSans": "粗体无衬线", "italic": "斜体", "italicSans": "斜体无衬线", "boldItalic": "粗斜体", "boldItalicSans": "粗斜体无衬线", "script": "手写体", "bulletPoints": "项目符号", "numberedList": "编号列表" }
+  },
+  "noteProtection": {
+    "protectNote": "保护笔记", "passwordProtection": "密码保护", "enterPassword": "输入密码", "confirmPassword": "确认密码", "pleaseEnterPassword": "请输入密码", "passwordsDoNotMatch": "密码不匹配", "passwordTooShort": "密码至少需要4个字符", "protectionUpdated": "笔记保护已更新", "protectionRemoved": "笔记保护已移除", "useFaceId": "使用Face ID", "useFingerprint": "使用指纹", "useIrisScan": "使用虹膜扫描", "useBiometric": "使用生物识别", "biometricNotAvailable": "此设备不支持生物识别认证。", "updateProtection": "更新保护", "enableProtection": "启用保护", "removeProtection": "移除保护"
+  },
+  "locationMap": {
+    "title": "位置提醒", "enterToken": "输入您的Mapbox访问令牌以在地图上查看位置提醒。", "saveToken": "保存令牌", "noReminders": "无位置提醒", "noRemindersDesc": "为您的任务添加位置提醒以在此查看", "radius": "半径：{{radius}}米", "enter": "进入", "exit": "离开"
   }
 }

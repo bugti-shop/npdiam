@@ -2066,5 +2066,15 @@
     "fileRemoved": "فائل ہٹا دی گئی",
     "locationReminderSet": "مقام کی یاد دہانی مقرر ہو گئی",
     "locationReminderRemoved": "مقام کی یاد دہانی ہٹا دی گئی"
+  },
+  "linkedinFormatter": {
+    "selectTextFirst": "پہلے متن منتخب کریں", "formattingCleared": "فارمیٹنگ صاف ہو گئی", "copiedPaste": "کاپی ہو گیا! LinkedIn، WhatsApp وغیرہ پر پیسٹ کریں", "failedToCopy": "کاپی ناکام", "enterUrl": "URL درج کریں:", "characters": "{{count}} حروف", "copied": "کاپی ہو گیا!", "copyText": "متن کاپی کریں", "styleVariants": "اسٹائل ویریئنٹس", "styleVariantsDesc": "LinkedIn، WhatsApp، Twitter وغیرہ پر پیسٹ کرنے کے لیے کوئی بھی ویریئنٹ کاپی کریں", "variantCopied": "{{name}} کاپی ہو گیا!",
+    "styles": { "normal": "عام", "bold": "بولڈ", "sansSerif": "سینز سیرف", "boldSans": "بولڈ سینز", "italic": "اٹالک", "italicSans": "اٹالک سینز", "boldItalic": "بولڈ اٹالک", "boldItalicSans": "بولڈ اٹالک سینز", "script": "اسکرپٹ", "bulletPoints": "بلٹ پوائنٹس", "numberedList": "نمبر والی فہرست" }
+  },
+  "noteProtection": {
+    "protectNote": "نوٹ کی حفاظت", "passwordProtection": "پاس ورڈ سے تحفظ", "enterPassword": "پاس ورڈ درج کریں", "confirmPassword": "پاس ورڈ کی تصدیق", "pleaseEnterPassword": "براہ کرم پاس ورڈ درج کریں", "passwordsDoNotMatch": "پاس ورڈ مماثل نہیں ہیں", "passwordTooShort": "پاس ورڈ کم از کم 4 حروف کا ہونا چاہیے", "protectionUpdated": "نوٹ کی حفاظت اپ ڈیٹ ہو گئی", "protectionRemoved": "نوٹ کی حفاظت ہٹا دی گئی", "useFaceId": "Face ID استعمال کریں", "useFingerprint": "فنگر پرنٹ استعمال کریں", "useIrisScan": "آئرس اسکین استعمال کریں", "useBiometric": "بایومیٹرک استعمال کریں", "biometricNotAvailable": "اس آلے پر بایومیٹرک تصدیق دستیاب نہیں۔", "updateProtection": "حفاظت اپ ڈیٹ کریں", "enableProtection": "حفاظت فعال کریں", "removeProtection": "حفاظت ہٹائیں"
+  },
+  "locationMap": {
+    "title": "مقام کی یاد دہانیاں", "enterToken": "نقشے پر مقام کی یاد دہانیاں دیکھنے کے لیے اپنا Mapbox ٹوکن درج کریں۔", "saveToken": "ٹوکن محفوظ کریں", "noReminders": "کوئی مقام کی یاد دہانی نہیں", "noRemindersDesc": "یہاں دیکھنے کے لیے اپنے کاموں میں مقام کی یاد دہانیاں شامل کریں", "radius": "رداس: {{radius}}م", "enter": "داخل", "exit": "خارج"
   }
 }

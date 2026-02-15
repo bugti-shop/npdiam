@@ -2621,5 +2621,15 @@
     "fileRemoved": "फ़ाइल हटाई गई",
     "locationReminderSet": "स्थान रिमाइंडर सेट किया गया",
     "locationReminderRemoved": "स्थान रिमाइंडर हटाया गया"
+  },
+  "linkedinFormatter": {
+    "selectTextFirst": "पहले टेक्स्ट चुनें", "formattingCleared": "फॉर्मेटिंग साफ हो गई", "copiedPaste": "कॉपी हो गया! LinkedIn, WhatsApp आदि पर पेस्ट करें", "failedToCopy": "कॉपी विफल", "enterUrl": "URL दर्ज करें:", "characters": "{{count}} अक्षर", "copied": "कॉपी हो गया!", "copyText": "टेक्स्ट कॉपी करें", "styleVariants": "स्टाइल वेरिएंट", "styleVariantsDesc": "LinkedIn, WhatsApp, Twitter आदि पर पेस्ट करने के लिए कोई भी वेरिएंट कॉपी करें", "variantCopied": "{{name}} कॉपी हो गया!",
+    "styles": { "normal": "सामान्य", "bold": "बोल्ड", "sansSerif": "सैंस-सेरिफ", "boldSans": "बोल्ड सैंस", "italic": "इटैलिक", "italicSans": "इटैलिक सैंस", "boldItalic": "बोल्ड इटैलिक", "boldItalicSans": "बोल्ड इटैलिक सैंस", "script": "स्क्रिप्ट", "bulletPoints": "बुलेट पॉइंट", "numberedList": "क्रमांकित सूची" }
+  },
+  "noteProtection": {
+    "protectNote": "नोट सुरक्षित करें", "passwordProtection": "पासवर्ड सुरक्षा", "enterPassword": "पासवर्ड दर्ज करें", "confirmPassword": "पासवर्ड की पुष्टि करें", "pleaseEnterPassword": "कृपया पासवर्ड दर्ज करें", "passwordsDoNotMatch": "पासवर्ड मेल नहीं खाते", "passwordTooShort": "पासवर्ड कम से कम 4 अक्षर का होना चाहिए", "protectionUpdated": "नोट सुरक्षा अपडेट हो गई", "protectionRemoved": "नोट सुरक्षा हटा दी गई", "useFaceId": "Face ID उपयोग करें", "useFingerprint": "फिंगरप्रिंट उपयोग करें", "useIrisScan": "आइरिस स्कैन उपयोग करें", "useBiometric": "बायोमेट्रिक उपयोग करें", "biometricNotAvailable": "इस डिवाइस पर बायोमेट्रिक प्रमाणीकरण उपलब्ध नहीं है।", "updateProtection": "सुरक्षा अपडेट करें", "enableProtection": "सुरक्षा सक्षम करें", "removeProtection": "सुरक्षा हटाएं"
+  },
+  "locationMap": {
+    "title": "स्थान रिमाइंडर", "enterToken": "नक्शे पर स्थान रिमाइंडर देखने के लिए अपना Mapbox टोकन दर्ज करें।", "saveToken": "टोकन सहेजें", "noReminders": "कोई स्थान रिमाइंडर नहीं", "noRemindersDesc": "यहां देखने के लिए अपने कार्यों में स्थान रिमाइंडर जोड़ें", "radius": "त्रिज्या: {{radius}}मी", "enter": "प्रवेश", "exit": "निकास"
   }
 }

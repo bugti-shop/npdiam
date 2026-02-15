@@ -2692,5 +2692,60 @@
     "fileRemoved": "File removed",
     "locationReminderSet": "Location reminder set",
     "locationReminderRemoved": "Location reminder removed"
+  },
+  "linkedinFormatter": {
+    "selectTextFirst": "Select text first",
+    "formattingCleared": "Formatting cleared",
+    "copiedPaste": "Copied! Paste on LinkedIn, WhatsApp, etc.",
+    "failedToCopy": "Failed to copy",
+    "enterUrl": "Enter URL:",
+    "characters": "{{count}} characters",
+    "copied": "Copied!",
+    "copyText": "Copy text",
+    "styleVariants": "Style Variants",
+    "styleVariantsDesc": "Copy any variant to paste on LinkedIn, WhatsApp, Twitter, etc.",
+    "variantCopied": "{{name}} copied!",
+    "styles": {
+      "normal": "Normal",
+      "bold": "Bold",
+      "sansSerif": "Sans-Serif",
+      "boldSans": "Bold Sans",
+      "italic": "Italic",
+      "italicSans": "Italic Sans",
+      "boldItalic": "Bold Italic",
+      "boldItalicSans": "Bold Italic Sans",
+      "script": "Script",
+      "bulletPoints": "Bullet Points",
+      "numberedList": "Numbered List"
+    }
+  },
+  "noteProtection": {
+    "protectNote": "Protect Note",
+    "passwordProtection": "Password Protection",
+    "enterPassword": "Enter password",
+    "confirmPassword": "Confirm password",
+    "pleaseEnterPassword": "Please enter a password",
+    "passwordsDoNotMatch": "Passwords do not match",
+    "passwordTooShort": "Password must be at least 4 characters",
+    "protectionUpdated": "Note protection updated",
+    "protectionRemoved": "Note protection removed",
+    "useFaceId": "Use Face ID",
+    "useFingerprint": "Use Fingerprint",
+    "useIrisScan": "Use Iris Scan",
+    "useBiometric": "Use Biometric",
+    "biometricNotAvailable": "Biometric authentication is not available on this device.",
+    "updateProtection": "Update Protection",
+    "enableProtection": "Enable Protection",
+    "removeProtection": "Remove Protection"
+  },
+  "locationMap": {
+    "title": "Location Reminders",
+    "enterToken": "Enter your Mapbox access token to view location reminders on the map.",
+    "saveToken": "Save Token",
+    "noReminders": "No location reminders set",
+    "noRemindersDesc": "Add location reminders to your tasks to see them here",
+    "radius": "Radius: {{radius}}m",
+    "enter": "Enter",
+    "exit": "Exit"
   }
 }

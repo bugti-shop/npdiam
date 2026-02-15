@@ -2687,5 +2687,15 @@
     "fileRemoved": "تم إزالة الملف",
     "locationReminderSet": "تم تعيين تذكير الموقع",
     "locationReminderRemoved": "تم إزالة تذكير الموقع"
+  },
+  "linkedinFormatter": {
+    "selectTextFirst": "اختر النص أولاً", "formattingCleared": "تم مسح التنسيق", "copiedPaste": "تم النسخ! الصق على LinkedIn و WhatsApp إلخ.", "failedToCopy": "فشل النسخ", "enterUrl": "أدخل الرابط:", "characters": "{{count}} حرف", "copied": "تم النسخ!", "copyText": "نسخ النص", "styleVariants": "متغيرات الأنماط", "styleVariantsDesc": "انسخ أي متغير للصقه على LinkedIn و WhatsApp و Twitter إلخ.", "variantCopied": "تم نسخ {{name}}!",
+    "styles": { "normal": "عادي", "bold": "عريض", "sansSerif": "بدون تشكيل", "boldSans": "عريض بدون تشكيل", "italic": "مائل", "italicSans": "مائل بدون تشكيل", "boldItalic": "عريض مائل", "boldItalicSans": "عريض مائل بدون تشكيل", "script": "مخطوط", "bulletPoints": "نقاط", "numberedList": "قائمة مرقمة" }
+  },
+  "noteProtection": {
+    "protectNote": "حماية الملاحظة", "passwordProtection": "حماية بكلمة مرور", "enterPassword": "أدخل كلمة المرور", "confirmPassword": "تأكيد كلمة المرور", "pleaseEnterPassword": "يرجى إدخال كلمة مرور", "passwordsDoNotMatch": "كلمات المرور غير متطابقة", "passwordTooShort": "يجب أن تكون كلمة المرور 4 أحرف على الأقل", "protectionUpdated": "تم تحديث حماية الملاحظة", "protectionRemoved": "تم إزالة حماية الملاحظة", "useFaceId": "استخدام Face ID", "useFingerprint": "استخدام البصمة", "useIrisScan": "استخدام مسح القزحية", "useBiometric": "استخدام المقاييس الحيوية", "biometricNotAvailable": "المصادقة البيومترية غير متوفرة على هذا الجهاز.", "updateProtection": "تحديث الحماية", "enableProtection": "تفعيل الحماية", "removeProtection": "إزالة الحماية"
+  },
+  "locationMap": {
+    "title": "تذكيرات الموقع", "enterToken": "أدخل رمز الوصول إلى Mapbox لعرض تذكيرات الموقع على الخريطة.", "saveToken": "حفظ الرمز", "noReminders": "لا توجد تذكيرات موقع", "noRemindersDesc": "أضف تذكيرات الموقع لمهامك لرؤيتها هنا", "radius": "نصف القطر: {{radius}}م", "enter": "دخول", "exit": "خروج"
   }
 }

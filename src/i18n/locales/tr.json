@@ -2453,5 +2453,15 @@
     "fileRemoved": "Dosya kaldırıldı",
     "locationReminderSet": "Konum hatırlatıcısı ayarlandı",
     "locationReminderRemoved": "Konum hatırlatıcısı kaldırıldı"
+  },
+  "linkedinFormatter": {
+    "selectTextFirst": "Önce metin seçin", "formattingCleared": "Biçimlendirme temizlendi", "copiedPaste": "Kopyalandı! LinkedIn, WhatsApp vb. yapıştırın.", "failedToCopy": "Kopyalama başarısız", "enterUrl": "URL girin:", "characters": "{{count}} karakter", "copied": "Kopyalandı!", "copyText": "Metni kopyala", "styleVariants": "Stil Varyantları", "styleVariantsDesc": "LinkedIn, WhatsApp, Twitter vb. yapıştırmak için herhangi bir varyantı kopyalayın.", "variantCopied": "{{name}} kopyalandı!",
+    "styles": { "normal": "Normal", "bold": "Kalın", "sansSerif": "Sans-Serif", "boldSans": "Kalın Sans", "italic": "İtalik", "italicSans": "İtalik Sans", "boldItalic": "Kalın İtalik", "boldItalicSans": "Kalın İtalik Sans", "script": "El Yazısı", "bulletPoints": "Madde İşaretleri", "numberedList": "Numaralı Liste" }
+  },
+  "noteProtection": {
+    "protectNote": "Notu Koru", "passwordProtection": "Şifre Koruması", "enterPassword": "Şifre girin", "confirmPassword": "Şifreyi onaylayın", "pleaseEnterPassword": "Lütfen bir şifre girin", "passwordsDoNotMatch": "Şifreler eşleşmiyor", "passwordTooShort": "Şifre en az 4 karakter olmalıdır", "protectionUpdated": "Not koruması güncellendi", "protectionRemoved": "Not koruması kaldırıldı", "useFaceId": "Face ID Kullan", "useFingerprint": "Parmak İzi Kullan", "useIrisScan": "İris Taraması Kullan", "useBiometric": "Biyometrik Kullan", "biometricNotAvailable": "Bu cihazda biyometrik kimlik doğrulama mevcut değil.", "updateProtection": "Korumayı Güncelle", "enableProtection": "Korumayı Etkinleştir", "removeProtection": "Korumayı Kaldır"
+  },
+  "locationMap": {
+    "title": "Konum Hatırlatıcıları", "enterToken": "Haritada konum hatırlatıcılarını görmek için Mapbox erişim jetonunuzu girin.", "saveToken": "Jetonu Kaydet", "noReminders": "Konum hatırlatıcısı yok", "noRemindersDesc": "Burada görmek için görevlerinize konum hatırlatıcıları ekleyin", "radius": "Yarıçap: {{radius}}m", "enter": "Giriş", "exit": "Çıkış"
   }
 }
