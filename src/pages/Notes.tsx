@@ -316,7 +316,7 @@ const Notes = () => {
                   variant="ghost"
                   onClick={() => openPaywall('pro')}
                   className="h-7 w-7 xs:h-8 xs:w-8 sm:h-10 sm:w-10 touch-target"
-                  title="Go Pro"
+                  title={t('common.goPro')}
                 >
                   <Crown className="h-4 w-4 sm:h-5 sm:w-5" style={{ color: '#3c78f0' }} />
                 </Button>
@@ -329,7 +329,7 @@ const Notes = () => {
                   toggleDarkMode();
                 }}
                 className="h-7 w-7 xs:h-8 xs:w-8 sm:h-10 sm:w-10 touch-target"
-                title="Toggle dark mode"
+                title={t('common.toggleDarkMode')}
               >
                 {isDarkMode ? <Sun className="h-4 w-4 sm:h-5 sm:w-5" /> : <Moon className="h-4 w-4 sm:h-5 sm:w-5" />}
               </Button>
@@ -337,7 +337,7 @@ const Notes = () => {
                 size="icon"
                 variant="ghost"
                 onClick={() => navigate('/todo/today')}
-                title="Switch to To-Do"
+                title={t('common.switchToTodo')}
                 className="h-7 w-7 xs:h-8 xs:w-8 sm:h-10 sm:w-10 touch-target"
               >
                 <ListTodo className="h-4 w-4 xs:h-5 xs:w-5 sm:h-6 sm:w-6" />
@@ -452,7 +452,7 @@ const Notes = () => {
                           variant="ghost"
                           onClick={(e) => e.stopPropagation()}
                           className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity z-10"
-                          title="Export"
+                          title={t('common.export')}
                         >
                           <Download className="h-4 w-4" />
                         </Button>
@@ -537,7 +537,7 @@ const Notes = () => {
                         variant="ghost"
                         onClick={(e) => handleToggleArchive(note.id, e)}
                         className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity z-10"
-                        title="Restore"
+                        title={t('common.restore')}
                       >
                         <ArchiveRestore className="h-4 w-4" />
                       </Button>

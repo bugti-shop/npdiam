@@ -44,7 +44,21 @@
     "addTask": "Agregar tarea",
     "preview": "Vista previa",
     "dragToReorder": "Arrastra para reordenar. Activa/desactiva para mostrar/ocultar acciones.",
-    "view": "Ver"
+    "view": "Ver",
+    "goPro": "Obtener Pro",
+    "toggleDarkMode": "Alternar modo oscuro",
+    "switchToTodo": "Cambiar a Tareas",
+    "switchToNotes": "Cambiar a Notas",
+    "restore": "Restaurar",
+    "insertEmoji": "Insertar emoji",
+    "taskHistory": "Historial de tareas",
+    "moreStyles": "Más estilos",
+    "emoji": "Emoji",
+    "insertLink": "Insertar enlace",
+    "clearFormatting": "Limpiar formato",
+    "selectAllText": "Seleccionar todo",
+    "bulletList": "Lista con viñetas",
+    "numberedList": "Lista numerada"
   },
   "folders": {
     "manageFolders": "Gestionar carpetas",

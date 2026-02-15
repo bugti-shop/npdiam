@@ -43,7 +43,21 @@
     "addItem": "항목 추가",
     "addTask": "작업 추가",
     "preview": "미리보기",
-    "dragToReorder": "드래그하여 재정렬. 토글하여 작업 표시/숨기기."
+    "dragToReorder": "드래그하여 재정렬. 토글하여 작업 표시/숨기기.",
+    "goPro": "Pro로 업그레이드",
+    "toggleDarkMode": "다크 모드 전환",
+    "switchToTodo": "할 일로 전환",
+    "switchToNotes": "노트로 전환",
+    "restore": "복원",
+    "insertEmoji": "이모지 삽입",
+    "taskHistory": "작업 기록",
+    "moreStyles": "더 많은 스타일",
+    "emoji": "이모지",
+    "insertLink": "링크 삽입",
+    "clearFormatting": "서식 지우기",
+    "selectAllText": "모두 선택",
+    "bulletList": "글머리 기호 목록",
+    "numberedList": "번호 매기기 목록"
   },
   "folders": {
     "manageFolders": "폴더 관리",

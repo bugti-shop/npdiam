@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Input } from '@/components/ui/input';
@@ -51,6 +52,7 @@ const EMOJI_CATEGORIES = [
 ];
 
 export const EmojiPicker = ({ onEmojiSelect, className }: EmojiPickerProps) => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Smileys');
@@ -79,7 +81,7 @@ export const EmojiPicker = ({ onEmojiSelect, className }: EmojiPickerProps) => {
             "h-14 min-w-[52px] p-0 flex flex-col items-center justify-center gap-1 rounded-none hover:bg-muted/60 active:bg-muted transition-colors flex-shrink-0",
             className
           )}
-          title="Insert Emoji"
+          title={t('common.insertEmoji')}
         >
           <Smile className="h-8 w-8 stroke-[2.5] text-foreground" />
         </Button>

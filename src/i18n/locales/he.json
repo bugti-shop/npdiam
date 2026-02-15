@@ -43,7 +43,21 @@
     "addItem": "הוסף פריט",
     "addTask": "הוסף משימה",
     "preview": "תצוגה מקדימה",
-    "dragToReorder": "גרור לסידור מחדש. החלף כדי להציג/להסתיר פעולות."
+    "dragToReorder": "גרור לסידור מחדש. החלף כדי להציג/להסתיר פעולות.",
+    "goPro": "שדרג ל-Pro",
+    "toggleDarkMode": "החלף מצב כהה",
+    "switchToTodo": "עבור למשימות",
+    "switchToNotes": "עבור להערות",
+    "restore": "שחזר",
+    "insertEmoji": "הכנס אמוג'י",
+    "taskHistory": "היסטוריית משימות",
+    "moreStyles": "סגנונות נוספים",
+    "emoji": "אמוג'י",
+    "insertLink": "הכנס קישור",
+    "clearFormatting": "נקה עיצוב",
+    "selectAllText": "בחר הכל",
+    "bulletList": "רשימת תבליטים",
+    "numberedList": "רשימה ממוספרת"
   },
   "folders": {
     "manageFolders": "נהל תיקיות",

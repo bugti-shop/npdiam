@@ -43,7 +43,21 @@
     "addItem": "آئٹم شامل کریں",
     "addTask": "کام شامل کریں",
     "preview": "پیش نظارہ",
-    "dragToReorder": "ترتیب بدلنے کے لیے گھسیٹیں۔ دکھانے/چھپانے کے لیے ٹوگل کریں۔"
+    "dragToReorder": "ترتیب بدلنے کے لیے گھسیٹیں۔ دکھانے/چھپانے کے لیے ٹوگل کریں۔",
+    "goPro": "پرو حاصل کریں",
+    "toggleDarkMode": "ڈارک موڈ ٹوگل کریں",
+    "switchToTodo": "ٹاسک پر جائیں",
+    "switchToNotes": "نوٹس پر جائیں",
+    "restore": "بحال کریں",
+    "insertEmoji": "ایموجی داخل کریں",
+    "taskHistory": "ٹاسک کی تاریخ",
+    "moreStyles": "مزید سٹائل",
+    "emoji": "ایموجی",
+    "insertLink": "لنک داخل کریں",
+    "clearFormatting": "فارمیٹنگ صاف کریں",
+    "selectAllText": "سب منتخب کریں",
+    "bulletList": "بلٹ لسٹ",
+    "numberedList": "نمبر لسٹ"
   },
   "folders": {
     "manageFolders": "فولڈرز کا انتظام کریں",

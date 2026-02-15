@@ -43,7 +43,21 @@
     "addItem": "添加项目",
     "addTask": "添加任务",
     "preview": "预览",
-    "dragToReorder": "拖动以重新排序。切换以显示/隐藏操作。"
+    "dragToReorder": "拖动以重新排序。切换以显示/隐藏操作。",
+    "goPro": "升级Pro",
+    "toggleDarkMode": "切换暗黑模式",
+    "switchToTodo": "切换到任务",
+    "switchToNotes": "切换到笔记",
+    "restore": "恢复",
+    "insertEmoji": "插入表情",
+    "taskHistory": "任务历史",
+    "moreStyles": "更多样式",
+    "emoji": "表情",
+    "insertLink": "插入链接",
+    "clearFormatting": "清除格式",
+    "selectAllText": "全选",
+    "bulletList": "项目符号列表",
+    "numberedList": "编号列表"
   },
   "folders": {
     "manageFolders": "管理文件夹",

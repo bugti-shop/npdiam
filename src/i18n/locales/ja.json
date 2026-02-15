@@ -43,7 +43,21 @@
     "addItem": "アイテムを追加",
     "addTask": "タスクを追加",
     "preview": "プレビュー",
-    "dragToReorder": "ドラッグして並べ替え。切り替えてアクションを表示/非表示。"
+    "dragToReorder": "ドラッグして並べ替え。切り替えてアクションを表示/非表示。",
+    "goPro": "Proにアップグレード",
+    "toggleDarkMode": "ダークモード切替",
+    "switchToTodo": "タスクに切替",
+    "switchToNotes": "ノートに切替",
+    "restore": "復元",
+    "insertEmoji": "絵文字を挿入",
+    "taskHistory": "タスク履歴",
+    "moreStyles": "その他のスタイル",
+    "emoji": "絵文字",
+    "insertLink": "リンクを挿入",
+    "clearFormatting": "書式をクリア",
+    "selectAllText": "すべて選択",
+    "bulletList": "箇条書き",
+    "numberedList": "番号付きリスト"
   },
   "folders": {
     "manageFolders": "フォルダを管理",

@@ -43,7 +43,21 @@
     "addItem": "Element hinzufügen",
     "addTask": "Aufgabe hinzufügen",
     "preview": "Vorschau",
-    "dragToReorder": "Ziehen zum Neuordnen. Umschalten zum Ein-/Ausblenden von Aktionen."
+    "dragToReorder": "Ziehen zum Neuordnen. Umschalten zum Ein-/Ausblenden von Aktionen.",
+    "goPro": "Pro holen",
+    "toggleDarkMode": "Dunkelmodus umschalten",
+    "switchToTodo": "Zu Aufgaben wechseln",
+    "switchToNotes": "Zu Notizen wechseln",
+    "restore": "Wiederherstellen",
+    "insertEmoji": "Emoji einfügen",
+    "taskHistory": "Aufgabenverlauf",
+    "moreStyles": "Mehr Stile",
+    "emoji": "Emoji",
+    "insertLink": "Link einfügen",
+    "clearFormatting": "Formatierung löschen",
+    "selectAllText": "Alles auswählen",
+    "bulletList": "Aufzählungsliste",
+    "numberedList": "Nummerierte Liste"
   },
   "folders": {
     "manageFolders": "Ordner verwalten",

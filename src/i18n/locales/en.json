@@ -43,7 +43,21 @@
     "addItem": "Add Item",
     "addTask": "Add Task",
     "preview": "Preview",
-    "dragToReorder": "Drag to reorder. Toggle to show/hide actions."
+    "dragToReorder": "Drag to reorder. Toggle to show/hide actions.",
+    "goPro": "Go Pro",
+    "toggleDarkMode": "Toggle dark mode",
+    "switchToTodo": "Switch to To-Do",
+    "switchToNotes": "Switch to Notes",
+    "restore": "Restore",
+    "insertEmoji": "Insert Emoji",
+    "taskHistory": "Task History",
+    "moreStyles": "More styles",
+    "emoji": "Emoji",
+    "insertLink": "Insert link",
+    "clearFormatting": "Clear formatting",
+    "selectAllText": "Select all",
+    "bulletList": "Bullet list",
+    "numberedList": "Numbered list"
   },
   "folders": {
     "manageFolders": "Manage Folders",
