@@ -1841,7 +1841,10 @@
     "allInSync": "Tüm etkinlikler senkronize",
     "notSyncedYet": "Henüz senkronize edilmedi — Şimdi senkronize et'e dokunun",
     "syncedResult": "Senkronize edildi: {{pushed}} gönderildi, {{pulled}} alındı",
-    "syncFailed": "Senkronizasyon başarısız"
+    "syncFailed": "Senkronizasyon başarısız",
+    "pulledEvents": "İçe aktarılan etkinlikler",
+    "noPulledEvents": "Cihaz takviminden etkinlik alınamadı",
+    "allDay": "Tüm gün"
   },
   "codeEditor": {
     "untitledCode": "Adsız Kod",

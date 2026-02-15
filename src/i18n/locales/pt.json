@@ -1943,7 +1943,10 @@
     "allInSync": "Todos os eventos estão sincronizados",
     "notSyncedYet": "Ainda não sincronizado — toque em Sincronizar agora",
     "syncedResult": "Sincronizado: {{pushed}} enviados, {{pulled}} recebidos",
-    "syncFailed": "Falha na sincronização"
+    "syncFailed": "Falha na sincronização",
+    "pulledEvents": "Eventos importados",
+    "noPulledEvents": "Nenhum evento importado do calendário",
+    "allDay": "Dia inteiro"
   },
   "codeEditor": {
     "untitledCode": "Código sem título",

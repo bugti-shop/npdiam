@@ -1991,7 +1991,10 @@
     "allInSync": "כל האירועים מסונכרנים",
     "notSyncedYet": "עדיין לא סונכרן — הקש סנכרן עכשיו",
     "syncedResult": "סונכרן: {{pushed}} נשלחו, {{pulled}} התקבלו",
-    "syncFailed": "הסנכרון נכשל"
+    "syncFailed": "הסנכרון נכשל",
+    "pulledEvents": "אירועים שיובאו",
+    "noPulledEvents": "לא יובאו אירועים מלוח השנה של המכשיר",
+    "allDay": "כל היום"
   },
   "codeEditor": {
     "untitledCode": "קוד ללא שם",

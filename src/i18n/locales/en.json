@@ -1936,7 +1936,10 @@
     "allInSync": "All events are in sync",
     "notSyncedYet": "Not synced yet — tap Sync Now",
     "syncedResult": "Synced: {{pushed}} pushed, {{pulled}} pulled",
-    "syncFailed": "Sync failed"
+    "syncFailed": "Sync failed",
+    "pulledEvents": "Pulled Events",
+    "noPulledEvents": "No events pulled from device calendar",
+    "allDay": "All Day"
   },
   "codeEditor": {
     "untitledCode": "Untitled Code",

@@ -2038,7 +2038,10 @@
     "allInSync": "Alle Ereignisse sind synchron",
     "notSyncedYet": "Noch nicht synchronisiert — tippe auf Jetzt synchronisieren",
     "syncedResult": "Synchronisiert: {{pushed}} gesendet, {{pulled}} empfangen",
-    "syncFailed": "Synchronisierung fehlgeschlagen"
+    "syncFailed": "Synchronisierung fehlgeschlagen",
+    "pulledEvents": "Importierte Ereignisse",
+    "noPulledEvents": "Keine Ereignisse vom Gerätekalender importiert",
+    "allDay": "Ganztägig"
   },
   "codeEditor": {
     "untitledCode": "Unbenannter Code",

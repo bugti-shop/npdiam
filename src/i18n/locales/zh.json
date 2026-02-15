@@ -2003,7 +2003,10 @@
     "allInSync": "所有事件已同步",
     "notSyncedYet": "尚未同步 — 点击立即同步",
     "syncedResult": "已同步：推送 {{pushed}} 个，拉取 {{pulled}} 个",
-    "syncFailed": "同步失败"
+    "syncFailed": "同步失败",
+    "pulledEvents": "已拉取的事件",
+    "noPulledEvents": "没有从设备日历拉取事件",
+    "allDay": "全天"
   },
   "codeEditor": {
     "untitledCode": "无标题代码",

@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
-import { RefreshCw, CheckCircle2, AlertCircle, Calendar } from 'lucide-react';
+import { RefreshCw, CheckCircle2, AlertCircle, Calendar, ChevronDown, ChevronUp, Clock, MapPin } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   getCalendarSyncStatus,
   isCalendarSyncEnabled,
@@ -11,7 +12,7 @@ import {
 import { loadTasksFromDB } from '@/utils/taskStorage';
 import { getSetting } from '@/utils/settingsStorage';
 import { CalendarEvent } from '@/types/note';
-import { formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow, format, isToday, isTomorrow } from 'date-fns';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 
@@ -20,21 +21,34 @@ export const CalendarSyncBadge = () => {
   const [enabled, setEnabled] = useState(false);
   const [status, setStatus] = useState<CalendarSyncStatus | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
+  const [pulledEvents, setPulledEvents] = useState<CalendarEvent[]>([]);
+  const [showPulledList, setShowPulledList] = useState(false);
 
   const loadStatus = useCallback(async () => {
-    const [syncEnabled, syncStatus] = await Promise.all([
+    const [syncEnabled, syncStatus, allEvents] = await Promise.all([
       isCalendarSyncEnabled(),
       getCalendarSyncStatus(),
+      getSetting<CalendarEvent[]>('calendarEvents', []),
     ]);
     setEnabled(syncEnabled);
     setStatus(syncStatus);
+    // Filter only native (pulled) events
+    setPulledEvents(
+      allEvents
+        .filter(e => e.id.startsWith('native_'))
+        .sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime())
+    );
   }, []);
 
   useEffect(() => {
     loadStatus();
     const handler = () => loadStatus();
     window.addEventListener('calendarSyncStatusUpdated', handler);
-    return () => window.removeEventListener('calendarSyncStatusUpdated', handler);
+    window.addEventListener('calendarEventsUpdated', handler);
+    return () => {
+      window.removeEventListener('calendarSyncStatusUpdated', handler);
+      window.removeEventListener('calendarEventsUpdated', handler);
+    };
   }, [loadStatus]);
 
   const handleManualSync = async () => {
@@ -64,6 +78,13 @@ export const CalendarSyncBadge = () => {
 
   const hasErrors = (status?.errors?.length ?? 0) > 0;
 
+  const formatEventDate = (date: Date | string) => {
+    const d = new Date(date);
+    if (isToday(d)) return `${t('common.today', 'Today')} ${format(d, 'h:mm a')}`;
+    if (isTomorrow(d)) return `${t('common.tomorrow', 'Tomorrow')} ${format(d, 'h:mm a')}`;
+    return format(d, 'MMM dd, h:mm a');
+  };
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -81,7 +102,7 @@ export const CalendarSyncBadge = () => {
           />
         </button>
       </PopoverTrigger>
-      <PopoverContent className="w-72 p-0" align="end">
+      <PopoverContent className="w-80 p-0" align="end">
         <div className="p-3 border-b border-border">
           <div className="flex items-center justify-between">
             <h4 className="text-sm font-semibold flex items-center gap-1.5">
@@ -122,6 +143,68 @@ export const CalendarSyncBadge = () => {
               <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{t('calendarSync.pulled')}</p>
             </div>
           </div>
+
+          {/* Pulled Events Section */}
+          {pulledEvents.length > 0 && (
+            <div className="rounded-lg border border-border overflow-hidden">
+              <button
+                onClick={() => setShowPulledList(!showPulledList)}
+                className="w-full flex items-center justify-between px-3 py-2 bg-muted/30 hover:bg-muted/50 transition-colors"
+              >
+                <span className="text-xs font-medium text-foreground flex items-center gap-1.5">
+                  <Calendar className="h-3 w-3 text-primary" />
+                  {t('calendarSync.pulledEvents', 'Pulled Events')}
+                  <span className="bg-primary/10 text-primary text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+                    {pulledEvents.length}
+                  </span>
+                </span>
+                {showPulledList ? (
+                  <ChevronUp className="h-3.5 w-3.5 text-muted-foreground" />
+                ) : (
+                  <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
+                )}
+              </button>
+
+              {showPulledList && (
+                <ScrollArea className="max-h-48">
+                  <div className="divide-y divide-border">
+                    {pulledEvents.map((event) => (
+                      <div key={event.id} className="px-3 py-2 hover:bg-muted/20 transition-colors">
+                        <p className="text-xs font-medium text-foreground truncate">
+                          {event.title}
+                        </p>
+                        <div className="flex items-center gap-2 mt-0.5 flex-wrap">
+                          <span className="text-[10px] text-muted-foreground flex items-center gap-0.5">
+                            <Clock className="h-2.5 w-2.5" />
+                            {formatEventDate(event.startDate)}
+                          </span>
+                          {event.location && (
+                            <span className="text-[10px] text-muted-foreground flex items-center gap-0.5 truncate max-w-[120px]">
+                              <MapPin className="h-2.5 w-2.5 shrink-0" />
+                              {event.location}
+                            </span>
+                          )}
+                          {event.allDay && (
+                            <span className="text-[10px] bg-primary/10 text-primary px-1 rounded">
+                              {t('calendarSync.allDay', 'All Day')}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </ScrollArea>
+              )}
+            </div>
+          )}
+
+          {/* No pulled events message */}
+          {pulledEvents.length === 0 && status?.lastSyncedAt && (
+            <div className="flex items-center gap-2 text-xs text-muted-foreground bg-muted/30 rounded-lg p-2">
+              <Calendar className="h-3.5 w-3.5 shrink-0" />
+              <span>{t('calendarSync.noPulledEvents', 'No events pulled from device calendar')}</span>
+            </div>
+          )}
 
           {/* Status message */}
           {hasErrors ? (
