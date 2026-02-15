@@ -1241,10 +1241,10 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
     return matchesSearch && matchesCategory;
   });
 
-  const grouped = filteredTemplates.reduce((acc, t) => {
-    const cat = t.isCustom ? 'My Templates' : t.category;
+  const grouped = filteredTemplates.reduce((acc, tmpl) => {
+    const cat = tmpl.isCustom ? t('noteTemplates.myTemplates') : t(`noteTemplates.categories.${tmpl.category}`, tmpl.category);
     if (!acc[cat]) acc[cat] = [];
-    acc[cat].push(t);
+    acc[cat].push(tmpl);
     return acc;
   }, {} as Record<string, NoteTemplate[]>);
 
@@ -1265,7 +1265,7 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
       notes: noteDefs,
     });
 
-    toast.success(`"${template.name}" notes created!`, { icon: '📝' });
+    toast.success(t('noteTemplates.notesCreated', { name: template.name }), { icon: '📝' });
     onClose();
   };
 
@@ -1296,14 +1296,14 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
     setFormName('');
     setFormDescription('');
     setFormNotes([{ title: '', content: '' }]);
-    toast.success('Note template saved!');
+    toast.success(t('noteTemplates.templateSaved'));
   };
 
   const handleDeleteCustom = (id: string) => {
     const updated = customTemplates.filter(t => t.id !== id);
     setCustomTemplates(updated);
     setSetting('customNoteTemplates', updated);
-    toast.success('Template deleted');
+    toast.success(t('noteTemplates.templateDeleted'));
   };
 
   return (
@@ -1313,7 +1313,7 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
           <SheetHeader className="px-5 pt-5 pb-3">
             <SheetTitle className="flex items-center gap-2">
               <LayoutTemplate className="h-5 w-5" />
-              Note Templates
+              {t('noteTemplates.title')}
             </SheetTitle>
           </SheetHeader>
 
@@ -1324,7 +1324,7 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
               <Input
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search note templates..."
+                placeholder={t('noteTemplates.searchPlaceholder')}
                 className="pl-9"
               />
             </div>
@@ -1338,7 +1338,7 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
                   !selectedCategory ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
                 )}
               >
-                All
+                {t('noteTemplates.all')}
               </button>
               {CATEGORIES.map(cat => (
                 <button
@@ -1349,7 +1349,7 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
                     selectedCategory === cat ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
                   )}
                 >
-                  {cat}
+                  {t(`noteTemplates.categories.${cat}`, cat)}
                 </button>
               ))}
               {customTemplates.length > 0 && (
@@ -1360,7 +1360,7 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
                     selectedCategory === 'Custom' ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
                   )}
                 >
-                  My Templates
+                  {t('noteTemplates.myTemplates')}
                 </button>
               )}
             </div>
@@ -1389,13 +1389,13 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2">
-                              <p className="font-medium text-sm truncate">{template.name}</p>
-                              {template.isCustom && <Badge variant="secondary" className="text-[10px] px-1.5 py-0">Custom</Badge>}
+                              <p className="font-medium text-sm truncate">{t(`noteTemplates.templates.${template.id}.name`, template.name)}</p>
+                              {template.isCustom && <Badge variant="secondary" className="text-[10px] px-1.5 py-0">{t('noteTemplates.custom')}</Badge>}
                             </div>
-                            <p className="text-xs text-muted-foreground truncate">{template.description}</p>
+                            <p className="text-xs text-muted-foreground truncate">{t(`noteTemplates.templates.${template.id}.description`, template.description)}</p>
                           </div>
                           <div className="flex items-center gap-2 flex-shrink-0">
-                            <Badge variant="outline" className="text-[10px]">{totalNotes(template)} notes</Badge>
+                            <Badge variant="outline" className="text-[10px]">{t('noteTemplates.notesCount', { count: totalNotes(template) })}</Badge>
                             {template.isCustom && (
                               <Button
                                 size="icon"
@@ -1417,7 +1417,7 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
 
               {filteredTemplates.length === 0 && (
                 <div className="text-center py-10 text-muted-foreground text-sm">
-                  No templates found
+                  {t('noteTemplates.noTemplatesFound')}
                 </div>
               )}
             </div>
@@ -1427,7 +1427,7 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
           <div className="px-5 py-3 border-t" style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}>
             <Button variant="outline" className="w-full gap-2" onClick={() => setShowCreateDialog(true)}>
               <Plus className="h-4 w-4" />
-              Create Custom Template
+              {t('noteTemplates.createCustomTemplate')}
             </Button>
           </div>
         </SheetContent>
@@ -1440,21 +1440,21 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2">
                 {(() => { const Icon = getIcon(previewTemplate.icon); return <Icon className="h-5 w-5" />; })()}
-                {previewTemplate.name}
+                {t(`noteTemplates.templates.${previewTemplate.id}.name`, previewTemplate.name)}
               </DialogTitle>
             </DialogHeader>
             <ScrollArea className="flex-1 -mx-6 px-6">
               <div className="space-y-3 pb-4">
-                <p className="text-sm text-muted-foreground">{previewTemplate.description}</p>
+                <p className="text-sm text-muted-foreground">{t(`noteTemplates.templates.${previewTemplate.id}.description`, previewTemplate.description)}</p>
 
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: previewTemplate.folderColor }} />
-                  <span>Creates folder: <strong>{previewTemplate.name}</strong> (★ Favorite)</span>
+                  <span dangerouslySetInnerHTML={{ __html: t('noteTemplates.createsFolderDesc', { name: previewTemplate.name }) }} />
                 </div>
 
                 <div className="space-y-2">
                   <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                    {previewTemplate.notes.length} Notes Included
+                    {t('noteTemplates.notesIncluded', { count: previewTemplate.notes.length })}
                   </p>
                   {previewTemplate.notes.map((note, i) => (
                     <div key={i} className="p-3 rounded-lg border bg-muted/30">
@@ -1472,11 +1472,11 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
             </ScrollArea>
             <div className="flex gap-2 pt-2 border-t">
               <Button variant="outline" className="flex-1" onClick={() => setPreviewTemplate(null)}>
-                Cancel
+                {t('common.cancel')}
               </Button>
               <Button className="flex-1 gap-2" onClick={() => { handleApply(previewTemplate); setPreviewTemplate(null); }}>
                 <Plus className="h-4 w-4" />
-                Create Notes
+                {t('noteTemplates.createNotes')}
               </Button>
             </div>
           </DialogContent>
@@ -1487,22 +1487,22 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
       <Dialog open={showCreateDialog} onOpenChange={setShowCreateDialog}>
         <DialogContent className="max-w-md max-h-[80vh] overflow-hidden flex flex-col">
           <DialogHeader>
-            <DialogTitle>Create Note Template</DialogTitle>
+            <DialogTitle>{t('noteTemplates.createNoteTemplate')}</DialogTitle>
           </DialogHeader>
           <ScrollArea className="flex-1 -mx-6 px-6">
             <div className="space-y-4 pb-4">
               <div>
-                <label className="text-sm font-medium mb-1 block">Template Name</label>
-                <Input value={formName} onChange={e => setFormName(e.target.value)} placeholder="e.g. Weekly Reviews" />
+                <label className="text-sm font-medium mb-1 block">{t('noteTemplates.templateName')}</label>
+                <Input value={formName} onChange={e => setFormName(e.target.value)} placeholder={t('noteTemplates.templateNamePlaceholder')} />
               </div>
               <div>
-                <label className="text-sm font-medium mb-1 block">Description</label>
-                <Input value={formDescription} onChange={e => setFormDescription(e.target.value)} placeholder="Short description..." />
+                <label className="text-sm font-medium mb-1 block">{t('noteTemplates.descriptionLabel')}</label>
+                <Input value={formDescription} onChange={e => setFormDescription(e.target.value)} placeholder={t('noteTemplates.descriptionPlaceholder')} />
               </div>
 
               {/* Icon selector */}
               <div>
-                <label className="text-sm font-medium mb-1 block">Icon</label>
+                <label className="text-sm font-medium mb-1 block">{t('noteTemplates.iconLabel')}</label>
                 <div className="flex gap-1 flex-wrap">
                   {ICON_OPTIONS.map(icon => {
                     const I = ICON_MAP[icon];
@@ -1524,7 +1524,7 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
 
               {/* Folder color */}
               <div>
-                <label className="text-sm font-medium mb-1 block">Folder Color</label>
+                <label className="text-sm font-medium mb-1 block">{t('noteTemplates.folderColor')}</label>
                 <div className="flex gap-2">
                   {FOLDER_COLORS.map(c => (
                     <button
@@ -1539,7 +1539,7 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
 
               {/* Notes */}
               <div>
-                <label className="text-sm font-medium mb-1 block">Notes (one per entry)</label>
+                <label className="text-sm font-medium mb-1 block">{t('noteTemplates.notesPerEntry')}</label>
                 <div className="space-y-3">
                   {formNotes.map((note, i) => (
                     <div key={i} className="p-3 rounded-lg border space-y-2">
@@ -1551,7 +1551,7 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
                             updated[i].title = e.target.value;
                             setFormNotes(updated);
                           }}
-                          placeholder={`Note ${i + 1} title`}
+                          placeholder={t('noteTemplates.noteTitlePlaceholder', { number: i + 1 })}
                           className="flex-1"
                         />
                         {formNotes.length > 1 && (
@@ -1572,7 +1572,7 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
                           updated[i].content = e.target.value;
                           setFormNotes(updated);
                         }}
-                        placeholder="Note content (plain text)..."
+                        placeholder={t('noteTemplates.noteContentPlaceholder')}
                         rows={2}
                       />
                     </div>
@@ -1584,15 +1584,15 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
                     onClick={() => setFormNotes([...formNotes, { title: '', content: '' }])}
                   >
                     <Plus className="h-3.5 w-3.5" />
-                    Add Note
+                    {t('noteTemplates.addNote')}
                   </Button>
                 </div>
               </div>
             </div>
           </ScrollArea>
           <div className="flex gap-2 pt-2 border-t">
-            <Button variant="outline" className="flex-1" onClick={() => setShowCreateDialog(false)}>Cancel</Button>
-            <Button className="flex-1" onClick={handleSaveCustom} disabled={!formName.trim()}>Save Template</Button>
+            <Button variant="outline" className="flex-1" onClick={() => setShowCreateDialog(false)}>{t('common.cancel')}</Button>
+            <Button className="flex-1" onClick={handleSaveCustom} disabled={!formName.trim()}>{t('noteTemplates.saveTemplate')}</Button>
           </div>
         </DialogContent>
       </Dialog>

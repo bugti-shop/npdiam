@@ -375,13 +375,13 @@ export const TaskDetailPage = ({
       
       if (notificationIds.length > 0) {
         onUpdate({ ...updatedTask, notificationIds });
-        toast.success('Date, time, and reminder saved!');
+        toast.success(t('taskDetailToasts.dateTimeReminderSaved'));
       } else if (data.selectedDate) {
-        toast.success('Date saved!');
+        toast.success(t('taskDetailToasts.dateSaved'));
       }
     } catch (error) {
       console.error('Error scheduling notification:', error);
-      toast.success('Date saved (notification scheduling not available)');
+      toast.success(t('taskDetailToasts.dateSavedNoNotif'));
     }
 
     setShowDateTimePage(false);
@@ -534,7 +534,7 @@ export const TaskDetailPage = ({
       attachments: [...(task.attachments || []), ...newAttachments],
     });
     
-    toast.success(`${newAttachments.length} file(s) attached`);
+    toast.success(t('taskDetailToasts.filesAttached', { count: newAttachments.length }));
     if (e.target) e.target.value = '';
   };
 
@@ -552,7 +552,7 @@ export const TaskDetailPage = ({
       ...task,
       attachments: task.attachments?.filter(a => a.id !== attachmentId),
     });
-    toast.success('File removed');
+    toast.success(t('taskDetailToasts.fileRemoved'));
   };
 
 
@@ -608,7 +608,7 @@ export const TaskDetailPage = ({
       ...task,
       locationReminder: reminder,
     });
-    toast.success('Location reminder set');
+    toast.success(t('taskDetailToasts.locationReminderSet'));
   };
 
   const handleRemoveLocationReminder = () => {
@@ -617,7 +617,7 @@ export const TaskDetailPage = ({
       ...task,
       locationReminder: undefined,
     });
-    toast.success('Location reminder removed');
+    toast.success(t('taskDetailToasts.locationReminderRemoved'));
   };
 
   return (
