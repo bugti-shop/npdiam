@@ -1965,6 +1965,111 @@
     "tipTitle": "팁: [[노트 제목]] 구문을 사용하세요",
     "tipDesc": "노트에 직접 [[노트 제목]]을 입력하여 링크를 만드세요"
   },
+  "audioPlayer": {
+    "audioUnavailable": "오디오를 사용할 수 없음"
+  },
+  "voicePlayer": {
+    "recordingUnavailable": "녹음을 사용할 수 없음"
+  },
+  "tableOfContents": {
+    "contents": "목차",
+    "title": "목차"
+  },
+  "tableEditor": {
+    "insertTable": "표 삽입",
+    "rows": "행",
+    "columns": "열",
+    "style": "스타일",
+    "tableActions": "표 작업",
+    "insertRowAbove": "위에 행 삽입",
+    "insertRowBelow": "아래에 행 삽입",
+    "insertColumnLeft": "왼쪽에 열 삽입",
+    "insertColumnRight": "오른쪽에 열 삽입",
+    "deleteRow": "행 삭제",
+    "deleteColumn": "열 삭제",
+    "default": "기본",
+    "standardWithHeader": "헤더 행이 있는 표준",
+    "striped": "줄무늬",
+    "alternatingRows": "교대 행 색상",
+    "bordered": "테두리 있음",
+    "allCellsBordered": "모든 셀 테두리",
+    "minimal": "최소",
+    "cleanNoBorders": "깔끔, 테두리 없음",
+    "modern": "모던",
+    "roundedWithShadow": "둥근 모서리와 그림자"
+  },
+  "calendarSync": {
+    "syncing": "동기화 중...",
+    "syncNow": "지금 동기화",
+    "lastSynced": "마지막 동기화 {{time}}",
+    "total": "전체",
+    "pushed": "전송됨",
+    "pulled": "수신됨",
+    "allInSync": "모든 이벤트가 동기화됨",
+    "notSyncedYet": "아직 동기화되지 않음 — 지금 동기화를 탭하세요",
+    "syncedResult": "동기화됨: {{pushed}} 전송, {{pulled}} 수신",
+    "syncFailed": "동기화 실패"
+  },
+  "codeEditor": {
+    "untitledCode": "제목 없는 코드",
+    "highlighting": "하이라이팅...",
+    "codeCopied": "코드가 클립보드에 복사됨",
+    "copyFailed": "코드 복사 실패",
+    "autoDetect": "자동 감지",
+    "pasteOrType": "// 코드를 붙여넣거나 입력하세요...",
+    "lines": "줄",
+    "chars": "문자"
+  },
+  "toolbarManager": {
+    "customizeToolbar": "도구 모음 사용자 정의",
+    "reset": "재설정",
+    "dragToReorder": "드래그하여 재정렬, 토글하여 표시/숨기기. ({{visible}}/{{total}} 표시)",
+    "orderUpdated": "도구 모음 순서 업데이트됨",
+    "itemShown": "{{item}} 표시됨",
+    "itemHidden": "{{item}} 숨김",
+    "resetToDefaults": "도구 모음이 기본값으로 재설정됨"
+  },
+  "syncButton": {
+    "synced": "동기화됨",
+    "syncedDesc": "노트: {{notes}}, 작업: {{tasks}}",
+    "syncFailed": "동기화 실패",
+    "tryAgain": "다시 시도.",
+    "syncing": "동기화 중...",
+    "syncToDrive": "Google Drive에 동기화"
+  },
+  "taskWidgets": {
+    "pending": "대기 중",
+    "done": "완료",
+    "overdue": "기한 초과",
+    "streak": "연속",
+    "today": "오늘",
+    "tasksCompletedToday": "오늘 완료한 작업",
+    "dayInARow": "일 연속",
+    "daysInARow": "일 연속",
+    "high": "높음",
+    "sevenDayRate": "7일 비율",
+    "recurring": "반복",
+    "reminders": "알림",
+    "nextUp": "다음",
+    "upcomingOverview": "다가오는 개요",
+    "tomorrow": "내일",
+    "thisWeek": "이번 주",
+    "tasks": "작업"
+  },
+  "richEditor": {
+    "selectTextFirst": "먼저 텍스트를 선택하세요",
+    "linkInserted": "링크 삽입됨",
+    "imageAligned": "이미지 정렬됨 {{align}}",
+    "imageDeleted": "이미지 삭제됨",
+    "imageAdded": "이미지 추가됨 - 클릭하여 크기 조정 또는 이동",
+    "fileAttached": "파일 \"{{name}}\" 첨부됨",
+    "textUppercase": "텍스트가 대문자로 변환됨",
+    "textLowercase": "텍스트가 소문자로 변환됨",
+    "textCapitalized": "텍스트 대문자화됨",
+    "tableInserted": "표 삽입됨 - 클릭하여 크기 조정",
+    "tableInsertedWithSize": "{{rows}}×{{cols}} {{style}} 표 삽입됨",
+    "fileNotFound": "파일 데이터를 찾을 수 없음"
+  },
   "welcome": {
     "startJourney": "생산성 여정을 시작하세요",
     "getStarted": "시작하기"

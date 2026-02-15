@@ -1900,6 +1900,111 @@
     "tipTitle": "نصيحة: استخدم صيغة [[عنوان الملاحظة]]",
     "tipDesc": "اكتب [[عنوان الملاحظة]] مباشرة في ملاحظتك لإنشاء روابط"
   },
+  "audioPlayer": {
+    "audioUnavailable": "الصوت غير متاح"
+  },
+  "voicePlayer": {
+    "recordingUnavailable": "التسجيل غير متاح"
+  },
+  "tableOfContents": {
+    "contents": "المحتويات",
+    "title": "جدول المحتويات"
+  },
+  "tableEditor": {
+    "insertTable": "إدراج جدول",
+    "rows": "صفوف",
+    "columns": "أعمدة",
+    "style": "نمط",
+    "tableActions": "إجراءات الجدول",
+    "insertRowAbove": "إدراج صف أعلاه",
+    "insertRowBelow": "إدراج صف أدناه",
+    "insertColumnLeft": "إدراج عمود يسار",
+    "insertColumnRight": "إدراج عمود يمين",
+    "deleteRow": "حذف صف",
+    "deleteColumn": "حذف عمود",
+    "default": "افتراضي",
+    "standardWithHeader": "قياسي مع صف رأس",
+    "striped": "مخطط",
+    "alternatingRows": "ألوان صفوف متبادلة",
+    "bordered": "بحدود",
+    "allCellsBordered": "جميع الخلايا بحدود",
+    "minimal": "بسيط",
+    "cleanNoBorders": "نظيف بدون حدود",
+    "modern": "حديث",
+    "roundedWithShadow": "مستدير مع ظل"
+  },
+  "calendarSync": {
+    "syncing": "جارٍ المزامنة...",
+    "syncNow": "مزامنة الآن",
+    "lastSynced": "آخر مزامنة {{time}}",
+    "total": "الإجمالي",
+    "pushed": "مرسل",
+    "pulled": "مستلم",
+    "allInSync": "جميع الأحداث متزامنة",
+    "notSyncedYet": "لم تتم المزامنة بعد — انقر مزامنة الآن",
+    "syncedResult": "تمت المزامنة: {{pushed}} مرسل، {{pulled}} مستلم",
+    "syncFailed": "فشل المزامنة"
+  },
+  "codeEditor": {
+    "untitledCode": "كود بدون عنوان",
+    "highlighting": "جارٍ التمييز...",
+    "codeCopied": "تم نسخ الكود إلى الحافظة",
+    "copyFailed": "فشل نسخ الكود",
+    "autoDetect": "كشف تلقائي",
+    "pasteOrType": "// الصق أو اكتب الكود هنا...",
+    "lines": "أسطر",
+    "chars": "أحرف"
+  },
+  "toolbarManager": {
+    "customizeToolbar": "تخصيص شريط الأدوات",
+    "reset": "إعادة تعيين",
+    "dragToReorder": "اسحب لإعادة الترتيب، بدّل لإظهار/إخفاء. ({{visible}}/{{total}} مرئي)",
+    "orderUpdated": "تم تحديث ترتيب شريط الأدوات",
+    "itemShown": "{{item}} ظاهر",
+    "itemHidden": "{{item}} مخفي",
+    "resetToDefaults": "تم إعادة تعيين شريط الأدوات"
+  },
+  "syncButton": {
+    "synced": "متزامن",
+    "syncedDesc": "ملاحظات: {{notes}}، مهام: {{tasks}}",
+    "syncFailed": "فشل المزامنة",
+    "tryAgain": "حاول مرة أخرى.",
+    "syncing": "جارٍ المزامنة...",
+    "syncToDrive": "مزامنة مع Google Drive"
+  },
+  "taskWidgets": {
+    "pending": "معلق",
+    "done": "مكتمل",
+    "overdue": "متأخر",
+    "streak": "سلسلة",
+    "today": "اليوم",
+    "tasksCompletedToday": "المهام المكتملة اليوم",
+    "dayInARow": "يوم متتالي",
+    "daysInARow": "أيام متتالية",
+    "high": "عالي",
+    "sevenDayRate": "معدل 7 أيام",
+    "recurring": "متكررة",
+    "reminders": "تذكيرات",
+    "nextUp": "التالي",
+    "upcomingOverview": "نظرة عامة قادمة",
+    "tomorrow": "غداً",
+    "thisWeek": "هذا الأسبوع",
+    "tasks": "مهام"
+  },
+  "richEditor": {
+    "selectTextFirst": "يرجى تحديد النص أولاً",
+    "linkInserted": "تم إدراج الرابط",
+    "imageAligned": "تم محاذاة الصورة {{align}}",
+    "imageDeleted": "تم حذف الصورة",
+    "imageAdded": "تم إضافة الصورة - انقر لتغيير الحجم أو النقل",
+    "fileAttached": "تم إرفاق الملف \"{{name}}\"",
+    "textUppercase": "تم تحويل النص إلى أحرف كبيرة",
+    "textLowercase": "تم تحويل النص إلى أحرف صغيرة",
+    "textCapitalized": "تم تكبير أول حرف",
+    "tableInserted": "تم إدراج الجدول - انقر لتغيير الحجم",
+    "tableInsertedWithSize": "تم إدراج جدول {{rows}}×{{cols}} {{style}}",
+    "fileNotFound": "لم يتم العثور على بيانات الملف"
+  },
   "settings": {
     "title": "الإعدادات",
     "appearance": "المظهر",

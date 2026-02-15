@@ -1994,6 +1994,111 @@
     "tipTitle": "Astuce : Utilisez la syntaxe [[titre de note]]",
     "tipDesc": "Tapez [[Titre de Note]] directement dans votre note pour créer des liens"
   },
+  "audioPlayer": {
+    "audioUnavailable": "Audio indisponible"
+  },
+  "voicePlayer": {
+    "recordingUnavailable": "Enregistrement indisponible"
+  },
+  "tableOfContents": {
+    "contents": "Sommaire",
+    "title": "Table des matières"
+  },
+  "tableEditor": {
+    "insertTable": "Insérer un tableau",
+    "rows": "Lignes",
+    "columns": "Colonnes",
+    "style": "Style",
+    "tableActions": "Actions du tableau",
+    "insertRowAbove": "Insérer une ligne au-dessus",
+    "insertRowBelow": "Insérer une ligne en dessous",
+    "insertColumnLeft": "Insérer une colonne à gauche",
+    "insertColumnRight": "Insérer une colonne à droite",
+    "deleteRow": "Supprimer la ligne",
+    "deleteColumn": "Supprimer la colonne",
+    "default": "Par défaut",
+    "standardWithHeader": "Standard avec ligne d'en-tête",
+    "striped": "Rayé",
+    "alternatingRows": "Couleurs de lignes alternées",
+    "bordered": "Bordé",
+    "allCellsBordered": "Toutes les cellules bordées",
+    "minimal": "Minimal",
+    "cleanNoBorders": "Propre, sans bordures",
+    "modern": "Moderne",
+    "roundedWithShadow": "Arrondi avec ombre"
+  },
+  "calendarSync": {
+    "syncing": "Synchronisation...",
+    "syncNow": "Synchroniser maintenant",
+    "lastSynced": "Dernière synchronisation {{time}}",
+    "total": "Total",
+    "pushed": "Envoyés",
+    "pulled": "Reçus",
+    "allInSync": "Tous les événements sont synchronisés",
+    "notSyncedYet": "Pas encore synchronisé — appuyez sur Synchroniser",
+    "syncedResult": "Synchronisé : {{pushed}} envoyés, {{pulled}} reçus",
+    "syncFailed": "Échec de la synchronisation"
+  },
+  "codeEditor": {
+    "untitledCode": "Code sans titre",
+    "highlighting": "Coloration...",
+    "codeCopied": "Code copié dans le presse-papiers",
+    "copyFailed": "Échec de la copie du code",
+    "autoDetect": "Détection automatique",
+    "pasteOrType": "// Collez ou tapez votre code ici...",
+    "lines": "Lignes",
+    "chars": "Caractères"
+  },
+  "toolbarManager": {
+    "customizeToolbar": "Personnaliser la barre d'outils",
+    "reset": "Réinitialiser",
+    "dragToReorder": "Glissez pour réorganiser, basculez pour afficher/masquer. ({{visible}}/{{total}} visibles)",
+    "orderUpdated": "Ordre de la barre mis à jour",
+    "itemShown": "{{item}} affiché",
+    "itemHidden": "{{item}} masqué",
+    "resetToDefaults": "Barre d'outils réinitialisée"
+  },
+  "syncButton": {
+    "synced": "Synchronisé",
+    "syncedDesc": "Notes : {{notes}}, Tâches : {{tasks}}",
+    "syncFailed": "Échec de la synchronisation",
+    "tryAgain": "Réessayer.",
+    "syncing": "Synchronisation...",
+    "syncToDrive": "Synchroniser avec Google Drive"
+  },
+  "taskWidgets": {
+    "pending": "En attente",
+    "done": "Terminées",
+    "overdue": "En retard",
+    "streak": "Série",
+    "today": "Aujourd'hui",
+    "tasksCompletedToday": "Tâches terminées aujourd'hui",
+    "dayInARow": "Jour consécutif",
+    "daysInARow": "Jours consécutifs",
+    "high": "Haute",
+    "sevenDayRate": "Taux sur 7 jours",
+    "recurring": "Récurrentes",
+    "reminders": "Rappels",
+    "nextUp": "Suivant",
+    "upcomingOverview": "Aperçu à venir",
+    "tomorrow": "Demain",
+    "thisWeek": "Cette semaine",
+    "tasks": "tâches"
+  },
+  "richEditor": {
+    "selectTextFirst": "Veuillez d'abord sélectionner du texte",
+    "linkInserted": "Lien inséré",
+    "imageAligned": "Image alignée {{align}}",
+    "imageDeleted": "Image supprimée",
+    "imageAdded": "Image ajoutée - cliquez pour redimensionner ou déplacer",
+    "fileAttached": "Fichier \"{{name}}\" joint",
+    "textUppercase": "Texte converti en majuscules",
+    "textLowercase": "Texte converti en minuscules",
+    "textCapitalized": "Texte capitalisé",
+    "tableInserted": "Tableau inséré - cliquez pour redimensionner",
+    "tableInsertedWithSize": "Tableau {{rows}}×{{cols}} {{style}} inséré",
+    "fileNotFound": "Données du fichier introuvables"
+  },
   "welcome": {
     "startJourney": "Commencez Votre Parcours de Productivité",
     "getStarted": "Commencer"

@@ -1994,6 +1994,111 @@
     "tipTitle": "Consejo: Use la sintaxis [[título de nota]]",
     "tipDesc": "Escriba [[Título de Nota]] directamente en su nota para crear enlaces"
   },
+  "audioPlayer": {
+    "audioUnavailable": "Audio no disponible"
+  },
+  "voicePlayer": {
+    "recordingUnavailable": "Grabación no disponible"
+  },
+  "tableOfContents": {
+    "contents": "Contenidos",
+    "title": "Tabla de Contenidos"
+  },
+  "tableEditor": {
+    "insertTable": "Insertar tabla",
+    "rows": "Filas",
+    "columns": "Columnas",
+    "style": "Estilo",
+    "tableActions": "Acciones de tabla",
+    "insertRowAbove": "Insertar fila arriba",
+    "insertRowBelow": "Insertar fila abajo",
+    "insertColumnLeft": "Insertar columna a la izquierda",
+    "insertColumnRight": "Insertar columna a la derecha",
+    "deleteRow": "Eliminar fila",
+    "deleteColumn": "Eliminar columna",
+    "default": "Predeterminado",
+    "standardWithHeader": "Estándar con fila de encabezado",
+    "striped": "Rayado",
+    "alternatingRows": "Colores de filas alternados",
+    "bordered": "Con bordes",
+    "allCellsBordered": "Todas las celdas con bordes",
+    "minimal": "Mínimo",
+    "cleanNoBorders": "Limpio, sin bordes",
+    "modern": "Moderno",
+    "roundedWithShadow": "Redondeado con sombra"
+  },
+  "calendarSync": {
+    "syncing": "Sincronizando...",
+    "syncNow": "Sincronizar ahora",
+    "lastSynced": "Última sincronización {{time}}",
+    "total": "Total",
+    "pushed": "Enviados",
+    "pulled": "Recibidos",
+    "allInSync": "Todos los eventos están sincronizados",
+    "notSyncedYet": "Aún no sincronizado — toca Sincronizar ahora",
+    "syncedResult": "Sincronizado: {{pushed}} enviados, {{pulled}} recibidos",
+    "syncFailed": "Error de sincronización"
+  },
+  "codeEditor": {
+    "untitledCode": "Código sin título",
+    "highlighting": "Resaltando...",
+    "codeCopied": "Código copiado al portapapeles",
+    "copyFailed": "Error al copiar código",
+    "autoDetect": "Detección automática",
+    "pasteOrType": "// Pega o escribe tu código aquí...",
+    "lines": "Líneas",
+    "chars": "Caracteres"
+  },
+  "toolbarManager": {
+    "customizeToolbar": "Personalizar barra de herramientas",
+    "reset": "Restablecer",
+    "dragToReorder": "Arrastra para reordenar, alterna para mostrar/ocultar. ({{visible}}/{{total}} visibles)",
+    "orderUpdated": "Orden de barra actualizado",
+    "itemShown": "{{item}} mostrado",
+    "itemHidden": "{{item}} oculto",
+    "resetToDefaults": "Barra restablecida a valores predeterminados"
+  },
+  "syncButton": {
+    "synced": "Sincronizado",
+    "syncedDesc": "Notas: {{notes}}, Tareas: {{tasks}}",
+    "syncFailed": "Error de sincronización",
+    "tryAgain": "Intentar de nuevo.",
+    "syncing": "Sincronizando...",
+    "syncToDrive": "Sincronizar con Google Drive"
+  },
+  "taskWidgets": {
+    "pending": "Pendientes",
+    "done": "Completadas",
+    "overdue": "Atrasadas",
+    "streak": "Racha",
+    "today": "Hoy",
+    "tasksCompletedToday": "Tareas completadas hoy",
+    "dayInARow": "Día consecutivo",
+    "daysInARow": "Días consecutivos",
+    "high": "Alta",
+    "sevenDayRate": "Tasa de 7 días",
+    "recurring": "Recurrentes",
+    "reminders": "Recordatorios",
+    "nextUp": "Siguiente",
+    "upcomingOverview": "Resumen próximo",
+    "tomorrow": "Mañana",
+    "thisWeek": "Esta semana",
+    "tasks": "tareas"
+  },
+  "richEditor": {
+    "selectTextFirst": "Por favor seleccione texto primero",
+    "linkInserted": "Enlace insertado",
+    "imageAligned": "Imagen alineada {{align}}",
+    "imageDeleted": "Imagen eliminada",
+    "imageAdded": "Imagen añadida - clic para redimensionar o mover",
+    "fileAttached": "Archivo \"{{name}}\" adjuntado",
+    "textUppercase": "Texto convertido a mayúsculas",
+    "textLowercase": "Texto convertido a minúsculas",
+    "textCapitalized": "Texto capitalizado",
+    "tableInserted": "Tabla insertada - clic para redimensionar",
+    "tableInsertedWithSize": "Tabla {{rows}}×{{cols}} {{style}} insertada",
+    "fileNotFound": "Datos del archivo no encontrados"
+  },
   "welcome": {
     "startJourney": "Comienza Tu Viaje de Productividad",
     "getStarted": "Comenzar"

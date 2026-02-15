@@ -1995,6 +1995,111 @@
     "tipTitle": "Tipp: Verwenden Sie die [[Notiztitel]]-Syntax",
     "tipDesc": "Geben Sie [[Notiztitel]] direkt in Ihre Notiz ein, um Links zu erstellen"
   },
+  "audioPlayer": {
+    "audioUnavailable": "Audio nicht verfügbar"
+  },
+  "voicePlayer": {
+    "recordingUnavailable": "Aufnahme nicht verfügbar"
+  },
+  "tableOfContents": {
+    "contents": "Inhalt",
+    "title": "Inhaltsverzeichnis"
+  },
+  "tableEditor": {
+    "insertTable": "Tabelle einfügen",
+    "rows": "Zeilen",
+    "columns": "Spalten",
+    "style": "Stil",
+    "tableActions": "Tabellenaktionen",
+    "insertRowAbove": "Zeile darüber einfügen",
+    "insertRowBelow": "Zeile darunter einfügen",
+    "insertColumnLeft": "Spalte links einfügen",
+    "insertColumnRight": "Spalte rechts einfügen",
+    "deleteRow": "Zeile löschen",
+    "deleteColumn": "Spalte löschen",
+    "default": "Standard",
+    "standardWithHeader": "Standard mit Kopfzeile",
+    "striped": "Gestreift",
+    "alternatingRows": "Abwechselnde Zeilenfarben",
+    "bordered": "Umrandet",
+    "allCellsBordered": "Alle Zellen umrandet",
+    "minimal": "Minimal",
+    "cleanNoBorders": "Sauber, ohne Rahmen",
+    "modern": "Modern",
+    "roundedWithShadow": "Abgerundet mit Schatten"
+  },
+  "calendarSync": {
+    "syncing": "Synchronisiere...",
+    "syncNow": "Jetzt synchronisieren",
+    "lastSynced": "Zuletzt synchronisiert {{time}}",
+    "total": "Gesamt",
+    "pushed": "Gesendet",
+    "pulled": "Empfangen",
+    "allInSync": "Alle Ereignisse sind synchron",
+    "notSyncedYet": "Noch nicht synchronisiert — tippe auf Jetzt synchronisieren",
+    "syncedResult": "Synchronisiert: {{pushed}} gesendet, {{pulled}} empfangen",
+    "syncFailed": "Synchronisierung fehlgeschlagen"
+  },
+  "codeEditor": {
+    "untitledCode": "Unbenannter Code",
+    "highlighting": "Hervorhebung...",
+    "codeCopied": "Code in die Zwischenablage kopiert",
+    "copyFailed": "Code konnte nicht kopiert werden",
+    "autoDetect": "Automatische Erkennung",
+    "pasteOrType": "// Code hier einfügen oder eingeben...",
+    "lines": "Zeilen",
+    "chars": "Zeichen"
+  },
+  "toolbarManager": {
+    "customizeToolbar": "Symbolleiste anpassen",
+    "reset": "Zurücksetzen",
+    "dragToReorder": "Ziehen zum Neuordnen, Umschalten zum Ein-/Ausblenden. ({{visible}}/{{total}} sichtbar)",
+    "orderUpdated": "Symbolleisten-Reihenfolge aktualisiert",
+    "itemShown": "{{item}} angezeigt",
+    "itemHidden": "{{item}} ausgeblendet",
+    "resetToDefaults": "Symbolleiste auf Standard zurückgesetzt"
+  },
+  "syncButton": {
+    "synced": "Synchronisiert",
+    "syncedDesc": "Notizen: {{notes}}, Aufgaben: {{tasks}}",
+    "syncFailed": "Synchronisierung fehlgeschlagen",
+    "tryAgain": "Erneut versuchen.",
+    "syncing": "Synchronisiere...",
+    "syncToDrive": "Mit Google Drive synchronisieren"
+  },
+  "taskWidgets": {
+    "pending": "Ausstehend",
+    "done": "Erledigt",
+    "overdue": "Überfällig",
+    "streak": "Serie",
+    "today": "Heute",
+    "tasksCompletedToday": "Heute erledigte Aufgaben",
+    "dayInARow": "Tag in Folge",
+    "daysInARow": "Tage in Folge",
+    "high": "Hoch",
+    "sevenDayRate": "7-Tage-Rate",
+    "recurring": "Wiederkehrend",
+    "reminders": "Erinnerungen",
+    "nextUp": "Als Nächstes",
+    "upcomingOverview": "Kommende Übersicht",
+    "tomorrow": "Morgen",
+    "thisWeek": "Diese Woche",
+    "tasks": "Aufgaben"
+  },
+  "richEditor": {
+    "selectTextFirst": "Bitte zuerst Text auswählen",
+    "linkInserted": "Link eingefügt",
+    "imageAligned": "Bild ausgerichtet {{align}}",
+    "imageDeleted": "Bild gelöscht",
+    "imageAdded": "Bild hinzugefügt - klicken zum Größe ändern oder Verschieben",
+    "fileAttached": "Datei \"{{name}}\" angehängt",
+    "textUppercase": "Text in Großbuchstaben umgewandelt",
+    "textLowercase": "Text in Kleinbuchstaben umgewandelt",
+    "textCapitalized": "Text großgeschrieben",
+    "tableInserted": "Tabelle eingefügt - klicken zum Größe ändern",
+    "tableInsertedWithSize": "{{rows}}×{{cols}} {{style}} Tabelle eingefügt",
+    "fileNotFound": "Dateidaten nicht gefunden"
+  },
   "welcome": {
     "startJourney": "Starten Sie Ihre Produktivitätsreise",
     "getStarted": "Loslegen"
