@@ -80,278 +80,57 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
 
 const ICON_OPTIONS = Object.keys(ICON_MAP);
 
-const DEFAULT_TEMPLATES: TaskTemplate[] = [
-  // Daily Health & Wellness
-  {
-    id: 'morning-routine',
-    name: 'Morning Routine',
-    icon: 'Sun',
-    category: 'Health & Wellness',
-    description: 'Start your day right with a morning routine',
-    taskText: 'Complete morning routine',
-    priority: 'medium',
-    repeatType: 'daily',
-    tags: [{ name: 'routine', color: '#f59e0b' }],
-    subtasks: ['Wake up at set time', 'Drink water', 'Stretch/Exercise', 'Shower', 'Healthy breakfast']
-  },
-  {
-    id: 'take-vitamins',
-    name: 'Take Vitamins',
-    icon: 'Pill',
-    category: 'Health & Wellness',
-    description: 'Daily vitamin reminder',
-    taskText: 'Take daily vitamins',
-    priority: 'high',
-    repeatType: 'daily',
-    tags: [{ name: 'health', color: '#10b981' }]
-  },
-  {
-    id: 'drink-water',
-    name: 'Drink Water',
-    icon: 'Droplets',
-    category: 'Health & Wellness',
-    description: 'Stay hydrated throughout the day',
-    taskText: 'Drink 8 glasses of water',
-    priority: 'medium',
-    repeatType: 'daily',
-    tags: [{ name: 'health', color: '#10b981' }]
-  },
-  {
-    id: 'exercise',
-    name: 'Exercise',
-    icon: 'Dumbbell',
-    category: 'Health & Wellness',
-    description: 'Daily workout reminder',
-    taskText: 'Complete workout session',
-    priority: 'high',
-    repeatType: 'daily',
-    tags: [{ name: 'fitness', color: '#ef4444' }],
-    subtasks: ['Warm up', 'Main workout', 'Cool down', 'Stretch']
-  },
-  {
-    id: 'meditation',
-    name: 'Meditation',
-    icon: 'Sparkles',
-    category: 'Health & Wellness',
-    description: 'Daily mindfulness practice',
-    taskText: 'Meditate for 10 minutes',
-    priority: 'medium',
-    repeatType: 'daily',
-    tags: [{ name: 'mindfulness', color: '#8b5cf6' }]
-  },
-  {
-    id: 'sleep-routine',
-    name: 'Sleep Routine',
-    icon: 'Moon',
-    category: 'Health & Wellness',
-    description: 'Evening wind-down routine',
-    taskText: 'Complete bedtime routine',
-    priority: 'medium',
-    repeatType: 'daily',
-    tags: [{ name: 'sleep', color: '#6366f1' }],
-    subtasks: ['No screens 1 hour before bed', 'Prepare clothes for tomorrow', 'Read for 20 minutes', 'Lights out by 10pm']
-  },
-  
-  // Work & Productivity
-  {
-    id: 'weekly-planning',
-    name: 'Weekly Planning',
-    icon: 'Calendar',
-    category: 'Work & Productivity',
-    description: 'Plan your week ahead',
-    taskText: 'Weekly planning session',
-    priority: 'high',
-    repeatType: 'weekly',
-    repeatDays: [0], // Sunday
-    tags: [{ name: 'planning', color: '#3b82f6' }],
-    subtasks: ['Review last week', 'Set weekly goals', 'Schedule important tasks', 'Block focus time']
-  },
-  {
-    id: 'daily-standup',
-    name: 'Daily Standup',
-    icon: 'Users',
-    category: 'Work & Productivity',
-    description: 'Daily team sync meeting',
-    taskText: 'Attend daily standup',
-    priority: 'high',
-    repeatType: 'weekdays',
-    tags: [{ name: 'work', color: '#0ea5e9' }]
-  },
-  {
-    id: 'check-emails',
-    name: 'Check Emails',
-    icon: 'Mail',
-    category: 'Work & Productivity',
-    description: 'Process and respond to emails',
-    taskText: 'Check and respond to emails',
-    priority: 'medium',
-    repeatType: 'daily',
-    tags: [{ name: 'work', color: '#0ea5e9' }]
-  },
-  {
-    id: 'end-of-day-review',
-    name: 'End of Day Review',
-    icon: 'Target',
-    category: 'Work & Productivity',
-    description: 'Review what you accomplished today',
-    taskText: 'End of day review',
-    priority: 'medium',
-    repeatType: 'weekdays',
-    tags: [{ name: 'review', color: '#f97316' }],
-    subtasks: ['Review completed tasks', 'Note blockers', 'Plan tomorrow\'s priorities']
-  },
-  
-  // Home & Chores
-  {
-    id: 'weekly-cleaning',
-    name: 'Weekly Cleaning',
-    icon: 'Home',
-    category: 'Home & Chores',
-    description: 'Weekly house cleaning',
-    taskText: 'Weekly house cleaning',
-    priority: 'medium',
-    repeatType: 'weekly',
-    repeatDays: [6], // Saturday
-    tags: [{ name: 'chores', color: '#14b8a6' }],
-    subtasks: ['Vacuum/mop floors', 'Clean bathrooms', 'Change bed sheets', 'Do laundry', 'Take out trash']
-  },
-  {
-    id: 'grocery-shopping',
-    name: 'Grocery Shopping',
-    icon: 'ShoppingCart',
-    category: 'Home & Chores',
-    description: 'Weekly grocery run',
-    taskText: 'Go grocery shopping',
-    priority: 'medium',
-    repeatType: 'weekly',
-    repeatDays: [0], // Sunday
-    tags: [{ name: 'shopping', color: '#ec4899' }]
-  },
-  {
-    id: 'meal-prep',
-    name: 'Meal Prep',
-    icon: 'Utensils',
-    category: 'Home & Chores',
-    description: 'Prepare meals for the week',
-    taskText: 'Weekly meal prep',
-    priority: 'medium',
-    repeatType: 'weekly',
-    repeatDays: [0], // Sunday
-    tags: [{ name: 'cooking', color: '#f59e0b' }],
-    subtasks: ['Plan weekly menu', 'Prep ingredients', 'Cook and portion meals', 'Store properly']
-  },
-  {
-    id: 'water-plants',
-    name: 'Water Plants',
-    icon: 'Leaf',
-    category: 'Home & Chores',
-    description: 'Keep your plants healthy',
-    taskText: 'Water indoor plants',
-    priority: 'low',
-    repeatType: 'weekly',
-    repeatDays: [3], // Wednesday
-    tags: [{ name: 'plants', color: '#22c55e' }]
-  },
-  
-  // Personal & Finance
-  {
-    id: 'pay-bills',
-    name: 'Pay Bills',
-    icon: 'DollarSign',
-    category: 'Personal & Finance',
-    description: 'Monthly bill payments',
-    taskText: 'Pay monthly bills',
-    priority: 'high',
-    repeatType: 'monthly',
-    tags: [{ name: 'finance', color: '#16a34a' }],
-    subtasks: ['Rent/Mortgage', 'Utilities', 'Credit cards', 'Subscriptions']
-  },
-  {
-    id: 'budget-review',
-    name: 'Budget Review',
-    icon: 'FileText',
-    category: 'Personal & Finance',
-    description: 'Review monthly spending',
-    taskText: 'Review monthly budget',
-    priority: 'medium',
-    repeatType: 'monthly',
-    tags: [{ name: 'finance', color: '#16a34a' }]
-  },
-  {
-    id: 'call-family',
-    name: 'Call Family',
-    icon: 'Phone',
-    category: 'Personal & Finance',
-    description: 'Stay connected with loved ones',
-    taskText: 'Call family members',
-    priority: 'medium',
-    repeatType: 'weekly',
-    repeatDays: [0], // Sunday
-    tags: [{ name: 'family', color: '#ec4899' }]
-  },
-  
-  // Learning & Growth
-  {
-    id: 'read-book',
-    name: 'Read Book',
-    icon: 'BookOpen',
-    category: 'Learning & Growth',
-    description: 'Daily reading habit',
-    taskText: 'Read for 30 minutes',
-    priority: 'medium',
-    repeatType: 'daily',
-    tags: [{ name: 'learning', color: '#8b5cf6' }]
-  },
-  {
-    id: 'learn-skill',
-    name: 'Learn New Skill',
-    icon: 'Laptop',
-    category: 'Learning & Growth',
-    description: 'Practice a new skill',
-    taskText: 'Practice new skill for 1 hour',
-    priority: 'medium',
-    repeatType: 'daily',
-    tags: [{ name: 'learning', color: '#8b5cf6' }]
-  },
-  {
-    id: 'journal',
-    name: 'Journal',
-    icon: 'FileText',
-    category: 'Learning & Growth',
-    description: 'Daily journaling practice',
-    taskText: 'Write in journal',
-    priority: 'low',
-    repeatType: 'daily',
-    tags: [{ name: 'reflection', color: '#a855f7' }],
-    subtasks: ['Gratitude list', 'Today\'s highlights', 'Tomorrow\'s intentions']
-  },
-  
-  // Pet Care
-  {
-    id: 'walk-dog',
-    name: 'Walk Dog',
-    icon: 'Dog',
-    category: 'Pet Care',
-    description: 'Daily dog walking',
-    taskText: 'Walk the dog',
-    priority: 'high',
-    repeatType: 'daily',
-    tags: [{ name: 'pet', color: '#f97316' }]
-  },
-  {
-    id: 'feed-pet',
-    name: 'Feed Pet',
-    icon: 'Heart',
-    category: 'Pet Care',
-    description: 'Daily pet feeding',
-    taskText: 'Feed pet',
-    priority: 'high',
-    repeatType: 'daily',
-    tags: [{ name: 'pet', color: '#f97316' }]
-  }
+const CATEGORY_KEYS: Record<string, string> = {
+  'Health & Wellness': 'templates.categories.healthWellness',
+  'Work & Productivity': 'templates.categories.workProductivity',
+  'Home & Chores': 'templates.categories.homeChores',
+  'Personal & Finance': 'templates.categories.personalFinance',
+  'Learning & Growth': 'templates.categories.learningGrowth',
+  'Pet Care': 'templates.categories.petCare',
+};
+
+const TEMPLATE_CONFIGS = [
+  { id: 'morning-routine', key: 'morningRoutine', icon: 'Sun', categoryKey: 'Health & Wellness', priority: 'medium' as Priority, repeatType: 'daily' as RepeatType, tags: [{ name: 'routine', color: '#f59e0b' }], subtaskKeys: ['wakeUp', 'drinkWater', 'stretchExercise', 'shower', 'healthyBreakfast'] },
+  { id: 'take-vitamins', key: 'takeVitamins', icon: 'Pill', categoryKey: 'Health & Wellness', priority: 'high' as Priority, repeatType: 'daily' as RepeatType, tags: [{ name: 'health', color: '#10b981' }] },
+  { id: 'drink-water', key: 'drinkWater', icon: 'Droplets', categoryKey: 'Health & Wellness', priority: 'medium' as Priority, repeatType: 'daily' as RepeatType, tags: [{ name: 'health', color: '#10b981' }] },
+  { id: 'exercise', key: 'exercise', icon: 'Dumbbell', categoryKey: 'Health & Wellness', priority: 'high' as Priority, repeatType: 'daily' as RepeatType, tags: [{ name: 'fitness', color: '#ef4444' }], subtaskKeys: ['warmUp', 'mainWorkout', 'coolDown', 'stretch'] },
+  { id: 'meditation', key: 'meditation', icon: 'Sparkles', categoryKey: 'Health & Wellness', priority: 'medium' as Priority, repeatType: 'daily' as RepeatType, tags: [{ name: 'mindfulness', color: '#8b5cf6' }] },
+  { id: 'sleep-routine', key: 'sleepRoutine', icon: 'Moon', categoryKey: 'Health & Wellness', priority: 'medium' as Priority, repeatType: 'daily' as RepeatType, tags: [{ name: 'sleep', color: '#6366f1' }], subtaskKeys: ['noScreens', 'prepareClothes', 'readMinutes', 'lightsOut'] },
+  { id: 'weekly-planning', key: 'weeklyPlanning', icon: 'Calendar', categoryKey: 'Work & Productivity', priority: 'high' as Priority, repeatType: 'weekly' as RepeatType, repeatDays: [0], tags: [{ name: 'planning', color: '#3b82f6' }], subtaskKeys: ['reviewLastWeek', 'setWeeklyGoals', 'scheduleImportant', 'blockFocusTime'] },
+  { id: 'daily-standup', key: 'dailyStandup', icon: 'Users', categoryKey: 'Work & Productivity', priority: 'high' as Priority, repeatType: 'weekdays' as RepeatType, tags: [{ name: 'work', color: '#0ea5e9' }] },
+  { id: 'check-emails', key: 'checkEmails', icon: 'Mail', categoryKey: 'Work & Productivity', priority: 'medium' as Priority, repeatType: 'daily' as RepeatType, tags: [{ name: 'work', color: '#0ea5e9' }] },
+  { id: 'end-of-day-review', key: 'endOfDayReview', icon: 'Target', categoryKey: 'Work & Productivity', priority: 'medium' as Priority, repeatType: 'weekdays' as RepeatType, tags: [{ name: 'review', color: '#f97316' }], subtaskKeys: ['reviewCompleted', 'noteBlockers', 'planTomorrow'] },
+  { id: 'weekly-cleaning', key: 'weeklyCleaning', icon: 'Home', categoryKey: 'Home & Chores', priority: 'medium' as Priority, repeatType: 'weekly' as RepeatType, repeatDays: [6], tags: [{ name: 'chores', color: '#14b8a6' }], subtaskKeys: ['vacuumMop', 'cleanBathrooms', 'changeBedSheets', 'doLaundry', 'takeOutTrash'] },
+  { id: 'grocery-shopping', key: 'groceryShopping', icon: 'ShoppingCart', categoryKey: 'Home & Chores', priority: 'medium' as Priority, repeatType: 'weekly' as RepeatType, repeatDays: [0], tags: [{ name: 'shopping', color: '#ec4899' }] },
+  { id: 'meal-prep', key: 'mealPrep', icon: 'Utensils', categoryKey: 'Home & Chores', priority: 'medium' as Priority, repeatType: 'weekly' as RepeatType, repeatDays: [0], tags: [{ name: 'cooking', color: '#f59e0b' }], subtaskKeys: ['planWeeklyMenu', 'prepIngredients', 'cookAndPortion', 'storeProperly'] },
+  { id: 'water-plants', key: 'waterPlants', icon: 'Leaf', categoryKey: 'Home & Chores', priority: 'low' as Priority, repeatType: 'weekly' as RepeatType, repeatDays: [3], tags: [{ name: 'plants', color: '#22c55e' }] },
+  { id: 'pay-bills', key: 'payBills', icon: 'DollarSign', categoryKey: 'Personal & Finance', priority: 'high' as Priority, repeatType: 'monthly' as RepeatType, tags: [{ name: 'finance', color: '#16a34a' }], subtaskKeys: ['rentMortgage', 'utilities', 'creditCards', 'subscriptions'] },
+  { id: 'budget-review', key: 'budgetReview', icon: 'FileText', categoryKey: 'Personal & Finance', priority: 'medium' as Priority, repeatType: 'monthly' as RepeatType, tags: [{ name: 'finance', color: '#16a34a' }] },
+  { id: 'call-family', key: 'callFamily', icon: 'Phone', categoryKey: 'Personal & Finance', priority: 'medium' as Priority, repeatType: 'weekly' as RepeatType, repeatDays: [0], tags: [{ name: 'family', color: '#ec4899' }] },
+  { id: 'read-book', key: 'readBook', icon: 'BookOpen', categoryKey: 'Learning & Growth', priority: 'medium' as Priority, repeatType: 'daily' as RepeatType, tags: [{ name: 'learning', color: '#8b5cf6' }] },
+  { id: 'learn-skill', key: 'learnSkill', icon: 'Laptop', categoryKey: 'Learning & Growth', priority: 'medium' as Priority, repeatType: 'daily' as RepeatType, tags: [{ name: 'learning', color: '#8b5cf6' }] },
+  { id: 'journal', key: 'journal', icon: 'FileText', categoryKey: 'Learning & Growth', priority: 'low' as Priority, repeatType: 'daily' as RepeatType, tags: [{ name: 'reflection', color: '#a855f7' }], subtaskKeys: ['gratitudeList', 'todayHighlights', 'tomorrowIntentions'] },
+  { id: 'walk-dog', key: 'walkDog', icon: 'Dog', categoryKey: 'Pet Care', priority: 'high' as Priority, repeatType: 'daily' as RepeatType, tags: [{ name: 'pet', color: '#f97316' }] },
+  { id: 'feed-pet', key: 'feedPet', icon: 'Heart', categoryKey: 'Pet Care', priority: 'high' as Priority, repeatType: 'daily' as RepeatType, tags: [{ name: 'pet', color: '#f97316' }] },
 ];
 
-const CATEGORIES = [...new Set(DEFAULT_TEMPLATES.map(t => t.category))];
+const getDefaultTemplates = (t: (key: string) => string): TaskTemplate[] => {
+  return TEMPLATE_CONFIGS.map(cfg => ({
+    id: cfg.id,
+    name: t(`templates.items.${cfg.key}Name`),
+    icon: cfg.icon,
+    category: t(CATEGORY_KEYS[cfg.categoryKey]),
+    description: t(`templates.items.${cfg.key}Desc`),
+    taskText: t(`templates.items.${cfg.key}Task`),
+    priority: cfg.priority,
+    repeatType: cfg.repeatType,
+    repeatDays: cfg.repeatDays,
+    tags: cfg.tags,
+    subtasks: cfg.subtaskKeys?.map(sk => t(`templates.subtasks.${sk}`)),
+  }));
+};
+
+const RAW_CATEGORIES = ['Health & Wellness', 'Work & Productivity', 'Home & Chores', 'Personal & Finance', 'Learning & Growth', 'Pet Care'];
 
 interface TaskTemplateSheetProps {
   isOpen: boolean;
@@ -387,7 +166,8 @@ export const TaskTemplateSheet = ({ isOpen, onClose, onSelectTemplate }: TaskTem
   const [formRepeatType, setFormRepeatType] = useState<RepeatType>('daily');
   const [formSubtasks, setFormSubtasks] = useState('');
 
-  const allTemplates = [...DEFAULT_TEMPLATES, ...customTemplates];
+  const defaultTemplates = getDefaultTemplates(t);
+  const allTemplates = [...defaultTemplates, ...customTemplates];
   
   const filteredTemplates = allTemplates.filter(template => {
     const matchesSearch = searchQuery === '' || 
@@ -553,23 +333,26 @@ export const TaskTemplateSheet = ({ isOpen, onClose, onSelectTemplate }: TaskTem
                     {t('templates.myTemplates')}
                   </Badge>
                 )}
-                {CATEGORIES.map(category => (
-                  <Badge
-                    key={category}
-                    variant={selectedCategory === category ? "default" : "outline"}
-                    className="cursor-pointer shrink-0"
-                    onClick={() => setSelectedCategory(category)}
-                  >
-                    {category}
-                  </Badge>
-                ))}
+                {RAW_CATEGORIES.map(catKey => {
+                  const translatedCat = t(CATEGORY_KEYS[catKey]);
+                  return (
+                    <Badge
+                      key={catKey}
+                      variant={selectedCategory === translatedCat ? "default" : "outline"}
+                      className="cursor-pointer shrink-0"
+                      onClick={() => setSelectedCategory(translatedCat)}
+                    >
+                      {translatedCat}
+                    </Badge>
+                  );
+                })}
               </div>
             </ScrollArea>
           </SheetHeader>
 
           <ScrollArea className="h-[calc(85vh-180px)]">
             <div className="p-4 space-y-6">
-              {Object.entries(groupedTemplates).map(([category, templates]) => (
+              {Object.entries(groupedTemplates).map(([category, templates]: [string, TaskTemplate[]]) => (
                 <div key={category}>
                   <h3 className="text-sm font-semibold text-muted-foreground mb-3">{category}</h3>
                   <div className="grid grid-cols-1 gap-3">
