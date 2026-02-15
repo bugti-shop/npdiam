@@ -1987,7 +1987,9 @@
     "hourly": "Hourly",
     "task": "task",
     "note": "note",
-    "notification": "notification"
+    "notification": "notification",
+    "weekdayAt": "{{day}} at {{time}}",
+    "dateAt": "{{date}} at {{time}}"
   },
   "todayPage": {
     "autoUpdatedRecurring": "Auto-updated {{count}} recurring task(s) to next date",

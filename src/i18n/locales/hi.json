@@ -1928,7 +1928,9 @@
     "hourly": "प्रति घंटा",
     "task": "टास्क",
     "note": "नोट",
-    "notification": "सूचना"
+    "notification": "सूचना",
+    "weekdayAt": "{{day}} को {{time}}",
+    "dateAt": "{{date}} को {{time}}"
   },
   "todayPage": {
     "autoUpdatedRecurring": "{{count}} दोहराने वाले टास्क अगली तारीख पर अपडेट हो गए",
