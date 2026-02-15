@@ -77,7 +77,9 @@ const sendLocalNotification = async (
         extra: { taskId: task.id, type: 'geofence' },
       }],
     });
-  } catch (err) {
+  } catch (err: any) {
+    const msg = String(err?.message || err || '');
+    if (msg.includes('not implemented') || msg.includes('not available')) return;
     // Fallback: browser Notification API
     try {
       if ('Notification' in window && Notification.permission === 'granted') {

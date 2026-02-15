@@ -6,6 +6,11 @@
 import { Habit } from '@/types/habit';
 import { Capacitor } from '@capacitor/core';
 
+const isNotImplementedError = (err: any): boolean => {
+  const msg = String(err?.message || err || '');
+  return msg.includes('not implemented') || msg.includes('not available');
+};
+
 const isNative = () => Capacitor.isNativePlatform();
 
 export const scheduleHabitReminder = async (habit: Habit): Promise<number[]> => {
@@ -38,8 +43,8 @@ export const scheduleHabitReminder = async (habit: Habit): Promise<number[]> => 
       
       console.log('Habit reminder scheduled:', habit.name, notifId);
       return [notifId];
-    } catch {
-      console.log('Habit reminder schedule failed:', habit.name);
+    } catch (err) {
+      if (!isNotImplementedError(err)) console.warn('Habit reminder schedule failed:', habit.name, err);
       return [];
     }
   }

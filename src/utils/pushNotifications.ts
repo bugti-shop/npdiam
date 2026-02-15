@@ -32,7 +32,9 @@ export class PushNotificationManager {
       const { LocalNotifications } = await import('@capacitor/local-notifications');
       const result = await LocalNotifications.requestPermissions();
       return result.display === 'granted';
-    } catch {
+    } catch (err: any) {
+      const msg = String(err?.message || err || '');
+      if (msg.includes('not implemented') || msg.includes('not available')) return false;
       if ('Notification' in window) {
         const perm = await Notification.requestPermission();
         return perm === 'granted';
