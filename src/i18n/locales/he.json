@@ -2042,7 +2042,9 @@
     "hourly": "כל שעה",
     "task": "משימה",
     "note": "הערה",
-    "notification": "התראה"
+    "notification": "התראה",
+    "weekdayAt": "{{day}} בשעה {{time}}",
+    "dateAt": "{{date}} בשעה {{time}}"
   },
   "codeEditor": {
     "untitledCode": "קוד ללא שם",

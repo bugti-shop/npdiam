@@ -1994,7 +1994,9 @@
     "hourly": "A cada hora",
     "task": "tarefa",
     "note": "nota",
-    "notification": "notificação"
+    "notification": "notificação",
+    "weekdayAt": "{{day}} às {{time}}",
+    "dateAt": "{{date}} às {{time}}"
   },
   "codeEditor": {
     "untitledCode": "Código sem título",

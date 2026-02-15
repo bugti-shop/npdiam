@@ -2088,7 +2088,9 @@
     "hourly": "Toutes les heures",
     "task": "tâche",
     "note": "note",
-    "notification": "notification"
+    "notification": "notification",
+    "weekdayAt": "{{day}} à {{time}}",
+    "dateAt": "{{date}} à {{time}}"
   },
   "codeEditor": {
     "untitledCode": "Code sans titre",

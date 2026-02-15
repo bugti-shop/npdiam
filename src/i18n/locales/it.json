@@ -2034,7 +2034,9 @@
     "hourly": "Ogni ora",
     "task": "attività",
     "note": "nota",
-    "notification": "notifica"
+    "notification": "notifica",
+    "weekdayAt": "{{day}} alle {{time}}",
+    "dateAt": "{{date}} alle {{time}}"
   },
   "codeEditor": {
     "untitledCode": "Codice senza titolo",

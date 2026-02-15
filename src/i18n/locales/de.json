@@ -2089,7 +2089,9 @@
     "hourly": "Stündlich",
     "task": "Aufgabe",
     "note": "Notiz",
-    "notification": "Benachrichtigung"
+    "notification": "Benachrichtigung",
+    "weekdayAt": "{{day}} um {{time}}",
+    "dateAt": "{{date}} um {{time}}"
   },
   "codeEditor": {
     "untitledCode": "Unbenannter Code",
