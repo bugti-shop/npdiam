@@ -12,6 +12,7 @@ import { format, isToday, isTomorrow, isThisWeek } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 interface ReminderItem {
   id: number;
@@ -28,6 +29,7 @@ interface ReminderItem {
 
 const Reminders = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [reminders, setReminders] = useState<ReminderItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [historyItems, setHistoryItems] = useState<any[]>([]);
@@ -36,7 +38,6 @@ const Reminders = () => {
     loadReminders();
     loadHistory();
 
-    // Listen for notification updates
     const handleNotificationReceived = () => {
       loadHistory();
       loadReminders();
@@ -44,7 +45,7 @@ const Reminders = () => {
 
     const handleNotificationSnoozed = (event: CustomEvent) => {
       const { snoozeLabel } = event.detail;
-      toast.success(`Reminder snoozed for ${snoozeLabel}`);
+      toast.success(t('remindersPage.snoozedFor', { label: snoozeLabel }));
       loadHistory();
       loadReminders();
     };
@@ -66,20 +67,15 @@ const Reminders = () => {
   const handleClearHistory = async () => {
     await notificationManager.clearNotificationHistory();
     setHistoryItems([]);
-    toast.success('History cleared');
+    toast.success(t('remindersPage.historyCleared'));
   };
 
   const loadReminders = async () => {
     setLoading(true);
     try {
-      // Load notes from IndexedDB
       const { loadNotesFromDB } = await import('@/utils/noteStorage');
       const allNotes = await loadNotesFromDB();
-
-      // Load tasks from IndexedDB
       const allTasks = await loadTasksFromDB();
-
-      // Get pending notifications from the system
       const pendingNotifications = await notificationManager.getPendingNotifications();
 
       const reminderItems: ReminderItem[] = pendingNotifications.map(notification => {
@@ -89,7 +85,7 @@ const Reminders = () => {
 
         return {
           id: notification.id,
-          title: notification.title || 'Reminder',
+          title: notification.title || t('remindersPage.reminder'),
           body: notification.body || '',
           schedule: notification.schedule?.at ? new Date(notification.schedule.at) : new Date(),
           recurring: extra?.recurringType,
@@ -101,13 +97,10 @@ const Reminders = () => {
         };
       }).filter(r => r.schedule > new Date());
 
-      // Sort by schedule date
       reminderItems.sort((a, b) => a.schedule.getTime() - b.schedule.getTime());
-
       setReminders(reminderItems);
     } catch (error) {
       console.error('Error loading reminders:', error);
-      // Fallback to loading from IndexedDB
       loadRemindersFromStorage();
     } finally {
       setLoading(false);
@@ -117,19 +110,17 @@ const Reminders = () => {
   const loadRemindersFromStorage = async () => {
     const { loadNotesFromDB } = await import('@/utils/noteStorage');
     const allNotes = await loadNotesFromDB();
-
     const allTasks = await loadTasksFromDB();
 
     const reminderItems: ReminderItem[] = [];
 
-    // Add note reminders
     allNotes.forEach(note => {
       if (note.reminderEnabled && note.reminderTime) {
         const reminderDate = new Date(note.reminderTime);
         if (reminderDate > new Date()) {
           reminderItems.push({
             id: parseInt(note.id.slice(0, 8), 16) || Date.now(),
-            title: note.title || 'Note Reminder',
+            title: note.title || t('remindersPage.noteReminder'),
             body: note.content?.slice(0, 100) || '',
             schedule: reminderDate,
             recurring: note.reminderRecurring,
@@ -141,14 +132,13 @@ const Reminders = () => {
       }
     });
 
-    // Add task reminders
     allTasks.forEach(task => {
       if ((task.reminderTime || task.dueDate) && !task.completed) {
         const reminderDate = task.reminderTime ? new Date(task.reminderTime) : new Date(task.dueDate!);
         if (reminderDate > new Date()) {
           reminderItems.push({
             id: parseInt(task.id.slice(0, 8), 16) || Date.now(),
-            title: 'Task Reminder',
+            title: t('remindersPage.taskReminder'),
             body: task.text,
             schedule: reminderDate,
             recurring: task.repeatType !== 'none' ? task.repeatType : undefined,
@@ -160,16 +150,15 @@ const Reminders = () => {
       }
     });
 
-    // Sort by schedule date
     reminderItems.sort((a, b) => a.schedule.getTime() - b.schedule.getTime());
     setReminders(reminderItems);
   };
 
   const formatReminderDate = (date: Date) => {
     if (isToday(date)) {
-      return `Today at ${format(date, 'h:mm a')}`;
+      return t('remindersPage.todayAt', { time: format(date, 'h:mm a') });
     } else if (isTomorrow(date)) {
-      return `Tomorrow at ${format(date, 'h:mm a')}`;
+      return t('remindersPage.tomorrowAt', { time: format(date, 'h:mm a') });
     } else if (isThisWeek(date)) {
       return format(date, 'EEEE \'at\' h:mm a');
     } else {
@@ -181,11 +170,11 @@ const Reminders = () => {
     if (!recurring || recurring === 'none') return null;
 
     const labels: Record<string, string> = {
-      daily: 'Daily',
-      weekly: 'Weekly',
-      monthly: 'Monthly',
-      yearly: 'Yearly',
-      hour: 'Hourly',
+      daily: t('remindersPage.daily'),
+      weekly: t('remindersPage.weekly'),
+      monthly: t('remindersPage.monthly'),
+      yearly: t('remindersPage.yearly'),
+      hour: t('remindersPage.hourly'),
     };
 
     return (
@@ -237,7 +226,7 @@ const Reminders = () => {
             "capitalize",
             reminder.type === 'task' ? "bg-cyan-500" : "bg-purple-500"
           )}>
-            {reminder.type}
+            {t(`remindersPage.${reminder.type}`)}
           </Badge>
         </div>
       </CardContent>
@@ -267,7 +256,7 @@ const Reminders = () => {
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center gap-2">
             <img src="/src/assets/app-logo.png" alt="Npd" className="h-8 w-8" />
-            <h1 className="text-xl font-bold">Reminders</h1>
+            <h1 className="text-xl font-bold">{t('remindersPage.title')}</h1>
           </div>
         </div>
       </header>
@@ -275,29 +264,29 @@ const Reminders = () => {
       <main className="container mx-auto px-4 py-6">
         <Tabs defaultValue="upcoming" className="w-full">
           <TabsList className="grid w-full grid-cols-2 mb-6">
-            <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
-            <TabsTrigger value="history">History</TabsTrigger>
+            <TabsTrigger value="upcoming">{t('remindersPage.upcoming')}</TabsTrigger>
+            <TabsTrigger value="history">{t('remindersPage.history')}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="upcoming">
             {loading ? (
               <div className="text-center py-20">
-                <p className="text-muted-foreground">Loading reminders...</p>
+                <p className="text-muted-foreground">{t('remindersPage.loading')}</p>
               </div>
             ) : reminders.length === 0 ? (
               <div className="text-center py-20">
                 <Bell className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                <h2 className="text-xl font-semibold mb-2">No Upcoming Reminders</h2>
+                <h2 className="text-xl font-semibold mb-2">{t('remindersPage.noUpcoming')}</h2>
                 <p className="text-muted-foreground">
-                  Create tasks or notes with reminders to see them here
+                  {t('remindersPage.noUpcomingDesc')}
                 </p>
               </div>
             ) : (
               <div className="space-y-6">
-                <ReminderSection title="Today" items={groupedReminders.today} />
-                <ReminderSection title="Tomorrow" items={groupedReminders.tomorrow} />
-                <ReminderSection title="This Week" items={groupedReminders.thisWeek} />
-                <ReminderSection title="Later" items={groupedReminders.later} />
+                <ReminderSection title={t('remindersPage.today')} items={groupedReminders.today} />
+                <ReminderSection title={t('remindersPage.tomorrow')} items={groupedReminders.tomorrow} />
+                <ReminderSection title={t('remindersPage.thisWeek')} items={groupedReminders.thisWeek} />
+                <ReminderSection title={t('remindersPage.later')} items={groupedReminders.later} />
               </div>
             )}
           </TabsContent>
@@ -306,16 +295,16 @@ const Reminders = () => {
             {historyItems.length === 0 ? (
               <div className="text-center py-20">
                 <History className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                <h2 className="text-xl font-semibold mb-2">No History</h2>
+                <h2 className="text-xl font-semibold mb-2">{t('remindersPage.noHistory')}</h2>
                 <p className="text-muted-foreground">
-                  Triggered reminders will appear here
+                  {t('remindersPage.noHistoryDesc')}
                 </p>
               </div>
             ) : (
               <div>
                 <div className="flex justify-between items-center mb-4">
                   <p className="text-sm text-muted-foreground">
-                    {historyItems.length} notification{historyItems.length !== 1 ? 's' : ''}
+                    {t('remindersPage.notificationCount', { count: historyItems.length })}
                   </p>
                   <Button
                     variant="outline"
@@ -324,7 +313,7 @@ const Reminders = () => {
                     className="gap-2"
                   >
                     <Trash2 className="h-4 w-4" />
-                    Clear History
+                    {t('remindersPage.clearHistory')}
                   </Button>
                 </div>
                 <div className="space-y-3">
@@ -351,12 +340,12 @@ const Reminders = () => {
                                 ) : (
                                   <Bell className="h-3 w-3" />
                                 )}
-                                {item.read ? 'Read' : 'Unread'}
+                                {item.read ? t('remindersPage.read') : t('remindersPage.unread')}
                               </Badge>
                               {item.snoozed && (
                                 <Badge variant="outline" className="gap-1 text-orange-500 border-orange-500">
                                   <AlarmClock className="h-3 w-3" />
-                                  Snoozed {item.snoozeLabel}
+                                  {t('remindersPage.snoozed', { label: item.snoozeLabel })}
                                 </Badge>
                               )}
                               <Badge variant="outline" className="gap-1">
@@ -375,7 +364,7 @@ const Reminders = () => {
                             "capitalize",
                             item.extra?.type === 'task' ? "bg-cyan-500" : "bg-purple-500"
                           )}>
-                            {item.extra?.type || 'notification'}
+                            {t(`remindersPage.${item.extra?.type || 'notification'}`)}
                           </Badge>
                         </div>
                       </CardContent>
