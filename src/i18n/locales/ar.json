@@ -1943,7 +1943,10 @@
     "allInSync": "جميع الأحداث متزامنة",
     "notSyncedYet": "لم تتم المزامنة بعد — انقر مزامنة الآن",
     "syncedResult": "تمت المزامنة: {{pushed}} مرسل، {{pulled}} مستلم",
-    "syncFailed": "فشل المزامنة"
+    "syncFailed": "فشل المزامنة",
+    "pulledEvents": "الأحداث المستوردة",
+    "noPulledEvents": "لم يتم استيراد أحداث من تقويم الجهاز",
+    "allDay": "طوال اليوم"
   },
   "codeEditor": {
     "untitledCode": "كود بدون عنوان",

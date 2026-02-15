@@ -1877,7 +1877,10 @@
     "allInSync": "सभी इवेंट सिंक हैं",
     "notSyncedYet": "अभी तक सिंक नहीं हुआ — अभी सिंक करें पर टैप करें",
     "syncedResult": "सिंक हुआ: {{pushed}} भेजे, {{pulled}} प्राप्त",
-    "syncFailed": "सिंक विफल"
+    "syncFailed": "सिंक विफल",
+    "pulledEvents": "प्राप्त इवेंट",
+    "noPulledEvents": "डिवाइस कैलेंडर से कोई इवेंट नहीं मिला",
+    "allDay": "पूरा दिन"
   },
   "codeEditor": {
     "untitledCode": "बिना शीर्षक कोड",

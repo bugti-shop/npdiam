@@ -1285,7 +1285,10 @@
     "allInSync": "تمام تقریبات مطابق ہیں",
     "notSyncedYet": "ابھی تک مطابقت نہیں ہوئی — ابھی مطابقت کریں پر ٹیپ کریں",
     "syncedResult": "مطابقت ہوئی: {{pushed}} بھیجے، {{pulled}} موصول",
-    "syncFailed": "مطابقت ناکام"
+    "syncFailed": "مطابقت ناکام",
+    "pulledEvents": "موصول تقریبات",
+    "noPulledEvents": "آلے کے کیلنڈر سے کوئی تقریب نہیں ملی",
+    "allDay": "پورا دن"
   },
   "codeEditor": {
     "untitledCode": "بغیر عنوان کوڈ",

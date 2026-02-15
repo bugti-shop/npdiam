@@ -2008,7 +2008,10 @@
     "allInSync": "모든 이벤트가 동기화됨",
     "notSyncedYet": "아직 동기화되지 않음 — 지금 동기화를 탭하세요",
     "syncedResult": "동기화됨: {{pushed}} 전송, {{pulled}} 수신",
-    "syncFailed": "동기화 실패"
+    "syncFailed": "동기화 실패",
+    "pulledEvents": "가져온 이벤트",
+    "noPulledEvents": "기기 캘린더에서 가져온 이벤트 없음",
+    "allDay": "종일"
   },
   "codeEditor": {
     "untitledCode": "제목 없는 코드",

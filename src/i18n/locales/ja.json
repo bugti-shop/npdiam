@@ -1866,7 +1866,10 @@
     "allInSync": "すべてのイベントが同期済み",
     "notSyncedYet": "まだ同期されていません — 今すぐ同期をタップ",
     "syncedResult": "同期完了: {{pushed}} 送信、{{pulled}} 受信",
-    "syncFailed": "同期失敗"
+    "syncFailed": "同期失敗",
+    "pulledEvents": "取得したイベント",
+    "noPulledEvents": "デバイスカレンダーからイベントが取得されませんでした",
+    "allDay": "終日"
   },
   "codeEditor": {
     "untitledCode": "無題のコード",
