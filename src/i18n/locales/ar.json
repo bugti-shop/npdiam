@@ -153,21 +153,7 @@
     "syncNotes": "الملاحظات والتسجيلات الصوتية",
     "syncTasks": "المهام والمهام الفرعية",
     "syncFolders": "المجلدات والأقسام",
-    "signInToSync": "سجل الدخول بجوجل لمزامنة ملاحظاتك ومهامك عبر جميع أجهزتك",
-    "syncEnabled": "متصل بـ Google Drive للمزامنة.",
-    "localOnly": "بياناتك مخزنة محلياً على هذا الجهاز.",
-    "backupSize": "حجم البيانات",
-    "backupSizeDesc": "إجمالي البيانات المحلية",
-    "signInGoogle": "تسجيل الدخول بـ Google",
-    "googleDriveSync": "مزامنة Google Drive",
-    "lastSyncLabel": "آخر مزامنة: {{time}}",
-    "signInSuccessGDrive": "حسابك في Google متصل لمزامنة Drive.",
-    "signedOutDesc2": "تم قطع اتصال حساب Google.",
-    "syncAllData": "تمت مزامنة جميع البيانات مع Google Drive.",
-    "syncStatsDesc": "الملاحظات: {{notes}} مزامنة. المهام: {{tasks}} مزامنة.",
-    "syncStatsConflicts": "{{conflicts}} تعارض(ات).",
-    "minutesShort": "منذ {{count}}د",
-    "hoursShort": "منذ {{count}}س"
+    "signInToSync": "سجل الدخول بجوجل لمزامنة ملاحظاتك ومهامك عبر جميع أجهزتك"
   },
   "settings": {
     "title": "الإعدادات",

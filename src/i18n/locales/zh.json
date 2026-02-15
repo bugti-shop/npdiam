@@ -153,21 +153,7 @@
     "syncNotes": "笔记和语音录音",
     "syncTasks": "任务和子任务",
     "syncFolders": "文件夹和分区",
-    "signInToSync": "使用 Google 登录以在所有设备间同步笔记和任务",
-    "syncEnabled": "已连接到 Google Drive 进行同步。",
-    "localOnly": "您的数据存储在此设备上。",
-    "backupSize": "数据大小",
-    "backupSizeDesc": "本地数据总量",
-    "signInGoogle": "使用 Google 登录",
-    "googleDriveSync": "Google Drive 同步",
-    "lastSyncLabel": "上次同步: {{time}}",
-    "signInSuccessGDrive": "您的 Google 帐号已连接用于 Drive 同步。",
-    "signedOutDesc2": "Google 帐号已断开连接。",
-    "syncAllData": "所有数据已同步到 Google Drive。",
-    "syncStatsDesc": "笔记: {{notes}} 已同步。任务: {{tasks}} 已同步。",
-    "syncStatsConflicts": "{{conflicts}} 个冲突。",
-    "minutesShort": "{{count}}分钟前",
-    "hoursShort": "{{count}}小时前"
+    "signInToSync": "使用 Google 登录以在所有设备间同步笔记和任务"
   },
   "settings": {
     "title": "设置",

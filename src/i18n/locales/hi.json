@@ -153,21 +153,7 @@
     "syncNotes": "नोट्स और वॉइस रिकॉर्डिंग",
     "syncTasks": "कार्य और उप-कार्य",
     "syncFolders": "फ़ोल्डर और अनुभाग",
-    "signInToSync": "अपने सभी डिवाइसों में नोट्स और कार्य सिंक करने के लिए Google से साइन इन करें",
-    "syncEnabled": "Google Drive से सिंक के लिए कनेक्टेड।",
-    "localOnly": "आपका डेटा इस डिवाइस पर स्थानीय रूप से संग्रहीत है।",
-    "backupSize": "डेटा आकार",
-    "backupSizeDesc": "कुल स्थानीय डेटा",
-    "signInGoogle": "Google से साइन इन करें",
-    "googleDriveSync": "Google Drive सिंक",
-    "lastSyncLabel": "अंतिम सिंक: {{time}}",
-    "signInSuccessGDrive": "आपका Google खाता Drive सिंक के लिए कनेक्टेड है।",
-    "signedOutDesc2": "Google खाता डिस्कनेक्ट हो गया।",
-    "syncAllData": "सभी डेटा Google Drive पर सिंक हो गया।",
-    "syncStatsDesc": "नोट्स: {{notes}} सिंक। कार्य: {{tasks}} सिंक।",
-    "syncStatsConflicts": "{{conflicts}} टकराव।",
-    "minutesShort": "{{count}}मि पहले",
-    "hoursShort": "{{count}}घं पहले"
+    "signInToSync": "अपने सभी डिवाइसों में नोट्स और कार्य सिंक करने के लिए Google से साइन इन करें"
   },
   "settings": {
     "title": "सेटिंग्स",

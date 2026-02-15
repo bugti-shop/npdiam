@@ -168,22 +168,22 @@ export const changePin = async (oldPin: string, newPin: string): Promise<boolean
 
 // Predefined security questions
 export const SECURITY_QUESTIONS = [
-  "appLock.questionMother",
-  "appLock.questionPet",
-  "appLock.questionCity",
-  "appLock.questionMovie",
-  "appLock.questionNickname",
-  "appLock.questionTeacher",
-  "appLock.questionCar",
-  "appLock.questionFood",
+  "What is your mother's maiden name?",
+  "What was the name of your first pet?",
+  "What city were you born in?",
+  "What is your favorite movie?",
+  "What was your childhood nickname?",
+  "What is the name of your favorite teacher?",
+  "What was your first car?",
+  "What is your favorite food?",
 ];
 
-// Lock timing options with i18n keys
+// Lock timing options with labels
 export const LOCK_TIMING_OPTIONS: { value: LockTiming; label: string }[] = [
-  { value: 'immediately', label: 'appLock.timingImmediately' },
-  { value: '30seconds', label: 'appLock.timing30seconds' },
-  { value: '1minute', label: 'appLock.timing1minute' },
-  { value: '5minutes', label: 'appLock.timing5minutes' },
-  { value: '15minutes', label: 'appLock.timing15minutes' },
-  { value: '30minutes', label: 'appLock.timing30minutes' },
+  { value: 'immediately', label: 'Immediately' },
+  { value: '30seconds', label: 'After 30 seconds' },
+  { value: '1minute', label: 'After 1 minute' },
+  { value: '5minutes', label: 'After 5 minutes' },
+  { value: '15minutes', label: 'After 15 minutes' },
+  { value: '30minutes', label: 'After 30 minutes' },
 ];

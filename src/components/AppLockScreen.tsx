@@ -320,7 +320,7 @@ export const AppLockScreen = ({ onUnlock }: AppLockScreenProps) => {
           </p>
           
           <div className="w-full max-w-sm space-y-4">
-            <p className="font-medium">{t(settings.securityQuestions[currentQuestionIndex]?.question, settings.securityQuestions[currentQuestionIndex]?.question)}</p>
+            <p className="font-medium">{settings.securityQuestions[currentQuestionIndex]?.question}</p>
             <Input
               type="text"
               placeholder={t('appLock.yourAnswer', 'Your answer')}
