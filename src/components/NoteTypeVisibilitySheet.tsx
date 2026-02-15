@@ -48,8 +48,11 @@ const featureColors: Record<ToggleableFeature, string> = {
   noteTemplates: 'text-primary',
 };
 
-const featureNames: Record<ToggleableFeature, string> = {
-  noteTemplates: 'Note Templates',
+const getFeatureTranslationKey = (feature: ToggleableFeature): string => {
+  const keys: Record<ToggleableFeature, string> = {
+    noteTemplates: 'settings.noteTemplates',
+  };
+  return keys[feature];
 };
 
 export const NoteTypeVisibilitySheet = ({ isOpen, onClose }: NoteTypeVisibilitySheetProps) => {
@@ -103,10 +106,11 @@ export const NoteTypeVisibilitySheet = ({ isOpen, onClose }: NoteTypeVisibilityS
     setVisibleFeatures(newVisible);
     
     const isNowVisible = newVisible.includes(feature);
+    const featureName = t(getFeatureTranslationKey(feature));
     toast({
       title: isNowVisible
-        ? `${featureNames[feature]} is now visible`
-        : `${featureNames[feature]} is now hidden`,
+        ? t('settings.featureShown', '{{feature}} is now visible', { feature: featureName })
+        : t('settings.featureHidden', '{{feature}} is now hidden', { feature: featureName }),
     });
   };
 
@@ -151,7 +155,7 @@ export const NoteTypeVisibilitySheet = ({ isOpen, onClose }: NoteTypeVisibilityS
                         "font-medium",
                         !isVisible && "text-muted-foreground"
                       )}>
-                        {getNoteTypeDisplayName(type)}
+                        {t(`notes.noteTypes.${type}`, getNoteTypeDisplayName(type))}
                       </span>
                     </div>
                     <Switch
@@ -164,7 +168,7 @@ export const NoteTypeVisibilitySheet = ({ isOpen, onClose }: NoteTypeVisibilityS
               })}
               
               <Separator className="my-3" />
-              <p className="text-xs text-muted-foreground px-4 pb-1 font-semibold">Features</p>
+              <p className="text-xs text-muted-foreground px-4 pb-1 font-semibold">{t('settings.features', 'Features')}</p>
               
               {(['noteTemplates'] as ToggleableFeature[]).map((feature) => {
                 const isVisible = visibleFeatures.includes(feature);
@@ -184,7 +188,7 @@ export const NoteTypeVisibilitySheet = ({ isOpen, onClose }: NoteTypeVisibilityS
                         "font-medium",
                         !isVisible && "text-muted-foreground"
                       )}>
-                        {featureNames[feature]}
+                        {t(getFeatureTranslationKey(feature))}
                       </span>
                     </div>
                     <Switch
