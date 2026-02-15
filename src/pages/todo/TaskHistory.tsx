@@ -128,10 +128,10 @@ const TaskHistory = () => {
         : task.dueDate ? new Date(task.dueDate) 
         : new Date(parseInt(task.id) || Date.now());
       let key: string;
-      if (isToday(date)) key = 'Today';
-      else if (isYesterday(date)) key = 'Yesterday';
-      else if (isThisWeek(date)) key = 'This Week';
-      else if (isThisMonth(date)) key = 'This Month';
+      if (isToday(date)) key = t('common.today');
+      else if (isYesterday(date)) key = t('common.yesterday');
+      else if (isThisWeek(date)) key = t('todayPage.thisWeek');
+      else if (isThisMonth(date)) key = t('taskHistory.month');
       else key = format(date, 'MMMM yyyy');
       if (!groups[key]) groups[key] = [];
       groups[key].push(task);
@@ -146,20 +146,20 @@ const TaskHistory = () => {
       const current = await loadTodoItems();
       await saveTodoItems([...restored, ...current]);
       window.dispatchEvent(new CustomEvent('tasksUpdated'));
-      toast.success('Task restored!', { icon: '↩️' });
+      toast.success(t('taskHistory.taskRestored'), { icon: '↩️' });
     }
     await loadData();
   };
 
   const handleDeleteArchived = async (taskId: string) => {
     await deleteArchivedTasks([taskId]);
-    toast.success('Permanently deleted');
+    toast.success(t('taskHistory.permanentlyDeleted'));
     await loadData();
   };
 
   const handleClearAll = async () => {
     const count = await clearAllArchivedTasks();
-    toast.success(`Cleared ${count} archived tasks`);
+    toast.success(t('taskHistory.clearedArchived', { count }));
     setConfirmClearAll(false);
     await loadData();
   };
@@ -191,11 +191,11 @@ const TaskHistory = () => {
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="completed" className="text-xs flex items-center gap-1.5">
                 <CheckCircle2 className="h-3.5 w-3.5" />
-                Completed ({activeItems.filter(t => t.completed).length})
+                {t('taskHistory.completed')} ({activeItems.filter(t => t.completed).length})
               </TabsTrigger>
               <TabsTrigger value="archived" className="text-xs flex items-center gap-1.5">
                 <Archive className="h-3.5 w-3.5" />
-                Archived ({archivedItems.length})
+                {t('taskHistory.archived')} ({archivedItems.length})
               </TabsTrigger>
             </TabsList>
           </Tabs>
@@ -206,7 +206,7 @@ const TaskHistory = () => {
             <Input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search tasks..."
+              placeholder={t('taskHistory.searchTasks')}
               className="pl-9 pr-9"
             />
             {searchQuery && (
@@ -223,14 +223,14 @@ const TaskHistory = () => {
           <div className="flex items-center gap-2">
             <Tabs value={filter} onValueChange={(v) => { setFilter(v as FilterType); if (v === 'dateRange') setShowDatePicker(true); }} className="flex-1">
               <TabsList className="grid w-full grid-cols-6">
-                <TabsTrigger value="all" className="text-[10px]">All</TabsTrigger>
-                <TabsTrigger value="recurring" className="text-[10px]">Repeat</TabsTrigger>
-                <TabsTrigger value="today" className="text-[10px]">Today</TabsTrigger>
-                <TabsTrigger value="week" className="text-[10px]">Week</TabsTrigger>
-                <TabsTrigger value="month" className="text-[10px]">Month</TabsTrigger>
+                <TabsTrigger value="all" className="text-[10px]">{t('taskHistory.all')}</TabsTrigger>
+                <TabsTrigger value="recurring" className="text-[10px]">{t('taskHistory.repeat')}</TabsTrigger>
+                <TabsTrigger value="today" className="text-[10px]">{t('taskHistory.today')}</TabsTrigger>
+                <TabsTrigger value="week" className="text-[10px]">{t('taskHistory.week')}</TabsTrigger>
+                <TabsTrigger value="month" className="text-[10px]">{t('taskHistory.month')}</TabsTrigger>
                 <TabsTrigger value="dateRange" className="text-[10px]">
                   <CalendarRange className="h-3 w-3 mr-0.5" />
-                  Range
+                  {t('taskHistory.range')}
                 </TabsTrigger>
               </TabsList>
             </Tabs>
@@ -243,7 +243,7 @@ const TaskHistory = () => {
                 <PopoverTrigger asChild>
                   <Button variant="outline" size="sm" className={cn("flex-1 text-xs justify-start", !dateFrom && "text-muted-foreground")}>
                     <CalendarIcon className="h-3.5 w-3.5 mr-1.5" />
-                    {dateFrom ? format(dateFrom, 'MMM d, yyyy') : 'From date'}
+                    {dateFrom ? format(dateFrom, 'MMM d, yyyy') : t('taskHistory.fromDate')}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">
@@ -255,7 +255,7 @@ const TaskHistory = () => {
                 <PopoverTrigger asChild>
                   <Button variant="outline" size="sm" className={cn("flex-1 text-xs justify-start", !dateTo && "text-muted-foreground")}>
                     <CalendarIcon className="h-3.5 w-3.5 mr-1.5" />
-                    {dateTo ? format(dateTo, 'MMM d, yyyy') : 'To date'}
+                    {dateTo ? format(dateTo, 'MMM d, yyyy') : t('taskHistory.toDate')}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="end">
@@ -278,13 +278,13 @@ const TaskHistory = () => {
               ) : (
                 <CheckCircle2 className="h-4 w-4 text-success" />
               )}
-              <span>{filteredTasks.length} tasks</span>
+              <span>{filteredTasks.length} {t('taskHistory.tasks', { count: filteredTasks.length }).split(' ').slice(1).join(' ')}</span>
             </div>
             <div className="flex items-center gap-1">
               {view === 'archived' && archivedItems.length > 0 && (
                 <Button variant="ghost" size="sm" onClick={() => setConfirmClearAll(true)} className="text-destructive text-xs">
                   <Trash2 className="h-3.5 w-3.5 mr-1" />
-                  Clear All
+                   {t('taskHistory.clearAll')}
                 </Button>
               )}
               <Button 
@@ -350,11 +350,11 @@ const TaskHistory = () => {
                                 <DropdownMenuContent align="end">
                                   <DropdownMenuItem onClick={() => handleUnarchive(task.id)}>
                                     <ArchiveRestore className="h-4 w-4 mr-2" />
-                                    Restore Task
+                                    {t('taskHistory.restoreTask')}
                                   </DropdownMenuItem>
                                   <DropdownMenuItem onClick={() => handleDeleteArchived(task.id)} className="text-destructive">
                                     <Trash2 className="h-4 w-4 mr-2" />
-                                    Delete Permanently
+                                    {t('taskHistory.deletePermanently')}
                                   </DropdownMenuItem>
                                 </DropdownMenuContent>
                               </DropdownMenu>
@@ -371,17 +371,17 @@ const TaskHistory = () => {
                 <div className="text-center py-12">
                   {view === 'archived' ? (
                     <>
-                      <Archive className="h-12 w-12 text-muted-foreground/40 mx-auto mb-3" />
-                      <h3 className="font-medium text-lg mb-1">No archived tasks</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Completed tasks are automatically archived after 3 days
+                       <Archive className="h-12 w-12 text-muted-foreground/40 mx-auto mb-3" />
+                       <h3 className="font-medium text-lg mb-1">{t('taskHistory.noArchivedTasks')}</h3>
+                       <p className="text-sm text-muted-foreground">
+                         {t('taskHistory.archivedAutoInfo')}
                       </p>
                     </>
                   ) : (
                     <>
                       <History className="h-12 w-12 text-muted-foreground/40 mx-auto mb-3" />
-                      <h3 className="font-medium text-lg mb-1">No completed tasks</h3>
-                      <p className="text-sm text-muted-foreground">Complete some tasks to see them here</p>
+                       <h3 className="font-medium text-lg mb-1">{t('taskHistory.noCompletedTasks')}</h3>
+                       <p className="text-sm text-muted-foreground">{t('taskHistory.completeTasksInfo')}</p>
                     </>
                   )}
                 </div>
@@ -395,15 +395,15 @@ const TaskHistory = () => {
       <AlertDialog open={confirmClearAll} onOpenChange={setConfirmClearAll}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Clear All Archived Tasks?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This will permanently delete all {archivedItems.length} archived tasks. This action cannot be undone.
+             <AlertDialogTitle>{t('taskHistory.clearAllArchived')}</AlertDialogTitle>
+             <AlertDialogDescription>
+               {t('taskHistory.clearAllArchivedDesc', { count: archivedItems.length })}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleClearAll} className="bg-destructive text-destructive-foreground">
-              Delete All
+            <AlertDialogCancel>{t('common.cancel')}</AlertDialogCancel>
+             <AlertDialogAction onClick={handleClearAll} className="bg-destructive text-destructive-foreground">
+               {t('taskHistory.deleteAll')}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

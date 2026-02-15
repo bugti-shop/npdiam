@@ -73,7 +73,7 @@ const Upcoming = () => {
     if (archivedCount > 0) {
       await saveTodoItems(activeTasks);
       loadedItems = activeTasks;
-      toast.info(`Archived ${archivedCount} completed task(s)`, { icon: '📦' });
+      toast.info(t('todayPage.archivedCompleted', { count: archivedCount }), { icon: '📦' });
     }
     
     setAllItems(loadedItems);
@@ -110,7 +110,7 @@ const Upcoming = () => {
     if (allItems.length > 0) {
       saveTodoItems(allItems).then(({ persisted }) => {
         if (!persisted) {
-          toast.error('Storage full!', { id: 'storage-full' });
+          toast.error(t('todayPage.storageFull'), { id: 'storage-full' });
         }
       });
       window.dispatchEvent(new Event('tasksUpdated'));
@@ -148,11 +148,11 @@ const Upcoming = () => {
       try {
         const streakResult = await recordCompletion(TASK_STREAK_KEY);
         if (streakResult.newMilestone) {
-          toast.success(`🔥 ${streakResult.newMilestone} day streak! Keep it up!`);
+          toast.success(t('todayPage.streakMilestone', { days: streakResult.newMilestone }));
           window.dispatchEvent(new CustomEvent('streakMilestone', { detail: { milestone: streakResult.newMilestone } }));
         }
         if (streakResult.earnedFreeze) {
-          toast.success('❄️ You earned a streak freeze!', { description: 'Complete 5 tasks in a day to earn more.' });
+          toast.success(t('todayPage.earnedStreakFreeze'), { description: t('todayPage.earnedStreakFreezeDesc') });
         }
         window.dispatchEvent(new CustomEvent('streakUpdated'));
       } catch (e) { console.warn('Failed to record streak:', e); }
@@ -170,7 +170,7 @@ const Upcoming = () => {
           ];
           setAllItems(updatedAllItems);
           await saveTodoItems(updatedAllItems);
-          toast.success('Recurring task completed! Next occurrence created.', {
+          toast.success(t('todayPage.recurringTaskCompleted'), {
             icon: '🔄',
           });
           loadItems();
@@ -242,7 +242,7 @@ const Upcoming = () => {
         }
         setSelectedTaskIds(new Set());
         setIsSelectionMode(false);
-        toast.success(`Deleted ${selectedItems.length} task(s)`);
+        toast.success(t('todayPage.deletedTasks', { count: selectedItems.length }));
         break;
       case 'complete':
         for (const item of selectedItems) {
@@ -250,7 +250,7 @@ const Upcoming = () => {
         }
         setSelectedTaskIds(new Set());
         setIsSelectionMode(false);
-        toast.success(`Completed ${selectedItems.length} task(s)`);
+        toast.success(t('todayPage.completedTasks', { count: selectedItems.length }));
         break;
       case 'duplicate':
         for (const item of selectedItems) {
@@ -258,7 +258,7 @@ const Upcoming = () => {
         }
         setSelectedTaskIds(new Set());
         setIsSelectionMode(false);
-        toast.success(`Duplicated ${selectedItems.length} task(s)`);
+        toast.success(t('todayPage.duplicatedTasks', { count: selectedItems.length }));
         break;
     }
   };
@@ -271,7 +271,7 @@ const Upcoming = () => {
     setSelectedTaskIds(new Set());
     setIsSelectionMode(false);
     setIsMoveToFolderOpen(false);
-    toast.success(`Moved ${selectedItems.length} task(s)`);
+    toast.success(t('todayPage.movedTasks', { count: selectedItems.length }));
   };
 
   const handleSetPriority = async (priority: Priority) => {
@@ -282,7 +282,7 @@ const Upcoming = () => {
     setSelectedTaskIds(new Set());
     setIsSelectionMode(false);
     setIsPrioritySheetOpen(false);
-    toast.success(`Updated priority for ${selectedItems.length} task(s)`);
+    toast.success(t('todayPage.updatedPriority', { count: selectedItems.length }));
   };
 
   const handleDragEnd = async (result: DropResult) => {
@@ -386,7 +386,7 @@ const Upcoming = () => {
   ].filter(Boolean).length;
 
   return (
-    <TodoLayout title="Upcoming">
+    <TodoLayout title={t('upcoming.title', 'Upcoming')}>
       <main className="container mx-auto px-4 py-6 pb-32">
         <div className="max-w-2xl mx-auto space-y-6">
           {/* Toolbar */}
@@ -401,7 +401,7 @@ const Upcoming = () => {
               {smartList === 'location-reminders' && (
                 <Button variant="outline" size="sm" onClick={() => setIsLocationMapOpen(true)}>
                   <MapPin className="h-4 w-4 mr-1" />
-                  Map
+                   Map
                 </Button>
               )}
             </div>
@@ -564,7 +564,7 @@ const Upcoming = () => {
         style={{ bottom: 'calc(5rem + env(safe-area-inset-bottom, 0px))' }}
         size="lg"
       >
-        <Plus className="h-5 w-5" />Add Task
+        <Plus className="h-5 w-5" />{t('common.addTask')}
       </Button>
 
       <TaskInputSheet
