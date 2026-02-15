@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Note } from '@/types/note';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -61,6 +62,7 @@ const RANDOM_COLORS = [
 ];
 
 export const NoteCard = ({ note, onEdit, onDelete, onArchive, onTogglePin, onToggleFavorite, onMoveToFolder, onDragStart, onDragOver, onDrop, onDragEnd, isSelectionMode = false, isSelected = false, onToggleSelection, onDuplicate, onHide, onProtect }: NoteCardProps) => {
+  const { t } = useTranslation();
   const [showContextMenu, setShowContextMenu] = useState(false);
   const [swipeOffset, setSwipeOffset] = useState(0);
   const [isSwiping, setIsSwiping] = useState(false);
@@ -386,49 +388,49 @@ export const NoteCard = ({ note, onEdit, onDelete, onArchive, onTogglePin, onTog
         <DropdownMenuContent className="w-48 z-50 bg-background border border-border shadow-lg">
           <DropdownMenuItem onClick={() => { setShowContextMenu(false); onEdit(note); }} className="gap-2">
             <Edit className="h-4 w-4" />
-            Edit
+            {t('common.edit')}
           </DropdownMenuItem>
           {onTogglePin && (
             <DropdownMenuItem onClick={(e) => { setShowContextMenu(false); onTogglePin(note.id, e as any); }} className="gap-2">
               <Pin className={cn("h-4 w-4", note.isPinned && "fill-current")} />
-              {note.isPinned ? 'Unpin' : 'Pin'}
+              {note.isPinned ? t('notes.unpin') : t('notes.pin')}
             </DropdownMenuItem>
           )}
           {onToggleFavorite && (
             <DropdownMenuItem onClick={() => { setShowContextMenu(false); onToggleFavorite(note.id); }} className="gap-2">
               <Star className={cn("h-4 w-4", note.isFavorite && "fill-warning text-warning")} />
-              {note.isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+              {note.isFavorite ? t('notes.removeFromFavorites', 'Remove from Favorites') : t('notes.addToFavorites', 'Add to Favorites')}
             </DropdownMenuItem>
           )}
           {onArchive && (
             <DropdownMenuItem onClick={() => { setShowContextMenu(false); onArchive(note.id); }} className="gap-2">
               <Archive className="h-4 w-4" />
-              Archive
+              {t('notes.archive')}
             </DropdownMenuItem>
           )}
           {onDuplicate && (
             <DropdownMenuItem onClick={() => { setShowContextMenu(false); onDuplicate(note.id); }} className="gap-2">
               <Copy className="h-4 w-4" />
-              Duplicate
+              {t('common.duplicate')}
             </DropdownMenuItem>
           )}
           <DropdownMenuSeparator />
           {onHide && (
             <DropdownMenuItem onClick={() => { setShowContextMenu(false); onHide(note.id); }} className="gap-2">
               <EyeOff className="h-4 w-4" />
-              Hide Note
+              {t('notes.hideNote', 'Hide Note')}
             </DropdownMenuItem>
           )}
           {onProtect && (
             <DropdownMenuItem onClick={() => { setShowContextMenu(false); onProtect(note.id); }} className="gap-2">
               <Shield className="h-4 w-4" />
-              {noteProtection.hasPassword || noteProtection.useBiometric ? 'Change Protection' : 'Protect Note'}
+              {noteProtection.hasPassword || noteProtection.useBiometric ? t('notes.changeProtection', 'Change Protection') : t('notes.protectNote', 'Protect Note')}
             </DropdownMenuItem>
           )}
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => { setShowContextMenu(false); onDelete(note.id); }} className="gap-2 text-destructive">
             <Trash2 className="h-4 w-4" />
-            Move to Trash
+            {t('notes.moveToTrash')}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
