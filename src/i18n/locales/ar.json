@@ -1749,6 +1749,13 @@
     "all": "الكل",
     "actions": "إجراءات"
   },
+  "dateTime": {
+    "title": "التاريخ والوقت", "cancel": "إلغاء", "save": "حفظ", "today": "اليوم", "tomorrow": "غداً", "thisWeekend": "نهاية هذا الأسبوع", "nextWeek": "الأسبوع القادم", "time": "الوقت", "selectHour": "اختر الساعة", "selectMinutes": "اختر الدقائق", "confirmTime": "تأكيد الوقت", "reminder": "تذكير", "setRepeatTask": "تعيين كمهمة متكررة", "repeatEvery": "تكرار كل", "repeatOn": "تكرار في", "repeatEndsAt": "ينتهي التكرار في", "never": "أبداً", "onSpecificDate": "في تاريخ محدد", "afterXOccurrences": "بعد عدد مرات", "afterNTimes": "بعد {{count}} مرات", "dayN": "يوم {{count}}",
+    "frequency": { "hour": "ساعة", "daily": "يومي", "weekly": "أسبوعي", "monthly": "شهري", "yearly": "سنوي" },
+    "units": { "hour": "{{count}} ساعة", "hours": "{{count}} ساعات", "day": "{{count}} يوم", "days": "{{count}} أيام", "week": "{{count}} أسبوع", "weeks": "{{count}} أسابيع", "month": "{{count}} شهر", "months": "{{count}} أشهر", "year": "{{count}} سنة", "years": "{{count}} سنوات" },
+    "reminderOptions": { "instant": "فوري (في الوقت المحدد)", "noReminder": "بدون تذكير", "5min": "قبل 5 دقائق", "10min": "قبل 10 دقائق", "15min": "قبل 15 دقيقة", "30min": "قبل 30 دقيقة", "1hour": "قبل ساعة", "2hours": "قبل ساعتين", "morning": "صباحاً (9:00)", "eveningBefore": "مساء اليوم السابق (18:00)", "1day9am": "اليوم السابق الساعة 9:00", "1day": "قبل يوم", "2days": "قبل يومين", "1week": "قبل أسبوع" },
+    "weekDays": { "sun": "أحد", "mon": "اثنين", "tue": "ثلاثاء", "wed": "أربعاء", "thu": "خميس", "fri": "جمعة", "sat": "سبت" }
+  },
   "taskInput": {
     "placeholder": "مثال: شراء البقالة غداً الساعة 5 مساءً",
     "templates": "قوالب",

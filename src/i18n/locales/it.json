@@ -1789,6 +1789,13 @@
     "all": "Tutte",
     "actions": "Azioni"
   },
+  "dateTime": {
+    "title": "Data e Ora", "cancel": "Annulla", "save": "Salva", "today": "Oggi", "tomorrow": "Domani", "thisWeekend": "Questo fine settimana", "nextWeek": "Prossima settimana", "time": "Ora", "selectHour": "Seleziona ora", "selectMinutes": "Seleziona minuti", "confirmTime": "Conferma ora", "reminder": "Promemoria", "setRepeatTask": "Imposta come attività ripetuta", "repeatEvery": "Ripeti ogni", "repeatOn": "Ripeti il", "repeatEndsAt": "La ripetizione termina", "never": "Mai", "onSpecificDate": "In una data specifica", "afterXOccurrences": "Dopo X volte", "afterNTimes": "Dopo {{count}} volte", "dayN": "Giorno {{count}}",
+    "frequency": { "hour": "Ora", "daily": "Giornaliero", "weekly": "Settimanale", "monthly": "Mensile", "yearly": "Annuale" },
+    "units": { "hour": "{{count}} ora", "hours": "{{count}} ore", "day": "{{count}} giorno", "days": "{{count}} giorni", "week": "{{count}} settimana", "weeks": "{{count}} settimane", "month": "{{count}} mese", "months": "{{count}} mesi", "year": "{{count}} anno", "years": "{{count}} anni" },
+    "reminderOptions": { "instant": "Istantaneo (all'ora esatta)", "noReminder": "Nessun promemoria", "5min": "5 minuti prima", "10min": "10 minuti prima", "15min": "15 minuti prima", "30min": "30 minuti prima", "1hour": "1 ora prima", "2hours": "2 ore prima", "morning": "Al mattino (9:00)", "eveningBefore": "La sera prima (18:00)", "1day9am": "Il giorno prima alle 9:00", "1day": "1 giorno prima", "2days": "2 giorni prima", "1week": "1 settimana prima" },
+    "weekDays": { "sun": "Dom", "mon": "Lun", "tue": "Mar", "wed": "Mer", "thu": "Gio", "fri": "Ven", "sat": "Sab" }
+  },
   "taskInput": {
     "placeholder": "es. Compra spesa domani alle 17",
     "templates": "Modelli",

@@ -1647,6 +1647,13 @@
     "all": "Tümü",
     "actions": "Eylemler"
   },
+  "dateTime": {
+    "title": "Tarih ve Saat", "cancel": "İptal", "save": "Kaydet", "today": "Bugün", "tomorrow": "Yarın", "thisWeekend": "Bu hafta sonu", "nextWeek": "Gelecek hafta", "time": "Saat", "selectHour": "Saat seçin", "selectMinutes": "Dakika seçin", "confirmTime": "Saati onayla", "reminder": "Hatırlatıcı", "setRepeatTask": "Tekrarlayan görev olarak ayarla", "repeatEvery": "Her tekrarla", "repeatOn": "Tekrar günü", "repeatEndsAt": "Tekrar bitiş", "never": "Asla", "onSpecificDate": "Belirli bir tarihte", "afterXOccurrences": "X kez sonra", "afterNTimes": "{{count}} kez sonra", "dayN": "Gün {{count}}",
+    "frequency": { "hour": "Saat", "daily": "Günlük", "weekly": "Haftalık", "monthly": "Aylık", "yearly": "Yıllık" },
+    "units": { "hour": "{{count}} saat", "hours": "{{count}} saat", "day": "{{count}} gün", "days": "{{count}} gün", "week": "{{count}} hafta", "weeks": "{{count}} hafta", "month": "{{count}} ay", "months": "{{count}} ay", "year": "{{count}} yıl", "years": "{{count}} yıl" },
+    "reminderOptions": { "instant": "Anında (tam saatinde)", "noReminder": "Hatırlatıcı yok", "5min": "5 dakika önce", "10min": "10 dakika önce", "15min": "15 dakika önce", "30min": "30 dakika önce", "1hour": "1 saat önce", "2hours": "2 saat önce", "morning": "Sabah (9:00)", "eveningBefore": "Önceki akşam (18:00)", "1day9am": "Önceki gün 9:00", "1day": "1 gün önce", "2days": "2 gün önce", "1week": "1 hafta önce" },
+    "weekDays": { "sun": "Paz", "mon": "Pzt", "tue": "Sal", "wed": "Çar", "thu": "Per", "fri": "Cum", "sat": "Cmt" }
+  },
   "taskInput": {
     "placeholder": "örn. Yarın saat 17'de market alışverişi",
     "templates": "Şablonlar",

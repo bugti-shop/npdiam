@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
@@ -35,6 +36,7 @@ export const ClockTimePicker = ({
   onConfirm,
   showConfirmButton = true,
 }: ClockTimePickerProps) => {
+  const { t } = useTranslation();
   const [mode, setMode] = useState<Mode>('hour');
   const [isDragging, setIsDragging] = useState(false);
   const clockRef = useRef<HTMLDivElement>(null);
@@ -305,7 +307,7 @@ export const ClockTimePicker = ({
 
       {/* Mode Indicator */}
       <p className="text-xs text-muted-foreground">
-        {mode === 'hour' ? 'Select hour' : 'Select minutes'}
+        {mode === 'hour' ? t('dateTime.selectHour') : t('dateTime.selectMinutes')}
       </p>
 
       {/* Confirm Button */}
@@ -318,7 +320,7 @@ export const ClockTimePicker = ({
           className="w-full max-w-[200px] gap-2"
         >
           <Check className="w-4 h-4" />
-          Confirm Time
+          {t('dateTime.confirmTime')}
         </Button>
       )}
     </div>

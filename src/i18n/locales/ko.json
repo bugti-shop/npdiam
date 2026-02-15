@@ -1814,6 +1814,13 @@
     "all": "모두",
     "actions": "작업"
   },
+  "dateTime": {
+    "title": "날짜 및 시간", "cancel": "취소", "save": "저장", "today": "오늘", "tomorrow": "내일", "thisWeekend": "이번 주말", "nextWeek": "다음 주", "time": "시간", "selectHour": "시간 선택", "selectMinutes": "분 선택", "confirmTime": "시간 확인", "reminder": "알림", "setRepeatTask": "반복 작업으로 설정", "repeatEvery": "반복 간격", "repeatOn": "반복 요일", "repeatEndsAt": "반복 종료", "never": "안 함", "onSpecificDate": "특정 날짜에", "afterXOccurrences": "X회 후", "afterNTimes": "{{count}}회 후", "dayN": "{{count}}일",
+    "frequency": { "hour": "시간", "daily": "매일", "weekly": "매주", "monthly": "매월", "yearly": "매년" },
+    "units": { "hour": "{{count}}시간", "hours": "{{count}}시간", "day": "{{count}}일", "days": "{{count}}일", "week": "{{count}}주", "weeks": "{{count}}주", "month": "{{count}}개월", "months": "{{count}}개월", "year": "{{count}}년", "years": "{{count}}년" },
+    "reminderOptions": { "instant": "즉시 (정확한 시간)", "noReminder": "알림 없음", "5min": "5분 전", "10min": "10분 전", "15min": "15분 전", "30min": "30분 전", "1hour": "1시간 전", "2hours": "2시간 전", "morning": "당일 아침 (9:00)", "eveningBefore": "전날 저녁 (18:00)", "1day9am": "전날 오전 9:00", "1day": "1일 전", "2days": "2일 전", "1week": "1주 전" },
+    "weekDays": { "sun": "일", "mon": "월", "tue": "화", "wed": "수", "thu": "목", "fri": "금", "sat": "토" }
+  },
   "taskInput": {
     "placeholder": "예: 내일 오후 5시에 장보기",
     "templates": "템플릿",
