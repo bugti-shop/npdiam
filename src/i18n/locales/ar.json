@@ -655,7 +655,8 @@
       "byPriority": "حسب الأولوية",
       "byStatus": "حسب الحالة",
       "byDate": "حسب التاريخ",
-      "clearFilters": "مسح الفلاتر"
+      "clearFilters": "مسح الفلاتر",
+      "saveAsSmartView": "حفظ كعرض ذكي"
     },
     "sort": {
       "title": "ترتيب حسب",

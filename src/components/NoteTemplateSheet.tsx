@@ -1449,7 +1449,7 @@ export const NoteTemplateSheet = ({ isOpen, onClose, onApplyTemplate }: NoteTemp
 
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: previewTemplate.folderColor }} />
-                  <span dangerouslySetInnerHTML={{ __html: t('noteTemplates.createsFolderDesc', { name: previewTemplate.name }) }} />
+                  <span>{t('noteTemplates.createsFolderDesc', { name: previewTemplate.name })}</span>
                 </div>
 
                 <div className="space-y-2">

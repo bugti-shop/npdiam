@@ -708,7 +708,8 @@
       "byPriority": "優先度別",
       "byStatus": "ステータス別",
       "byDate": "日付別",
-      "clearFilters": "フィルターをクリア"
+      "clearFilters": "フィルターをクリア",
+      "saveAsSmartView": "スマートビューとして保存"
     },
     "sort": {
       "title": "並べ替え",

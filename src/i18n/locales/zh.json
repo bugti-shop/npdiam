@@ -708,7 +708,8 @@
       "byPriority": "按优先级",
       "byStatus": "按状态",
       "byDate": "按日期",
-      "clearFilters": "清除筛选"
+      "clearFilters": "清除筛选",
+      "saveAsSmartView": "保存为智能视图"
     },
     "sort": {
       "title": "排序",

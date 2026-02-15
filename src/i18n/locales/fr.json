@@ -708,7 +708,8 @@
       "byPriority": "Par Priorité",
       "byStatus": "Par Statut",
       "byDate": "Par Date",
-      "clearFilters": "Effacer les Filtres"
+      "clearFilters": "Effacer les Filtres",
+      "saveAsSmartView": "Enregistrer comme Vue Intelligente"
     },
     "sort": {
       "title": "Trier Par",

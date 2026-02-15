@@ -708,7 +708,8 @@
       "byPriority": "לפי עדיפות",
       "byStatus": "לפי סטטוס",
       "byDate": "לפי תאריך",
-      "clearFilters": "נקה סינון"
+      "clearFilters": "נקה סינון",
+      "saveAsSmartView": "שמור כתצוגה חכמה"
     },
     "sort": {
       "title": "מיין לפי",

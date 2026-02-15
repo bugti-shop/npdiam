@@ -708,7 +708,8 @@
       "byPriority": "Nach Priorität",
       "byStatus": "Nach Status",
       "byDate": "Nach Datum",
-      "clearFilters": "Filter löschen"
+      "clearFilters": "Filter löschen",
+      "saveAsSmartView": "Als Smart View speichern"
     },
     "sort": {
       "title": "Sortieren nach",

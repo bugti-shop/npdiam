@@ -708,7 +708,8 @@
       "byPriority": "Per priorità",
       "byStatus": "Per stato",
       "byDate": "Per data",
-      "clearFilters": "Cancella filtri"
+      "clearFilters": "Cancella filtri",
+      "saveAsSmartView": "Salva come Vista Intelligente"
     },
     "sort": {
       "title": "Ordina per",

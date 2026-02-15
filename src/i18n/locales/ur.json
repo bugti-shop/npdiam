@@ -580,7 +580,8 @@
       "byPriority": "ترجیح کے مطابق",
       "byStatus": "حیثیت کے مطابق",
       "byDate": "تاریخ کے مطابق",
-      "clearFilters": "فلٹرز صاف کریں"
+      "clearFilters": "فلٹرز صاف کریں",
+      "saveAsSmartView": "سمارٹ ویو کے طور پر محفوظ کریں"
     },
     "sort": {
       "title": "ترتیب دیں",

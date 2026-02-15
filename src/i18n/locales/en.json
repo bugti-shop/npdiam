@@ -660,7 +660,8 @@
       "byPriority": "By Priority",
       "byStatus": "By Status",
       "byDate": "By Date",
-      "clearFilters": "Clear Filters"
+      "clearFilters": "Clear Filters",
+      "saveAsSmartView": "Save as Smart View"
     },
     "sort": {
       "title": "Sort By",

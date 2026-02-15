@@ -268,7 +268,7 @@ export const TaskFilterSheet = ({
                 }}
               >
                 <Bookmark className="h-4 w-4 mr-2" />
-                Save as Smart View
+                {t('tasks.filters.saveAsSmartView', 'Save as Smart View')}
               </Button>
             </>
           )}
