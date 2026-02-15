@@ -111,7 +111,7 @@ const TodoCalendar = () => {
     if (archivedCount > 0) {
       await saveTodoItems(activeTasks);
       tasks = activeTasks;
-      toast.info(`Archived ${archivedCount} completed task(s)`, { icon: '📦' });
+      toast.info(t('todayPage.archivedCompleted', { count: archivedCount }), { icon: '📦' });
     }
     
     setItems(tasks);
@@ -250,11 +250,11 @@ const TodoCalendar = () => {
     switch (action) {
       case 'complete':
         for (const task of selectedTasks) await handleUpdateTask(task.id, { completed: true });
-        toast.success(`Completed ${selectedTasks.length} task(s)`);
+        toast.success(t('todayPage.completedTasks', { count: selectedTasks.length }));
         break;
       case 'delete':
         for (const task of selectedTasks) await handleDeleteTask(task.id);
-        toast.success(`Deleted ${selectedTasks.length} task(s)`);
+        toast.success(t('todayPage.deletedTasks', { count: selectedTasks.length }));
         break;
       case 'move':
         setIsMoveToFolderOpen(true);
@@ -269,7 +269,7 @@ const TodoCalendar = () => {
           setItems(updatedItems);
           await saveTodoItems(updatedItems);
         }
-        toast.success(`Duplicated ${selectedTasks.length} task(s)`);
+        toast.success(t('todayPage.duplicatedTasks', { count: selectedTasks.length }));
         break;
     }
     setSelectedTaskIds(new Set());
@@ -283,7 +283,7 @@ const TodoCalendar = () => {
     );
     setItems(updatedItems);
     await saveTodoItems(updatedItems);
-    toast.success(`Moved ${selectedTaskIds.size} task(s)`);
+    toast.success(t('todayPage.movedTasks', { count: selectedTaskIds.size }));
     setSelectedTaskIds(new Set());
     setIsSelectionMode(false);
     setIsMoveToFolderOpen(false);
@@ -296,7 +296,7 @@ const TodoCalendar = () => {
     );
     setItems(updatedItems);
     await saveTodoItems(updatedItems);
-    toast.success(`Updated priority for ${selectedTaskIds.size} task(s)`);
+    toast.success(t('todayPage.updatedPriority', { count: selectedTaskIds.size }));
     setSelectedTaskIds(new Set());
     setIsSelectionMode(false);
     setIsPrioritySheetOpen(false);
@@ -319,7 +319,7 @@ const TodoCalendar = () => {
       setEvents(updatedEvents);
       await setSetting('calendarEvents', updatedEvents);
       notificationManager.cancelTaskReminder(eventToDelete.id).catch(console.error);
-      toast.success('Event deleted');
+      toast.success(t('todayPage.eventDeleted'));
       setEventToDelete(null);
     }
   };
@@ -421,11 +421,11 @@ const TodoCalendar = () => {
       try {
         const streakResult = await recordCompletion(TASK_STREAK_KEY);
         if (streakResult.newMilestone) {
-          toast.success(`🔥 ${streakResult.newMilestone} day streak! Keep it up!`);
+          toast.success(t('todayPage.streakMilestone', { days: streakResult.newMilestone }));
           window.dispatchEvent(new CustomEvent('streakMilestone', { detail: { milestone: streakResult.newMilestone } }));
         }
         if (streakResult.earnedFreeze) {
-          toast.success('❄️ You earned a streak freeze!', { description: 'Complete 5 tasks in a day to earn more.' });
+          toast.success(t('todayPage.earnedStreakFreeze'), { description: t('todayPage.earnedStreakFreezeDesc') });
         }
         window.dispatchEvent(new CustomEvent('streakUpdated'));
       } catch (e) { console.warn('Failed to record streak:', e); }
@@ -438,7 +438,7 @@ const TodoCalendar = () => {
           const updatedItems = [nextTask, ...items.map(t => t.id === itemId ? { ...t, ...updates } : t)];
           setItems(updatedItems);
           await saveTodoItems(updatedItems);
-          toast.success('Recurring task completed! Next occurrence created.', { icon: '🔄' });
+          toast.success(t('todayPage.recurringTaskCompleted'), { icon: '🔄' });
           window.dispatchEvent(new Event('tasksUpdated'));
           return;
         }
@@ -537,7 +537,7 @@ const TodoCalendar = () => {
           style={{ borderLeft: `4px solid #10b981` }}
         >
           <CheckCircle2 className="h-4 w-4 text-success" />
-          <span className="text-sm font-semibold flex-1 text-left text-muted-foreground uppercase tracking-wide">Completed</span>
+          <span className="text-sm font-semibold flex-1 text-left text-muted-foreground uppercase tracking-wide">{t('todayPage.completed')}</span>
           <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">{completedTasks.length}</span>
           {isCollapsed ? <ChevronRight className="h-4 w-4 text-muted-foreground" /> : <ChevronDown className="h-4 w-4 text-muted-foreground" />}
         </button>
@@ -564,7 +564,7 @@ const TodoCalendar = () => {
         {(provided, snapshot) => (
           <div ref={provided.innerRef} {...provided.droppableProps} className={cn("p-2 space-y-2 min-h-[50px]", snapshot.isDraggingOver && "bg-primary/5")}>
             {orderedTasks.length === 0 ? (
-              <div className="py-4 text-center text-sm text-muted-foreground">Drop tasks here</div>
+              <div className="py-4 text-center text-sm text-muted-foreground">{t('todayPage.dropTasksHere')}</div>
             ) : orderedTasks.map((task, index) => (
               <Draggable key={task.id} draggableId={task.id} index={index}>
                 {(provided, snapshot) => (
@@ -682,7 +682,7 @@ const TodoCalendar = () => {
                     {(provided, snapshot) => (
                       <div ref={provided.innerRef} {...provided.droppableProps} className={cn("p-2 space-y-1 min-h-[40px]", snapshot.isDraggingOver && "bg-primary/5")}>
                         {orderedTasks.length === 0 ? (
-                          <div className="py-4 text-center text-sm text-muted-foreground">No tasks in this section</div>
+                          <div className="py-4 text-center text-sm text-muted-foreground">{t('todayPage.noTasksInSection', 'No tasks in this section')}</div>
                         ) : orderedTasks.map((task, index) => (
                           <Draggable key={task.id} draggableId={task.id} index={index}>
                             {(provided, snapshot) => (
@@ -720,7 +720,7 @@ const TodoCalendar = () => {
               <div className="bg-muted/50 rounded-xl p-3 border border-border/30">
                 <CollapsibleTrigger asChild>
                   <button className="w-full flex items-center justify-between px-2 py-2 hover:bg-muted/60 rounded-lg transition-colors">
-                    <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">COMPLETED</span>
+                    <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">{t('todayPage.completed')}</span>
                     <div className="flex items-center gap-2 text-muted-foreground">
                       <span className="text-sm font-medium">{completedTasks.length}</span>
                       {isCompletedOpen ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
@@ -754,7 +754,7 @@ const TodoCalendar = () => {
         const destSectionId = destination.droppableId.replace('cal-kanban-', '');
         if (sourceSectionId !== destSectionId) {
           handleUpdateTask(draggableId, { sectionId: destSectionId === 'default' ? undefined : destSectionId });
-          toast.success('Task moved');
+          toast.success(t('todayPage.taskMoved'));
         }
         Haptics.impact({ style: ImpactStyle.Medium }).catch(() => {});
       }}>
@@ -779,7 +779,7 @@ const TodoCalendar = () => {
                       {(provided, snapshot) => (
                         <div ref={provided.innerRef} {...provided.droppableProps} className={cn("min-h-[200px] max-h-[400px] overflow-y-auto p-2 space-y-2", snapshot.isDraggingOver && "bg-primary/5")}>
                           {sectionTasks.length === 0 ? (
-                            <div className="py-8 text-center text-sm text-muted-foreground">Drop tasks here</div>
+                            <div className="py-8 text-center text-sm text-muted-foreground">{t('todayPage.dropTasksHere')}</div>
                           ) : sectionTasks.map((task, index) => (
                             <Draggable key={task.id} draggableId={task.id} index={index}>
                               {(provided, snapshot) => (
@@ -806,7 +806,7 @@ const TodoCalendar = () => {
               <div className="flex-shrink-0 w-72 bg-muted/30 rounded-xl border border-border/30 overflow-hidden">
                 <button onClick={() => toggleViewSectionCollapse('cal-kanban-completed')} className="w-full flex items-center gap-2 px-3 py-3 border-b border-border/30 hover:bg-muted/20 transition-colors" style={{ borderLeft: '4px solid #10b981' }}>
                   <CheckCircle2 className="h-3.5 w-3.5 text-success" />
-                  <span className="text-sm font-semibold flex-1 text-left text-muted-foreground uppercase tracking-wide">Completed</span>
+                  <span className="text-sm font-semibold flex-1 text-left text-muted-foreground uppercase tracking-wide">{t('todayPage.completed')}</span>
                   <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">{completedTasks.length}</span>
                 </button>
                 {!collapsedViewSections.has('cal-kanban-completed') && (
@@ -828,10 +828,10 @@ const TodoCalendar = () => {
 
   const renderStatusView = () => {
     const statusGroups: { id: TaskStatus; label: string; color: string; icon: React.ReactNode; tasks: TodoItem[] }[] = [
-      { id: 'not_started', label: 'Not Started', color: '#6b7280', icon: <Circle className="h-3.5 w-3.5" />, tasks: uncompletedTasks.filter(item => !item.status || item.status === 'not_started') },
-      { id: 'in_progress', label: 'In Progress', color: '#3b82f6', icon: <Loader2 className="h-3.5 w-3.5" />, tasks: uncompletedTasks.filter(item => item.status === 'in_progress') },
-      { id: 'almost_done', label: 'Almost Done', color: '#f59e0b', icon: <ClockIcon className="h-3.5 w-3.5" />, tasks: uncompletedTasks.filter(item => item.status === 'almost_done') },
-      { id: 'completed', label: 'Completed', color: '#10b981', icon: <CheckCircle2 className="h-3.5 w-3.5" />, tasks: completedTasks },
+      { id: 'not_started', label: t('todayPage.notStarted'), color: '#6b7280', icon: <Circle className="h-3.5 w-3.5" />, tasks: uncompletedTasks.filter(item => !item.status || item.status === 'not_started') },
+      { id: 'in_progress', label: t('todayPage.inProgress'), color: '#3b82f6', icon: <Loader2 className="h-3.5 w-3.5" />, tasks: uncompletedTasks.filter(item => item.status === 'in_progress') },
+      { id: 'almost_done', label: t('todayPage.almostDone'), color: '#f59e0b', icon: <ClockIcon className="h-3.5 w-3.5" />, tasks: uncompletedTasks.filter(item => item.status === 'almost_done') },
+      { id: 'completed', label: t('todayPage.completed'), color: '#10b981', icon: <CheckCircle2 className="h-3.5 w-3.5" />, tasks: completedTasks },
     ];
 
     return (
@@ -843,7 +843,7 @@ const TodoCalendar = () => {
         const destStatus = destination.droppableId.replace('cal-status-', '') as TaskStatus;
         handleUpdateTask(draggableId, { status: destStatus, completed: destStatus === 'completed', completedAt: destStatus === 'completed' ? new Date() : undefined });
         Haptics.impact({ style: ImpactStyle.Medium }).catch(() => {});
-        toast.success(`Status updated to ${destStatus.replace('_', ' ')}`);
+        toast.success(t('todayPage.statusUpdated', { status: destStatus.replace('_', ' ') }));
       }}>
         <div className="overflow-x-auto pb-4 -mx-4 px-4">
           <div className="flex gap-4" style={{ minWidth: 'max-content' }}>
@@ -863,7 +863,7 @@ const TodoCalendar = () => {
                       {(provided, snapshot) => (
                         <div ref={provided.innerRef} {...provided.droppableProps} className={cn("min-h-[200px] max-h-[400px] overflow-y-auto p-2 space-y-2", snapshot.isDraggingOver && "bg-primary/5")}>
                           {group.tasks.length === 0 ? (
-                            <div className="py-8 text-center text-sm text-muted-foreground">Drop tasks here</div>
+                            <div className="py-8 text-center text-sm text-muted-foreground">{t('todayPage.dropTasksHere')}</div>
                           ) : group.tasks.map((task, index) => (
                             <Draggable key={task.id} draggableId={task.id} index={index}>
                               {(provided, snapshot) => (
@@ -911,7 +911,7 @@ const TodoCalendar = () => {
           else if (destination.droppableId === 'cal-priority-medium') newPriority = 'medium';
           else if (destination.droppableId === 'cal-priority-low') newPriority = 'low';
           handleUpdateTask(draggableId, { priority: newPriority });
-          toast.success('Priority updated');
+          toast.success(t('todayPage.priorityUpdated'));
         }
         Haptics.impact({ style: ImpactStyle.Light }).catch(() => {});
       }}>
@@ -931,12 +931,12 @@ const TodoCalendar = () => {
   const renderTimelineView = () => {
     const today = startOfDay(new Date());
     const timelineGroups = [
-      { id: 'cal-tl-overdue', label: 'Overdue', tasks: uncompletedTasks.filter(t => t.dueDate && isBefore(new Date(t.dueDate), today)), color: '#ef4444', icon: <AlertCircle className="h-4 w-4" /> },
-      { id: 'cal-tl-today', label: 'Today', tasks: uncompletedTasks.filter(t => t.dueDate && isToday(new Date(t.dueDate))), color: '#3b82f6', icon: <Sun className="h-4 w-4" /> },
-      { id: 'cal-tl-tomorrow', label: 'Tomorrow', tasks: uncompletedTasks.filter(t => t.dueDate && isTomorrow(new Date(t.dueDate))), color: '#f59e0b', icon: <CalendarIcon2 className="h-4 w-4" /> },
-      { id: 'cal-tl-thisweek', label: 'This Week', tasks: uncompletedTasks.filter(t => t.dueDate && isThisWeek(new Date(t.dueDate)) && !isToday(new Date(t.dueDate)) && !isTomorrow(new Date(t.dueDate))), color: '#10b981', icon: <CalendarIcon2 className="h-4 w-4" /> },
-      { id: 'cal-tl-later', label: 'Later', tasks: uncompletedTasks.filter(t => t.dueDate && !isBefore(new Date(t.dueDate), today) && !isThisWeek(new Date(t.dueDate))), color: '#8b5cf6', icon: <Clock className="h-4 w-4" /> },
-      { id: 'cal-tl-nodate', label: 'No Date', tasks: uncompletedTasks.filter(t => !t.dueDate), color: '#6b7280', icon: <CalendarX className="h-4 w-4" /> },
+      { id: 'cal-tl-overdue', label: t('todayPage.overdue'), tasks: uncompletedTasks.filter(t => t.dueDate && isBefore(new Date(t.dueDate), today)), color: '#ef4444', icon: <AlertCircle className="h-4 w-4" /> },
+      { id: 'cal-tl-today', label: t('todayPage.today'), tasks: uncompletedTasks.filter(t => t.dueDate && isToday(new Date(t.dueDate))), color: '#3b82f6', icon: <Sun className="h-4 w-4" /> },
+      { id: 'cal-tl-tomorrow', label: t('todayPage.tomorrow'), tasks: uncompletedTasks.filter(t => t.dueDate && isTomorrow(new Date(t.dueDate))), color: '#f59e0b', icon: <CalendarIcon2 className="h-4 w-4" /> },
+      { id: 'cal-tl-thisweek', label: t('todayPage.thisWeek'), tasks: uncompletedTasks.filter(t => t.dueDate && isThisWeek(new Date(t.dueDate)) && !isToday(new Date(t.dueDate)) && !isTomorrow(new Date(t.dueDate))), color: '#10b981', icon: <CalendarIcon2 className="h-4 w-4" /> },
+      { id: 'cal-tl-later', label: t('todayPage.later'), tasks: uncompletedTasks.filter(t => t.dueDate && !isBefore(new Date(t.dueDate), today) && !isThisWeek(new Date(t.dueDate))), color: '#8b5cf6', icon: <Clock className="h-4 w-4" /> },
+      { id: 'cal-tl-nodate', label: t('todayPage.noDate'), tasks: uncompletedTasks.filter(t => !t.dueDate), color: '#6b7280', icon: <CalendarX className="h-4 w-4" /> },
     ];
 
     return (
@@ -951,7 +951,7 @@ const TodoCalendar = () => {
                     <TaskItem item={task} onUpdate={handleUpdateTask} onDelete={handleDeleteTask} onTaskClick={handleTaskClick} onImageClick={handleImageClick} allTasks={items} hideDetails hidePriorityBorder />
                   </div>
                 ))}
-                {group.tasks.length === 0 && <div className="py-4 text-center text-sm text-muted-foreground">No tasks</div>}
+                {group.tasks.length === 0 && <div className="py-4 text-center text-sm text-muted-foreground">{t('todayPage.noTasks')}</div>}
               </div>
             )}
           </div>
@@ -1001,10 +1001,10 @@ const TodoCalendar = () => {
     const olderCompleted = completedTasks.filter(t => !t.dueDate || !isThisWeek(new Date(t.dueDate)));
 
     const historyGroups = [
-      { label: 'Completed Today', tasks: todayCompleted, color: '#10b981' },
-      { label: 'Completed Yesterday', tasks: yesterdayCompleted, color: '#3b82f6' },
-      { label: 'This Week', tasks: thisWeekCompleted, color: '#8b5cf6' },
-      { label: 'Older', tasks: olderCompleted, color: '#6b7280' },
+      { label: t('todayPage.completedToday'), tasks: todayCompleted, color: '#10b981' },
+      { label: t('todayPage.completedYesterday'), tasks: yesterdayCompleted, color: '#3b82f6' },
+      { label: t('todayPage.thisWeek'), tasks: thisWeekCompleted, color: '#8b5cf6' },
+      { label: t('todayPage.older'), tasks: olderCompleted, color: '#6b7280' },
     ];
 
     const hasHistory = historyGroups.some(g => g.tasks.length > 0);
@@ -1012,7 +1012,7 @@ const TodoCalendar = () => {
       return (
         <div className="text-center py-20">
           <History className="h-12 w-12 mx-auto text-muted-foreground/50 mb-4" />
-          <p className="text-muted-foreground">No completed tasks</p>
+          <p className="text-muted-foreground">{t('todayPage.noCompletedTasks')}</p>
         </div>
       );
     }
@@ -1072,7 +1072,7 @@ const TodoCalendar = () => {
                   else setSelectedTaskIds(new Set());
                 }}
               />
-              <span className="text-sm text-muted-foreground">{selectedTaskIds.size} selected</span>
+              <span className="text-sm text-muted-foreground">{selectedTaskIds.size} {t('todayPage.selected')}</span>
             </div>
             <div className="flex items-center gap-1">
               <Button variant="ghost" size="sm" onClick={() => setIsSelectActionsOpen(true)} disabled={selectedTaskIds.size === 0}>
@@ -1190,13 +1190,13 @@ const TodoCalendar = () => {
                       {/* History Log removed from views */}
                       <DropdownMenuSeparator />
                       <DropdownMenuItem onClick={() => setShowCompleted(!showCompleted)} className="cursor-pointer">
-                        {showCompleted ? 'Hide Completed' : 'Show Completed'}
+                        {showCompleted ? t('todayPage.hideCompleted') : t('todayPage.showCompleted')}
                       </DropdownMenuItem>
                       <DropdownMenuItem onClick={() => { setIsSelectionMode(true); setIsSelectActionsOpen(true); }} className="cursor-pointer">
-                        Select Tasks
+                        {t('todayPage.selectTasks')}
                       </DropdownMenuItem>
                       <DropdownMenuItem onClick={() => setIsFilterSheetOpen(true)} className="cursor-pointer">
-                        Filters
+                        {t('todayPage.filters')}
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
@@ -1291,14 +1291,14 @@ const TodoCalendar = () => {
       <AlertDialog open={!!eventToDelete} onOpenChange={(open) => !open && setEventToDelete(null)}>
         <AlertDialogContent className="bg-background">
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete Event</AlertDialogTitle>
+            <AlertDialogTitle>{t('todayPage.deleteEvent')}</AlertDialogTitle>
             <AlertDialogDescription>
-              Are you sure you want to delete "{eventToDelete?.title}"? This action cannot be undone.
+              {t('todayPage.deleteEventConfirm', { title: eventToDelete?.title })}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={confirmDeleteEvent} className="bg-destructive text-destructive-foreground">Delete</AlertDialogAction>
+            <AlertDialogCancel>{t('todayPage.cancel')}</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmDeleteEvent} className="bg-destructive text-destructive-foreground">{t('todayPage.delete')}</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

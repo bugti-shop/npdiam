@@ -162,7 +162,7 @@ const Today = () => {
       if (rolledOverCount > 0) {
         await saveTodoItems(rolledOverItems);
         loadedItems = rolledOverItems;
-        toast.info(`Auto-updated ${rolledOverCount} recurring task(s) to next date`, { icon: '🔄' });
+        toast.info(t('todayPage.autoUpdatedRecurring', { count: rolledOverCount }), { icon: '🔄' });
       }
       
       // Auto-archive completed tasks older than 3 days
@@ -170,7 +170,7 @@ const Today = () => {
       if (archivedCount > 0) {
         await saveTodoItems(activeTasks);
         loadedItems = activeTasks;
-        toast.info(`Archived ${archivedCount} completed task(s)`, { icon: '📦' });
+        toast.info(t('todayPage.archivedCompleted', { count: archivedCount }), { icon: '📦' });
       }
       
       setItems(loadedItems);
@@ -246,7 +246,7 @@ const Today = () => {
       console.log('[Today] Tasks restored from cloud, refreshing...');
       const loadedItems = await loadTodoItems();
       setItems(loadedItems);
-      toast.success('Tasks synced from cloud!', { icon: '☁️' });
+      toast.success(t('todayPage.tasksSyncedFromCloud'), { icon: '☁️' });
     };
 
     // Listen for sections restored from cloud sync
@@ -291,7 +291,7 @@ const Today = () => {
     saveTimeoutRef.current = setTimeout(() => {
       saveTodoItems(itemsRef.current).then(({ persisted }) => {
         if (!persisted) {
-          toast.error('Storage full! Some data may not save.', { id: 'storage-full' });
+          toast.error(t('todayPage.storageFull'), { id: 'storage-full' });
         }
       });
       window.dispatchEvent(new Event('tasksUpdated'));
@@ -353,13 +353,13 @@ const Today = () => {
 
   const handleReorderFolders = (reorderedFolders: Folder[]) => {
     setFolders(reorderedFolders);
-    toast.success('Folders reordered');
+    toast.success(t('todayPage.foldersReordered'));
   };
 
   const handleToggleFolderFavorite = (folderId: string) => {
     setFolders(folders.map(f => f.id === folderId ? { ...f, isFavorite: !f.isFavorite } : f));
     const folder = folders.find(f => f.id === folderId);
-    toast.success(folder?.isFavorite ? 'Removed from favorites' : 'Added to favorites', { icon: '⭐' });
+    toast.success(folder?.isFavorite ? t('todayPage.removedFromFavorites') : t('todayPage.addedToFavorites'), { icon: '⭐' });
   };
 
 
@@ -429,7 +429,7 @@ const Today = () => {
       modifiedAt: now,
     }));
     setItems([...newItems, ...items]);
-    toast.success(`Added ${newItems.length} task(s)`);
+    toast.success(t('todayPage.addedTasks', { count: newItems.length }));
     setInputSectionId(null);
   };
 
@@ -456,7 +456,7 @@ const Today = () => {
 
     const newSection: TaskSection = {
       id: Date.now().toString(),
-      name: 'New Section',
+      name: t('todayPage.newSection'),
       color: '#3b82f6',
       isCollapsed: false,
       order: newOrder,
@@ -469,7 +469,7 @@ const Today = () => {
     setSections(updatedSections);
     setEditingSection(newSection);
     setIsSectionEditOpen(true);
-    toast.success('Section added');
+    toast.success(t('todayPage.sectionAdded'));
   };
 
   const handleEditSection = (section: TaskSection) => {
@@ -490,7 +490,7 @@ const Today = () => {
 
   const handleDeleteSection = (sectionId: string) => {
     if (sections.length <= 1) {
-      toast.error('Cannot delete the last section');
+      toast.error(t('todayPage.cannotDeleteLastSection'));
       return;
     }
     // Move tasks to the first remaining section
@@ -498,7 +498,7 @@ const Today = () => {
     const firstSection = remainingSections.sort((a, b) => a.order - b.order)[0];
     setItems(items.map(item => item.sectionId === sectionId ? { ...item, sectionId: firstSection.id } : item));
     setSections(remainingSections);
-    toast.success('Section deleted');
+    toast.success(t('todayPage.sectionDeleted'));
   };
 
   const handleDuplicateSection = (sectionId: string) => {
@@ -523,7 +523,7 @@ const Today = () => {
 
     setSections([...sections, newSection]);
     setItems([...duplicatedTasks, ...items]);
-    toast.success('Section duplicated');
+    toast.success(t('todayPage.sectionDuplicated'));
   };
 
   const handleMoveSection = (sectionId: string, targetIndex: number) => {
@@ -536,7 +536,7 @@ const Today = () => {
     
     const reorderedSections = sortedSections.map((s, idx) => ({ ...s, order: idx }));
     setSections(reorderedSections);
-    toast.success('Section moved');
+    toast.success(t('todayPage.sectionMoved'));
   };
 
   const handleToggleSectionCollapse = (sectionId: string) => {
@@ -580,11 +580,11 @@ const Today = () => {
       try {
         const streakResult = await recordCompletion(TASK_STREAK_KEY);
         if (streakResult.newMilestone) {
-          toast.success(`🔥 ${streakResult.newMilestone} day streak! Keep it up!`);
+          toast.success(t('todayPage.streakMilestone', { days: streakResult.newMilestone }));
           window.dispatchEvent(new CustomEvent('streakMilestone', { detail: { milestone: streakResult.newMilestone } }));
         }
         if (streakResult.earnedFreeze) {
-          toast.success('❄️ You earned a streak freeze!', { description: 'Complete 5 tasks in a day to earn more.' });
+          toast.success(t('todayPage.earnedStreakFreeze'), { description: t('todayPage.earnedStreakFreezeDesc') });
         }
         window.dispatchEvent(new CustomEvent('streakUpdated'));
       } catch (e) { console.warn('Failed to record streak:', e); }
@@ -610,7 +610,7 @@ const Today = () => {
             nextTaskWithTimestamps,
             ...prevItems.map(i => i.id === itemId ? { ...i, ...updatesWithTimestamp } : i)
           ]);
-          toast.success('Recurring task completed! Next occurrence created.', {
+          toast.success(t('todayPage.recurringTaskCompleted'), {
             icon: '🔄',
           });
           return;
@@ -622,12 +622,12 @@ const Today = () => {
 
     // Show undo toast when completing a task
     if (updates.completed === true && currentItem && !currentItem.completed) {
-      toast.success('✅ Task completed', {
+      toast.success(t('todayPage.taskCompleted'), {
         action: {
-          label: 'Undo',
+          label: t('todayPage.undo'),
           onClick: () => {
             setItems(prev => prev.map(i => i.id === itemId ? { ...i, completed: false, completedAt: undefined, modifiedAt: new Date() } : i));
-            toast.success('Task restored');
+            toast.success(t('todayPage.taskRestored'));
           }
         },
         duration: 5000,
@@ -648,12 +648,12 @@ const Today = () => {
     try { await Haptics.impact({ style: ImpactStyle.Heavy }); } catch {}
     setItems(items.filter((item) => item.id !== itemId));
     
-    toast.success('🗑️ Task deleted', {
+    toast.success(t('todayPage.taskDeleted'), {
       action: {
-        label: 'Undo',
+        label: t('todayPage.undo'),
         onClick: () => {
           setItems(prev => [deletedItem, ...prev]);
-          toast.success('Task restored');
+          toast.success(t('todayPage.taskRestored'));
         }
       },
       duration: 5000,
@@ -668,12 +668,12 @@ const Today = () => {
     setItems(items.filter((item) => item.id !== deletedItem.id));
     setDeleteConfirmItem(null);
     
-    toast.success('🗑️ Task deleted', {
+    toast.success(t('todayPage.taskDeleted'), {
       action: {
-        label: 'Undo',
+        label: t('todayPage.undo'),
         onClick: () => {
           setItems(prev => [deletedItem, ...prev]);
-          toast.success('Task restored');
+          toast.success(t('todayPage.taskRestored'));
         }
       },
       duration: 5000,
@@ -793,7 +793,7 @@ const Today = () => {
     }));
 
     setItems([...duplicated, ...items]);
-    toast.success(`Duplicated ${duplicated.length} task(s)`);
+    toast.success(t('todayPage.duplicatedTasks', { count: duplicated.length }));
   };
 
   const handleSelectAction = (action: SelectAction) => {
@@ -804,7 +804,7 @@ const Today = () => {
         // Select all uncompleted tasks
         const allTaskIds = new Set(uncompletedItems.map(i => i.id));
         setSelectedTaskIds(allTaskIds);
-        toast.success(`Selected ${allTaskIds.size} task(s)`);
+        toast.success(t('todayPage.selectedTasks', { count: allTaskIds.size }));
         return; // Don't close the sheet
       case 'move':
         setIsMoveToFolderOpen(true);
@@ -813,7 +813,7 @@ const Today = () => {
         setItems(items.filter(i => !selectedTaskIds.has(i.id)));
         setSelectedTaskIds(new Set());
         setIsSelectionMode(false);
-        toast.success(`Deleted ${selectedItems.length} task(s)`);
+        toast.success(t('todayPage.deletedTasks', { count: selectedItems.length }));
         break;
       case 'complete':
         // Play sound for each completed task
@@ -821,12 +821,12 @@ const Today = () => {
         setItems(items.map(i => selectedTaskIds.has(i.id) ? { ...i, completed: true } : i));
         setSelectedTaskIds(new Set());
         setIsSelectionMode(false);
-        toast.success(`Completed ${selectedItems.length} task(s)`);
+        toast.success(t('todayPage.completedTasks', { count: selectedItems.length }));
         break;
       case 'pin':
         if (!requireFeature('pin_feature')) return;
         setItems(items.map(i => selectedTaskIds.has(i.id) ? { ...i, isPinned: !i.isPinned } : i));
-        toast.success(`Pinned ${selectedItems.length} task(s)`);
+        toast.success(t('todayPage.pinnedTasks', { count: selectedItems.length }));
         setSelectedTaskIds(new Set());
         setIsSelectionMode(false);
         break;
@@ -843,7 +843,7 @@ const Today = () => {
         setItems([...duplicated, ...items]);
         setSelectedTaskIds(new Set());
         setIsSelectionMode(false);
-        toast.success(`Duplicated ${selectedItems.length} task(s)`);
+        toast.success(t('todayPage.duplicatedTasks', { count: selectedItems.length }));
         break;
       case 'convert':
         convertToNotes(selectedItems);
@@ -872,14 +872,14 @@ const Today = () => {
     setItems(items.map(i => selectedTaskIds.has(i.id) ? { ...i, folderId: folderId || undefined } : i));
     setSelectedTaskIds(new Set());
     setIsSelectionMode(false);
-    toast.success(`Moved ${selectedTaskIds.size} task(s)`);
+    toast.success(t('todayPage.movedTasks', { count: selectedTaskIds.size }));
   };
 
   const handleSetPriority = (priority: Priority) => {
     setItems(items.map(i => selectedTaskIds.has(i.id) ? { ...i, priority } : i));
     setSelectedTaskIds(new Set());
     setIsSelectionMode(false);
-    toast.success(`Updated priority for ${selectedTaskIds.size} task(s)`);
+    toast.success(t('todayPage.updatedPriority', { count: selectedTaskIds.size }));
   };
 
   const convertToNotes = async (tasksToConvert: TodoItem[]) => {
@@ -904,7 +904,7 @@ const Today = () => {
     setItems(items.filter(i => !tasksToConvert.some(t => t.id === i.id)));
     setSelectedTaskIds(new Set());
     setIsSelectionMode(false);
-    toast.success(`Converted ${tasksToConvert.length} task(s) to notes`);
+    toast.success(t('todayPage.convertedToNotes', { count: tasksToConvert.length }));
   };
 
   const handleConvertSingleTask = (task: TodoItem) => {
@@ -913,7 +913,7 @@ const Today = () => {
 
   const handleMoveTaskToFolder = (taskId: string, folderId: string | null) => {
     setItems(items.map(i => i.id === taskId ? { ...i, folderId: folderId || undefined } : i));
-    toast.success('Task moved');
+    toast.success(t('todayPage.taskMoved'));
   };
 
   const processedItems = useMemo(() => {
@@ -1255,9 +1255,9 @@ const Today = () => {
 
     if (showUndo && deletedSubtask) {
       const subtaskToRestore = deletedSubtask;
-      toast.success('Subtask deleted', {
+      toast.success(t('todayPage.subtaskDeleted', 'Subtask deleted'), {
         action: {
-          label: 'Undo',
+          label: t('todayPage.undo'),
           onClick: () => {
             setItems(prev => prev.map(item => {
               if (item.id === parentId) {
@@ -1268,7 +1268,7 @@ const Today = () => {
               }
               return item;
             }));
-            toast.success('Subtask restored');
+            toast.success(t('todayPage.subtaskRestored', 'Subtask restored'));
           }
         },
         duration: 5000,
@@ -2879,7 +2879,7 @@ const Today = () => {
                 
                 updateItem(taskId, { priority: newPriority });
                 Haptics.impact({ style: ImpactStyle.Medium }).catch(() => {});
-                toast.success('Priority updated');
+                toast.success(t('todayPage.priorityUpdated'));
               }
               
               // Persist new order for the destination group
@@ -3019,10 +3019,10 @@ const Today = () => {
                 if (groupByOption === 'priority') {
                   const priorityMap: Record<string, Priority> = { 'high': 'high', 'medium': 'medium', 'low': 'low', 'none': 'none' };
                   updateItem(taskId, { priority: priorityMap[destGroup] || 'none' });
-                  toast.success('Priority updated');
+                  toast.success(t('todayPage.priorityUpdated'));
                 } else if (groupByOption === 'section') {
                   updateItem(taskId, { sectionId: destGroup });
-                  toast.success('Moved to section');
+                  toast.success(t('todayPage.sectionMoved'));
                 } else if (groupByOption === 'date') {
                   const today = new Date();
                   let newDate: Date | undefined;
@@ -3033,7 +3033,7 @@ const Today = () => {
                   else if (destGroup === 'later') { newDate = new Date(); newDate.setDate(newDate.getDate() + 14); }
                   else if (destGroup === 'no-date') newDate = undefined;
                   updateItem(taskId, { dueDate: newDate });
-                  toast.success('Date updated');
+                  toast.success(t('todayPage.dateUpdated', 'Date updated'));
                 }
                 Haptics.impact({ style: ImpactStyle.Medium }).catch(() => {});
               }
@@ -3113,7 +3113,7 @@ const Today = () => {
                               >
                                 {orderedTasks.length === 0 ? (
                                   <div className="py-4 text-center text-sm text-muted-foreground">
-                                    Drop tasks here
+                                    {t('todayPage.dropTasksHere')}
                                   </div>
                                 ) : (
                                   orderedTasks.map((item, index) => (
@@ -3150,7 +3150,7 @@ const Today = () => {
                     <div className="bg-muted/50 rounded-xl p-3 border border-border/30">
                       <CollapsibleTrigger asChild>
                         <button className="w-full flex items-center justify-between px-2 py-2 hover:bg-muted/60 rounded-lg transition-colors">
-                          <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">COMPLETED</span>
+                          <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">{t('todayPage.completed')}</span>
                           <div className="flex items-center gap-2 text-muted-foreground"><span className="text-sm font-medium">{completedItems.length}</span>{isCompletedOpen ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}</div>
                         </button>
                       </CollapsibleTrigger>
@@ -3312,7 +3312,7 @@ const Today = () => {
       <DuplicateOptionsSheet isOpen={isDuplicateSheetOpen} onClose={() => setIsDuplicateSheetOpen(false)} onSelect={handleDuplicate} />
       <FolderManageSheet isOpen={isFolderManageOpen} onClose={() => setIsFolderManageOpen(false)} folders={folders} onCreateFolder={handleCreateFolder} onEditFolder={handleEditFolder} onDeleteFolder={handleDeleteFolder} onReorderFolders={handleReorderFolders} onToggleFavorite={handleToggleFolderFavorite} />
       
-      <AutoScheduleSheet isOpen={isAutoScheduleOpen} onClose={() => setIsAutoScheduleOpen(false)} tasks={items} onApply={(updated) => { setItems(updated); toast.success('Schedule applied!', { icon: '📅' }); }} />
+      <AutoScheduleSheet isOpen={isAutoScheduleOpen} onClose={() => setIsAutoScheduleOpen(false)} tasks={items} onApply={(updated) => { setItems(updated); toast.success(t('todayPage.scheduleApplied', 'Schedule applied!'), { icon: '📅' }); }} />
       <MoveToFolderSheet isOpen={isMoveToFolderOpen} onClose={() => setIsMoveToFolderOpen(false)} folders={folders} onSelect={handleMoveToFolder} />
       <SelectActionsSheet isOpen={isSelectActionsOpen} onClose={() => setIsSelectActionsOpen(false)} selectedCount={selectedTaskIds.size} onAction={handleSelectAction} totalCount={uncompletedItems.length} />
       <PrioritySelectSheet isOpen={isPrioritySheetOpen} onClose={() => setIsPrioritySheetOpen(false)} onSelect={handleSetPriority} />
@@ -3372,7 +3372,7 @@ const Today = () => {
           setItems(items.map(i => selectedTaskIds.has(i.id) ? { ...i, dueDate: date } : i));
           setSelectedTaskIds(new Set());
           setIsSelectionMode(false);
-          toast.success(`Updated due date for ${selectedTaskIds.size} task(s)`);
+          toast.success(t('todayPage.bulkDateSet', { count: selectedTaskIds.size }));
         }}
       />
       <BulkReminderSheet
@@ -3383,7 +3383,7 @@ const Today = () => {
           setItems(items.map(i => selectedTaskIds.has(i.id) ? { ...i, reminderTime: date } : i));
           setSelectedTaskIds(new Set());
           setIsSelectionMode(false);
-          toast.success(`Updated reminder for ${selectedTaskIds.size} task(s)`);
+          toast.success(t('todayPage.bulkReminderSet', { count: selectedTaskIds.size }));
         }}
       />
       <BulkRepeatSheet
@@ -3394,7 +3394,7 @@ const Today = () => {
           setItems(items.map(i => selectedTaskIds.has(i.id) ? { ...i, repeatType } : i));
           setSelectedTaskIds(new Set());
           setIsSelectionMode(false);
-          toast.success(`Updated repeat for ${selectedTaskIds.size} task(s)`);
+          toast.success(t('todayPage.bulkRepeatSet', { count: selectedTaskIds.size }));
         }}
       />
       <BulkSectionMoveSheet
@@ -3406,7 +3406,7 @@ const Today = () => {
           setItems(items.map(i => selectedTaskIds.has(i.id) ? { ...i, sectionId } : i));
           setSelectedTaskIds(new Set());
           setIsSelectionMode(false);
-          toast.success(`Moved ${selectedTaskIds.size} task(s) to section`);
+          toast.success(t('todayPage.bulkSectionMoved', { count: selectedTaskIds.size }));
         }}
       />
       <BulkStatusSheet
@@ -3428,7 +3428,7 @@ const Today = () => {
           if (isCompleting) {
             playCompletionSound();
           }
-          toast.success(`Updated status for ${selectedTaskIds.size} task(s)`);
+          toast.success(t('todayPage.bulkStatusSet', { count: selectedTaskIds.size }));
         }}
       />
       
