@@ -2420,5 +2420,26 @@
     "createFolder": "创建文件夹",
     "allNotes": "所有笔记",
     "removeNotesFromFolder": "从文件夹中移除 {{count}} 条笔记"
+  },
+  "noteTemplates": {
+    "title": "笔记模板", "searchPlaceholder": "搜索笔记模板...", "all": "全部", "myTemplates": "我的模板", "custom": "自定义", "notesCount": "{{count}}个笔记", "noTemplatesFound": "未找到模板", "createCustomTemplate": "创建自定义模板", "createsFolderDesc": "创建文件夹：<strong>{{name}}</strong>（★ 收藏）", "notesIncluded": "包含{{count}}个笔记", "createNotes": "创建笔记", "createNoteTemplate": "创建笔记模板", "templateName": "模板名称", "templateNamePlaceholder": "例如：每周回顾", "descriptionLabel": "描述", "descriptionPlaceholder": "简短描述...", "iconLabel": "图标", "folderColor": "文件夹颜色", "notesPerEntry": "笔记（每条一个）", "noteTitlePlaceholder": "笔记{{number}}标题", "noteContentPlaceholder": "笔记内容（纯文本）...", "addNote": "添加笔记", "saveTemplate": "保存模板", "templateSaved": "笔记模板已保存！", "templateDeleted": "模板已删除", "notesCreated": "\"{{name}}\"笔记已创建！",
+    "categories": { "Work": "工作", "Education": "教育", "Personal": "个人", "Travel": "旅行", "Health": "健康", "Creative": "创意", "Finance": "财务", "Career": "职业", "Personal Life": "个人生活", "Diary": "日记", "Coding": "编程", "Custom": "自定义" },
+    "templates": {
+      "meeting-pack": { "name": "会议笔记包", "description": "带有议程、行动项和后续模板的会议笔记" },
+      "study-notes": { "name": "学习笔记集", "description": "康奈尔笔记、闪卡列表和学习计划" },
+      "project-docs": { "name": "项目文档", "description": "PRD、项目简介和回顾模板" },
+      "recipe-collection": { "name": "食谱集", "description": "带有配料表和分步说明的食谱卡" },
+      "travel-journal": { "name": "旅行日记", "description": "旅行计划、打包清单和每日旅行日记" },
+      "health-wellness": { "name": "健康与养生", "description": "锻炼日志、健康追踪和每日签到" },
+      "creative-writing": { "name": "创意写作", "description": "故事大纲、角色卡和头脑风暴模板" },
+      "finance-toolkit": { "name": "财务工具包", "description": "预算追踪器、发票模板和费用报告" },
+      "interview-prep": { "name": "面试准备", "description": "STAR方法回答、公司调研笔记和题库" },
+      "personal-life": { "name": "个人生活集", "description": "每日反思、个人目标和感恩日记" },
+      "diary-journal": { "name": "日记与手账", "description": "个人日记、梦境日记和生活回忆录" },
+      "coding-developer": { "name": "开发者笔记", "description": "代码片段、调试笔记和技术文档" }
+    }
+  },
+  "taskDetailToasts": {
+    "dateTimeReminderSaved": "日期、时间和提醒已保存！", "dateSaved": "日期已保存！", "dateSavedNoNotif": "日期已保存（通知调度不可用）", "filesAttached": "已附加{{count}}个文件", "fileRemoved": "文件已移除", "locationReminderSet": "位置提醒已设置", "locationReminderRemoved": "位置提醒已移除"
   }
 }

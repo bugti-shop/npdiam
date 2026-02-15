@@ -2408,5 +2408,26 @@
     "createFolder": "צור תיקייה",
     "allNotes": "כל ההערות",
     "removeNotesFromFolder": "הסר {{count}} הערות מהתיקייה"
+  },
+  "noteTemplates": {
+    "title": "תבניות פתקים", "searchPlaceholder": "חיפוש תבניות פתקים...", "all": "הכל", "myTemplates": "התבניות שלי", "custom": "מותאם אישית", "notesCount": "{{count}} פתקים", "noTemplatesFound": "לא נמצאו תבניות", "createCustomTemplate": "צור תבנית מותאמת", "createsFolderDesc": "יוצר תיקייה: <strong>{{name}}</strong> (★ מועדף)", "notesIncluded": "{{count}} פתקים כלולים", "createNotes": "צור פתקים", "createNoteTemplate": "צור תבנית פתקים", "templateName": "שם התבנית", "templateNamePlaceholder": "לדוגמה: סקירות שבועיות", "descriptionLabel": "תיאור", "descriptionPlaceholder": "תיאור קצר...", "iconLabel": "סמל", "folderColor": "צבע תיקייה", "notesPerEntry": "פתקים (אחד לכל רשומה)", "noteTitlePlaceholder": "כותרת פתק {{number}}", "noteContentPlaceholder": "תוכן הפתק (טקסט רגיל)...", "addNote": "הוסף פתק", "saveTemplate": "שמור תבנית", "templateSaved": "תבנית הפתקים נשמרה!", "templateDeleted": "התבנית נמחקה", "notesCreated": "פתקי \"{{name}}\" נוצרו!",
+    "categories": { "Work": "עבודה", "Education": "חינוך", "Personal": "אישי", "Travel": "נסיעות", "Health": "בריאות", "Creative": "יצירתי", "Finance": "כספים", "Career": "קריירה", "Personal Life": "חיים אישיים", "Diary": "יומן", "Coding": "תכנות", "Custom": "מותאם אישית" },
+    "templates": {
+      "meeting-pack": { "name": "חבילת פתקי פגישה", "description": "פתקי פגישה מוכנים עם סדר יום, פריטי פעולה ומעקב" },
+      "study-notes": { "name": "אוסף פתקי לימוד", "description": "פתקי קורנל, רשימות כרטיסיות ומתכנני לימוד" },
+      "project-docs": { "name": "תיעוד פרויקטים", "description": "PRD, תקציר פרויקט ותבניות רטרוספקטיבה" },
+      "recipe-collection": { "name": "אוסף מתכונים", "description": "כרטיסי מתכונים עם טבלאות מרכיבים והוראות צעד אחר צעד" },
+      "travel-journal": { "name": "יומן מסע", "description": "מתכנן טיול, רשימת אריזה ויומן מסע יומי" },
+      "health-wellness": { "name": "בריאות ורווחה", "description": "יומן אימונים, מעקב בריאות וצ'ק-אין יומי" },
+      "creative-writing": { "name": "כתיבה יצירתית", "description": "מתאר סיפור, גיליון דמויות ותבניות סיעור מוחות" },
+      "finance-toolkit": { "name": "ערכת כלי כספים", "description": "מעקב תקציב, תבנית חשבונית ודוח הוצאות" },
+      "interview-prep": { "name": "הכנה לראיון", "description": "תשובות בשיטת STAR, פתקי מחקר חברה ובנק שאלות" },
+      "personal-life": { "name": "אוסף חיים אישיים", "description": "רפלקציות יומיות, יעדים אישיים ויומן הכרת תודה" },
+      "diary-journal": { "name": "יומן ומחברת", "description": "רשומות יומן אישי, יומן חלומות ואוסף זיכרונות" },
+      "coding-developer": { "name": "פתקי מפתח", "description": "קטעי קוד, פתקי דיבאג ותיעוד טכני" }
+    }
+  },
+  "taskDetailToasts": {
+    "dateTimeReminderSaved": "תאריך, שעה ותזכורת נשמרו!", "dateSaved": "התאריך נשמר!", "dateSavedNoNotif": "התאריך נשמר (תזמון התראות לא זמין)", "filesAttached": "{{count}} קבצים צורפו", "fileRemoved": "הקובץ הוסר", "locationReminderSet": "תזכורת מיקום הוגדרה", "locationReminderRemoved": "תזכורת מיקום הוסרה"
   }
 }
