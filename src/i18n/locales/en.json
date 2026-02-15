@@ -1800,7 +1800,18 @@
     "noTimestampData": "No timestamp data available",
     "nested": "{{completed}}/{{total}} nested",
     "subtasksCompleted": "{{completed}}/{{total}} completed",
-    "subtaskAdded": "Subtask added"
+    "subtaskAdded": "Subtask added",
+    "selectStatus": "Select status",
+    "taskAttachment": "Task attachment",
+    "effortEstimation": "Effort Estimation",
+    "custom": "Custom",
+    "estimated": "Estimated: {{hours}}h",
+    "actual": "Actual: {{hours}}h",
+    "deadlineEscalation": "Deadline Escalation",
+    "alertBeforeDeadline": "Alert if not done before deadline:",
+    "repeatAlert": "Repeat alert",
+    "repeatAlertDesc": "Keep alerting every 30min until done",
+    "locationReminder": "Location Reminder"
   },
   "sections": {
     "editSection": "Edit Section",
@@ -1957,5 +1968,30 @@
     "questionTeacher": "What is the name of your favorite teacher?",
     "questionCar": "What was your first car?",
     "questionFood": "What is your favorite food?"
+  },
+  "backup": {
+    "success": "Backup successfully",
+    "fileSavedIn": "File saved in: {{path}}",
+    "gotIt": "GOT IT"
+  },
+  "comments": {
+    "title": "Comments & Notes",
+    "added": "Comment added",
+    "deleted": "Comment deleted",
+    "noComments": "No comments yet. Add notes, updates, or images.",
+    "placeholder": "Add a comment...",
+    "attachment": "Comment attachment",
+    "justNow": "Just now",
+    "minutesAgo": "{{count}}m ago",
+    "hoursAgo": "{{count}}h ago",
+    "daysAgo": "{{count}}d ago"
+  },
+  "folderManager": {
+    "createNewFolder": "Create New Folder",
+    "folderName": "Folder name",
+    "color": "Color",
+    "createFolder": "Create Folder",
+    "allNotes": "All Notes",
+    "removeNotesFromFolder": "Remove {{count}} Note(s) from Folder"
   }
 }

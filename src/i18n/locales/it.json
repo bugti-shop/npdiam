@@ -1740,7 +1740,18 @@
     "noTimestampData": "Nessun dato timestamp disponibile",
     "nested": "{{completed}}/{{total}} annidate",
     "subtasksCompleted": "{{completed}}/{{total}} completate",
-    "subtaskAdded": "Sottoattività aggiunta"
+    "subtaskAdded": "Sottoattività aggiunta",
+    "selectStatus": "Seleziona stato",
+    "taskAttachment": "Allegato attività",
+    "effortEstimation": "Stima dell'impegno",
+    "custom": "Personalizzato",
+    "estimated": "Stimato: {{hours}}h",
+    "actual": "Effettivo: {{hours}}h",
+    "deadlineEscalation": "Escalation scadenza",
+    "alertBeforeDeadline": "Avvisa se non completato prima della scadenza:",
+    "repeatAlert": "Ripeti avviso",
+    "repeatAlertDesc": "Continuare ad avvisare ogni 30min fino al completamento",
+    "locationReminder": "Promemoria posizione"
   },
   "sections": {
     "editSection": "Modifica sezione",
@@ -1869,5 +1880,30 @@
     "questionTeacher": "Come si chiama il tuo insegnante preferito?",
     "questionCar": "Qual era la tua prima auto?",
     "questionFood": "Qual è il tuo cibo preferito?"
+  },
+  "backup": {
+    "success": "Backup riuscito",
+    "fileSavedIn": "File salvato in: {{path}}",
+    "gotIt": "CAPITO"
+  },
+  "comments": {
+    "title": "Commenti e note",
+    "added": "Commento aggiunto",
+    "deleted": "Commento eliminato",
+    "noComments": "Nessun commento ancora. Aggiungi note, aggiornamenti o immagini.",
+    "placeholder": "Aggiungi un commento...",
+    "attachment": "Allegato commento",
+    "justNow": "Proprio ora",
+    "minutesAgo": "{{count}}m fa",
+    "hoursAgo": "{{count}}h fa",
+    "daysAgo": "{{count}}g fa"
+  },
+  "folderManager": {
+    "createNewFolder": "Crea nuova cartella",
+    "folderName": "Nome cartella",
+    "color": "Colore",
+    "createFolder": "Crea cartella",
+    "allNotes": "Tutte le note",
+    "removeNotesFromFolder": "Rimuovi {{count}} nota/e dalla cartella"
   }
 }

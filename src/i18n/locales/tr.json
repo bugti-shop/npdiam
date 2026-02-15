@@ -1740,7 +1740,18 @@
     "noTimestampData": "Zaman damgası verisi yok",
     "nested": "{{completed}}/{{total}} iç içe",
     "subtasksCompleted": "{{completed}}/{{total}} tamamlandı",
-    "subtaskAdded": "Alt görev eklendi"
+    "subtaskAdded": "Alt görev eklendi",
+    "selectStatus": "Durum seç",
+    "taskAttachment": "Görev eki",
+    "effortEstimation": "Efor Tahmini",
+    "custom": "Özel",
+    "estimated": "Tahmini: {{hours}} saat",
+    "actual": "Gerçek: {{hours}} saat",
+    "deadlineEscalation": "Son Tarih Eskalasyonu",
+    "alertBeforeDeadline": "Son tarihten önce tamamlanmazsa uyar:",
+    "repeatAlert": "Uyarıyı tekrarla",
+    "repeatAlertDesc": "Tamamlanana kadar her 30dk uyarmaya devam et",
+    "locationReminder": "Konum Hatırlatıcısı"
   },
   "sections": {
     "editSection": "Bölümü Düzenle",
@@ -1869,5 +1880,30 @@
     "questionTeacher": "En sevdiğiniz öğretmenin adı ne?",
     "questionCar": "İlk arabanız neydi?",
     "questionFood": "En sevdiğiniz yemek ne?"
+  },
+  "backup": {
+    "success": "Yedekleme başarılı",
+    "fileSavedIn": "Dosya şuraya kaydedildi: {{path}}",
+    "gotIt": "ANLADIM"
+  },
+  "comments": {
+    "title": "Yorumlar ve Notlar",
+    "added": "Yorum eklendi",
+    "deleted": "Yorum silindi",
+    "noComments": "Henüz yorum yok. Notlar, güncellemeler veya resimler ekleyin.",
+    "placeholder": "Yorum ekle...",
+    "attachment": "Yorum eki",
+    "justNow": "Az önce",
+    "minutesAgo": "{{count}}dk önce",
+    "hoursAgo": "{{count}}sa önce",
+    "daysAgo": "{{count}}g önce"
+  },
+  "folderManager": {
+    "createNewFolder": "Yeni Klasör Oluştur",
+    "folderName": "Klasör adı",
+    "color": "Renk",
+    "createFolder": "Klasör Oluştur",
+    "allNotes": "Tüm Notlar",
+    "removeNotesFromFolder": "Klasörden {{count}} not kaldır"
   }
 }

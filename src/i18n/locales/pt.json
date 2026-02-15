@@ -1867,7 +1867,18 @@
     "noTimestampData": "Nenhum dado de carimbo de data/hora disponível",
     "nested": "{{completed}}/{{total}} aninhadas",
     "subtasksCompleted": "{{completed}}/{{total}} concluídas",
-    "subtaskAdded": "Subtarefa adicionada"
+    "subtaskAdded": "Subtarefa adicionada",
+    "selectStatus": "Selecionar status",
+    "taskAttachment": "Anexo da tarefa",
+    "effortEstimation": "Estimativa de esforço",
+    "custom": "Personalizado",
+    "estimated": "Estimado: {{hours}}h",
+    "actual": "Real: {{hours}}h",
+    "deadlineEscalation": "Escalação de prazo",
+    "alertBeforeDeadline": "Alertar se não concluído antes do prazo:",
+    "repeatAlert": "Repetir alerta",
+    "repeatAlertDesc": "Continuar alertando a cada 30min até concluir",
+    "locationReminder": "Lembrete de localização"
   },
   "sections": {
     "editSection": "Editar Seção",
@@ -2024,5 +2035,30 @@
     "questionTeacher": "Qual é o nome do seu professor favorito?",
     "questionCar": "Qual foi seu primeiro carro?",
     "questionFood": "Qual é sua comida favorita?"
+  },
+  "backup": {
+    "success": "Backup realizado com sucesso",
+    "fileSavedIn": "Arquivo salvo em: {{path}}",
+    "gotIt": "ENTENDI"
+  },
+  "comments": {
+    "title": "Comentários e notas",
+    "added": "Comentário adicionado",
+    "deleted": "Comentário excluído",
+    "noComments": "Sem comentários ainda. Adicione notas, atualizações ou imagens.",
+    "placeholder": "Adicionar um comentário...",
+    "attachment": "Anexo do comentário",
+    "justNow": "Agora mesmo",
+    "minutesAgo": "há {{count}}m",
+    "hoursAgo": "há {{count}}h",
+    "daysAgo": "há {{count}}d"
+  },
+  "folderManager": {
+    "createNewFolder": "Criar nova pasta",
+    "folderName": "Nome da pasta",
+    "color": "Cor",
+    "createFolder": "Criar pasta",
+    "allNotes": "Todas as notas",
+    "removeNotesFromFolder": "Remover {{count}} nota(s) da pasta"
   }
 }

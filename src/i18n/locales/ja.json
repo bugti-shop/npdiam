@@ -1765,7 +1765,18 @@
     "noTimestampData": "タイムスタンプデータなし",
     "nested": "{{completed}}/{{total}} ネスト",
     "subtasksCompleted": "{{completed}}/{{total}} 完了",
-    "subtaskAdded": "サブタスクが追加されました"
+    "subtaskAdded": "サブタスクが追加されました",
+    "selectStatus": "ステータスを選択",
+    "taskAttachment": "タスクの添付ファイル",
+    "effortEstimation": "作業量の見積もり",
+    "custom": "カスタム",
+    "estimated": "見積もり: {{hours}}時間",
+    "actual": "実際: {{hours}}時間",
+    "deadlineEscalation": "期限エスカレーション",
+    "alertBeforeDeadline": "期限前に未完了の場合に通知:",
+    "repeatAlert": "通知を繰り返す",
+    "repeatAlertDesc": "完了するまで30分ごとに通知を続ける",
+    "locationReminder": "位置情報リマインダー"
   },
   "sections": {
     "editSection": "セクションを編集",
@@ -1894,5 +1905,30 @@
     "questionTeacher": "好きな先生の名前は何ですか？",
     "questionCar": "最初の車は何でしたか？",
     "questionFood": "好きな食べ物は何ですか？"
+  },
+  "backup": {
+    "success": "バックアップ成功",
+    "fileSavedIn": "ファイルの保存先: {{path}}",
+    "gotIt": "了解"
+  },
+  "comments": {
+    "title": "コメントとメモ",
+    "added": "コメントが追加されました",
+    "deleted": "コメントが削除されました",
+    "noComments": "まだコメントがありません。メモ、更新、または画像を追加してください。",
+    "placeholder": "コメントを追加...",
+    "attachment": "コメントの添付ファイル",
+    "justNow": "たった今",
+    "minutesAgo": "{{count}}分前",
+    "hoursAgo": "{{count}}時間前",
+    "daysAgo": "{{count}}日前"
+  },
+  "folderManager": {
+    "createNewFolder": "新しいフォルダを作成",
+    "folderName": "フォルダ名",
+    "color": "色",
+    "createFolder": "フォルダを作成",
+    "allNotes": "すべてのノート",
+    "removeNotesFromFolder": "フォルダから{{count}}件のノートを削除"
   }
 }

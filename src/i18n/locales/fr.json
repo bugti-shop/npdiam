@@ -1774,7 +1774,18 @@
     "noTimestampData": "Aucune donnée d'horodatage disponible",
     "nested": "{{completed}}/{{total}} imbriquées",
     "subtasksCompleted": "{{completed}}/{{total}} terminées",
-    "subtaskAdded": "Sous-tâche ajoutée"
+    "subtaskAdded": "Sous-tâche ajoutée",
+    "selectStatus": "Sélectionner le statut",
+    "taskAttachment": "Pièce jointe de la tâche",
+    "effortEstimation": "Estimation de l'effort",
+    "custom": "Personnalisé",
+    "estimated": "Estimé : {{hours}}h",
+    "actual": "Réel : {{hours}}h",
+    "deadlineEscalation": "Escalade de l'échéance",
+    "alertBeforeDeadline": "Alerter si non terminé avant l'échéance :",
+    "repeatAlert": "Répéter l'alerte",
+    "repeatAlertDesc": "Continuer à alerter toutes les 30min jusqu'à la fin",
+    "locationReminder": "Rappel de lieu"
   },
   "sections": {
     "editSection": "Modifier la Section",
@@ -1903,5 +1914,30 @@
     "questionTeacher": "Quel est le nom de votre professeur préféré ?",
     "questionCar": "Quelle était votre première voiture ?",
     "questionFood": "Quelle est votre nourriture préférée ?"
+  },
+  "backup": {
+    "success": "Sauvegarde réussie",
+    "fileSavedIn": "Fichier enregistré dans : {{path}}",
+    "gotIt": "COMPRIS"
+  },
+  "comments": {
+    "title": "Commentaires et notes",
+    "added": "Commentaire ajouté",
+    "deleted": "Commentaire supprimé",
+    "noComments": "Aucun commentaire. Ajoutez des notes, mises à jour ou images.",
+    "placeholder": "Ajouter un commentaire...",
+    "attachment": "Pièce jointe du commentaire",
+    "justNow": "À l'instant",
+    "minutesAgo": "il y a {{count}}m",
+    "hoursAgo": "il y a {{count}}h",
+    "daysAgo": "il y a {{count}}j"
+  },
+  "folderManager": {
+    "createNewFolder": "Créer un nouveau dossier",
+    "folderName": "Nom du dossier",
+    "color": "Couleur",
+    "createFolder": "Créer le dossier",
+    "allNotes": "Toutes les notes",
+    "removeNotesFromFolder": "Retirer {{count}} note(s) du dossier"
   }
 }

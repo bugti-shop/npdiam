@@ -1748,7 +1748,18 @@
     "noTimestampData": "אין נתוני חותמת זמן זמינים",
     "nested": "{{completed}}/{{total}} מקוננים",
     "subtasksCompleted": "{{completed}}/{{total}} הושלמו",
-    "subtaskAdded": "תת-משימה נוספה"
+    "subtaskAdded": "תת-משימה נוספה",
+    "selectStatus": "בחר סטטוס",
+    "taskAttachment": "קובץ מצורף למשימה",
+    "effortEstimation": "הערכת מאמץ",
+    "custom": "מותאם אישית",
+    "estimated": "מוערך: {{hours}} שעות",
+    "actual": "בפועל: {{hours}} שעות",
+    "deadlineEscalation": "הסלמת מועד אחרון",
+    "alertBeforeDeadline": "התראה אם לא הושלם לפני המועד:",
+    "repeatAlert": "חזור על ההתראה",
+    "repeatAlertDesc": "המשך להתריע כל 30 דקות עד לסיום",
+    "locationReminder": "תזכורת מיקום"
   },
   "sections": {
     "editSection": "ערוך קטע",
@@ -1877,5 +1888,30 @@
     "questionTeacher": "מה שם המורה האהוב עליך?",
     "questionCar": "מה היה הרכב הראשון שלך?",
     "questionFood": "מה האוכל האהוב עליך?"
+  },
+  "backup": {
+    "success": "גיבוי בוצע בהצלחה",
+    "fileSavedIn": "הקובץ נשמר ב: {{path}}",
+    "gotIt": "הבנתי"
+  },
+  "comments": {
+    "title": "הערות ותגובות",
+    "added": "תגובה נוספה",
+    "deleted": "תגובה נמחקה",
+    "noComments": "אין תגובות עדיין. הוסף הערות, עדכונים או תמונות.",
+    "placeholder": "הוסף תגובה...",
+    "attachment": "קובץ מצורף לתגובה",
+    "justNow": "הרגע",
+    "minutesAgo": "לפני {{count}} דקות",
+    "hoursAgo": "לפני {{count}} שעות",
+    "daysAgo": "לפני {{count}} ימים"
+  },
+  "folderManager": {
+    "createNewFolder": "צור תיקייה חדשה",
+    "folderName": "שם התיקייה",
+    "color": "צבע",
+    "createFolder": "צור תיקייה",
+    "allNotes": "כל ההערות",
+    "removeNotesFromFolder": "הסר {{count}} הערות מהתיקייה"
   }
 }

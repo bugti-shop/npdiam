@@ -753,7 +753,7 @@ export const TaskDetailPage = ({
             }}
           >
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select status">
+              <SelectValue placeholder={t('taskDetail.selectStatus')}>
                 <div className="flex items-center gap-2">
                   <TaskStatusBadge status={task.status || 'not_started'} showLabel={true} />
                 </div>
@@ -836,7 +836,7 @@ export const TaskDetailPage = ({
         {/* Image Display */}
         {task.imageUrl && (
           <div className="rounded-xl overflow-hidden border border-border">
-            <ResolvedTaskImage srcRef={task.imageUrl} alt="Task attachment" className="w-full max-h-48 object-cover" />
+            <ResolvedTaskImage srcRef={task.imageUrl} alt={t('taskDetail.taskAttachment')} className="w-full max-h-48 object-cover" />
           </div>
         )}
 
@@ -996,7 +996,7 @@ export const TaskDetailPage = ({
         <div className="bg-muted/30 rounded-xl p-4">
           <div className="flex items-center gap-2 mb-3">
             <Hourglass className="h-4 w-4 text-muted-foreground" />
-            <h3 className="text-sm font-medium">Effort Estimation</h3>
+            <h3 className="text-sm font-medium">{t('taskDetail.effortEstimation')}</h3>
           </div>
           <div className="flex items-center gap-3">
             <div className="flex gap-1.5 flex-wrap">
@@ -1022,16 +1022,16 @@ export const TaskDetailPage = ({
               max="999"
               value={task.estimatedHours || ''}
               onChange={(e) => onUpdate({ ...task, estimatedHours: e.target.value ? Number(e.target.value) : undefined })}
-              placeholder="Custom"
+              placeholder={t('taskDetail.custom')}
               className="w-20 px-2 py-1.5 text-xs rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
           {task.estimatedHours && task.timeTracking && task.timeTracking.totalSeconds > 0 && (
             <div className="mt-3 pt-3 border-t border-border">
               <div className="flex items-center justify-between text-xs">
-                <span className="text-muted-foreground">Estimated: {task.estimatedHours}h</span>
+                <span className="text-muted-foreground">{t('taskDetail.estimated', { hours: task.estimatedHours })}</span>
                 <span className="text-muted-foreground">
-                  Actual: {(task.timeTracking.totalSeconds / 3600).toFixed(1)}h
+                  {t('taskDetail.actual', { hours: (task.timeTracking.totalSeconds / 3600).toFixed(1) })}
                 </span>
               </div>
               <div className="mt-1.5 h-2 rounded-full bg-muted overflow-hidden">
@@ -1057,7 +1057,7 @@ export const TaskDetailPage = ({
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
                 <AlertTriangle className="h-4 w-4 text-orange-500" />
-                <h3 className="text-sm font-medium">Deadline Escalation</h3>
+                <h3 className="text-sm font-medium">{t('taskDetail.deadlineEscalation')}</h3>
                 {!isPro && <Crown className="h-3.5 w-3.5" style={{ color: '#3c78f0' }} />}
               </div>
               <Switch
@@ -1078,7 +1078,7 @@ export const TaskDetailPage = ({
             {task.escalationRule?.enabled && (
               <div className="space-y-3">
                 <div>
-                  <p className="text-xs text-muted-foreground mb-2">Alert if not done before deadline:</p>
+                  <p className="text-xs text-muted-foreground mb-2">{t('taskDetail.alertBeforeDeadline')}</p>
                   <div className="flex gap-1.5 flex-wrap">
                     {(['30min', '1hour', '2hours', '4hours', '1day'] as EscalationTiming[]).map(timing => (
                       <button
@@ -1101,8 +1101,8 @@ export const TaskDetailPage = ({
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs font-medium">Repeat alert</p>
-                    <p className="text-xs text-muted-foreground">Keep alerting every 30min until done</p>
+                    <p className="text-xs font-medium">{t('taskDetail.repeatAlert')}</p>
+                    <p className="text-xs text-muted-foreground">{t('taskDetail.repeatAlertDesc')}</p>
                   </div>
                   <Switch
                     checked={task.escalationRule?.repeat || false}
@@ -1228,7 +1228,7 @@ export const TaskDetailPage = ({
             )}
           >
             <MapPin className={cn("h-5 w-5", task.locationReminder?.enabled ? "text-accent-pink" : "text-muted-foreground")} />
-            <span className="flex-1 text-left">Location Reminder</span>
+            <span className="flex-1 text-left">{t('taskDetail.locationReminder')}</span>
             {!isPro && <Crown className="h-3.5 w-3.5 mr-1" style={{ color: '#3c78f0' }} />}
             {task.locationReminder?.enabled && (
               <span className="text-xs text-accent-pink">{task.locationReminder.address?.split(',')[0]}</span>

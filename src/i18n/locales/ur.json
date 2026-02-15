@@ -1263,7 +1263,18 @@
     "noTimestampData": "کوئی ٹائم سٹیمپ ڈیٹا دستیاب نہیں",
     "nested": "{{completed}}/{{total}} نیسٹڈ",
     "subtasksCompleted": "{{completed}}/{{total}} مکمل",
-    "subtaskAdded": "ذیلی کام شامل ہو گیا"
+    "subtaskAdded": "ذیلی کام شامل ہو گیا",
+    "selectStatus": "حیثیت منتخب کریں",
+    "taskAttachment": "کام کا منسلکہ",
+    "effortEstimation": "محنت کا اندازہ",
+    "custom": "اپنی مرضی",
+    "estimated": "اندازہ: {{hours}} گھنٹے",
+    "actual": "حقیقی: {{hours}} گھنٹے",
+    "deadlineEscalation": "آخری تاریخ کی ایسکیلیشن",
+    "alertBeforeDeadline": "آخری تاریخ سے پہلے مکمل نہ ہونے پر الرٹ:",
+    "repeatAlert": "الرٹ دہرائیں",
+    "repeatAlertDesc": "مکمل ہونے تک ہر 30 منٹ بعد الرٹ کرتے رہیں",
+    "locationReminder": "مقام یاد دہانی"
   },
   "sections": {
     "editSection": "سیکشن میں ترمیم کریں",
@@ -1404,5 +1415,30 @@
     "questionTeacher": "آپ کے پسندیدہ استاد کا نام کیا ہے؟",
     "questionCar": "آپ کی پہلی گاڑی کون سی تھی؟",
     "questionFood": "آپ کا پسندیدہ کھانا کیا ہے؟"
+  },
+  "backup": {
+    "success": "بیک اپ کامیاب",
+    "fileSavedIn": "فائل یہاں محفوظ ہوئی: {{path}}",
+    "gotIt": "سمجھ آ گیا"
+  },
+  "comments": {
+    "title": "تبصرے اور نوٹس",
+    "added": "تبصرہ شامل ہو گیا",
+    "deleted": "تبصرہ حذف ہو گیا",
+    "noComments": "ابھی کوئی تبصرہ نہیں۔ نوٹس، اپ ڈیٹس یا تصاویر شامل کریں۔",
+    "placeholder": "تبصرہ شامل کریں...",
+    "attachment": "تبصرے کا منسلکہ",
+    "justNow": "ابھی",
+    "minutesAgo": "{{count}} منٹ پہلے",
+    "hoursAgo": "{{count}} گھنٹے پہلے",
+    "daysAgo": "{{count}} دن پہلے"
+  },
+  "folderManager": {
+    "createNewFolder": "نیا فولڈر بنائیں",
+    "folderName": "فولڈر کا نام",
+    "color": "رنگ",
+    "createFolder": "فولڈر بنائیں",
+    "allNotes": "تمام نوٹس",
+    "removeNotesFromFolder": "فولڈر سے {{count}} نوٹ ہٹائیں"
   }
 }
