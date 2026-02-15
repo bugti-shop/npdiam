@@ -43,7 +43,21 @@
     "addItem": "Öğe Ekle",
     "addTask": "Görev Ekle",
     "preview": "Önizleme",
-    "dragToReorder": "Yeniden sıralamak için sürükleyin. Göster/gizle için değiştirin."
+    "dragToReorder": "Yeniden sıralamak için sürükleyin. Göster/gizle için değiştirin.",
+    "goPro": "Pro'ya Geç",
+    "toggleDarkMode": "Karanlık modu değiştir",
+    "switchToTodo": "Görevlere Geç",
+    "switchToNotes": "Notlara Geç",
+    "restore": "Geri Yükle",
+    "insertEmoji": "Emoji ekle",
+    "taskHistory": "Görev Geçmişi",
+    "moreStyles": "Daha fazla stil",
+    "emoji": "Emoji",
+    "insertLink": "Bağlantı ekle",
+    "clearFormatting": "Biçimlendirmeyi temizle",
+    "selectAllText": "Tümünü seç",
+    "bulletList": "Madde işaretli liste",
+    "numberedList": "Numaralı liste"
   },
   "folders": {
     "manageFolders": "Klasörleri Yönet",

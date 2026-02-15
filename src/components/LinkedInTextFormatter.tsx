@@ -367,7 +367,7 @@ export const LinkedInTextFormatter = ({
             size="sm"
             className="h-8 w-8 p-0"
             onClick={() => applyStyle('bold')}
-            title="Bold (Ctrl+B)"
+            title={`${t('common.bold', 'Bold')} (Ctrl+B)`}
           >
             <Bold className="h-4 w-4" />
           </Button>
@@ -376,7 +376,7 @@ export const LinkedInTextFormatter = ({
             size="sm"
             className="h-8 w-8 p-0"
             onClick={() => applyStyle('italic')}
-            title="Italic (Ctrl+I)"
+            title={`${t('common.italic', 'Italic')} (Ctrl+I)`}
           >
             <Italic className="h-4 w-4" />
           </Button>
@@ -385,7 +385,7 @@ export const LinkedInTextFormatter = ({
             size="sm"
             className="h-8 w-8 p-0"
             onClick={() => applyStyle('underline')}
-            title="Underline (Ctrl+U)"
+            title={`${t('common.underline', 'Underline')} (Ctrl+U)`}
           >
             <Underline className="h-4 w-4" />
           </Button>
@@ -396,7 +396,7 @@ export const LinkedInTextFormatter = ({
         {/* More styles */}
         <Popover open={showStylePicker} onOpenChange={setShowStylePicker}>
           <PopoverTrigger asChild>
-            <Button variant="ghost" size="sm" className="h-8 w-8 p-0" title="More styles">
+            <Button variant="ghost" size="sm" className="h-8 w-8 p-0" title={t('common.moreStyles')}>
               <Type className="h-4 w-4" />
             </Button>
           </PopoverTrigger>
@@ -424,7 +424,7 @@ export const LinkedInTextFormatter = ({
         {/* Emoji */}
         <Popover open={showEmojiPicker} onOpenChange={setShowEmojiPicker}>
           <PopoverTrigger asChild>
-            <Button variant="ghost" size="sm" className="h-8 w-8 p-0" title="Emoji">
+            <Button variant="ghost" size="sm" className="h-8 w-8 p-0" title={t('common.emoji')}>
               <Smile className="h-4 w-4" />
             </Button>
           </PopoverTrigger>
@@ -442,7 +442,7 @@ export const LinkedInTextFormatter = ({
           size="sm"
           className="h-8 w-8 p-0"
           onClick={insertLink}
-          title="Insert link"
+          title={t('common.insertLink')}
         >
           <Link2 className="h-4 w-4" />
         </Button>
@@ -456,7 +456,7 @@ export const LinkedInTextFormatter = ({
           className="h-8 w-8 p-0"
           onClick={undo}
           disabled={historyIndex <= 0}
-          title="Undo (Ctrl+Z)"
+          title={`${t('common.undo', 'Undo')} (Ctrl+Z)`}
         >
           <Undo className="h-4 w-4" />
         </Button>
@@ -466,7 +466,7 @@ export const LinkedInTextFormatter = ({
           className="h-8 w-8 p-0"
           onClick={redo}
           disabled={historyIndex >= history.length - 1}
-          title="Redo (Ctrl+Shift+Z)"
+          title={`${t('common.redo', 'Redo')} (Ctrl+Shift+Z)`}
         >
           <Redo className="h-4 w-4" />
         </Button>
@@ -477,7 +477,7 @@ export const LinkedInTextFormatter = ({
           size="sm"
           className="h-8 w-8 p-0"
           onClick={clearFormatting}
-          title="Clear formatting"
+          title={t('common.clearFormatting')}
         >
           <Eraser className="h-4 w-4" />
         </Button>
@@ -491,7 +491,7 @@ export const LinkedInTextFormatter = ({
             textareaRef.current?.focus();
             textareaRef.current?.setSelectionRange(0, content.length);
           }}
-          title="Select all"
+          title={t('common.selectAllText')}
           disabled={!content}
         >
           <TextSelect className="h-4 w-4" />
@@ -505,7 +505,7 @@ export const LinkedInTextFormatter = ({
           size="sm"
           className="h-8 w-8 p-0"
           onClick={() => applyListFormat('bullet')}
-          title="Bullet list"
+          title={t('common.bulletList')}
         >
           <List className="h-4 w-4" />
         </Button>
@@ -514,7 +514,7 @@ export const LinkedInTextFormatter = ({
           size="sm"
           className="h-8 w-8 p-0"
           onClick={() => applyListFormat('numbered')}
-          title="Numbered list"
+          title={t('common.numberedList')}
         >
           <ListOrdered className="h-4 w-4" />
         </Button>

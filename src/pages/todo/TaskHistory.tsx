@@ -183,7 +183,7 @@ const TaskHistory = () => {
   };
 
   return (
-    <TodoLayout title="Task History">
+    <TodoLayout title={t('common.taskHistory')}>
       <main className="container mx-auto px-4 py-6 pb-32">
         <div className="max-w-lg mx-auto space-y-4">
           {/* View Toggle */}

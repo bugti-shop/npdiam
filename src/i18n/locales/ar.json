@@ -43,7 +43,21 @@
     "addItem": "إضافة عنصر",
     "addTask": "إضافة مهمة",
     "preview": "معاينة",
-    "dragToReorder": "اسحب لإعادة الترتيب. تبديل لإظهار/إخفاء الإجراءات."
+    "dragToReorder": "اسحب لإعادة الترتيب. تبديل لإظهار/إخفاء الإجراءات.",
+    "goPro": "احصل على Pro",
+    "toggleDarkMode": "تبديل الوضع الداكن",
+    "switchToTodo": "التبديل إلى المهام",
+    "switchToNotes": "التبديل إلى الملاحظات",
+    "restore": "استعادة",
+    "insertEmoji": "إدراج رمز تعبيري",
+    "taskHistory": "سجل المهام",
+    "moreStyles": "المزيد من الأنماط",
+    "emoji": "رمز تعبيري",
+    "insertLink": "إدراج رابط",
+    "clearFormatting": "مسح التنسيق",
+    "selectAllText": "تحديد الكل",
+    "bulletList": "قائمة نقطية",
+    "numberedList": "قائمة مرقمة"
   },
   "folders": {
     "manageFolders": "إدارة المجلدات",

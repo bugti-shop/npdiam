@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { FileText, Search, Sun, Moon, X, Crown } from 'lucide-react';
@@ -19,6 +20,7 @@ interface TodoLayoutProps {
 
 export const TodoLayout = ({ children, title, searchValue, onSearchChange }: TodoLayoutProps) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { isDarkMode, toggleDarkMode } = useDarkMode();
   const { openPaywall, isPro } = useSubscription();
 
@@ -47,7 +49,7 @@ export const TodoLayout = ({ children, title, searchValue, onSearchChange }: Tod
                   variant="ghost"
                   onClick={() => openPaywall('pro')}
                   className="h-8 w-8 sm:h-9 sm:w-9 hover:bg-transparent active:bg-transparent"
-                  title="Go Pro"
+                  title={t('common.goPro')}
                   data-tour="todo-pro-button"
                 >
                   <Crown className="h-4 w-4 sm:h-5 sm:w-5" style={{ color: '#3c78f0' }} />
@@ -61,7 +63,7 @@ export const TodoLayout = ({ children, title, searchValue, onSearchChange }: Tod
                   toggleDarkMode();
                 }}
                 className="h-8 w-8 sm:h-9 sm:w-9 hover:bg-transparent active:bg-transparent"
-                title="Toggle dark mode"
+                title={t('common.toggleDarkMode')}
                 data-tour="todo-dark-mode"
               >
                 {isDarkMode ? <Sun className="h-4 w-4 sm:h-5 sm:w-5" /> : <Moon className="h-4 w-4 sm:h-5 sm:w-5" />}
@@ -74,7 +76,7 @@ export const TodoLayout = ({ children, title, searchValue, onSearchChange }: Tod
                   navigate('/');
                 }}
                 className="h-8 w-8 sm:h-9 sm:w-9 hover:bg-transparent active:bg-transparent"
-                title="Switch to Notes"
+                title={t('common.switchToNotes')}
                 data-tour="switch-to-notes"
               >
                 <FileText className="h-5 w-5 sm:h-6 sm:w-6" />

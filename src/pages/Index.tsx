@@ -809,7 +809,7 @@ const Index = () => {
                   variant="ghost"
                   onClick={() => openPaywall('pro')}
                   className="h-7 w-7 xs:h-8 xs:w-8 sm:h-9 sm:w-9 hover:bg-transparent active:bg-transparent touch-target"
-                  title="Go Pro"
+                  title={t('common.goPro')}
                   data-tour="pro-button"
                 >
                   <Crown className="h-4 w-4 xs:h-4 xs:w-4 sm:h-5 sm:w-5" style={{ color: '#3c78f0' }} />
@@ -823,7 +823,7 @@ const Index = () => {
                   toggleDarkMode();
                 }}
                 className="h-7 w-7 xs:h-8 xs:w-8 sm:h-9 sm:w-9 hover:bg-transparent active:bg-transparent touch-target"
-                title="Toggle dark mode"
+                title={t('common.toggleDarkMode')}
                 data-tour="dark-mode-toggle"
               >
                 {isDarkMode ? <Sun className="h-4 w-4 xs:h-5 xs:w-5 sm:h-5 sm:w-5" /> : <Moon className="h-4 w-4 xs:h-5 xs:w-5 sm:h-5 sm:w-5" />}
@@ -836,7 +836,7 @@ const Index = () => {
                   navigate('/todo/today');
                 }}
                 className="h-7 w-7 xs:h-8 xs:w-8 sm:h-9 sm:w-9 hover:bg-transparent active:bg-transparent touch-target"
-                title="Switch to To-Do"
+                title={t('common.switchToTodo')}
                 data-tour="switch-to-todo"
               >
                 <ListTodo className="h-4 w-4 xs:h-5 xs:w-5 sm:h-6 sm:w-6" />

@@ -43,7 +43,21 @@
     "addItem": "Aggiungi elemento",
     "addTask": "Aggiungi attività",
     "preview": "Anteprima",
-    "dragToReorder": "Trascina per riordinare. Attiva/disattiva per mostrare/nascondere le azioni."
+    "dragToReorder": "Trascina per riordinare. Attiva/disattiva per mostrare/nascondere le azioni.",
+    "goPro": "Passa a Pro",
+    "toggleDarkMode": "Attiva/disattiva modalità scura",
+    "switchToTodo": "Passa alle Attività",
+    "switchToNotes": "Passa alle Note",
+    "restore": "Ripristina",
+    "insertEmoji": "Inserisci emoji",
+    "taskHistory": "Cronologia attività",
+    "moreStyles": "Altri stili",
+    "emoji": "Emoji",
+    "insertLink": "Inserisci link",
+    "clearFormatting": "Cancella formattazione",
+    "selectAllText": "Seleziona tutto",
+    "bulletList": "Elenco puntato",
+    "numberedList": "Elenco numerato"
   },
   "folders": {
     "manageFolders": "Gestisci cartelle",

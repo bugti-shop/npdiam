@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Play, Pause, RotateCcw, Clock } from 'lucide-react';
 import { TimeTracking } from '@/types/note';
@@ -13,6 +14,7 @@ interface TaskTimeTrackerProps {
 
 export const TaskTimeTracker = ({ timeTracking, onUpdate, compact = false }: TaskTimeTrackerProps) => {
   const { requireFeature } = useSubscription();
+  const { t } = useTranslation();
   const [displayTime, setDisplayTime] = useState(timeTracking?.totalSeconds || 0);
   const [isRunning, setIsRunning] = useState(timeTracking?.isRunning || false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -171,7 +173,7 @@ export const TaskTimeTracker = ({ timeTracking, onUpdate, compact = false }: Tas
           size="icon"
           onClick={handleReset}
           className="h-8 w-8"
-          title="Reset"
+          title={t('common.reset')}
         >
           <RotateCcw className="h-4 w-4" />
         </Button>

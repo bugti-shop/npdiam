@@ -43,7 +43,21 @@
     "addItem": "Ajouter un élément",
     "addTask": "Ajouter une tâche",
     "preview": "Aperçu",
-    "dragToReorder": "Faites glisser pour réorganiser. Basculez pour afficher/masquer les actions."
+    "dragToReorder": "Faites glisser pour réorganiser. Basculez pour afficher/masquer les actions.",
+    "goPro": "Passer à Pro",
+    "toggleDarkMode": "Basculer le mode sombre",
+    "switchToTodo": "Passer aux Tâches",
+    "switchToNotes": "Passer aux Notes",
+    "restore": "Restaurer",
+    "insertEmoji": "Insérer un emoji",
+    "taskHistory": "Historique des tâches",
+    "moreStyles": "Plus de styles",
+    "emoji": "Emoji",
+    "insertLink": "Insérer un lien",
+    "clearFormatting": "Effacer le formatage",
+    "selectAllText": "Tout sélectionner",
+    "bulletList": "Liste à puces",
+    "numberedList": "Liste numérotée"
   },
   "folders": {
     "manageFolders": "Gérer les dossiers",
