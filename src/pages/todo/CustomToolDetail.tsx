@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Check, Trash2, Calendar, MoreVertical, Target, Zap, Brain, Sparkles, Timer, Focus, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -53,6 +54,7 @@ const TOOL_ICONS: Record<string, React.ComponentType<{ className?: string }>> = 
 const CustomToolDetail = () => {
   const { toolId } = useParams<{ toolId: string }>();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [tool, setTool] = useState<CustomTool | null>(null);
   const [linkedTasks, setLinkedTasks] = useState<TodoItem[]>([]);
   const [allTasks, setAllTasks] = useState<TodoItem[]>([]);
@@ -108,7 +110,7 @@ const CustomToolDetail = () => {
     await updateTaskInDB(taskId, { completed: newCompleted });
     window.dispatchEvent(new Event('tasksUpdated'));
     
-    toast.success(newCompleted ? 'Task completed' : 'Task uncompleted');
+    toast.success(newCompleted ? t('customTool.taskCompleted') : t('customTool.taskUncompleted'));
   };
 
   const handleDeleteTask = (taskId: string) => {
@@ -142,7 +144,7 @@ const CustomToolDetail = () => {
     
     setShowDeleteDialog(false);
     setTaskToDelete(null);
-    toast.success('Task deleted');
+    toast.success(t('customTool.taskDeleted'));
   };
 
   const handleRescheduleTask = (task: TodoItem) => {
@@ -162,7 +164,7 @@ const CustomToolDetail = () => {
     
     setShowDatePicker(false);
     setTaskToReschedule(null);
-    toast.success('Task rescheduled');
+    toast.success(t('customTool.taskRescheduled'));
   };
 
   const handleUnlinkTask = async (taskId: string) => {
@@ -187,7 +189,7 @@ const CustomToolDetail = () => {
       linkedTaskIds: prev.linkedTaskIds?.filter(id => id !== taskId)
     } : null);
     
-    toast.success('Task unlinked from tool');
+    toast.success(t('customTool.taskUnlinked'));
   };
 
   const handleAddTask = async (taskData: Omit<TodoItem, 'id' | 'completed'>) => {
@@ -226,7 +228,7 @@ const CustomToolDetail = () => {
     } : null);
     
     // Keep sheet open so users can add more tasks
-    toast.success('Task added and linked to tool');
+    toast.success(t('customTool.taskAddedLinked'));
   };
 
   const handleQuickAddTask = async () => {
@@ -265,7 +267,7 @@ const CustomToolDetail = () => {
     } : null);
     
     setQuickTaskText('');
-    toast.success('Task added');
+    toast.success(t('customTool.taskAdded'));
   };
 
   const handleCreateFolder = async (name: string, color: string) => {
@@ -286,10 +288,10 @@ const CustomToolDetail = () => {
 
   if (!tool) {
     return (
-      <TodoLayout title="Tool Not Found">
+      <TodoLayout title={t('customTool.toolNotFound')}>
         <div className="flex flex-col items-center justify-center h-[60vh] gap-4">
-          <p className="text-muted-foreground">This tool doesn't exist or has been deleted.</p>
-          <Button onClick={() => navigate('/todo/settings')}>Back to Settings</Button>
+          <p className="text-muted-foreground">{t('customTool.toolNotFoundDesc')}</p>
+          <Button onClick={() => navigate('/todo/settings')}>{t('customTool.backToSettings')}</Button>
         </div>
       </TodoLayout>
     );
@@ -326,15 +328,15 @@ const CustomToolDetail = () => {
         <div className="p-4 grid grid-cols-3 gap-3">
           <div className="bg-card border rounded-lg p-3 text-center">
             <p className="text-2xl font-bold">{linkedTasks.length}</p>
-            <p className="text-xs text-muted-foreground">Total Tasks</p>
-          </div>
-          <div className="bg-card border rounded-lg p-3 text-center">
-            <p className="text-2xl font-bold text-green-500">{completedTasks.length}</p>
-            <p className="text-xs text-muted-foreground">Completed</p>
-          </div>
-          <div className="bg-card border rounded-lg p-3 text-center">
-            <p className="text-2xl font-bold text-orange-500">{pendingTasks.length}</p>
-            <p className="text-xs text-muted-foreground">Pending</p>
+             <p className="text-xs text-muted-foreground">{t('customTool.totalTasks')}</p>
+           </div>
+           <div className="bg-card border rounded-lg p-3 text-center">
+             <p className="text-2xl font-bold text-green-500">{completedTasks.length}</p>
+             <p className="text-xs text-muted-foreground">{t('customTool.completed')}</p>
+           </div>
+           <div className="bg-card border rounded-lg p-3 text-center">
+             <p className="text-2xl font-bold text-orange-500">{pendingTasks.length}</p>
+             <p className="text-xs text-muted-foreground">{t('customTool.pending')}</p>
           </div>
         </div>
 
@@ -342,7 +344,7 @@ const CustomToolDetail = () => {
         <div className="px-4 pb-4">
           <div className="flex gap-2">
             <Input
-              placeholder="Quick add task..."
+              placeholder={t('customTool.quickAddTask')}
               value={quickTaskText}
               onChange={(e) => setQuickTaskText(e.target.value)}
               onKeyDown={(e) => {
@@ -364,7 +366,7 @@ const CustomToolDetail = () => {
               size="sm"
               onClick={() => setShowTaskInput(true)}
             >
-              More Options
+              {t('customTool.moreOptions')}
             </Button>
           </div>
         </div>
@@ -374,17 +376,17 @@ const CustomToolDetail = () => {
           {linkedTasks.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-12 text-center">
               <IconComponent className="h-12 w-12 text-muted-foreground/30 mb-4" />
-              <p className="text-muted-foreground">No tasks linked to this tool yet.</p>
-              <p className="text-sm text-muted-foreground/70 mt-1">
-                Add a task above or use "More Options" for detailed settings.
-              </p>
+               <p className="text-muted-foreground">{t('customTool.noTasksLinked')}</p>
+               <p className="text-sm text-muted-foreground/70 mt-1">
+                 {t('customTool.addTaskHint')}
+               </p>
             </div>
           ) : (
             <div className="space-y-4">
               {/* Pending Tasks */}
               {pendingTasks.length > 0 && (
                 <div>
-                  <h3 className="text-sm font-medium text-muted-foreground mb-2">Pending ({pendingTasks.length})</h3>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-2">{t('customTool.pendingCount', { count: pendingTasks.length })}</h3>
                   <div className="space-y-2">
                     {pendingTasks.map(task => (
                       <div 
@@ -424,25 +426,25 @@ const CustomToolDetail = () => {
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
-                            <DropdownMenuItem onClick={() => handleCompleteTask(task.id)}>
-                              <Check className="h-4 w-4 mr-2" />
-                              Mark Complete
-                            </DropdownMenuItem>
-                            <DropdownMenuItem onClick={() => handleRescheduleTask(task)}>
-                              <Calendar className="h-4 w-4 mr-2" />
-                              Reschedule
+                             <DropdownMenuItem onClick={() => handleCompleteTask(task.id)}>
+                               <Check className="h-4 w-4 mr-2" />
+                               {t('customTool.markComplete')}
+                             </DropdownMenuItem>
+                             <DropdownMenuItem onClick={() => handleRescheduleTask(task)}>
+                               <Calendar className="h-4 w-4 mr-2" />
+                               {t('customTool.reschedule')}
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem onClick={() => handleUnlinkTask(task.id)}>
-                              Unlink from Tool
+                               {t('customTool.unlinkFromTool')}
                             </DropdownMenuItem>
                             <DropdownMenuItem 
                               onClick={() => handleDeleteTask(task.id)}
                               className="text-destructive"
                             >
-                              <Trash2 className="h-4 w-4 mr-2" />
-                              Delete Task
-                            </DropdownMenuItem>
+                               <Trash2 className="h-4 w-4 mr-2" />
+                               {t('customTool.deleteTask')}
+                             </DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
                       </div>
@@ -454,7 +456,7 @@ const CustomToolDetail = () => {
               {/* Completed Tasks */}
               {completedTasks.length > 0 && (
                 <div>
-                  <h3 className="text-sm font-medium text-muted-foreground mb-2">Completed ({completedTasks.length})</h3>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-2">{t('customTool.completedCount', { count: completedTasks.length })}</h3>
                   <div className="space-y-2">
                     {completedTasks.map(task => (
                       <div 
@@ -476,19 +478,19 @@ const CustomToolDetail = () => {
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
-                            <DropdownMenuItem onClick={() => handleCompleteTask(task.id)}>
-                              Undo Complete
-                            </DropdownMenuItem>
-                            <DropdownMenuItem onClick={() => handleUnlinkTask(task.id)}>
-                              Unlink from Tool
+                             <DropdownMenuItem onClick={() => handleCompleteTask(task.id)}>
+                               {t('customTool.undoComplete')}
+                             </DropdownMenuItem>
+                             <DropdownMenuItem onClick={() => handleUnlinkTask(task.id)}>
+                               {t('customTool.unlinkFromTool')}
                             </DropdownMenuItem>
                             <DropdownMenuItem 
                               onClick={() => handleDeleteTask(task.id)}
                               className="text-destructive"
                             >
-                              <Trash2 className="h-4 w-4 mr-2" />
-                              Delete Task
-                            </DropdownMenuItem>
+                               <Trash2 className="h-4 w-4 mr-2" />
+                               {t('customTool.deleteTask')}
+                             </DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
                       </div>
@@ -504,15 +506,15 @@ const CustomToolDetail = () => {
         <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Delete Task?</AlertDialogTitle>
-              <AlertDialogDescription>
-                This action cannot be undone. The task will be permanently deleted.
-              </AlertDialogDescription>
+             <AlertDialogTitle>{t('customTool.deleteTaskTitle')}</AlertDialogTitle>
+             <AlertDialogDescription>
+               {t('customTool.deleteTaskDesc')}
+             </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={confirmDeleteTask} className="bg-destructive hover:bg-destructive/90">
-                Delete
+              <AlertDialogCancel>{t('common.cancel')}</AlertDialogCancel>
+               <AlertDialogAction onClick={confirmDeleteTask} className="bg-destructive hover:bg-destructive/90">
+                 {t('common.delete')}
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
