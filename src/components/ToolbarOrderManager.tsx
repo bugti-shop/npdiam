@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
@@ -125,6 +126,7 @@ export const ToolbarOrderManager = ({
   currentOrder,
   currentVisibility,
 }: ToolbarOrderManagerProps) => {
+  const { t } = useTranslation();
   const [localOrder, setLocalOrder] = useState<ToolbarItemId[]>(currentOrder);
   const [localVisibility, setLocalVisibility] = useState<Record<ToolbarItemId, boolean>>(currentVisibility);
 
@@ -162,7 +164,7 @@ export const ToolbarOrderManager = ({
     onOrderChange(newOrder);
     // Dispatch event to sync order with WordToolbar
     window.dispatchEvent(new CustomEvent('toolbarOrderChanged', { detail: { order: newOrder } }));
-    toast.success('Toolbar order updated');
+    toast.success(t('toolbarManager.orderUpdated'));
   };
 
   const handleVisibilityToggle = async (itemId: ToolbarItemId) => {
@@ -181,8 +183,8 @@ export const ToolbarOrderManager = ({
     
     toast.success(
       newVisibility[itemId] 
-        ? `${TOOLBAR_ITEM_LABELS[itemId]} shown` 
-        : `${TOOLBAR_ITEM_LABELS[itemId]} hidden`
+        ? t('toolbarManager.itemShown', { item: TOOLBAR_ITEM_LABELS[itemId] })
+        : t('toolbarManager.itemHidden', { item: TOOLBAR_ITEM_LABELS[itemId] })
     );
   };
 
@@ -196,7 +198,7 @@ export const ToolbarOrderManager = ({
     saveToolbarVisibility(DEFAULT_VISIBILITY);
     onOrderChange([...DEFAULT_TOOLBAR_ORDER]);
     onVisibilityChange({ ...DEFAULT_VISIBILITY });
-    toast.success('Toolbar reset to defaults');
+    toast.success(t('toolbarManager.resetToDefaults'));
   };
 
   const visibleCount = Object.values(localVisibility).filter(Boolean).length;
@@ -209,7 +211,7 @@ export const ToolbarOrderManager = ({
           <SheetTitle className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Settings2 className="h-5 w-5" />
-              Customize Toolbar
+              {t('toolbarManager.customizeToolbar')}
             </div>
             <Button
               variant="ghost"
@@ -218,13 +220,13 @@ export const ToolbarOrderManager = ({
               className="text-muted-foreground hover:text-foreground"
             >
               <RotateCcw className="h-4 w-4 mr-1" />
-              Reset
+              {t('toolbarManager.reset')}
             </Button>
           </SheetTitle>
         </SheetHeader>
 
         <p className="text-sm text-muted-foreground mb-2">
-          Drag to reorder, toggle to show/hide. ({visibleCount}/{totalCount} visible)
+          {t('toolbarManager.dragToReorder', { visible: visibleCount, total: totalCount })}
         </p>
 
         <div className="flex-1 overflow-y-auto">

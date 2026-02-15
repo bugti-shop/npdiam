@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { List, ChevronDown, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -22,6 +23,7 @@ interface NoteTableOfContentsProps {
 }
 
 export const NoteTableOfContents = ({ content, onJumpTo }: NoteTableOfContentsProps) => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   const tocItems = useMemo(() => {
@@ -59,7 +61,7 @@ export const NoteTableOfContents = ({ content, onJumpTo }: NoteTableOfContentsPr
       <SheetTrigger asChild>
         <Button variant="ghost" size="sm" className="gap-2">
           <List className="h-4 w-4" />
-          <span className="text-xs">Contents</span>
+          <span className="text-xs">{t('tableOfContents.contents')}</span>
           <span className="text-xs text-muted-foreground">({tocItems.length})</span>
         </Button>
       </SheetTrigger>
@@ -67,7 +69,7 @@ export const NoteTableOfContents = ({ content, onJumpTo }: NoteTableOfContentsPr
         <SheetHeader>
           <SheetTitle className="flex items-center gap-2">
             <List className="h-5 w-5" />
-            Table of Contents
+            {t('tableOfContents.title')}
           </SheetTitle>
         </SheetHeader>
         <div className="mt-4 space-y-1 max-h-[70vh] overflow-y-auto">

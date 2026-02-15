@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Cloud, RefreshCw, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useGoogleAuth } from '@/contexts/GoogleAuthContext';
@@ -10,6 +11,7 @@ interface SyncStatusButtonProps {
 }
 
 export const SyncStatusButton = ({ size = 'sm' }: SyncStatusButtonProps) => {
+  const { t } = useTranslation();
   const { user } = useGoogleAuth();
   const { toast } = useToast();
   const [syncState, setSyncState] = useState<SyncState>('idle');
@@ -26,13 +28,13 @@ export const SyncStatusButton = ({ size = 'sm' }: SyncStatusButtonProps) => {
 
     if (result.success) {
       toast({
-        title: 'Synced',
-        description: `Notes: ${result.stats?.notesUploaded ?? 0}, Tasks: ${result.stats?.tasksUploaded ?? 0}`,
+        title: t('syncButton.synced'),
+        description: t('syncButton.syncedDesc', { notes: result.stats?.notesUploaded ?? 0, tasks: result.stats?.tasksUploaded ?? 0 }),
       });
     } else {
       toast({
-        title: 'Sync failed',
-        description: result.error || 'Try again.',
+        title: t('syncButton.syncFailed'),
+        description: result.error || t('syncButton.tryAgain'),
         variant: 'destructive',
       });
     }
@@ -53,7 +55,7 @@ export const SyncStatusButton = ({ size = 'sm' }: SyncStatusButtonProps) => {
       onClick={handleSync}
       disabled={syncState === 'syncing'}
       className={`${btnClass} hover:bg-transparent active:bg-transparent touch-target`}
-      title={syncState === 'syncing' ? 'Syncing...' : 'Sync to Google Drive'}
+      title={syncState === 'syncing' ? t('syncButton.syncing') : t('syncButton.syncToDrive')}
     >
       {syncState === 'syncing' ? (
         <Loader2 className={`${iconClass} animate-spin text-primary`} />

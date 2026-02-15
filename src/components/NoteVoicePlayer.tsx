@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Play, Pause, Trash2, AlertCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { createPlayableUrl, revokePlayableUrl, isDataUrl, isBlobUrl } from '@/utils/audioStorage';
@@ -16,6 +17,7 @@ export const NoteVoicePlayer = ({
   onDelete,
   className 
 }: NoteVoicePlayerProps) => {
+  const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [hasError, setHasError] = useState(false);
@@ -130,7 +132,7 @@ export const NoteVoicePlayer = ({
         )}
       >
         <AlertCircle className="w-5 h-5 text-destructive shrink-0" />
-        <span className="flex-1 text-sm text-destructive">Recording unavailable</span>
+        <span className="flex-1 text-sm text-destructive">{t('voicePlayer.recordingUnavailable')}</span>
         {onDelete && (
           <button
             onClick={handleDelete}

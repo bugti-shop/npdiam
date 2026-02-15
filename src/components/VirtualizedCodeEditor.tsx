@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
@@ -70,6 +71,7 @@ export const VirtualizedCodeEditor = ({
   onTitleChange,
   onClose,
 }: VirtualizedCodeEditorProps) => {
+  const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
   const [detectedLanguage, setDetectedLanguage] = useState<string>('plaintext');
   const [highlightedLines, setHighlightedLines] = useState<string[]>([]);
@@ -186,10 +188,10 @@ export const VirtualizedCodeEditor = ({
     try {
       await navigator.clipboard.writeText(code);
       setCopied(true);
-      toast.success('Code copied to clipboard');
+      toast.success(t('codeEditor.codeCopied'));
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      toast.error('Failed to copy code');
+      toast.error(t('codeEditor.copyFailed'));
     }
   }, [code]);
 
@@ -274,13 +276,13 @@ export const VirtualizedCodeEditor = ({
           <Input
             value={title}
             onChange={(e) => onTitleChange(e.target.value)}
-            placeholder="Untitled Code"
+            placeholder={t('codeEditor.untitledCode')}
             className="h-8 w-[180px] sm:w-[240px] bg-[#0d1117] border-[#30363d] text-white text-sm placeholder:text-gray-500 focus-visible:ring-1 focus-visible:ring-[#58a6ff]"
           />
         </div>
 
         <div className="flex items-center gap-1.5">
-          {isHighlighting && <span className="text-xs text-[#58a6ff] animate-pulse">Highlighting...</span>}
+          {isHighlighting && <span className="text-xs text-[#58a6ff] animate-pulse">{t('codeEditor.highlighting')}</span>}
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -380,7 +382,7 @@ export const VirtualizedCodeEditor = ({
             onKeyUp={handleSelect}
             onClick={handleSelect}
             onScroll={handleScroll}
-            placeholder="// Paste or type your code here..."
+            placeholder={t('codeEditor.pasteOrType')}
             spellCheck={false}
             autoCapitalize="off"
             autoCorrect="off"
@@ -416,7 +418,7 @@ export const VirtualizedCodeEditor = ({
           <span className="text-[10px] w-8 text-center">{fontSize}px</span>
         </div>
 
-        <span className="flex-shrink-0">Lines: {lines.length.toLocaleString()} | Chars: {code.length.toLocaleString()}</span>
+        <span className="flex-shrink-0">{t('codeEditor.lines')}: {lines.length.toLocaleString()} | {t('codeEditor.chars')}: {code.length.toLocaleString()}</span>
       </div>
     </div>
   );
