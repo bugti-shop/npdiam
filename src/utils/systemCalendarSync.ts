@@ -34,13 +34,16 @@ export const requestCalendarPermissions = async (): Promise<boolean> => {
     const platform = Capacitor.getPlatform();
     
     if (platform === 'android') {
-      // On Android, request read and write separately to avoid "not implemented" errors
-      const read = await cal.requestReadOnlyCalendarAccess();
-      const write = await cal.requestWriteOnlyCalendarAccess();
-      return read.result === 'granted' && write.result === 'granted';
+      try {
+        const read = await Promise.resolve(cal.requestReadOnlyCalendarAccess());
+        const write = await Promise.resolve(cal.requestWriteOnlyCalendarAccess());
+        return read?.result === 'granted' && write?.result === 'granted';
+      } catch (e) {
+        console.warn('Android calendar permission request failed:', e);
+        return false;
+      }
     } else {
-      // iOS supports requestFullCalendarAccess
-      const { result } = await cal.requestFullCalendarAccess();
+      const { result } = await Promise.resolve(cal.requestFullCalendarAccess());
       return result === 'granted';
     }
   } catch (e) {
@@ -53,9 +56,9 @@ export const checkCalendarPermissions = async (): Promise<boolean> => {
   if (!isNative()) return false;
   try {
     const cal = CapacitorCalendar;
-    const read = await cal.checkPermission({ scope: CalendarPermissionScope.READ_CALENDAR });
-    const write = await cal.checkPermission({ scope: CalendarPermissionScope.WRITE_CALENDAR });
-    return read.result === 'granted' && write.result === 'granted';
+    const read = await Promise.resolve(cal.checkPermission({ scope: CalendarPermissionScope.READ_CALENDAR }));
+    const write = await Promise.resolve(cal.checkPermission({ scope: CalendarPermissionScope.WRITE_CALENDAR }));
+    return read?.result === 'granted' && write?.result === 'granted';
   } catch {
     return false;
   }
@@ -126,10 +129,10 @@ export const pushTaskToNativeCalendar = async (task: TodoItem): Promise<string |
     if (existingId) {
       // Update existing event
       try {
-        await cal.modifyEvent({ id: existingId, ...eventData });
+        await Promise.resolve(cal.modifyEvent({ id: existingId, ...eventData }));
       } catch {
         // If modify fails (event deleted externally), create new
-        const { id } = await cal.createEvent(eventData);
+        const { id } = await Promise.resolve(cal.createEvent(eventData));
         syncMap[task.id] = id;
         await saveSyncMap(syncMap);
         return id;
@@ -137,7 +140,7 @@ export const pushTaskToNativeCalendar = async (task: TodoItem): Promise<string |
       return existingId;
     } else {
       // Create new event
-      const { id } = await cal.createEvent(eventData);
+      const { id } = await Promise.resolve(cal.createEvent(eventData));
       syncMap[task.id] = id;
       await saveSyncMap(syncMap);
       return id;
@@ -168,16 +171,16 @@ export const pushEventToNativeCalendar = async (event: AppCalendarEvent): Promis
 
     if (existingId) {
       try {
-        await cal.modifyEvent({ id: existingId, ...eventData });
+        await Promise.resolve(cal.modifyEvent({ id: existingId, ...eventData }));
       } catch {
-        const { id } = await cal.createEvent(eventData);
+        const { id } = await Promise.resolve(cal.createEvent(eventData));
         syncMap[event.id] = id;
         await saveSyncMap(syncMap);
         return id;
       }
       return existingId;
     } else {
-      const { id } = await cal.createEvent(eventData);
+      const { id } = await Promise.resolve(cal.createEvent(eventData));
       syncMap[event.id] = id;
       await saveSyncMap(syncMap);
       return id;
@@ -196,7 +199,7 @@ export const removeFromNativeCalendar = async (appId: string): Promise<void> => 
     const syncMap = await loadSyncMap();
     const nativeId = syncMap[appId];
     if (nativeId) {
-      await cal.deleteEvent({ id: nativeId }).catch(() => {});
+      await Promise.resolve(cal.deleteEvent({ id: nativeId })).catch(() => {});
       delete syncMap[appId];
       await saveSyncMap(syncMap);
     }
@@ -217,7 +220,7 @@ export const pullFromNativeCalendar = async (
     const from = now - daysBehind * 24 * 60 * 60 * 1000;
     const to = now + daysAhead * 24 * 60 * 60 * 1000;
 
-    const { result } = await cal.listEventsInRange({ from, to });
+    const { result } = await Promise.resolve(cal.listEventsInRange({ from, to }));
     const syncMap = await loadSyncMap();
     const nativeIdSet = new Set(Object.values(syncMap));
 
