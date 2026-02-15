@@ -508,6 +508,7 @@
     "voiceRecordingSaved": "הקלטה קולית נשמרה",
     "recordingTrimmed": "ההקלטה נחתכה",
     "dateTimeSaved": "הגדרות תאריך ושעה נשמרו",
+    "deadlineSaved": "המועד האחרון נשמר",
     "sectionCreated": "הקטע נוצר",
     "sectionDeleted": "הקטע נמחק",
     "tagAdded": "התגית נוספה",
@@ -1833,7 +1834,17 @@
     "recentTags": "תגיות אחרונות",
     "tagColor": "צבע תגית",
     "manageSavedTags": "נהל תגיות שמורות",
-    "noSavedTagsYet": "אין תגיות שמורות עדיין"
+    "noSavedTagsYet": "אין תגיות שמורות עדיין",
+    "trimRecording": "חיתוך הקלטה",
+    "tagName": "שם תגית",
+    "deadlineLabel": "מועד אחרון: {{date}}",
+    "reminderAt": "תזכורת {{time}}",
+    "repeatsFrequency": "חוזר {{frequency}}",
+    "atTime": "בשעה המדויקת",
+    "attachment": "קבצים",
+    "filesAdded": "קבצים",
+    "attachments": "קבצים מצורפים",
+    "addFiles": "הוסף קבצים"
   },
   "welcome": {
     "startJourney": "התחל את מסע הפרודוקטיביות שלך",

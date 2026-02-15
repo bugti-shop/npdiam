@@ -508,6 +508,7 @@
     "voiceRecordingSaved": "Registrazione vocale salvata",
     "recordingTrimmed": "Registrazione tagliata",
     "dateTimeSaved": "Impostazioni data e ora salvate",
+    "deadlineSaved": "Scadenza salvata",
     "sectionCreated": "Sezione creata",
     "sectionDeleted": "Sezione eliminata",
     "tagAdded": "Tag aggiunto",
@@ -1825,7 +1826,17 @@
     "recentTags": "Tag recenti",
     "tagColor": "Colore tag",
     "manageSavedTags": "Gestisci tag salvati",
-    "noSavedTagsYet": "Nessun tag salvato"
+    "noSavedTagsYet": "Nessun tag salvato",
+    "trimRecording": "Taglia registrazione",
+    "tagName": "Nome tag",
+    "deadlineLabel": "Scadenza: {{date}}",
+    "reminderAt": "Promemoria {{time}}",
+    "repeatsFrequency": "Si ripete {{frequency}}",
+    "atTime": "All'ora esatta",
+    "attachment": "File",
+    "filesAdded": "File",
+    "attachments": "Allegati",
+    "addFiles": "Aggiungi file"
   },
   "welcome": {
     "startJourney": "Inizia il tuo viaggio di produttività",

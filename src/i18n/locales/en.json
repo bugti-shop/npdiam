@@ -455,6 +455,7 @@
     "voiceRecordingSaved": "Voice recording saved",
     "recordingTrimmed": "Recording trimmed",
     "dateTimeSaved": "Date & time settings saved",
+    "deadlineSaved": "Deadline saved",
     "sectionCreated": "Section created",
     "sectionDeleted": "Section deleted",
     "tagAdded": "Tag added",
@@ -1778,7 +1779,17 @@
     "recentTags": "Recent tags",
     "tagColor": "Tag color",
     "manageSavedTags": "Manage Saved Tags",
-    "noSavedTagsYet": "No saved tags yet"
+    "noSavedTagsYet": "No saved tags yet",
+    "trimRecording": "Trim recording",
+    "tagName": "Tag name",
+    "deadlineLabel": "Deadline: {{date}}",
+    "reminderAt": "Reminder {{time}}",
+    "repeatsFrequency": "Repeats {{frequency}}",
+    "atTime": "At time",
+    "attachment": "Files",
+    "filesAdded": "Files",
+    "attachments": "File Attachments",
+    "addFiles": "Add Files"
   },
   "settings": {
     "title": "Settings",

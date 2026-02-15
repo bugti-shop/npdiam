@@ -508,6 +508,7 @@
     "voiceRecordingSaved": "음성 녹음 저장됨",
     "recordingTrimmed": "녹음 자르기 완료",
     "dateTimeSaved": "날짜 및 시간 설정 저장됨",
+    "deadlineSaved": "마감일 저장됨",
     "sectionCreated": "섹션 생성됨",
     "sectionDeleted": "섹션 삭제됨",
     "tagAdded": "태그 추가됨",
@@ -1850,7 +1851,17 @@
     "recentTags": "최근 태그",
     "tagColor": "태그 색상",
     "manageSavedTags": "저장된 태그 관리",
-    "noSavedTagsYet": "저장된 태그 없음"
+    "noSavedTagsYet": "저장된 태그 없음",
+    "trimRecording": "녹음 자르기",
+    "tagName": "태그 이름",
+    "deadlineLabel": "마감: {{date}}",
+    "reminderAt": "알림 {{time}}",
+    "repeatsFrequency": "반복 {{frequency}}",
+    "atTime": "정확한 시간에",
+    "attachment": "파일",
+    "filesAdded": "파일",
+    "attachments": "첨부 파일",
+    "addFiles": "파일 추가"
   },
   "welcome": {
     "startJourney": "생산성 여정을 시작하세요",

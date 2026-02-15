@@ -508,6 +508,7 @@
     "voiceRecordingSaved": "音声録音が保存されました",
     "recordingTrimmed": "録音がトリミングされました",
     "dateTimeSaved": "日付と時刻の設定が保存されました",
+    "deadlineSaved": "期限が保存されました",
     "sectionCreated": "セクションが作成されました",
     "sectionDeleted": "セクションが削除されました",
     "tagAdded": "タグが追加されました",
@@ -1708,7 +1709,17 @@
     "recentTags": "最近のタグ",
     "tagColor": "タグの色",
     "manageSavedTags": "保存したタグを管理",
-    "noSavedTagsYet": "保存されたタグはありません"
+    "noSavedTagsYet": "保存されたタグはありません",
+    "trimRecording": "録音をトリミング",
+    "tagName": "タグ名",
+    "deadlineLabel": "期限: {{date}}",
+    "reminderAt": "リマインダー {{time}}",
+    "repeatsFrequency": "繰り返し {{frequency}}",
+    "atTime": "正確な時刻に",
+    "attachment": "ファイル",
+    "filesAdded": "ファイル",
+    "attachments": "ファイル添付",
+    "addFiles": "ファイルを追加"
   },
   "webClipper": {
     "title": "ウェブクリッパー",

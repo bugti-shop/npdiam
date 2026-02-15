@@ -512,6 +512,7 @@
     "voiceRecordingSaved": "Grabación de voz guardada",
     "recordingTrimmed": "Grabación recortada",
     "dateTimeSaved": "Configuración de fecha y hora guardada",
+    "deadlineSaved": "Fecha límite guardada",
     "sectionCreated": "Sección creada",
     "sectionDeleted": "Sección eliminada",
     "tagAdded": "Etiqueta agregada",
@@ -1879,7 +1880,17 @@
     "recentTags": "Etiquetas recientes",
     "tagColor": "Color de etiqueta",
     "manageSavedTags": "Gestionar Etiquetas Guardadas",
-    "noSavedTagsYet": "Sin etiquetas guardadas aún"
+    "noSavedTagsYet": "Sin etiquetas guardadas aún",
+    "trimRecording": "Recortar grabación",
+    "tagName": "Nombre de etiqueta",
+    "deadlineLabel": "Fecha límite: {{date}}",
+    "reminderAt": "Recordatorio {{time}}",
+    "repeatsFrequency": "Se repite {{frequency}}",
+    "atTime": "A la hora",
+    "attachment": "Archivos",
+    "filesAdded": "Archivos",
+    "attachments": "Archivos adjuntos",
+    "addFiles": "Agregar archivos"
   },
   "welcome": {
     "startJourney": "Comienza Tu Viaje de Productividad",

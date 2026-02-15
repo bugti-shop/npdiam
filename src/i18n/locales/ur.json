@@ -1128,7 +1128,17 @@
     "recentTags": "حالیہ ٹیگز",
     "tagColor": "ٹیگ کا رنگ",
     "manageSavedTags": "محفوظ ٹیگز کا انتظام کریں",
-    "noSavedTagsYet": "ابھی تک کوئی ٹیگ محفوظ نہیں"
+    "noSavedTagsYet": "ابھی تک کوئی ٹیگ محفوظ نہیں",
+    "trimRecording": "ریکارڈنگ تراشیں",
+    "tagName": "ٹیگ کا نام",
+    "deadlineLabel": "آخری تاریخ: {{date}}",
+    "reminderAt": "یاد دہانی {{time}}",
+    "repeatsFrequency": "دہرایا جاتا ہے {{frequency}}",
+    "atTime": "صحیح وقت پر",
+    "attachment": "فائلیں",
+    "filesAdded": "فائلیں",
+    "attachments": "فائل منسلکات",
+    "addFiles": "فائلیں شامل کریں"
   },
   "menu": {
     "smartLists": "ذہین فہرستیں",

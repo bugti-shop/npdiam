@@ -508,6 +508,7 @@
     "voiceRecordingSaved": "语音录音已保存",
     "recordingTrimmed": "录音已剪辑",
     "dateTimeSaved": "日期和时间设置已保存",
+    "deadlineSaved": "截止日期已保存",
     "sectionCreated": "分区已创建",
     "sectionDeleted": "分区已删除",
     "tagAdded": "标签已添加",
@@ -1845,7 +1846,17 @@
     "recentTags": "最近标签",
     "tagColor": "标签颜色",
     "manageSavedTags": "管理保存的标签",
-    "noSavedTagsYet": "暂无保存的标签"
+    "noSavedTagsYet": "暂无保存的标签",
+    "trimRecording": "修剪录音",
+    "tagName": "标签名称",
+    "deadlineLabel": "截止日期: {{date}}",
+    "reminderAt": "提醒 {{time}}",
+    "repeatsFrequency": "重复 {{frequency}}",
+    "atTime": "准时",
+    "attachment": "文件",
+    "filesAdded": "个文件",
+    "attachments": "文件附件",
+    "addFiles": "添加文件"
   },
   "welcome": {
     "startJourney": "开始您的效率之旅",
