@@ -21,6 +21,14 @@ export class PushNotificationManager {
 
   async requestPermissions(): Promise<boolean> {
     try {
+      const { Capacitor } = await import('@capacitor/core');
+      if (!Capacitor.isNativePlatform()) {
+        if ('Notification' in window) {
+          const perm = await Notification.requestPermission();
+          return perm === 'granted';
+        }
+        return false;
+      }
       const { LocalNotifications } = await import('@capacitor/local-notifications');
       const result = await LocalNotifications.requestPermissions();
       return result.display === 'granted';

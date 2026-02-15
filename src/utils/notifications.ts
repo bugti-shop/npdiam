@@ -31,6 +31,7 @@ export const SNOOZE_ACTION_TYPE_ID = 'SNOOZE_ACTION_TYPE';
  * Helper to get LocalNotifications plugin (dynamic import to avoid build issues on web)
  */
 const getLocalNotifications = async () => {
+  if (!Capacitor.isNativePlatform()) return null;
   try {
     const { LocalNotifications } = await import('@capacitor/local-notifications');
     return LocalNotifications;

@@ -72,6 +72,12 @@ if (typeof window !== 'undefined') {
   };
   
   window.onunhandledrejection = (event) => {
+    // Suppress "not implemented on web" errors from Capacitor plugins
+    const msg = String(event?.reason?.message || event?.reason || '');
+    if (msg.includes('not implemented on web') || msg.includes('UNIMPLEMENTED')) {
+      event.preventDefault();
+      return;
+    }
     console.error('Unhandled promise rejection:', event.reason);
     showGlobalError(event.reason);
   };
