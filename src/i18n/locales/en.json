@@ -258,6 +258,8 @@
     "theme": "Theme",
     "notificationBar": "Notification Bar",
     "notificationBarDesc": "Add notes & tasks from notification",
+    "quickAddNoteHint": "Tap \"Add Note\" to quickly create any note type (Text, Lined, Sticky, or Code)",
+    "quickAddTaskHint": "Tap \"Add Task\" to add a task without opening the app",
     "calendarSync": "System Calendar Sync",
     "calendarSyncDesc": "Sync tasks & events with your device calendar",
     "calendarPermissionDenied": "Calendar permission denied. Please grant access in device settings.",
@@ -439,6 +441,7 @@
   "toasts": {
     "dataBackedUp": "Data backed up successfully",
     "dataRestored": "Data restored successfully",
+    "restoredStats": "Restored {{notes}} notes, {{tasks}} tasks, {{folders}} folders",
     "restoreFailed": "Failed to restore data",
     "dataDownloaded": "Data downloaded",
     "downloadFailed": "Download failed",

@@ -273,7 +273,7 @@ const Settings = () => {
           const stats = result.stats;
           toast({ 
             title: t('toasts.dataRestored'),
-            description: stats ? `Restored ${stats.notes} notes, ${stats.tasks} tasks, ${stats.folders} folders` : undefined
+            description: stats ? t('toasts.restoredStats', 'Restored {{notes}} notes, {{tasks}} tasks, {{folders}} folders', { notes: stats.notes, tasks: stats.tasks, folders: stats.folders }) : undefined
           });
           setTimeout(() => window.location.reload(), 1000);
         } else {
@@ -857,8 +857,8 @@ const Settings = () => {
             </div>
             {persistentNotificationEnabled && (
               <div className="px-4 py-3 text-xs text-muted-foreground bg-muted/30 rounded-lg">
-                <p>📝 Tap "Add Note" to quickly create any note type (Text, Lined, Sticky, or Code)</p>
-                <p className="mt-1">✅ Tap "Add Task" to add a task without opening the app</p>
+                <p>📝 {t('settings.quickAddNoteHint', 'Tap "Add Note" to quickly create any note type (Text, Lined, Sticky, or Code)')}</p>
+                <p className="mt-1">✅ {t('settings.quickAddTaskHint', 'Tap "Add Task" to add a task without opening the app')}</p>
               </div>
             )}
           </div>
