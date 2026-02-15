@@ -311,6 +311,8 @@
     "theme": "테마",
     "notificationBar": "알림 바",
     "notificationBarDesc": "알림에서 노트와 작업 추가",
+    "quickAddNoteHint": "\"노트 추가\"를 탭하여 모든 노트 유형(텍스트, 줄 노트, 스티커, 코드)을 빠르게 생성",
+    "quickAddTaskHint": "\"작업 추가\"를 탭하여 앱을 열지 않고 작업 추가",
     "calendarSync": "시스템 캘린더 동기화",
     "calendarSyncDesc": "작업과 이벤트를 기기 캘린더와 동기화",
     "calendarPermissionDenied": "캘린더 권한이 거부되었습니다. 기기 설정에서 접근을 허용해 주세요.",
@@ -492,6 +494,7 @@
   "toasts": {
     "dataBackedUp": "데이터가 성공적으로 백업되었습니다",
     "dataRestored": "데이터가 성공적으로 복원되었습니다",
+    "restoredStats": "{{notes}}개 노트, {{tasks}}개 작업, {{folders}}개 폴더 복원됨",
     "restoreFailed": "데이터 복원 실패",
     "dataDownloaded": "데이터 다운로드됨",
     "downloadFailed": "다운로드 실패",

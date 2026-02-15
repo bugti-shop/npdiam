@@ -311,6 +311,8 @@
     "theme": "Tema",
     "notificationBar": "Bildirim Çubuğu",
     "notificationBarDesc": "Bildirimden not ve görev ekleyin",
+    "quickAddNoteHint": "Hızlıca herhangi bir not türü oluşturmak için \"Not Ekle\"ye dokunun (Metin, Çizgili, Yapışkan veya Kod)",
+    "quickAddTaskHint": "Uygulamayı açmadan görev eklemek için \"Görev Ekle\"ye dokunun",
     "calendarSync": "Sistem Takvimi Senkronizasyonu",
     "calendarSyncDesc": "Görev ve etkinlikleri cihaz takvimiyle senkronize edin",
     "calendarPermissionDenied": "Takvim izni reddedildi. Lütfen cihaz ayarlarından erişim verin.",
@@ -492,6 +494,7 @@
   "toasts": {
     "dataBackedUp": "Veriler başarıyla yedeklendi",
     "dataRestored": "Veriler başarıyla geri yüklendi",
+    "restoredStats": "{{notes}} not, {{tasks}} görev, {{folders}} klasör geri yüklendi",
     "restoreFailed": "Veriler geri yüklenemedi",
     "dataDownloaded": "Veriler indirildi",
     "downloadFailed": "İndirme başarısız",

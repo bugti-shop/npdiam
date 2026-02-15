@@ -311,6 +311,8 @@
     "theme": "ערכת נושא",
     "notificationBar": "שורת התראות",
     "notificationBarDesc": "הוסף פתקים ומשימות מההתראה",
+    "quickAddNoteHint": "הקש \"הוסף פתק\" ליצירה מהירה של כל סוג פתק (טקסט, שורות, מדבקה או קוד)",
+    "quickAddTaskHint": "הקש \"הוסף משימה\" להוספת משימה בלי לפתוח את האפליקציה",
     "calendarSync": "סנכרון לוח שנה מערכתי",
     "calendarSyncDesc": "סנכרן משימות ואירועים עם לוח השנה של המכשיר",
     "calendarPermissionDenied": "הרשאת לוח שנה נדחתה. אנא אפשר גישה בהגדרות המכשיר.",
@@ -492,6 +494,7 @@
   "toasts": {
     "dataBackedUp": "הנתונים גובו בהצלחה",
     "dataRestored": "הנתונים שוחזרו בהצלחה",
+    "restoredStats": "שוחזרו {{notes}} פתקים, {{tasks}} משימות, {{folders}} תיקיות",
     "restoreFailed": "השחזור נכשל",
     "dataDownloaded": "הנתונים הורדו",
     "downloadFailed": "ההורדה נכשלה",

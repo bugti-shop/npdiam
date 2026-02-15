@@ -311,6 +311,8 @@
     "theme": "主题",
     "notificationBar": "通知栏",
     "notificationBarDesc": "从通知添加笔记和任务",
+    "quickAddNoteHint": "点击\"添加笔记\"快速创建任意笔记类型（文本、横线、便签或代码）",
+    "quickAddTaskHint": "点击\"添加任务\"无需打开应用即可添加任务",
     "calendarSync": "系统日历同步",
     "calendarSyncDesc": "将任务和事件与设备日历同步",
     "calendarPermissionDenied": "日历权限被拒绝。请在设备设置中授予访问权限。",
@@ -492,6 +494,7 @@
   "toasts": {
     "dataBackedUp": "数据备份成功",
     "dataRestored": "数据恢复成功",
+    "restoredStats": "已恢复 {{notes}} 个笔记、{{tasks}} 个任务、{{folders}} 个文件夹",
     "restoreFailed": "数据恢复失败",
     "dataDownloaded": "数据已下载",
     "downloadFailed": "下载失败",
