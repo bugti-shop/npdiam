@@ -60,7 +60,20 @@
     "organization": "Organizzazione",
     "organizationDesc": "Priorità, tag e cartelle",
     "media": "Media",
-    "mediaDesc": "Immagini e allegati"
+    "mediaDesc": "Immagini e allegati",
+    "date": "Data",
+    "deadline": "Scadenza",
+    "reminders": "Promemoria",
+    "repeat": "Ripeti",
+    "estimate": "Stima",
+    "priority": "Priorità",
+    "tags": "Tag",
+    "folder": "Cartella",
+    "section": "Sezione",
+    "description": "Descrizione",
+    "location": "Posizione",
+    "image": "Immagine",
+    "files": "File"
   },
   "mindMap": {
     "centralIdea": "Idea centrale",

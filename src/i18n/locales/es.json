@@ -61,7 +61,20 @@
     "organization": "Organización",
     "organizationDesc": "Prioridad, etiquetas y carpetas",
     "media": "Multimedia",
-    "mediaDesc": "Imágenes y adjuntos"
+    "mediaDesc": "Imágenes y adjuntos",
+    "date": "Fecha",
+    "deadline": "Fecha límite",
+    "reminders": "Recordatorios",
+    "repeat": "Repetir",
+    "estimate": "Estimación",
+    "priority": "Prioridad",
+    "tags": "Etiquetas",
+    "folder": "Carpeta",
+    "section": "Sección",
+    "description": "Descripción",
+    "location": "Ubicación",
+    "image": "Imagen",
+    "files": "Archivos"
   },
   "mindMap": {
     "centralIdea": "Idea central",

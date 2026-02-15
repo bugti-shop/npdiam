@@ -60,7 +60,20 @@
     "organization": "संगठन",
     "organizationDesc": "प्राथमिकता, टैग और फ़ोल्डर",
     "media": "मीडिया",
-    "mediaDesc": "छवियां और अनुलग्नक"
+    "mediaDesc": "छवियां और अनुलग्नक",
+    "date": "तारीख",
+    "deadline": "समय सीमा",
+    "reminders": "अनुस्मारक",
+    "repeat": "दोहराएं",
+    "estimate": "अनुमान",
+    "priority": "प्राथमिकता",
+    "tags": "टैग",
+    "folder": "फ़ोल्डर",
+    "section": "अनुभाग",
+    "description": "विवरण",
+    "location": "स्थान",
+    "image": "छवि",
+    "files": "फ़ाइलें"
   },
   "mindMap": {
     "centralIdea": "केंद्रीय विचार",

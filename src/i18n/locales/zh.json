@@ -60,7 +60,20 @@
     "organization": "组织",
     "organizationDesc": "优先级、标签和文件夹",
     "media": "媒体",
-    "mediaDesc": "图片和附件"
+    "mediaDesc": "图片和附件",
+    "date": "日期",
+    "deadline": "截止日期",
+    "reminders": "提醒",
+    "repeat": "重复",
+    "estimate": "估算",
+    "priority": "优先级",
+    "tags": "标签",
+    "folder": "文件夹",
+    "section": "分区",
+    "description": "描述",
+    "location": "位置",
+    "image": "图片",
+    "files": "文件"
   },
   "mindMap": {
     "centralIdea": "中心思想",

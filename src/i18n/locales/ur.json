@@ -60,7 +60,20 @@
     "organization": "تنظیم",
     "organizationDesc": "ترجیح، ٹیگز اور فولڈرز",
     "media": "میڈیا",
-    "mediaDesc": "تصاویر اور منسلکات"
+    "mediaDesc": "تصاویر اور منسلکات",
+    "date": "تاریخ",
+    "deadline": "آخری تاریخ",
+    "reminders": "یاد دہانیاں",
+    "repeat": "دہرائیں",
+    "estimate": "اندازہ",
+    "priority": "ترجیح",
+    "tags": "ٹیگز",
+    "folder": "فولڈر",
+    "section": "سیکشن",
+    "description": "تفصیل",
+    "location": "مقام",
+    "image": "تصویر",
+    "files": "فائلیں"
   },
   "mindMap": {
     "centralIdea": "مرکزی خیال",

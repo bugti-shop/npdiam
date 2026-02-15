@@ -36,6 +36,22 @@ export interface ActionItem {
   group: 'scheduling' | 'organization' | 'media';
 }
 
+export const getDefaultActions = (t: (key: string) => string): ActionItem[] => [
+  { id: 'date', name: t('editActions.date'), icon: CalendarIcon, enabled: true, color: 'text-blue-500', group: 'scheduling' },
+  { id: 'deadline', name: t('editActions.deadline'), icon: CalendarClock, enabled: true, color: 'text-rose-500', group: 'scheduling' },
+  { id: 'reminder', name: t('editActions.reminders'), icon: Timer, enabled: true, color: 'text-purple-500', group: 'scheduling' },
+  { id: 'repeat', name: t('editActions.repeat'), icon: Repeat, enabled: true, color: 'text-indigo-500', group: 'scheduling' },
+  { id: 'priority', name: t('editActions.priority'), icon: Flag, enabled: true, color: 'text-orange-500', group: 'organization' },
+  { id: 'tags', name: t('editActions.tags'), icon: Tag, enabled: true, color: 'text-teal-500', group: 'organization' },
+  { id: 'folder', name: t('editActions.folder'), icon: FolderIcon, enabled: true, color: 'text-amber-500', group: 'organization' },
+  { id: 'section', name: t('editActions.section'), icon: ListTodo, enabled: true, color: 'text-violet-500', group: 'organization' },
+  { id: 'description', name: t('editActions.description'), icon: FileText, enabled: true, color: 'text-cyan-500', group: 'organization' },
+  { id: 'location', name: t('editActions.location'), icon: MapPin, enabled: true, color: 'text-pink-500', group: 'organization' },
+  { id: 'image', name: t('editActions.image'), icon: ImageIcon, enabled: true, color: 'text-emerald-500', group: 'media' },
+  { id: 'attachment', name: t('editActions.files'), icon: Paperclip, enabled: true, color: 'text-sky-500', group: 'media' },
+  { id: 'effort', name: t('editActions.estimate'), icon: Hourglass, enabled: true, color: 'text-primary', group: 'scheduling' },
+];
+
 export const defaultActions: ActionItem[] = [
   { id: 'date', name: 'Date', icon: CalendarIcon, enabled: true, color: 'text-blue-500', group: 'scheduling' },
   { id: 'deadline', name: 'Deadline', icon: CalendarClock, enabled: true, color: 'text-rose-500', group: 'scheduling' },
@@ -65,9 +81,26 @@ interface EditActionsSheetProps {
   onSave: (actions: ActionItem[]) => void;
 }
 
+const actionNameMap: Record<string, string> = {
+  date: 'editActions.date',
+  deadline: 'editActions.deadline',
+  reminder: 'editActions.reminders',
+  repeat: 'editActions.repeat',
+  effort: 'editActions.estimate',
+  priority: 'editActions.priority',
+  tags: 'editActions.tags',
+  folder: 'editActions.folder',
+  section: 'editActions.section',
+  description: 'editActions.description',
+  location: 'editActions.location',
+  image: 'editActions.image',
+  attachment: 'editActions.files',
+};
+
 export const EditActionsSheet = ({ isOpen, onClose, actions, onSave }: EditActionsSheetProps) => {
   const { t } = useTranslation();
   const [localActions, setLocalActions] = useState<ActionItem[]>(actions);
+  const getActionName = (action: ActionItem) => actionNameMap[action.id] ? t(actionNameMap[action.id]) : action.name;
   const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({
     scheduling: true,
     organization: true,
@@ -283,7 +316,7 @@ export const EditActionsSheet = ({ isOpen, onClose, actions, onSave }: EditActio
                                       "flex-1 font-medium",
                                       !action.enabled && "text-muted-foreground"
                                     )}>
-                                      {action.name}
+                                      {getActionName(action)}
                                     </span>
 
                                     <Switch 
@@ -320,7 +353,7 @@ export const EditActionsSheet = ({ isOpen, onClose, actions, onSave }: EditActio
                 className="flex items-center gap-1.5 px-3 py-2 rounded-md border border-border bg-card"
               >
                 <Icon className={cn("h-4 w-4", action.color)} />
-                <span className="text-sm text-muted-foreground">{action.name}</span>
+                <span className="text-sm text-muted-foreground">{getActionName(action)}</span>
               </div>
             );
           })}
