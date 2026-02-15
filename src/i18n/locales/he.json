@@ -1948,6 +1948,111 @@
     "tipTitle": "טיפ: השתמש בתחביר [[כותרת פתק]]",
     "tipDesc": "הקלד [[כותרת פתק]] ישירות בפתק שלך ליצירת קישורים"
   },
+  "audioPlayer": {
+    "audioUnavailable": "אודיו לא זמין"
+  },
+  "voicePlayer": {
+    "recordingUnavailable": "הקלטה לא זמינה"
+  },
+  "tableOfContents": {
+    "contents": "תוכן",
+    "title": "תוכן עניינים"
+  },
+  "tableEditor": {
+    "insertTable": "הוסף טבלה",
+    "rows": "שורות",
+    "columns": "עמודות",
+    "style": "סגנון",
+    "tableActions": "פעולות טבלה",
+    "insertRowAbove": "הוסף שורה מעל",
+    "insertRowBelow": "הוסף שורה מתחת",
+    "insertColumnLeft": "הוסף עמודה שמאלה",
+    "insertColumnRight": "הוסף עמודה ימינה",
+    "deleteRow": "מחק שורה",
+    "deleteColumn": "מחק עמודה",
+    "default": "ברירת מחדל",
+    "standardWithHeader": "סטנדרטי עם שורת כותרת",
+    "striped": "פסים",
+    "alternatingRows": "צבעי שורות מתחלפים",
+    "bordered": "עם גבולות",
+    "allCellsBordered": "כל התאים עם גבולות",
+    "minimal": "מינימלי",
+    "cleanNoBorders": "נקי ללא גבולות",
+    "modern": "מודרני",
+    "roundedWithShadow": "מעוגל עם צל"
+  },
+  "calendarSync": {
+    "syncing": "מסנכרן...",
+    "syncNow": "סנכרן עכשיו",
+    "lastSynced": "סונכרן לאחרונה {{time}}",
+    "total": "סה\"כ",
+    "pushed": "נשלחו",
+    "pulled": "התקבלו",
+    "allInSync": "כל האירועים מסונכרנים",
+    "notSyncedYet": "עדיין לא סונכרן — הקש סנכרן עכשיו",
+    "syncedResult": "סונכרן: {{pushed}} נשלחו, {{pulled}} התקבלו",
+    "syncFailed": "הסנכרון נכשל"
+  },
+  "codeEditor": {
+    "untitledCode": "קוד ללא שם",
+    "highlighting": "מדגיש...",
+    "codeCopied": "הקוד הועתק ללוח",
+    "copyFailed": "העתקת הקוד נכשלה",
+    "autoDetect": "זיהוי אוטומטי",
+    "pasteOrType": "// הדבק או הקלד קוד כאן...",
+    "lines": "שורות",
+    "chars": "תווים"
+  },
+  "toolbarManager": {
+    "customizeToolbar": "התאמת סרגל כלים",
+    "reset": "איפוס",
+    "dragToReorder": "גרור לסידור מחדש, החלף להצגה/הסתרה. ({{visible}}/{{total}} גלויים)",
+    "orderUpdated": "סדר סרגל הכלים עודכן",
+    "itemShown": "{{item}} מוצג",
+    "itemHidden": "{{item}} מוסתר",
+    "resetToDefaults": "סרגל הכלים אופס לברירת מחדל"
+  },
+  "syncButton": {
+    "synced": "מסונכרן",
+    "syncedDesc": "פתקים: {{notes}}, משימות: {{tasks}}",
+    "syncFailed": "הסנכרון נכשל",
+    "tryAgain": "נסה שוב.",
+    "syncing": "מסנכרן...",
+    "syncToDrive": "סנכרן ל-Google Drive"
+  },
+  "taskWidgets": {
+    "pending": "ממתין",
+    "done": "הושלם",
+    "overdue": "באיחור",
+    "streak": "רצף",
+    "today": "היום",
+    "tasksCompletedToday": "משימות שהושלמו היום",
+    "dayInARow": "יום ברצף",
+    "daysInARow": "ימים ברצף",
+    "high": "גבוה",
+    "sevenDayRate": "שיעור 7 ימים",
+    "recurring": "חוזרות",
+    "reminders": "תזכורות",
+    "nextUp": "הבא",
+    "upcomingOverview": "סקירה קרובה",
+    "tomorrow": "מחר",
+    "thisWeek": "השבוע",
+    "tasks": "משימות"
+  },
+  "richEditor": {
+    "selectTextFirst": "אנא בחר טקסט תחילה",
+    "linkInserted": "קישור הוכנס",
+    "imageAligned": "תמונה יושרה {{align}}",
+    "imageDeleted": "תמונה נמחקה",
+    "imageAdded": "תמונה נוספה - לחץ לשינוי גודל או הזזה",
+    "fileAttached": "קובץ \"{{name}}\" צורף",
+    "textUppercase": "טקסט הומר לאותיות גדולות",
+    "textLowercase": "טקסט הומר לאותיות קטנות",
+    "textCapitalized": "טקסט הוגדל",
+    "tableInserted": "טבלה הוכנסה - לחץ לשינוי גודל",
+    "tableInsertedWithSize": "טבלה {{rows}}×{{cols}} {{style}} הוכנסה",
+    "fileNotFound": "נתוני הקובץ לא נמצאו"
+  },
   "welcome": {
     "startJourney": "התחל את מסע הפרודוקטיביות שלך",
     "getStarted": "התחל"

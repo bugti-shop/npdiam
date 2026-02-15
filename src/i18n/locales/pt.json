@@ -1900,6 +1900,111 @@
     "tipTitle": "Dica: Use a sintaxe [[título da nota]]",
     "tipDesc": "Digite [[Título da Nota]] diretamente na sua nota para criar links"
   },
+  "audioPlayer": {
+    "audioUnavailable": "Áudio indisponível"
+  },
+  "voicePlayer": {
+    "recordingUnavailable": "Gravação indisponível"
+  },
+  "tableOfContents": {
+    "contents": "Conteúdos",
+    "title": "Índice"
+  },
+  "tableEditor": {
+    "insertTable": "Inserir tabela",
+    "rows": "Linhas",
+    "columns": "Colunas",
+    "style": "Estilo",
+    "tableActions": "Ações da tabela",
+    "insertRowAbove": "Inserir linha acima",
+    "insertRowBelow": "Inserir linha abaixo",
+    "insertColumnLeft": "Inserir coluna à esquerda",
+    "insertColumnRight": "Inserir coluna à direita",
+    "deleteRow": "Excluir linha",
+    "deleteColumn": "Excluir coluna",
+    "default": "Padrão",
+    "standardWithHeader": "Padrão com linha de cabeçalho",
+    "striped": "Listrado",
+    "alternatingRows": "Cores de linhas alternadas",
+    "bordered": "Com bordas",
+    "allCellsBordered": "Todas as células com bordas",
+    "minimal": "Mínimo",
+    "cleanNoBorders": "Limpo, sem bordas",
+    "modern": "Moderno",
+    "roundedWithShadow": "Arredondado com sombra"
+  },
+  "calendarSync": {
+    "syncing": "Sincronizando...",
+    "syncNow": "Sincronizar agora",
+    "lastSynced": "Última sincronização {{time}}",
+    "total": "Total",
+    "pushed": "Enviados",
+    "pulled": "Recebidos",
+    "allInSync": "Todos os eventos estão sincronizados",
+    "notSyncedYet": "Ainda não sincronizado — toque em Sincronizar agora",
+    "syncedResult": "Sincronizado: {{pushed}} enviados, {{pulled}} recebidos",
+    "syncFailed": "Falha na sincronização"
+  },
+  "codeEditor": {
+    "untitledCode": "Código sem título",
+    "highlighting": "Destacando...",
+    "codeCopied": "Código copiado para a área de transferência",
+    "copyFailed": "Falha ao copiar código",
+    "autoDetect": "Detecção automática",
+    "pasteOrType": "// Cole ou digite seu código aqui...",
+    "lines": "Linhas",
+    "chars": "Caracteres"
+  },
+  "toolbarManager": {
+    "customizeToolbar": "Personalizar barra de ferramentas",
+    "reset": "Redefinir",
+    "dragToReorder": "Arraste para reordenar, alterne para mostrar/ocultar. ({{visible}}/{{total}} visíveis)",
+    "orderUpdated": "Ordem da barra atualizada",
+    "itemShown": "{{item}} mostrado",
+    "itemHidden": "{{item}} oculto",
+    "resetToDefaults": "Barra de ferramentas redefinida para padrão"
+  },
+  "syncButton": {
+    "synced": "Sincronizado",
+    "syncedDesc": "Notas: {{notes}}, Tarefas: {{tasks}}",
+    "syncFailed": "Falha na sincronização",
+    "tryAgain": "Tentar novamente.",
+    "syncing": "Sincronizando...",
+    "syncToDrive": "Sincronizar com Google Drive"
+  },
+  "taskWidgets": {
+    "pending": "Pendentes",
+    "done": "Concluídas",
+    "overdue": "Atrasadas",
+    "streak": "Sequência",
+    "today": "Hoje",
+    "tasksCompletedToday": "Tarefas concluídas hoje",
+    "dayInARow": "Dia consecutivo",
+    "daysInARow": "Dias consecutivos",
+    "high": "Alta",
+    "sevenDayRate": "Taxa de 7 dias",
+    "recurring": "Recorrentes",
+    "reminders": "Lembretes",
+    "nextUp": "Próximo",
+    "upcomingOverview": "Visão geral próxima",
+    "tomorrow": "Amanhã",
+    "thisWeek": "Esta semana",
+    "tasks": "tarefas"
+  },
+  "richEditor": {
+    "selectTextFirst": "Por favor selecione o texto primeiro",
+    "linkInserted": "Link inserido",
+    "imageAligned": "Imagem alinhada {{align}}",
+    "imageDeleted": "Imagem excluída",
+    "imageAdded": "Imagem adicionada - clique para redimensionar ou mover",
+    "fileAttached": "Arquivo \"{{name}}\" anexado",
+    "textUppercase": "Texto convertido para maiúsculas",
+    "textLowercase": "Texto convertido para minúsculas",
+    "textCapitalized": "Texto capitalizado",
+    "tableInserted": "Tabela inserida - clique para redimensionar",
+    "tableInsertedWithSize": "Tabela {{rows}}×{{cols}} {{style}} inserida",
+    "fileNotFound": "Dados do arquivo não encontrados"
+  },
   "settings": {
     "title": "Configurações",
     "appearance": "Aparência",

@@ -1798,6 +1798,111 @@
     "tipTitle": "İpucu: [[not başlığı]] sözdizimini kullanın",
     "tipDesc": "Bağlantı oluşturmak için notunuza doğrudan [[Not Başlığı]] yazın"
   },
+  "audioPlayer": {
+    "audioUnavailable": "Ses kullanılamıyor"
+  },
+  "voicePlayer": {
+    "recordingUnavailable": "Kayıt kullanılamıyor"
+  },
+  "tableOfContents": {
+    "contents": "İçindekiler",
+    "title": "İçindekiler Tablosu"
+  },
+  "tableEditor": {
+    "insertTable": "Tablo ekle",
+    "rows": "Satırlar",
+    "columns": "Sütunlar",
+    "style": "Stil",
+    "tableActions": "Tablo işlemleri",
+    "insertRowAbove": "Üste satır ekle",
+    "insertRowBelow": "Alta satır ekle",
+    "insertColumnLeft": "Sola sütun ekle",
+    "insertColumnRight": "Sağa sütun ekle",
+    "deleteRow": "Satır sil",
+    "deleteColumn": "Sütun sil",
+    "default": "Varsayılan",
+    "standardWithHeader": "Başlık satırı ile standart",
+    "striped": "Çizgili",
+    "alternatingRows": "Değişen satır renkleri",
+    "bordered": "Kenarlıklı",
+    "allCellsBordered": "Tüm hücreler kenarlıklı",
+    "minimal": "Minimal",
+    "cleanNoBorders": "Temiz, kenarlıksız",
+    "modern": "Modern",
+    "roundedWithShadow": "Yuvarlatılmış gölgeli"
+  },
+  "calendarSync": {
+    "syncing": "Senkronize ediliyor...",
+    "syncNow": "Şimdi senkronize et",
+    "lastSynced": "Son senkronizasyon {{time}}",
+    "total": "Toplam",
+    "pushed": "Gönderilen",
+    "pulled": "Alınan",
+    "allInSync": "Tüm etkinlikler senkronize",
+    "notSyncedYet": "Henüz senkronize edilmedi — Şimdi senkronize et'e dokunun",
+    "syncedResult": "Senkronize edildi: {{pushed}} gönderildi, {{pulled}} alındı",
+    "syncFailed": "Senkronizasyon başarısız"
+  },
+  "codeEditor": {
+    "untitledCode": "Adsız Kod",
+    "highlighting": "Vurgulama...",
+    "codeCopied": "Kod panoya kopyalandı",
+    "copyFailed": "Kod kopyalama başarısız",
+    "autoDetect": "Otomatik Algıla",
+    "pasteOrType": "// Kodunuzu buraya yapıştırın veya yazın...",
+    "lines": "Satırlar",
+    "chars": "Karakterler"
+  },
+  "toolbarManager": {
+    "customizeToolbar": "Araç çubuğunu özelleştir",
+    "reset": "Sıfırla",
+    "dragToReorder": "Yeniden sıralamak için sürükleyin, göster/gizle için değiştirin. ({{visible}}/{{total}} görünür)",
+    "orderUpdated": "Araç çubuğu sırası güncellendi",
+    "itemShown": "{{item}} gösterildi",
+    "itemHidden": "{{item}} gizlendi",
+    "resetToDefaults": "Araç çubuğu varsayılana sıfırlandı"
+  },
+  "syncButton": {
+    "synced": "Senkronize",
+    "syncedDesc": "Notlar: {{notes}}, Görevler: {{tasks}}",
+    "syncFailed": "Senkronizasyon başarısız",
+    "tryAgain": "Tekrar dene.",
+    "syncing": "Senkronize ediliyor...",
+    "syncToDrive": "Google Drive'a senkronize et"
+  },
+  "taskWidgets": {
+    "pending": "Bekleyen",
+    "done": "Tamamlandı",
+    "overdue": "Gecikmiş",
+    "streak": "Seri",
+    "today": "Bugün",
+    "tasksCompletedToday": "Bugün tamamlanan görevler",
+    "dayInARow": "Gün üst üste",
+    "daysInARow": "Gün üst üste",
+    "high": "Yüksek",
+    "sevenDayRate": "7 günlük oran",
+    "recurring": "Tekrarlayan",
+    "reminders": "Hatırlatıcılar",
+    "nextUp": "Sıradaki",
+    "upcomingOverview": "Yaklaşan genel bakış",
+    "tomorrow": "Yarın",
+    "thisWeek": "Bu hafta",
+    "tasks": "görev"
+  },
+  "richEditor": {
+    "selectTextFirst": "Lütfen önce metin seçin",
+    "linkInserted": "Bağlantı eklendi",
+    "imageAligned": "Görsel hizalandı {{align}}",
+    "imageDeleted": "Görsel silindi",
+    "imageAdded": "Görsel eklendi - boyutlandırmak veya taşımak için tıklayın",
+    "fileAttached": "Dosya \"{{name}}\" eklendi",
+    "textUppercase": "Metin büyük harfe dönüştürüldü",
+    "textLowercase": "Metin küçük harfe dönüştürüldü",
+    "textCapitalized": "Metin büyük harfle başlatıldı",
+    "tableInserted": "Tablo eklendi - boyutlandırmak için tıklayın",
+    "tableInsertedWithSize": "{{rows}}×{{cols}} {{style}} tablo eklendi",
+    "fileNotFound": "Dosya verisi bulunamadı"
+  },
   "webClipper": {
     "title": "Web Kesici",
     "savingClip": "Kesit kaydediliyor...",

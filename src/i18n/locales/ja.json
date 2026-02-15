@@ -1823,6 +1823,111 @@
     "tipTitle": "ヒント：[[ノートタイトル]]構文を使用",
     "tipDesc": "ノートに直接[[ノートタイトル]]と入力してリンクを作成"
   },
+  "audioPlayer": {
+    "audioUnavailable": "オーディオは利用できません"
+  },
+  "voicePlayer": {
+    "recordingUnavailable": "録音は利用できません"
+  },
+  "tableOfContents": {
+    "contents": "目次",
+    "title": "目次"
+  },
+  "tableEditor": {
+    "insertTable": "テーブルを挿入",
+    "rows": "行",
+    "columns": "列",
+    "style": "スタイル",
+    "tableActions": "テーブル操作",
+    "insertRowAbove": "上に行を挿入",
+    "insertRowBelow": "下に行を挿入",
+    "insertColumnLeft": "左に列を挿入",
+    "insertColumnRight": "右に列を挿入",
+    "deleteRow": "行を削除",
+    "deleteColumn": "列を削除",
+    "default": "デフォルト",
+    "standardWithHeader": "ヘッダー行付き標準",
+    "striped": "ストライプ",
+    "alternatingRows": "交互行カラー",
+    "bordered": "枠線付き",
+    "allCellsBordered": "全セル枠線付き",
+    "minimal": "ミニマル",
+    "cleanNoBorders": "クリーン、枠線なし",
+    "modern": "モダン",
+    "roundedWithShadow": "角丸シャドウ付き"
+  },
+  "calendarSync": {
+    "syncing": "同期中...",
+    "syncNow": "今すぐ同期",
+    "lastSynced": "最終同期 {{time}}",
+    "total": "合計",
+    "pushed": "送信済み",
+    "pulled": "受信済み",
+    "allInSync": "すべてのイベントが同期済み",
+    "notSyncedYet": "まだ同期されていません — 今すぐ同期をタップ",
+    "syncedResult": "同期完了: {{pushed}} 送信、{{pulled}} 受信",
+    "syncFailed": "同期失敗"
+  },
+  "codeEditor": {
+    "untitledCode": "無題のコード",
+    "highlighting": "ハイライト中...",
+    "codeCopied": "コードをクリップボードにコピーしました",
+    "copyFailed": "コードのコピーに失敗",
+    "autoDetect": "自動検出",
+    "pasteOrType": "// コードをここに貼り付けまたは入力...",
+    "lines": "行",
+    "chars": "文字"
+  },
+  "toolbarManager": {
+    "customizeToolbar": "ツールバーをカスタマイズ",
+    "reset": "リセット",
+    "dragToReorder": "ドラッグして並び替え、トグルで表示/非表示。({{visible}}/{{total}} 表示中)",
+    "orderUpdated": "ツールバーの順序を更新しました",
+    "itemShown": "{{item}} を表示",
+    "itemHidden": "{{item}} を非表示",
+    "resetToDefaults": "ツールバーをデフォルトにリセット"
+  },
+  "syncButton": {
+    "synced": "同期済み",
+    "syncedDesc": "ノート: {{notes}}、タスク: {{tasks}}",
+    "syncFailed": "同期失敗",
+    "tryAgain": "再試行。",
+    "syncing": "同期中...",
+    "syncToDrive": "Google Driveに同期"
+  },
+  "taskWidgets": {
+    "pending": "保留中",
+    "done": "完了",
+    "overdue": "期限超過",
+    "streak": "連続",
+    "today": "今日",
+    "tasksCompletedToday": "今日完了したタスク",
+    "dayInARow": "日連続",
+    "daysInARow": "日連続",
+    "high": "高",
+    "sevenDayRate": "7日間の達成率",
+    "recurring": "繰り返し",
+    "reminders": "リマインダー",
+    "nextUp": "次のタスク",
+    "upcomingOverview": "今後の概要",
+    "tomorrow": "明日",
+    "thisWeek": "今週",
+    "tasks": "タスク"
+  },
+  "richEditor": {
+    "selectTextFirst": "先にテキストを選択してください",
+    "linkInserted": "リンクを挿入しました",
+    "imageAligned": "画像を{{align}}に揃えました",
+    "imageDeleted": "画像を削除しました",
+    "imageAdded": "画像を追加しました - クリックでサイズ変更や移動",
+    "fileAttached": "ファイル \"{{name}}\" を添付しました",
+    "textUppercase": "テキストを大文字に変換しました",
+    "textLowercase": "テキストを小文字に変換しました",
+    "textCapitalized": "テキストを先頭大文字にしました",
+    "tableInserted": "テーブルを挿入しました - クリックでサイズ変更",
+    "tableInsertedWithSize": "{{rows}}×{{cols}} {{style}} テーブルを挿入しました",
+    "fileNotFound": "ファイルデータが見つかりません"
+  },
   "webClipper": {
     "title": "ウェブクリッパー",
     "savingClip": "クリップを保存中...",

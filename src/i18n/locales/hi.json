@@ -1834,6 +1834,111 @@
     "tipTitle": "टिप: [[नोट शीर्षक]] सिंटैक्स का उपयोग करें",
     "tipDesc": "लिंक बनाने के लिए अपने नोट में सीधे [[नोट शीर्षक]] टाइप करें"
   },
+  "audioPlayer": {
+    "audioUnavailable": "ऑडियो अनुपलब्ध"
+  },
+  "voicePlayer": {
+    "recordingUnavailable": "रिकॉर्डिंग अनुपलब्ध"
+  },
+  "tableOfContents": {
+    "contents": "विषय-सूची",
+    "title": "विषय-सूची"
+  },
+  "tableEditor": {
+    "insertTable": "तालिका डालें",
+    "rows": "पंक्तियाँ",
+    "columns": "स्तंभ",
+    "style": "शैली",
+    "tableActions": "तालिका क्रियाएँ",
+    "insertRowAbove": "ऊपर पंक्ति डालें",
+    "insertRowBelow": "नीचे पंक्ति डालें",
+    "insertColumnLeft": "बाईं ओर स्तंभ डालें",
+    "insertColumnRight": "दाईं ओर स्तंभ डालें",
+    "deleteRow": "पंक्ति हटाएँ",
+    "deleteColumn": "स्तंभ हटाएँ",
+    "default": "डिफ़ॉल्ट",
+    "standardWithHeader": "हेडर पंक्ति के साथ मानक",
+    "striped": "धारीदार",
+    "alternatingRows": "वैकल्पिक पंक्ति रंग",
+    "bordered": "बॉर्डर सहित",
+    "allCellsBordered": "सभी सेल बॉर्डर सहित",
+    "minimal": "न्यूनतम",
+    "cleanNoBorders": "साफ़, बिना बॉर्डर",
+    "modern": "आधुनिक",
+    "roundedWithShadow": "गोलाकार छाया सहित"
+  },
+  "calendarSync": {
+    "syncing": "सिंक हो रहा है...",
+    "syncNow": "अभी सिंक करें",
+    "lastSynced": "अंतिम सिंक {{time}}",
+    "total": "कुल",
+    "pushed": "भेजे गए",
+    "pulled": "प्राप्त किए",
+    "allInSync": "सभी इवेंट सिंक हैं",
+    "notSyncedYet": "अभी तक सिंक नहीं हुआ — अभी सिंक करें पर टैप करें",
+    "syncedResult": "सिंक हुआ: {{pushed}} भेजे, {{pulled}} प्राप्त",
+    "syncFailed": "सिंक विफल"
+  },
+  "codeEditor": {
+    "untitledCode": "बिना शीर्षक कोड",
+    "highlighting": "हाइलाइट हो रहा है...",
+    "codeCopied": "कोड क्लिपबोर्ड पर कॉपी हुआ",
+    "copyFailed": "कोड कॉपी विफल",
+    "autoDetect": "ऑटो डिटेक्ट",
+    "pasteOrType": "// कोड यहाँ पेस्ट या टाइप करें...",
+    "lines": "पंक्तियाँ",
+    "chars": "अक्षर"
+  },
+  "toolbarManager": {
+    "customizeToolbar": "टूलबार अनुकूलित करें",
+    "reset": "रीसेट",
+    "dragToReorder": "क्रम बदलने के लिए खींचें, दिखाने/छिपाने के लिए टॉगल करें। ({{visible}}/{{total}} दृश्यमान)",
+    "orderUpdated": "टूलबार क्रम अपडेट हुआ",
+    "itemShown": "{{item}} दिखाया गया",
+    "itemHidden": "{{item}} छिपाया गया",
+    "resetToDefaults": "टूलबार डिफ़ॉल्ट पर रीसेट"
+  },
+  "syncButton": {
+    "synced": "सिंक हुआ",
+    "syncedDesc": "नोट्स: {{notes}}, कार्य: {{tasks}}",
+    "syncFailed": "सिंक विफल",
+    "tryAgain": "पुनः प्रयास करें।",
+    "syncing": "सिंक हो रहा है...",
+    "syncToDrive": "Google Drive पर सिंक करें"
+  },
+  "taskWidgets": {
+    "pending": "लंबित",
+    "done": "पूर्ण",
+    "overdue": "अतिदेय",
+    "streak": "लगातार",
+    "today": "आज",
+    "tasksCompletedToday": "आज पूर्ण किए गए कार्य",
+    "dayInARow": "दिन लगातार",
+    "daysInARow": "दिन लगातार",
+    "high": "उच्च",
+    "sevenDayRate": "7-दिन दर",
+    "recurring": "आवर्ती",
+    "reminders": "अनुस्मारक",
+    "nextUp": "अगला",
+    "upcomingOverview": "आगामी अवलोकन",
+    "tomorrow": "कल",
+    "thisWeek": "इस सप्ताह",
+    "tasks": "कार्य"
+  },
+  "richEditor": {
+    "selectTextFirst": "कृपया पहले टेक्स्ट चुनें",
+    "linkInserted": "लिंक डाला गया",
+    "imageAligned": "छवि संरेखित {{align}}",
+    "imageDeleted": "छवि हटाई गई",
+    "imageAdded": "छवि जोड़ी गई - आकार बदलने या हिलाने के लिए क्लिक करें",
+    "fileAttached": "फ़ाइल \"{{name}}\" संलग्न",
+    "textUppercase": "टेक्स्ट अपरकेस में बदला",
+    "textLowercase": "टेक्स्ट लोअरकेस में बदला",
+    "textCapitalized": "टेक्स्ट कैपिटलाइज़ किया",
+    "tableInserted": "तालिका डाली गई - आकार बदलने के लिए क्लिक करें",
+    "tableInsertedWithSize": "{{rows}}×{{cols}} {{style}} तालिका डाली गई",
+    "fileNotFound": "फ़ाइल डेटा नहीं मिला"
+  },
   "sync": {
     "integrationsImport": "एकीकरण और आयात",
     "syncComingSoon": "सिंक सुविधाएं जल्द आ रही हैं",

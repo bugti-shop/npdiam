@@ -1242,6 +1242,111 @@
     "tipTitle": "ٹپ: [[نوٹ عنوان]] سنٹیکس استعمال کریں",
     "tipDesc": "لنکس بنانے کے لیے اپنے نوٹ میں [[نوٹ عنوان]] براہ راست ٹائپ کریں"
   },
+  "audioPlayer": {
+    "audioUnavailable": "آڈیو دستیاب نہیں"
+  },
+  "voicePlayer": {
+    "recordingUnavailable": "ریکارڈنگ دستیاب نہیں"
+  },
+  "tableOfContents": {
+    "contents": "مندرجات",
+    "title": "فہرست مضامین"
+  },
+  "tableEditor": {
+    "insertTable": "ٹیبل داخل کریں",
+    "rows": "قطاریں",
+    "columns": "کالم",
+    "style": "انداز",
+    "tableActions": "ٹیبل اعمال",
+    "insertRowAbove": "اوپر قطار داخل کریں",
+    "insertRowBelow": "نیچے قطار داخل کریں",
+    "insertColumnLeft": "بائیں کالم داخل کریں",
+    "insertColumnRight": "دائیں کالم داخل کریں",
+    "deleteRow": "قطار حذف کریں",
+    "deleteColumn": "کالم حذف کریں",
+    "default": "ڈیفالٹ",
+    "standardWithHeader": "ہیڈر قطار کے ساتھ معیاری",
+    "striped": "دھاری دار",
+    "alternatingRows": "متبادل قطار رنگ",
+    "bordered": "بارڈر والا",
+    "allCellsBordered": "تمام سیلز بارڈر والے",
+    "minimal": "کم سے کم",
+    "cleanNoBorders": "صاف، بغیر بارڈر",
+    "modern": "جدید",
+    "roundedWithShadow": "گول سائے کے ساتھ"
+  },
+  "calendarSync": {
+    "syncing": "مطابقت ہو رہی ہے...",
+    "syncNow": "ابھی مطابقت کریں",
+    "lastSynced": "آخری مطابقت {{time}}",
+    "total": "کل",
+    "pushed": "بھیجے گئے",
+    "pulled": "موصول ہوئے",
+    "allInSync": "تمام تقریبات مطابق ہیں",
+    "notSyncedYet": "ابھی تک مطابقت نہیں ہوئی — ابھی مطابقت کریں پر ٹیپ کریں",
+    "syncedResult": "مطابقت ہوئی: {{pushed}} بھیجے، {{pulled}} موصول",
+    "syncFailed": "مطابقت ناکام"
+  },
+  "codeEditor": {
+    "untitledCode": "بغیر عنوان کوڈ",
+    "highlighting": "نمایاں ہو رہا ہے...",
+    "codeCopied": "کوڈ کلپ بورڈ پر کاپی ہوا",
+    "copyFailed": "کوڈ کاپی ناکام",
+    "autoDetect": "خودکار شناخت",
+    "pasteOrType": "// کوڈ یہاں پیسٹ یا ٹائپ کریں...",
+    "lines": "لائنیں",
+    "chars": "حروف"
+  },
+  "toolbarManager": {
+    "customizeToolbar": "ٹول بار اپنی مرضی کے مطابق بنائیں",
+    "reset": "ری سیٹ",
+    "dragToReorder": "ترتیب بدلنے کے لیے گھسیٹیں، دکھانے/چھپانے کے لیے ٹوگل کریں۔ ({{visible}}/{{total}} نظر آ رہے)",
+    "orderUpdated": "ٹول بار ترتیب اپ ڈیٹ ہوئی",
+    "itemShown": "{{item}} دکھایا گیا",
+    "itemHidden": "{{item}} چھپایا گیا",
+    "resetToDefaults": "ٹول بار ڈیفالٹ پر ری سیٹ"
+  },
+  "syncButton": {
+    "synced": "مطابق",
+    "syncedDesc": "نوٹس: {{notes}}، ٹاسک: {{tasks}}",
+    "syncFailed": "مطابقت ناکام",
+    "tryAgain": "دوبارہ کوشش کریں۔",
+    "syncing": "مطابقت ہو رہی ہے...",
+    "syncToDrive": "Google Drive پر مطابقت کریں"
+  },
+  "taskWidgets": {
+    "pending": "زیر التوا",
+    "done": "مکمل",
+    "overdue": "تاخیر شدہ",
+    "streak": "سلسلہ",
+    "today": "آج",
+    "tasksCompletedToday": "آج مکمل ہونے والے ٹاسک",
+    "dayInARow": "دن مسلسل",
+    "daysInARow": "دن مسلسل",
+    "high": "اعلی",
+    "sevenDayRate": "7 دن کی شرح",
+    "recurring": "بار بار آنے والے",
+    "reminders": "یاد دہانیاں",
+    "nextUp": "اگلا",
+    "upcomingOverview": "آنے والا جائزہ",
+    "tomorrow": "کل",
+    "thisWeek": "اس ہفتے",
+    "tasks": "ٹاسک"
+  },
+  "richEditor": {
+    "selectTextFirst": "براہ کرم پہلے متن منتخب کریں",
+    "linkInserted": "لنک داخل ہوا",
+    "imageAligned": "تصویر سیدھی کی گئی {{align}}",
+    "imageDeleted": "تصویر حذف ہوئی",
+    "imageAdded": "تصویر شامل ہوئی - سائز تبدیل یا منتقل کرنے کے لیے کلک کریں",
+    "fileAttached": "فائل \"{{name}}\" منسلک",
+    "textUppercase": "متن بڑے حروف میں تبدیل",
+    "textLowercase": "متن چھوٹے حروف میں تبدیل",
+    "textCapitalized": "متن کیپٹلائز ہوا",
+    "tableInserted": "ٹیبل داخل ہوا - سائز تبدیل کے لیے کلک کریں",
+    "tableInsertedWithSize": "{{rows}}×{{cols}} {{style}} ٹیبل داخل ہوا",
+    "fileNotFound": "فائل ڈیٹا نہیں ملا"
+  },
   "menu": {
     "smartLists": "ذہین فہرستیں",
     "sortBy": "ترتیب دیں",

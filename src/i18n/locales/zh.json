@@ -1960,6 +1960,111 @@
     "tipTitle": "提示：使用 [[笔记标题]] 语法",
     "tipDesc": "在笔记中直接输入 [[笔记标题]] 以创建链接"
   },
+  "audioPlayer": {
+    "audioUnavailable": "音频不可用"
+  },
+  "voicePlayer": {
+    "recordingUnavailable": "录音不可用"
+  },
+  "tableOfContents": {
+    "contents": "目录",
+    "title": "目录"
+  },
+  "tableEditor": {
+    "insertTable": "插入表格",
+    "rows": "行",
+    "columns": "列",
+    "style": "样式",
+    "tableActions": "表格操作",
+    "insertRowAbove": "在上方插入行",
+    "insertRowBelow": "在下方插入行",
+    "insertColumnLeft": "在左侧插入列",
+    "insertColumnRight": "在右侧插入列",
+    "deleteRow": "删除行",
+    "deleteColumn": "删除列",
+    "default": "默认",
+    "standardWithHeader": "带标题行的标准样式",
+    "striped": "条纹",
+    "alternatingRows": "交替行颜色",
+    "bordered": "有边框",
+    "allCellsBordered": "所有单元格有边框",
+    "minimal": "简约",
+    "cleanNoBorders": "简洁无边框",
+    "modern": "现代",
+    "roundedWithShadow": "圆角带阴影"
+  },
+  "calendarSync": {
+    "syncing": "同步中...",
+    "syncNow": "立即同步",
+    "lastSynced": "上次同步 {{time}}",
+    "total": "总计",
+    "pushed": "已推送",
+    "pulled": "已拉取",
+    "allInSync": "所有事件已同步",
+    "notSyncedYet": "尚未同步 — 点击立即同步",
+    "syncedResult": "已同步：推送 {{pushed}} 个，拉取 {{pulled}} 个",
+    "syncFailed": "同步失败"
+  },
+  "codeEditor": {
+    "untitledCode": "无标题代码",
+    "highlighting": "高亮中...",
+    "codeCopied": "代码已复制到剪贴板",
+    "copyFailed": "复制代码失败",
+    "autoDetect": "自动检测",
+    "pasteOrType": "// 粘贴或输入代码...",
+    "lines": "行",
+    "chars": "字符"
+  },
+  "toolbarManager": {
+    "customizeToolbar": "自定义工具栏",
+    "reset": "重置",
+    "dragToReorder": "拖拽排序，切换显示/隐藏。({{visible}}/{{total}} 可见)",
+    "orderUpdated": "工具栏顺序已更新",
+    "itemShown": "{{item}} 已显示",
+    "itemHidden": "{{item}} 已隐藏",
+    "resetToDefaults": "工具栏已恢复默认"
+  },
+  "syncButton": {
+    "synced": "已同步",
+    "syncedDesc": "笔记：{{notes}}，任务：{{tasks}}",
+    "syncFailed": "同步失败",
+    "tryAgain": "重试。",
+    "syncing": "同步中...",
+    "syncToDrive": "同步到 Google Drive"
+  },
+  "taskWidgets": {
+    "pending": "待处理",
+    "done": "已完成",
+    "overdue": "已逾期",
+    "streak": "连续",
+    "today": "今天",
+    "tasksCompletedToday": "今天完成的任务",
+    "dayInARow": "天连续",
+    "daysInARow": "天连续",
+    "high": "高",
+    "sevenDayRate": "7天完成率",
+    "recurring": "重复",
+    "reminders": "提醒",
+    "nextUp": "接下来",
+    "upcomingOverview": "即将到来概览",
+    "tomorrow": "明天",
+    "thisWeek": "本周",
+    "tasks": "个任务"
+  },
+  "richEditor": {
+    "selectTextFirst": "请先选择文本",
+    "linkInserted": "链接已插入",
+    "imageAligned": "图片已对齐 {{align}}",
+    "imageDeleted": "图片已删除",
+    "imageAdded": "图片已添加 - 点击调整大小或移动",
+    "fileAttached": "文件 \"{{name}}\" 已附加",
+    "textUppercase": "文本已转为大写",
+    "textLowercase": "文本已转为小写",
+    "textCapitalized": "文本已首字母大写",
+    "tableInserted": "表格已插入 - 点击调整大小",
+    "tableInsertedWithSize": "{{rows}}×{{cols}} {{style}} 表格已插入",
+    "fileNotFound": "未找到文件数据"
+  },
   "welcome": {
     "startJourney": "开始您的效率之旅",
     "getStarted": "开始"
