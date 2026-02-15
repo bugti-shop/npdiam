@@ -60,7 +60,20 @@
     "organization": "Organização",
     "organizationDesc": "Prioridade, tags e pastas",
     "media": "Mídia",
-    "mediaDesc": "Imagens e anexos"
+    "mediaDesc": "Imagens e anexos",
+    "date": "Data",
+    "deadline": "Prazo",
+    "reminders": "Lembretes",
+    "repeat": "Repetir",
+    "estimate": "Estimativa",
+    "priority": "Prioridade",
+    "tags": "Tags",
+    "folder": "Pasta",
+    "section": "Seção",
+    "description": "Descrição",
+    "location": "Localização",
+    "image": "Imagem",
+    "files": "Arquivos"
   },
   "mindMap": {
     "centralIdea": "Ideia central",

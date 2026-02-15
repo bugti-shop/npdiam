@@ -60,7 +60,20 @@
     "organization": "Organizasyon",
     "organizationDesc": "Öncelik, etiketler ve klasörler",
     "media": "Medya",
-    "mediaDesc": "Resimler ve ekler"
+    "mediaDesc": "Resimler ve ekler",
+    "date": "Tarih",
+    "deadline": "Son tarih",
+    "reminders": "Hatırlatıcılar",
+    "repeat": "Tekrarla",
+    "estimate": "Tahmin",
+    "priority": "Öncelik",
+    "tags": "Etiketler",
+    "folder": "Klasör",
+    "section": "Bölüm",
+    "description": "Açıklama",
+    "location": "Konum",
+    "image": "Resim",
+    "files": "Dosyalar"
   },
   "mindMap": {
     "centralIdea": "Merkezi Fikir",

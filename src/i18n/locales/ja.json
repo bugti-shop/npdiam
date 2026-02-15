@@ -60,7 +60,20 @@
     "organization": "整理",
     "organizationDesc": "優先度、タグ、フォルダ",
     "media": "メディア",
-    "mediaDesc": "画像と添付ファイル"
+    "mediaDesc": "画像と添付ファイル",
+    "date": "日付",
+    "deadline": "期限",
+    "reminders": "リマインダー",
+    "repeat": "繰り返し",
+    "estimate": "見積もり",
+    "priority": "優先度",
+    "tags": "タグ",
+    "folder": "フォルダ",
+    "section": "セクション",
+    "description": "説明",
+    "location": "場所",
+    "image": "画像",
+    "files": "ファイル"
   },
   "mindMap": {
     "centralIdea": "中心的なアイデア",

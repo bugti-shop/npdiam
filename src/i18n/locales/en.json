@@ -60,7 +60,20 @@
     "organization": "Organization",
     "organizationDesc": "Priority, tags & folders",
     "media": "Media",
-    "mediaDesc": "Images & attachments"
+    "mediaDesc": "Images & attachments",
+    "date": "Date",
+    "deadline": "Deadline",
+    "reminders": "Reminders",
+    "repeat": "Repeat",
+    "estimate": "Estimate",
+    "priority": "Priority",
+    "tags": "Tags",
+    "folder": "Folder",
+    "section": "Section",
+    "description": "Description",
+    "location": "Location",
+    "image": "Image",
+    "files": "Files"
   },
   "mindMap": {
     "centralIdea": "Central Idea",

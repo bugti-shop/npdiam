@@ -60,7 +60,20 @@
     "organization": "ארגון",
     "organizationDesc": "עדיפות, תגיות ותיקיות",
     "media": "מדיה",
-    "mediaDesc": "תמונות וקבצים מצורפים"
+    "mediaDesc": "תמונות וקבצים מצורפים",
+    "date": "תאריך",
+    "deadline": "מועד אחרון",
+    "reminders": "תזכורות",
+    "repeat": "חזור",
+    "estimate": "הערכה",
+    "priority": "עדיפות",
+    "tags": "תגיות",
+    "folder": "תיקייה",
+    "section": "מדור",
+    "description": "תיאור",
+    "location": "מיקום",
+    "image": "תמונה",
+    "files": "קבצים"
   },
   "mindMap": {
     "centralIdea": "רעיון מרכזי",

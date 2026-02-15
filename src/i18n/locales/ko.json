@@ -60,7 +60,20 @@
     "organization": "정리",
     "organizationDesc": "우선순위, 태그 및 폴더",
     "media": "미디어",
-    "mediaDesc": "이미지 및 첨부 파일"
+    "mediaDesc": "이미지 및 첨부 파일",
+    "date": "날짜",
+    "deadline": "마감일",
+    "reminders": "알림",
+    "repeat": "반복",
+    "estimate": "추정",
+    "priority": "우선순위",
+    "tags": "태그",
+    "folder": "폴더",
+    "section": "섹션",
+    "description": "설명",
+    "location": "위치",
+    "image": "이미지",
+    "files": "파일"
   },
   "mindMap": {
     "centralIdea": "중심 아이디어",

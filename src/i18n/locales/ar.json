@@ -60,7 +60,20 @@
     "organization": "التنظيم",
     "organizationDesc": "الأولوية والوسوم والمجلدات",
     "media": "الوسائط",
-    "mediaDesc": "الصور والمرفقات"
+    "mediaDesc": "الصور والمرفقات",
+    "date": "التاريخ",
+    "deadline": "الموعد النهائي",
+    "reminders": "التذكيرات",
+    "repeat": "تكرار",
+    "estimate": "تقدير",
+    "priority": "الأولوية",
+    "tags": "الوسوم",
+    "folder": "المجلد",
+    "section": "القسم",
+    "description": "الوصف",
+    "location": "الموقع",
+    "image": "صورة",
+    "files": "ملفات"
   },
   "mindMap": {
     "centralIdea": "الفكرة المركزية",
