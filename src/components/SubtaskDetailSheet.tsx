@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TodoItem, Priority, ColoredTag, LocationReminder, Folder } from '@/types/note';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -65,6 +66,7 @@ export const SubtaskDetailSheet = ({
   onDelete,
   onConvertToTask
 }: SubtaskDetailSheetProps) => {
+  const { t } = useTranslation();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [showTagInput, setShowTagInput] = useState(false);
@@ -87,7 +89,7 @@ export const SubtaskDetailSheet = ({
       reader.onload = () => {
         const dataUrl = reader.result as string;
         onUpdate(parentId, subtask.id, { imageUrl: dataUrl });
-        toast.success('Attachment added');
+        toast.success(t('subtaskDetail.attachmentAdded'));
       };
       reader.readAsDataURL(file);
     }
@@ -136,31 +138,31 @@ export const SubtaskDetailSheet = ({
   const handleSetPriority = async (priority: Priority) => {
     try { await Haptics.impact({ style: ImpactStyle.Light }); } catch {}
     onUpdate(parentId, subtask.id, { priority });
-    toast.success(`Priority set to ${priority === 'none' ? 'none' : priority}`);
+    toast.success(t('subtaskDetail.prioritySet', { priority }));
   };
 
   const handleDelete = async () => {
     try { await Haptics.impact({ style: ImpactStyle.Medium }); } catch {}
     onDelete(parentId, subtask.id);
     onClose();
-    toast.success('Subtask deleted');
+    toast.success(t('subtaskDetail.subtaskDeleted'));
   };
 
   const handleConvertToTask = async () => {
     try { await Haptics.impact({ style: ImpactStyle.Medium }); } catch {}
     onConvertToTask(parentId, subtask);
     onClose();
-    toast.success('Converted to main task');
+    toast.success(t('subtaskDetail.convertedToTask'));
   };
 
   const handleDuplicate = async () => {
     try { await Haptics.impact({ style: ImpactStyle.Light }); } catch {}
-    toast.success('Subtask duplicated');
+    toast.success(t('subtaskDetail.subtaskDuplicated'));
   };
 
   const handlePin = async () => {
     try { await Haptics.impact({ style: ImpactStyle.Light }); } catch {}
-    toast.success('Subtask pinned');
+    toast.success(t('subtaskDetail.subtaskPinned'));
   };
 
   const handleAddTag = () => {
@@ -177,7 +179,7 @@ export const SubtaskDetailSheet = ({
 
     setNewTagName('');
     setShowTagInput(false);
-    toast.success('Tag added');
+    toast.success(t('subtaskDetail.tagAdded'));
   };
 
   const handleRemoveTag = (tagName: string) => {
@@ -188,12 +190,12 @@ export const SubtaskDetailSheet = ({
 
   const handleSaveLocationReminder = (reminder: LocationReminder) => {
     onUpdate(parentId, subtask.id, { locationReminder: reminder });
-    toast.success(`Location reminder set for ${reminder.address.split(',')[0]}`);
+    toast.success(t('subtaskDetail.locationReminderSet', { address: reminder.address.split(',')[0] }));
   };
 
   const handleRemoveLocationReminder = () => {
     onUpdate(parentId, subtask.id, { locationReminder: undefined });
-    toast.success('Location reminder removed');
+    toast.success(t('subtaskDetail.locationReminderRemoved'));
   };
 
   const handleAddNestedSubtask = async () => {
@@ -290,7 +292,7 @@ export const SubtaskDetailSheet = ({
           {/* Left: All Tasks label */}
           <Button variant="ghost" size="sm" className="gap-2">
             <FolderIcon className="h-4 w-4" />
-            <span>All Tasks</span>
+            <span>{t('subtaskDetail.allTasks')}</span>
             <ChevronDown className="h-4 w-4" />
           </Button>
 
@@ -308,34 +310,34 @@ export const SubtaskDetailSheet = ({
               <DropdownMenuContent align="end" className="w-48 bg-popover border shadow-lg z-[60]">
                 <DropdownMenuItem onClick={handleToggleComplete} className="cursor-pointer">
                   <Check className="h-4 w-4 mr-2" />
-                  {subtask.completed ? 'Mark as Incomplete' : 'Mark as Done'}
+                  {subtask.completed ? t('subtaskDetail.markIncomplete') : t('subtaskDetail.markDone')}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={() => handleSetPriority('high')} className="cursor-pointer">
-                  <Flag className="h-4 w-4 mr-2 text-red-500" />High Priority
+                  <Flag className="h-4 w-4 mr-2 text-red-500" />{t('subtaskDetail.highPriority')}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => handleSetPriority('medium')} className="cursor-pointer">
-                  <Flag className="h-4 w-4 mr-2 text-orange-500" />Medium Priority
+                  <Flag className="h-4 w-4 mr-2 text-orange-500" />{t('subtaskDetail.mediumPriority')}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => handleSetPriority('low')} className="cursor-pointer">
-                  <Flag className="h-4 w-4 mr-2 text-green-500" />Low Priority
+                  <Flag className="h-4 w-4 mr-2 text-green-500" />{t('subtaskDetail.lowPriority')}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => handleSetPriority('none')} className="cursor-pointer">
-                  <Flag className="h-4 w-4 mr-2 text-muted-foreground" />No Priority
+                  <Flag className="h-4 w-4 mr-2 text-muted-foreground" />{t('subtaskDetail.noPriority')}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleDuplicate} className="cursor-pointer">
-                  <Copy className="h-4 w-4 mr-2" />Duplicate Subtask
+                  <Copy className="h-4 w-4 mr-2" />{t('subtaskDetail.duplicateSubtask')}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={handlePin} className="cursor-pointer">
-                  <Pin className="h-4 w-4 mr-2" />Pin Subtask
+                  <Pin className="h-4 w-4 mr-2" />{t('subtaskDetail.pinSubtask')}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={handleConvertToTask} className="cursor-pointer">
-                  <ArrowUpFromLine className="h-4 w-4 mr-2" />Convert to Task
+                  <ArrowUpFromLine className="h-4 w-4 mr-2" />{t('subtaskDetail.convertToTask')}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleDelete} className="cursor-pointer text-destructive">
-                  <Trash2 className="h-4 w-4 mr-2" />Delete Subtask
+                  <Trash2 className="h-4 w-4 mr-2" />{t('subtaskDetail.deleteSubtask')}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -350,7 +352,7 @@ export const SubtaskDetailSheet = ({
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               onBlur={handleTitleBlur}
-              placeholder="Subtask title..."
+              placeholder={t('subtaskDetail.subtaskTitle')}
               className={cn(
                 "text-xl font-semibold border-none shadow-none px-0 h-auto focus-visible:ring-0",
                 subtask.completed && "line-through opacity-60"
@@ -360,7 +362,7 @@ export const SubtaskDetailSheet = ({
               <div className="flex items-center gap-1.5">
                 <Flag className={cn("h-4 w-4", getPriorityColor(subtask.priority))} />
                 <span className={cn("text-sm capitalize", getPriorityColor(subtask.priority))}>
-                  {subtask.priority} Priority
+                  {t('subtaskDetail.priority', { priority: subtask.priority })}
                 </span>
               </div>
             )}
@@ -373,7 +375,7 @@ export const SubtaskDetailSheet = ({
               className="flex items-center gap-2 text-primary font-medium"
             >
               <Plus className="h-5 w-5" />
-              Add Sub-task
+              {t('subtaskDetail.addSubtask')}
             </button>
 
             {/* Keep inline input as fallback if sheet fails */}
@@ -409,7 +411,7 @@ export const SubtaskDetailSheet = ({
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
               <Clock className="h-4 w-4" />
-              Time Tracking
+              {t('subtaskDetail.timeTracking')}
             </div>
             <TaskTimeTracker
               timeTracking={subtask.timeTracking}
@@ -423,9 +425,9 @@ export const SubtaskDetailSheet = ({
               className="w-full flex items-center gap-3 py-3 hover:bg-muted/50 rounded-lg px-2 transition-colors"
             >
               <Link className="h-5 w-5 text-purple-500" />
-              <span className="flex-1 text-left">Dependencies</span>
+              <span className="flex-1 text-left">{t('subtaskDetail.dependencies')}</span>
               <span className="text-sm text-muted-foreground">
-                {subtask.dependsOn?.length || 0} linked
+                {t('subtaskDetail.linked', { count: subtask.dependsOn?.length || 0 })}
               </span>
             </button>
           </div>
@@ -438,11 +440,11 @@ export const SubtaskDetailSheet = ({
               className="w-full flex items-center gap-3 py-3 hover:bg-muted/50 rounded-lg px-2 transition-colors"
             >
               <CalendarIcon className="h-5 w-5 text-cyan-500" />
-              <span className="flex-1 text-left">Date, Time & Reminder</span>
+              <span className="flex-1 text-left">{t('subtaskDetail.dateTimeReminder')}</span>
               <span className="text-sm text-muted-foreground">
                 {subtask.dueDate 
                   ? `${format(new Date(subtask.dueDate), 'MMM d')}${subtask.reminderTime ? ` • ${format(new Date(subtask.reminderTime), 'h:mm a')}` : ''}`
-                  : 'Not set'}
+                  : t('subtaskDetail.notSet')}
               </span>
             </button>
 
@@ -452,7 +454,7 @@ export const SubtaskDetailSheet = ({
               className="w-full flex items-center gap-3 py-3 hover:bg-muted/50 rounded-lg px-2 transition-colors"
             >
               <FileText className="h-5 w-5 text-blue-500" />
-              <span className="flex-1 text-left">Convert to Notes</span>
+              <span className="flex-1 text-left">{t('subtaskDetail.convertToNotes')}</span>
             </button>
 
             {/* Attachment */}
@@ -469,7 +471,7 @@ export const SubtaskDetailSheet = ({
               className="w-full flex items-center gap-3 py-3 hover:bg-muted/50 rounded-lg px-2 transition-colors"
             >
               <Paperclip className="h-5 w-5 text-pink-500" />
-              <span className="flex-1 text-left">Attachment</span>
+              <span className="flex-1 text-left">{t('subtaskDetail.attachment')}</span>
               {subtask.imageUrl && <ImageIcon className="h-4 w-4 text-muted-foreground" />}
             </button>
 
@@ -479,9 +481,9 @@ export const SubtaskDetailSheet = ({
                 <PopoverTrigger asChild>
                   <button className="w-full flex items-center gap-3 py-3 hover:bg-muted/50 rounded-lg px-2 transition-colors">
                     <Tag className="h-5 w-5 text-yellow-500" />
-                    <span className="flex-1 text-left">Tag</span>
+                    <span className="flex-1 text-left">{t('subtaskDetail.tag')}</span>
                     <span className="text-sm text-muted-foreground">
-                      {subtask.coloredTags?.length || 0} tag(s)
+                      {t('subtaskDetail.tagCount', { count: subtask.coloredTags?.length || 0 })}
                     </span>
                   </button>
                 </PopoverTrigger>
@@ -490,7 +492,7 @@ export const SubtaskDetailSheet = ({
                     <Input
                       value={newTagName}
                       onChange={(e) => setNewTagName(e.target.value)}
-                      placeholder="Tag name..."
+                      placeholder={t('subtaskDetail.tagName')}
                       className="h-9"
                     />
                     <div className="flex gap-1 flex-wrap">
@@ -507,7 +509,7 @@ export const SubtaskDetailSheet = ({
                       ))}
                     </div>
                     <Button onClick={handleAddTag} size="sm" className="w-full">
-                      Add Tag
+                      {t('subtaskDetail.addTag')}
                     </Button>
                   </div>
                 </PopoverContent>
@@ -536,10 +538,10 @@ export const SubtaskDetailSheet = ({
             <div className="pt-4 border-t border-border mt-4">
               <div className="flex items-center gap-2 mb-3">
                 <FileText className="h-5 w-5 text-muted-foreground" />
-                <h3 className="text-sm font-medium">Description</h3>
+                <h3 className="text-sm font-medium">{t('subtaskDetail.description')}</h3>
               </div>
               <Textarea
-                placeholder="Add notes or details about this subtask..."
+                placeholder={t('subtaskDetail.descriptionPlaceholder')}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 onBlur={handleDescriptionBlur}
@@ -551,29 +553,29 @@ export const SubtaskDetailSheet = ({
             <div className="pt-4 border-t border-border mt-4">
               <div className="flex items-center gap-2 mb-3">
                 <Clock className="h-5 w-5 text-muted-foreground" />
-                <h3 className="text-sm font-medium">Subtask History</h3>
+                <h3 className="text-sm font-medium">{t('subtaskDetail.subtaskHistory')}</h3>
               </div>
               <div className="space-y-2 text-sm">
                 {subtask.createdAt && (
                   <div className="flex items-center justify-between py-2 px-3 bg-muted/20 rounded-lg">
-                    <span className="text-muted-foreground">Created</span>
+                    <span className="text-muted-foreground">{t('subtaskDetail.created')}</span>
                     <span className="font-medium">{format(new Date(subtask.createdAt), 'MMM d, yyyy • h:mm a')}</span>
                   </div>
                 )}
                 {subtask.modifiedAt && (
                   <div className="flex items-center justify-between py-2 px-3 bg-muted/20 rounded-lg">
-                    <span className="text-muted-foreground">Last Modified</span>
+                    <span className="text-muted-foreground">{t('subtaskDetail.lastModified')}</span>
                     <span className="font-medium">{format(new Date(subtask.modifiedAt), 'MMM d, yyyy • h:mm a')}</span>
                   </div>
                 )}
                 {subtask.completed && subtask.completedAt && (
                   <div className="flex items-center justify-between py-2 px-3 bg-green-500/10 rounded-lg">
-                    <span className="text-green-600 dark:text-green-400">Completed</span>
+                    <span className="text-green-600 dark:text-green-400">{t('subtaskDetail.completedLabel')}</span>
                     <span className="font-medium text-green-600 dark:text-green-400">{format(new Date(subtask.completedAt), 'MMM d, yyyy • h:mm a')}</span>
                   </div>
                 )}
                 {!subtask.createdAt && !subtask.modifiedAt && !subtask.completedAt && (
-                  <div className="text-muted-foreground text-center py-2">No timestamp data available</div>
+                  <div className="text-muted-foreground text-center py-2">{t('subtaskDetail.noTimestamp')}</div>
                 )}
               </div>
             </div>

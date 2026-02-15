@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Textarea } from '@/components/ui/textarea';
@@ -30,6 +31,7 @@ interface WeeklyReviewData {
 }
 
 export const WeeklyReview = ({ isOpen, onClose }: WeeklyReviewProps) => {
+  const { t } = useTranslation();
   const [weekOffset, setWeekOffset] = useState(0);
   const [tasks, setTasks] = useState<TodoItem[]>([]);
   const [completedTasks, setCompletedTasks] = useState<TodoItem[]>([]);
@@ -75,7 +77,6 @@ export const WeeklyReview = ({ isOpen, onClose }: WeeklyReviewProps) => {
     setCompletedTasks(weekTasks.filter(t => t.completed));
     setIncompleteTasks(weekTasks.filter(t => !t.completed));
 
-    // Load saved review
     const weekKey = weekStart.toISOString().split('T')[0];
     const reviews = await getSetting<WeeklyReviewData[]>('weeklyReviews', []);
     const existingReview = reviews.find(r => r.weekStart === weekKey);
@@ -121,7 +122,7 @@ export const WeeklyReview = ({ isOpen, onClose }: WeeklyReviewProps) => {
     
     await setSetting('weeklyReviews', reviews);
     setReview(newReview);
-    toast.success('Weekly review saved!');
+    toast.success(t('weeklyReview.reviewSaved'));
   };
 
   const completionRate = tasks.length > 0 
@@ -138,8 +139,8 @@ export const WeeklyReview = ({ isOpen, onClose }: WeeklyReviewProps) => {
             <X className="h-5 w-5" />
           </button>
           <div>
-            <h2 className="text-lg font-semibold">Weekly Review</h2>
-            <p className="text-xs text-muted-foreground">Reflect on your progress</p>
+            <h2 className="text-lg font-semibold">{t('weeklyReview.title')}</h2>
+            <p className="text-xs text-muted-foreground">{t('weeklyReview.subtitle')}</p>
           </div>
         </div>
       </header>
@@ -154,7 +155,7 @@ export const WeeklyReview = ({ isOpen, onClose }: WeeklyReviewProps) => {
         </button>
         <div className="text-center">
           <p className={cn("font-semibold", isCurrentWeek && "text-primary")}>
-            {isCurrentWeek ? 'This Week' : weekLabel}
+            {isCurrentWeek ? t('weeklyReview.thisWeek') : weekLabel}
           </p>
           <p className="text-xs text-muted-foreground">{weekLabel}</p>
         </div>
@@ -177,13 +178,13 @@ export const WeeklyReview = ({ isOpen, onClose }: WeeklyReviewProps) => {
             <div className="bg-success/10 border border-success/30 rounded-xl p-3 text-center">
               <CheckCircle2 className="h-5 w-5 text-success mx-auto mb-1" />
               <p className="text-2xl font-bold text-success">{completedTasks.length}</p>
-              <p className="text-xs text-muted-foreground">Completed</p>
+              <p className="text-xs text-muted-foreground">{t('weeklyReview.completed')}</p>
             </div>
             
             <div className="bg-streak/10 border border-streak/30 rounded-xl p-3 text-center">
               <Clock className="h-5 w-5 text-streak mx-auto mb-1" />
               <p className="text-2xl font-bold text-streak">{incompleteTasks.length}</p>
-              <p className="text-xs text-muted-foreground">Pending</p>
+              <p className="text-xs text-muted-foreground">{t('weeklyReview.pending')}</p>
             </div>
             
             <div className={cn(
@@ -203,7 +204,7 @@ export const WeeklyReview = ({ isOpen, onClose }: WeeklyReviewProps) => {
                 "text-2xl font-bold",
                 completionRate >= 70 ? "text-success" : "text-streak"
               )}>{completionRate}%</p>
-              <p className="text-xs text-muted-foreground">Complete</p>
+              <p className="text-xs text-muted-foreground">{t('weeklyReview.complete')}</p>
             </div>
           </div>
 
@@ -211,7 +212,7 @@ export const WeeklyReview = ({ isOpen, onClose }: WeeklyReviewProps) => {
           <div className="bg-card border rounded-xl p-4">
             <div className="flex items-center gap-2 mb-3">
               <Star className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium">Rate Your Week</span>
+              <span className="text-sm font-medium">{t('weeklyReview.rateYourWeek')}</span>
             </div>
             <div className="flex items-center justify-center gap-2">
               {[1, 2, 3, 4, 5].map((star) => (
@@ -238,12 +239,12 @@ export const WeeklyReview = ({ isOpen, onClose }: WeeklyReviewProps) => {
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <Award className="h-4 w-4 text-green-500" />
-                <span className="text-sm font-medium">Wins & Accomplishments</span>
+                <span className="text-sm font-medium">{t('weeklyReview.winsTitle')}</span>
               </div>
               <Textarea
                 value={wins}
                 onChange={(e) => setWins(e.target.value)}
-                placeholder="What went well this week? What are you proud of?"
+                placeholder={t('weeklyReview.winsPlaceholder')}
                 className="min-h-[80px]"
               />
             </div>
@@ -251,12 +252,12 @@ export const WeeklyReview = ({ isOpen, onClose }: WeeklyReviewProps) => {
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <Target className="h-4 w-4 text-orange-500" />
-                <span className="text-sm font-medium">Challenges</span>
+                <span className="text-sm font-medium">{t('weeklyReview.challengesTitle')}</span>
               </div>
               <Textarea
                 value={challenges}
                 onChange={(e) => setChallenges(e.target.value)}
-                placeholder="What obstacles did you face? What didn't go as planned?"
+                placeholder={t('weeklyReview.challengesPlaceholder')}
                 className="min-h-[80px]"
               />
             </div>
@@ -264,12 +265,12 @@ export const WeeklyReview = ({ isOpen, onClose }: WeeklyReviewProps) => {
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <Lightbulb className="h-4 w-4 text-yellow-500" />
-                <span className="text-sm font-medium">Key Learnings</span>
+                <span className="text-sm font-medium">{t('weeklyReview.learningsTitle')}</span>
               </div>
               <Textarea
                 value={learnings}
                 onChange={(e) => setLearnings(e.target.value)}
-                placeholder="What did you learn? Any insights or realizations?"
+                placeholder={t('weeklyReview.learningsPlaceholder')}
                 className="min-h-[80px]"
               />
             </div>
@@ -277,19 +278,19 @@ export const WeeklyReview = ({ isOpen, onClose }: WeeklyReviewProps) => {
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <TrendingUp className="h-4 w-4 text-blue-500" />
-                <span className="text-sm font-medium">Next Week Focus</span>
+                <span className="text-sm font-medium">{t('weeklyReview.nextWeekTitle')}</span>
               </div>
               <Textarea
                 value={nextWeekFocus}
                 onChange={(e) => setNextWeekFocus(e.target.value)}
-                placeholder="What will you focus on next week? Top priorities?"
+                placeholder={t('weeklyReview.nextWeekPlaceholder')}
                 className="min-h-[80px]"
               />
             </div>
           </div>
 
           <Button onClick={handleSaveReview} className="w-full">
-            Save Review
+            {t('weeklyReview.saveReview')}
           </Button>
 
           {/* Completed Tasks List */}
@@ -297,7 +298,7 @@ export const WeeklyReview = ({ isOpen, onClose }: WeeklyReviewProps) => {
             <div className="bg-card border rounded-xl p-4">
               <h3 className="text-sm font-medium mb-3 flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-green-500" />
-                Completed This Week ({completedTasks.length})
+                {t('weeklyReview.completedThisWeek', { count: completedTasks.length })}
               </h3>
               <div className="space-y-2 max-h-48 overflow-y-auto">
                 {completedTasks.map((task) => (
