@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -12,6 +13,7 @@ interface BackupSuccessDialogProps {
 }
 
 export const BackupSuccessDialog = ({ isOpen, onClose, filePath }: BackupSuccessDialogProps) => {
+  const { t } = useTranslation();
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-sm p-6">
@@ -23,12 +25,12 @@ export const BackupSuccessDialog = ({ isOpen, onClose, filePath }: BackupSuccess
           
           {/* Title */}
           <h2 className="text-xl font-semibold text-foreground">
-            Backup successfully
+            {t('backup.success')}
           </h2>
           
           {/* File Path */}
           <p className="text-sm text-muted-foreground break-all">
-            File saved in: {filePath}
+            {t('backup.fileSavedIn', { path: filePath })}
           </p>
           
           {/* Got It Button */}
@@ -37,7 +39,7 @@ export const BackupSuccessDialog = ({ isOpen, onClose, filePath }: BackupSuccess
             className="w-full mt-2"
             size="lg"
           >
-            GOT IT
+            {t('backup.gotIt')}
           </Button>
         </div>
       </DialogContent>

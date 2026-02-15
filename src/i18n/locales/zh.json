@@ -1740,7 +1740,18 @@
     "noTimestampData": "无时间戳数据",
     "nested": "{{completed}}/{{total}} 嵌套",
     "subtasksCompleted": "{{completed}}/{{total}} 已完成",
-    "subtaskAdded": "子任务已添加"
+    "subtaskAdded": "子任务已添加",
+    "selectStatus": "选择状态",
+    "taskAttachment": "任务附件",
+    "effortEstimation": "工作量估算",
+    "custom": "自定义",
+    "estimated": "预计: {{hours}}小时",
+    "actual": "实际: {{hours}}小时",
+    "deadlineEscalation": "截止日期升级",
+    "alertBeforeDeadline": "截止日期前未完成时提醒:",
+    "repeatAlert": "重复提醒",
+    "repeatAlertDesc": "每30分钟持续提醒直到完成",
+    "locationReminder": "位置提醒"
   },
   "sections": {
     "editSection": "编辑分区",
@@ -1869,5 +1880,30 @@
     "questionTeacher": "您最喜欢的老师叫什么？",
     "questionCar": "您的第一辆车是什么？",
     "questionFood": "您最喜欢的食物是什么？"
+  },
+  "backup": {
+    "success": "备份成功",
+    "fileSavedIn": "文件保存在: {{path}}",
+    "gotIt": "知道了"
+  },
+  "comments": {
+    "title": "评论与备注",
+    "added": "评论已添加",
+    "deleted": "评论已删除",
+    "noComments": "暂无评论。添加备注、更新或图片。",
+    "placeholder": "添加评论...",
+    "attachment": "评论附件",
+    "justNow": "刚刚",
+    "minutesAgo": "{{count}}分钟前",
+    "hoursAgo": "{{count}}小时前",
+    "daysAgo": "{{count}}天前"
+  },
+  "folderManager": {
+    "createNewFolder": "新建文件夹",
+    "folderName": "文件夹名称",
+    "color": "颜色",
+    "createFolder": "创建文件夹",
+    "allNotes": "所有笔记",
+    "removeNotesFromFolder": "从文件夹中移除 {{count}} 条笔记"
   }
 }

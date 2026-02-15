@@ -1765,7 +1765,18 @@
     "noTimestampData": "타임스탬프 데이터 없음",
     "nested": "{{completed}}/{{total}} 중첩됨",
     "subtasksCompleted": "{{completed}}/{{total}} 완료됨",
-    "subtaskAdded": "하위 작업 추가됨"
+    "subtaskAdded": "하위 작업 추가됨",
+    "selectStatus": "상태 선택",
+    "taskAttachment": "작업 첨부파일",
+    "effortEstimation": "작업량 추정",
+    "custom": "사용자 정의",
+    "estimated": "예상: {{hours}}시간",
+    "actual": "실제: {{hours}}시간",
+    "deadlineEscalation": "마감 에스컬레이션",
+    "alertBeforeDeadline": "마감 전 미완료 시 알림:",
+    "repeatAlert": "알림 반복",
+    "repeatAlertDesc": "완료될 때까지 30분마다 계속 알림",
+    "locationReminder": "위치 알림"
   },
   "sections": {
     "editSection": "섹션 편집",
@@ -1894,5 +1905,30 @@
     "questionTeacher": "가장 좋아하는 선생님 이름은 무엇인가요?",
     "questionCar": "첫 번째 차는 무엇이었나요?",
     "questionFood": "가장 좋아하는 음식은 무엇인가요?"
+  },
+  "backup": {
+    "success": "백업 성공",
+    "fileSavedIn": "파일 저장 위치: {{path}}",
+    "gotIt": "확인"
+  },
+  "comments": {
+    "title": "댓글 및 메모",
+    "added": "댓글 추가됨",
+    "deleted": "댓글 삭제됨",
+    "noComments": "아직 댓글이 없습니다. 메모, 업데이트 또는 이미지를 추가하세요.",
+    "placeholder": "댓글 추가...",
+    "attachment": "댓글 첨부파일",
+    "justNow": "방금",
+    "minutesAgo": "{{count}}분 전",
+    "hoursAgo": "{{count}}시간 전",
+    "daysAgo": "{{count}}일 전"
+  },
+  "folderManager": {
+    "createNewFolder": "새 폴더 만들기",
+    "folderName": "폴더 이름",
+    "color": "색상",
+    "createFolder": "폴더 만들기",
+    "allNotes": "모든 노트",
+    "removeNotesFromFolder": "폴더에서 {{count}}개 노트 제거"
   }
 }

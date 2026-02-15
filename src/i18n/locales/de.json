@@ -1775,7 +1775,18 @@
     "noTimestampData": "Keine Zeitstempeldaten verfügbar",
     "nested": "{{completed}}/{{total}} verschachtelt",
     "subtasksCompleted": "{{completed}}/{{total}} abgeschlossen",
-    "subtaskAdded": "Unteraufgabe hinzugefügt"
+    "subtaskAdded": "Unteraufgabe hinzugefügt",
+    "selectStatus": "Status auswählen",
+    "taskAttachment": "Aufgabenanhang",
+    "effortEstimation": "Aufwandsschätzung",
+    "custom": "Benutzerdefiniert",
+    "estimated": "Geschätzt: {{hours}}h",
+    "actual": "Tatsächlich: {{hours}}h",
+    "deadlineEscalation": "Fristeskalation",
+    "alertBeforeDeadline": "Warnen wenn nicht vor Frist erledigt:",
+    "repeatAlert": "Warnung wiederholen",
+    "repeatAlertDesc": "Alle 30min weiter warnen bis erledigt",
+    "locationReminder": "Standorterinnerung"
   },
   "sections": {
     "editSection": "Abschnitt Bearbeiten",
@@ -1904,5 +1915,30 @@
     "questionTeacher": "Wie heißt Ihr Lieblingslehrer?",
     "questionCar": "Was war Ihr erstes Auto?",
     "questionFood": "Was ist Ihr Lieblingsessen?"
+  },
+  "backup": {
+    "success": "Sicherung erfolgreich",
+    "fileSavedIn": "Datei gespeichert in: {{path}}",
+    "gotIt": "VERSTANDEN"
+  },
+  "comments": {
+    "title": "Kommentare & Notizen",
+    "added": "Kommentar hinzugefügt",
+    "deleted": "Kommentar gelöscht",
+    "noComments": "Noch keine Kommentare. Fügen Sie Notizen, Updates oder Bilder hinzu.",
+    "placeholder": "Kommentar hinzufügen...",
+    "attachment": "Kommentaranhang",
+    "justNow": "Gerade eben",
+    "minutesAgo": "vor {{count}}m",
+    "hoursAgo": "vor {{count}}h",
+    "daysAgo": "vor {{count}}T"
+  },
+  "folderManager": {
+    "createNewFolder": "Neuen Ordner erstellen",
+    "folderName": "Ordnername",
+    "color": "Farbe",
+    "createFolder": "Ordner erstellen",
+    "allNotes": "Alle Notizen",
+    "removeNotesFromFolder": "{{count}} Notiz(en) aus Ordner entfernen"
   }
 }

@@ -1718,7 +1718,18 @@
     "noTimestampData": "कोई टाइमस्टैम्प डेटा उपलब्ध नहीं",
     "nested": "{{completed}}/{{total}} नेस्टेड",
     "subtasksCompleted": "{{completed}}/{{total}} पूर्ण",
-    "subtaskAdded": "उप-कार्य जोड़ा गया"
+    "subtaskAdded": "उप-कार्य जोड़ा गया",
+    "selectStatus": "स्थिति चुनें",
+    "taskAttachment": "कार्य अनुलग्नक",
+    "effortEstimation": "प्रयास अनुमान",
+    "custom": "कस्टम",
+    "estimated": "अनुमानित: {{hours}} घंटे",
+    "actual": "वास्तविक: {{hours}} घंटे",
+    "deadlineEscalation": "समय सीमा एस्केलेशन",
+    "alertBeforeDeadline": "समय सीमा से पहले पूरा न होने पर अलर्ट:",
+    "repeatAlert": "अलर्ट दोहराएं",
+    "repeatAlertDesc": "पूरा होने तक हर 30 मिनट में अलर्ट करते रहें",
+    "locationReminder": "स्थान अनुस्मारक"
   },
   "sections": {
     "editSection": "अनुभाग संपादित करें",
@@ -1958,5 +1969,30 @@
     "questionTeacher": "आपके पसंदीदा शिक्षक का नाम क्या है?",
     "questionCar": "आपकी पहली कार कौन सी थी?",
     "questionFood": "आपका पसंदीदा खाना क्या है?"
+  },
+  "backup": {
+    "success": "बैकअप सफल",
+    "fileSavedIn": "फ़ाइल यहाँ सहेजी गई: {{path}}",
+    "gotIt": "समझ गया"
+  },
+  "comments": {
+    "title": "टिप्पणियाँ और नोट्स",
+    "added": "टिप्पणी जोड़ी गई",
+    "deleted": "टिप्पणी हटाई गई",
+    "noComments": "अभी कोई टिप्पणी नहीं। नोट्स, अपडेट या चित्र जोड़ें।",
+    "placeholder": "टिप्पणी जोड़ें...",
+    "attachment": "टिप्पणी अनुलग्नक",
+    "justNow": "अभी",
+    "minutesAgo": "{{count}} मिनट पहले",
+    "hoursAgo": "{{count}} घंटे पहले",
+    "daysAgo": "{{count}} दिन पहले"
+  },
+  "folderManager": {
+    "createNewFolder": "नया फ़ोल्डर बनाएं",
+    "folderName": "फ़ोल्डर का नाम",
+    "color": "रंग",
+    "createFolder": "फ़ोल्डर बनाएं",
+    "allNotes": "सभी नोट्स",
+    "removeNotesFromFolder": "फ़ोल्डर से {{count}} नोट हटाएं"
   }
 }

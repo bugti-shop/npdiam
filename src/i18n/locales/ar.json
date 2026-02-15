@@ -1867,7 +1867,18 @@
     "noTimestampData": "لا تتوفر بيانات طابع زمني",
     "nested": "{{completed}}/{{total}} متداخلة",
     "subtasksCompleted": "{{completed}}/{{total}} مكتملة",
-    "subtaskAdded": "تمت إضافة مهمة فرعية"
+    "subtaskAdded": "تمت إضافة مهمة فرعية",
+    "selectStatus": "اختر الحالة",
+    "taskAttachment": "مرفق المهمة",
+    "effortEstimation": "تقدير الجهد",
+    "custom": "مخصص",
+    "estimated": "المقدر: {{hours}} ساعة",
+    "actual": "الفعلي: {{hours}} ساعة",
+    "deadlineEscalation": "تصعيد الموعد النهائي",
+    "alertBeforeDeadline": "تنبيه إذا لم يتم الإنجاز قبل الموعد النهائي:",
+    "repeatAlert": "تكرار التنبيه",
+    "repeatAlertDesc": "الاستمرار في التنبيه كل 30 دقيقة حتى الانتهاء",
+    "locationReminder": "تذكير بالموقع"
   },
   "sections": {
     "editSection": "تعديل القسم",
@@ -2024,5 +2035,30 @@
     "questionTeacher": "ما اسم معلمك المفضل؟",
     "questionCar": "ما كانت سيارتك الأولى؟",
     "questionFood": "ما هو طعامك المفضل؟"
+  },
+  "backup": {
+    "success": "تم النسخ الاحتياطي بنجاح",
+    "fileSavedIn": "تم حفظ الملف في: {{path}}",
+    "gotIt": "فهمت"
+  },
+  "comments": {
+    "title": "التعليقات والملاحظات",
+    "added": "تم إضافة التعليق",
+    "deleted": "تم حذف التعليق",
+    "noComments": "لا توجد تعليقات بعد. أضف ملاحظات أو تحديثات أو صور.",
+    "placeholder": "أضف تعليقاً...",
+    "attachment": "مرفق التعليق",
+    "justNow": "الآن",
+    "minutesAgo": "منذ {{count}} دقيقة",
+    "hoursAgo": "منذ {{count}} ساعة",
+    "daysAgo": "منذ {{count}} يوم"
+  },
+  "folderManager": {
+    "createNewFolder": "إنشاء مجلد جديد",
+    "folderName": "اسم المجلد",
+    "color": "اللون",
+    "createFolder": "إنشاء المجلد",
+    "allNotes": "جميع الملاحظات",
+    "removeNotesFromFolder": "إزالة {{count}} ملاحظة من المجلد"
   }
 }

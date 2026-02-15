@@ -437,7 +437,7 @@ export const FolderManager = ({
               disabled={selectedRemoveNoteIds.length === 0}
               variant="destructive"
             >
-              Remove {selectedRemoveNoteIds.length} Note{selectedRemoveNoteIds.length !== 1 ? 's' : ''} from Folder
+              {t('folderManager.removeNotesFromFolder', { count: selectedRemoveNoteIds.length })}
             </Button>
           </div>
         </DialogContent>
@@ -447,17 +447,17 @@ export const FolderManager = ({
       <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Create New Folder</DialogTitle>
+            <DialogTitle>{t('folderManager.createNewFolder')}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4 pt-4">
             <Input
-              placeholder="Folder name"
+              placeholder={t('folderManager.folderName')}
               value={newFolderName}
               onChange={(e) => setNewFolderName(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleCreate()}
             />
             <div>
-              <label className="text-sm font-medium mb-2 block">Color</label>
+              <label className="text-sm font-medium mb-2 block">{t('folderManager.color')}</label>
               <div className="flex gap-2">
                 {folderColors.map((color) => (
                   <button
@@ -474,7 +474,7 @@ export const FolderManager = ({
               </div>
             </div>
             <Button onClick={handleCreate} className="w-full">
-              Create Folder
+              {t('folderManager.createFolder')}
             </Button>
           </div>
         </DialogContent>
@@ -492,7 +492,7 @@ export const FolderManager = ({
           }}
         >
           <FolderOpen className="w-3.5 h-3.5 xs:w-4 xs:h-4 flex-shrink-0" />
-          <span className="flex-shrink-0">All Notes</span>
+          <span className="flex-shrink-0">{t('folderManager.allNotes')}</span>
         </button>
 
         {folders.map((folder) => (

@@ -42,7 +42,7 @@ export const TaskCommentsSection = ({
     onAddComment(comment);
     setText('');
     setImagePreview(null);
-    toast.success('Comment added');
+    toast.success(t('comments.added'));
   };
 
   const handleImageSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,7 +75,7 @@ export const TaskCommentsSection = ({
   const handleDeleteComment = async (commentId: string) => {
     try { await Haptics.impact({ style: ImpactStyle.Medium }); } catch {}
     onDeleteComment(commentId);
-    toast.success('Comment deleted');
+    toast.success(t('comments.deleted'));
   };
 
   const getRelativeTime = (date: Date) => {
@@ -86,10 +86,10 @@ export const TaskCommentsSection = ({
     const diffHours = Math.floor(diffMs / 3600000);
     const diffDays = Math.floor(diffMs / 86400000);
 
-    if (diffMins < 1) return 'Just now';
-    if (diffMins < 60) return `${diffMins}m ago`;
-    if (diffHours < 24) return `${diffHours}h ago`;
-    if (diffDays < 7) return `${diffDays}d ago`;
+    if (diffMins < 1) return t('comments.justNow');
+    if (diffMins < 60) return t('comments.minutesAgo', { count: diffMins });
+    if (diffHours < 24) return t('comments.hoursAgo', { count: diffHours });
+    if (diffDays < 7) return t('comments.daysAgo', { count: diffDays });
     return format(d, 'MMM d, yyyy');
   };
 
@@ -100,7 +100,7 @@ export const TaskCommentsSection = ({
         className="flex items-center gap-2 text-sm font-medium text-muted-foreground w-full"
       >
         <MessageSquare className="h-4 w-4" />
-        Comments & Notes
+        {t('comments.title')}
         {comments.length > 0 && (
           <span className="ml-auto text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
             {comments.length}
@@ -137,7 +137,7 @@ export const TaskCommentsSection = ({
                   {comment.imageUrl && (
                     <img
                       src={comment.imageUrl}
-                      alt="Comment attachment"
+                      alt={t('comments.attachment')}
                       className="rounded-lg max-h-48 w-auto object-cover cursor-pointer hover:opacity-90 transition-opacity"
                       onClick={() => window.open(comment.imageUrl, '_blank')}
                     />
@@ -154,7 +154,7 @@ export const TaskCommentsSection = ({
 
           {comments.length === 0 && (
             <p className="text-xs text-muted-foreground text-center py-3">
-              No comments yet. Add notes, updates, or images.
+              {t('comments.noComments')}
             </p>
           )}
 
@@ -182,7 +182,7 @@ export const TaskCommentsSection = ({
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Add a comment..."
+                placeholder={t('comments.placeholder')}
                 className="pr-10 rounded-xl"
               />
               <button
