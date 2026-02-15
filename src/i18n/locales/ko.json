@@ -2059,7 +2059,9 @@
     "hourly": "매시",
     "task": "작업",
     "note": "메모",
-    "notification": "알림"
+    "notification": "알림",
+    "weekdayAt": "{{day}} {{time}}",
+    "dateAt": "{{date}} {{time}}"
   },
   "codeEditor": {
     "untitledCode": "제목 없는 코드",

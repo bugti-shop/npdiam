@@ -1892,7 +1892,9 @@
     "hourly": "Saatlik",
     "task": "görev",
     "note": "not",
-    "notification": "bildirim"
+    "notification": "bildirim",
+    "weekdayAt": "{{day}} saat {{time}}",
+    "dateAt": "{{date}} saat {{time}}"
   },
   "codeEditor": {
     "untitledCode": "Adsız Kod",

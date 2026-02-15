@@ -1917,7 +1917,9 @@
     "hourly": "毎時",
     "task": "タスク",
     "note": "ノート",
-    "notification": "通知"
+    "notification": "通知",
+    "weekdayAt": "{{day}} {{time}}",
+    "dateAt": "{{date}} {{time}}"
   },
   "codeEditor": {
     "untitledCode": "無題のコード",
