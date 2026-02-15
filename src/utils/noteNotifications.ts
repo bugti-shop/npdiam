@@ -3,16 +3,22 @@ import { Capacitor } from '@capacitor/core';
 
 const isNative = () => Capacitor.isNativePlatform();
 
+const isNotImplementedError = (err: any): boolean => {
+  const msg = String(err?.message || err || '');
+  return msg.includes('not implemented') || msg.includes('not available');
+};
+
 export const requestNotificationPermission = async (): Promise<boolean> => {
   if (isNative()) {
     try {
       const { LocalNotifications } = await import('@capacitor/local-notifications');
       const result = await LocalNotifications.requestPermissions();
       return result.display === 'granted';
-    } catch {}
+    } catch (err) {
+      if (!isNotImplementedError(err)) console.warn('requestPermissions failed:', err);
+    }
   }
   
-  // Web fallback
   if ('Notification' in window) {
     const permission = await Notification.requestPermission();
     return permission === 'granted';
@@ -40,7 +46,9 @@ export const scheduleNoteReminder = async (note: Note): Promise<number | number[
       
       console.log('Note reminder scheduled:', note.title, notifId);
       return notifId;
-    } catch {}
+    } catch (err) {
+      if (!isNotImplementedError(err)) console.warn('scheduleNoteReminder failed:', err);
+    }
   }
   
   console.log('Note reminder scheduled (web mode):', note.title);
@@ -53,9 +61,10 @@ export const cancelNoteReminder = async (notificationId: number | number[]): Pro
       const { LocalNotifications } = await import('@capacitor/local-notifications');
       const ids = Array.isArray(notificationId) ? notificationId : [notificationId];
       await LocalNotifications.cancel({ notifications: ids.map(id => ({ id })) });
-    } catch {}
+    } catch (err) {
+      if (!isNotImplementedError(err)) console.warn('cancelNoteReminder failed:', err);
+    }
   }
-  console.log('Note reminder cancelled:', notificationId);
 };
 
 export const updateNoteReminder = async (note: Note): Promise<number | number[] | null> => {
@@ -90,7 +99,9 @@ export const getAllUpcomingReminders = async (): Promise<Array<{
           schedule: n.schedule?.at ? new Date(n.schedule.at) : new Date(),
           recurring: n.extra?.recurring,
         }));
-    } catch {}
+    } catch (err) {
+      if (!isNotImplementedError(err)) console.warn('getAllUpcomingReminders failed:', err);
+    }
   }
   return [];
 };

@@ -72,9 +72,9 @@ if (typeof window !== 'undefined') {
   };
   
   window.onunhandledrejection = (event) => {
-    // Suppress "not implemented on web" errors from Capacitor plugins
+    // Suppress "not implemented" errors from Capacitor plugins (web + android + ios)
     const msg = String(event?.reason?.message || event?.reason || '');
-    if (msg.includes('not implemented on web') || msg.includes('UNIMPLEMENTED')) {
+    if (msg.includes('not implemented') || msg.includes('UNIMPLEMENTED') || msg.includes('not available')) {
       event.preventDefault();
       return;
     }

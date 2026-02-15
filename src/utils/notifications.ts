@@ -30,6 +30,11 @@ export const SNOOZE_ACTION_TYPE_ID = 'SNOOZE_ACTION_TYPE';
 /**
  * Helper to get LocalNotifications plugin (dynamic import to avoid build issues on web)
  */
+const isNotImplementedError = (err: any): boolean => {
+  const msg = String(err?.message || err || '');
+  return msg.includes('not implemented') || msg.includes('not available');
+};
+
 const getLocalNotifications = async () => {
   if (!Capacitor.isNativePlatform()) return null;
   try {
@@ -76,7 +81,9 @@ const scheduleLocalNotification = async (opts: {
       });
       return notifId;
     } catch (err) {
-      console.warn('Local notification schedule failed, using web fallback:', err);
+      if (!isNotImplementedError(err)) {
+        console.warn('Local notification schedule failed, using web fallback:', err);
+      }
     }
   }
 
@@ -109,7 +116,9 @@ const cancelLocalNotification = async (ids: number[]): Promise<void> => {
     try {
       await LN.cancel({ notifications: ids.map(id => ({ id })) });
     } catch (err) {
-      console.warn('Failed to cancel notifications:', err);
+      if (!isNotImplementedError(err)) {
+        console.warn('Failed to cancel notifications:', err);
+      }
     }
   }
 };
@@ -192,7 +201,9 @@ export class NotificationManager {
       this.initialized = true;
       console.log('NotificationManager initialized (Local Notifications)');
     } catch (error) {
-      console.error('Failed to initialize NotificationManager:', error);
+      if (!isNotImplementedError(error)) {
+        console.error('Failed to initialize NotificationManager:', error);
+      }
     }
   }
 
@@ -204,7 +215,9 @@ export class NotificationManager {
         this.permissionGranted = result.display === 'granted';
         return this.permissionGranted;
       } catch (error) {
-        console.error('Error requesting notification permissions:', error);
+        if (!isNotImplementedError(error)) {
+          console.error('Error requesting notification permissions:', error);
+        }
         return false;
       }
     }
@@ -225,7 +238,9 @@ export class NotificationManager {
         this.permissionGranted = result.display === 'granted';
         return this.permissionGranted;
       } catch (error) {
-        console.error('Error checking notification permissions:', error);
+        if (!isNotImplementedError(error)) {
+          console.error('Error checking notification permissions:', error);
+        }
         return false;
       }
     }
