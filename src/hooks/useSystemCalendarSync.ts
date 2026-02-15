@@ -19,7 +19,11 @@ export const useSystemCalendarSync = () => {
     if (!Capacitor.isNativePlatform()) return;
 
     // Initialize permissions on mount
-    initializeCalendarSync().catch(console.warn);
+    initializeCalendarSync().catch((e) => {
+      // Suppress "not implemented on android" errors silently
+      if (String(e).includes('not implemented')) return;
+      console.warn('Calendar sync init:', e);
+    });
 
     const doSync = async () => {
       const enabled = await isCalendarSyncEnabled();
