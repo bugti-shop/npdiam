@@ -1,40 +1,60 @@
 import { Note } from '@/types/note';
-import { Capacitor } from '@capacitor/core';
-import { scheduleReminder, cancelReminder } from './firebaseApi';
 
 export const requestNotificationPermission = async (): Promise<boolean> => {
-  if (!Capacitor.isNativePlatform()) {
-    if ('Notification' in window) {
-      const permission = await Notification.requestPermission();
-      return permission === 'granted';
-    }
-    return false;
+  try {
+    const { LocalNotifications } = await import('@capacitor/local-notifications');
+    const result = await LocalNotifications.requestPermissions();
+    return result.display === 'granted';
+  } catch {}
+  
+  // Web fallback
+  if ('Notification' in window) {
+    const permission = await Notification.requestPermission();
+    return permission === 'granted';
   }
-  return true;
+  return false;
 };
 
 export const scheduleNoteReminder = async (note: Note): Promise<number | number[] | null> => {
   if (!note.reminderTime) return null;
 
-  const reminderId = await scheduleReminder({
-    title: 'Note Reminder',
-    body: note.title,
-    scheduledAt: new Date(note.reminderTime).toISOString(),
-    data: { noteId: note.id, type: 'note' },
-    repeatType: note.reminderRecurring && note.reminderRecurring !== 'none' ? note.reminderRecurring as any : null,
-  });
-
-  console.log('[FCM] Note reminder scheduled:', note.title, reminderId);
-  return null;
+  try {
+    const { LocalNotifications } = await import('@capacitor/local-notifications');
+    const notifId = Math.floor(Math.random() * 100000);
+    
+    await LocalNotifications.schedule({
+      notifications: [{
+        title: '📝 Note Reminder',
+        body: note.title,
+        id: notifId,
+        schedule: { at: new Date(note.reminderTime) },
+        extra: { noteId: note.id, type: 'note' },
+      }],
+    });
+    
+    console.log('Note reminder scheduled:', note.title, notifId);
+    return notifId;
+  } catch {
+    console.log('Note reminder scheduled (web mode):', note.title);
+    return null;
+  }
 };
 
 export const cancelNoteReminder = async (notificationId: number | number[]): Promise<void> => {
-  console.log('[FCM] Cancel note reminder delegated to backend:', notificationId);
+  try {
+    const { LocalNotifications } = await import('@capacitor/local-notifications');
+    const ids = Array.isArray(notificationId) ? notificationId : [notificationId];
+    await LocalNotifications.cancel({ notifications: ids.map(id => ({ id })) });
+  } catch {}
+  console.log('Note reminder cancelled:', notificationId);
 };
 
 export const updateNoteReminder = async (note: Note): Promise<number | number[] | null> => {
-  if (note.id) {
-    await cancelReminder({ noteId: note.id });
+  if (note.notificationId) {
+    await cancelNoteReminder(note.notificationId);
+  }
+  if (note.notificationIds) {
+    await cancelNoteReminder(note.notificationIds as any);
   }
   return scheduleNoteReminder(note);
 };
@@ -47,9 +67,23 @@ export const getAllUpcomingReminders = async (): Promise<Array<{
   schedule: Date;
   recurring?: string;
 }>> => {
+  try {
+    const { LocalNotifications } = await import('@capacitor/local-notifications');
+    const pending = await LocalNotifications.getPending();
+    return pending.notifications
+      .filter(n => n.extra?.type === 'note')
+      .map(n => ({
+        id: n.id,
+        noteId: n.extra?.noteId || '',
+        title: n.title || '',
+        body: n.body || '',
+        schedule: n.schedule?.at ? new Date(n.schedule.at) : new Date(),
+        recurring: n.extra?.recurring,
+      }));
+  } catch {}
   return [];
 };
 
 export const initializeNotificationListener = () => {
-  console.log('Notification listener initialized (FCM mode)');
+  console.log('Notification listener initialized (Local Notifications mode)');
 };

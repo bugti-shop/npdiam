@@ -1,7 +1,7 @@
-import { PushNotifications } from '@capacitor/push-notifications';
-import { Capacitor } from '@capacitor/core';
-import { setSetting } from '@/utils/settingsStorage';
-import { registerDeviceToken } from '@/utils/firebaseApi';
+/**
+ * Push Notification Manager
+ * Now uses Local Notifications. Push (FCM) removed.
+ */
 
 export class PushNotificationManager {
   private static instance: PushNotificationManager;
@@ -16,57 +16,33 @@ export class PushNotificationManager {
   }
 
   async initialize(): Promise<void> {
-    if (!Capacitor.isNativePlatform()) {
-      console.log('Push notifications are only available on native platforms');
-      return;
-    }
-
-    await this.requestPermissions();
-    await this.registerListeners();
+    console.log('PushNotificationManager initialized (Local Notifications mode)');
   }
 
   async requestPermissions(): Promise<boolean> {
     try {
-      const result = await PushNotifications.requestPermissions();
-      if (result.receive === 'granted') {
-        await PushNotifications.register();
-        return true;
+      const { LocalNotifications } = await import('@capacitor/local-notifications');
+      const result = await LocalNotifications.requestPermissions();
+      return result.display === 'granted';
+    } catch {
+      if ('Notification' in window) {
+        const perm = await Notification.requestPermission();
+        return perm === 'granted';
       }
-      return false;
-    } catch (error) {
-      console.error('Error requesting push notification permissions:', error);
       return false;
     }
   }
 
   async registerListeners(): Promise<void> {
-    await PushNotifications.addListener('registration', async (token) => {
-      console.log('Push registration success, token: ' + token.value);
-      await setSetting('pushToken', token.value);
-      // Register token with Firebase backend
-      await registerDeviceToken(token.value);
-    });
-
-    await PushNotifications.addListener('registrationError', (err) => {
-      console.error('Registration error: ', err.error);
-    });
-
-    await PushNotifications.addListener('pushNotificationReceived', (notification) => {
-      console.log('Push notification received: ', notification);
-    });
-
-    await PushNotifications.addListener('pushNotificationActionPerformed', (notification) => {
-      console.log('Push notification action performed', notification.actionId, notification.inputValue);
-    });
+    // No-op: handled by NotificationManager
   }
 
-  async getDeliveredNotifications(): Promise<any> {
-    const notificationList = await PushNotifications.getDeliveredNotifications();
-    return notificationList.notifications;
+  async getDeliveredNotifications(): Promise<any[]> {
+    return [];
   }
 
   async removeAllDeliveredNotifications(): Promise<void> {
-    await PushNotifications.removeAllDeliveredNotifications();
+    // No-op
   }
 }
 
